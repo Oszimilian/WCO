@@ -1,13 +1,16 @@
-typdef struct{
+#ifndef PDF_H_INCLUDED
+#define PDF_H_INCLUDED
+
+struct WCO_PDF_t{
     HPDF_Doc pdf;
     HPDF_Page page[20];
 
     char systemOpenFile[2][100];
     char fileName[2][100];
     char folderName[100];
-} WCO_PDF_t;
+}MyPDF;
 
-WCO_PDF_t MyPDF;
+//struct WCO_PDF_t MyPDF;
 
 jmp_buf env;
 
@@ -22,3 +25,5 @@ void WCO_PDF_SavePDF(int page);
 void WCO_PDF_DrawSolutionLine(char *text, int x1, int y1, int line_Lengh, int page);
 void WCO_PDF_DrawLine(int x1, int y1, int x2, int y2, int page);
 
+
+#endif

@@ -6,7 +6,7 @@
 #include <string.h>
 #include <pthread.h>
 #include <unistd.h>
-#include <time.h>a
+#include <time.h>
 #include <math.h>
 
 #include "hpdf.h"
@@ -25,26 +25,27 @@ int WCO_Worksheet_Status_Threashold()
     return MyWorksheet.baseboardThreashold;
 }
 
-float *WCO_Worksheet_Status_Calculation(int operand, float *a, float *b)
+float WCO_Worksheet_Status_Calculation(int operand, float *a, float *b)
 {
-    float *ret; 
+    float ret; 
 
     switch (operand)
     {
-        case 0: (*ret) = (*a) + (*b); break;
-        case 1: (*ret) = (*a) - (*b); break;
-        case 2: (*ret) = (*a) * (*b); break;
-        case 3: (*ret) = (*a) / (*b); break;
+        case 0: ret = (*a) + (*b); break;
+        case 1: ret = (*a) - (*b); break;
+        case 2: ret = (*a) * (*b); break;
+        case 3: ret = (*a) / (*b); break;
         default: break;
     }
 
     return ret;
 }
 
-char *WCO_Worksheet_Status_Task(int number, int page)
+char* WCO_Worksheet_Status_Task(int number, int page)
 {
     char *tmp = malloc (50);
-    sprintf(tmp, "%s" MyWorksheet.task[page][number]);
+    sprintf(tmp, "%s", MyWorksheet.task[page][number]);
+    
     return tmp;
 }
 

@@ -27,7 +27,7 @@ Worksheed_Adjust.o: Worksheed_Adjust.c
 Worksheet_Creat.o: Worksheet_Creat.c
 	gcc $(KP) -c Worksheet_Creat.c
 
-Worksheet_Status.o: Worksheet_Status.cairo
+Worksheet_Status.o: Worksheet_Status.c
 	gcc $(KP) -c Worksheet_Status.c
 
 GUI_Status.o: GUI_Status.c

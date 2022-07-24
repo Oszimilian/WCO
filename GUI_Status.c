@@ -6,7 +6,7 @@
 #include <string.h>
 #include <pthread.h>
 #include <unistd.h>
-#include <time.h>a
+#include <time.h>
 #include <math.h>
 
 #include "hpdf.h"
@@ -36,10 +36,10 @@ int WCO_GUI_Status_SpecificOperand_CheckButton(int i)
 
     switch (i)
     {
-        case 0: ret = WCO_GUI_Status_AdditionButton(); break;
-        case 1: ret = WCO_GUI_Status_SubtractionButton(); break;
-        case 2: ret = WCO_GUI_Status_MultiplicationButton(); break;
-        case 3: ret = WCO_GUI_Status_DivisionButton(); break;
+        case 0: ret = WCO_GUI_Status_AdditionCheck_CheckButton(); break;
+        case 1: ret = WCO_GUI_Status_Subtraction_CheckButton(); break;
+        case 2: ret = WCO_GUI_Status_Multiplication_CheckButton(); break;
+        case 3: ret = WCO_GUI_Status_DivisionButton_CheckButton(); break;
         default: break;
     }
 

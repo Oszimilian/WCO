@@ -6,7 +6,7 @@
 #include <string.h>
 #include <pthread.h>
 #include <unistd.h>
-#include <time.h>a
+#include <time.h>
 #include <math.h>
 
 #include "hpdf.h"
@@ -14,7 +14,6 @@
 #include "GUI.h"
 #include "PDF.h"
 #include "Worksheet.h"
-
 
 
 //void *WCO_GUI_Start(void *vargp)
@@ -63,6 +62,12 @@ void WCO_GUI_Start()
     gtk_widget_show(MyGUI.MyWindow1);
 
     gtk_main();
+}
+
+
+void WCO_GUI_Init()
+{
+    MyGUI.showPDF = _OFF;
 }
 
 /**********************************************************************************************************************/

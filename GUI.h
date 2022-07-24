@@ -1,9 +1,12 @@
+#ifndef GUI_H_INCLUDED
+#define GUI_H_INCLUDED
+
 #define _ON 1
 #define _OFF 0
 #define _TRUE 1
 #define _FALSE 0
 
-typedef struct {
+struct WCO_GUI_t{
     GtkBuilder *MyBuilder;
     GtkWidget *MyWindow1;
     GtkWidget *MyFixed1;
@@ -40,11 +43,17 @@ typedef struct {
     GtkWidget *MyEntry1;
 
     int showPDF;
-}WCO_GUI_t;
-    
-WCO_GUI_t MyGUI = {
+}MyGUI;
+
+
+/*
+extern struct WCO_GUI_t MyGUI = {
     .showPDF = _OFF
 };
+*/
+
+void WCO_GUI_Init();
+
 
 void WCO_GUI_Start();
 
@@ -73,3 +82,4 @@ int WCO_GUI_Status_Division_DecimalPlaces();
 int WCO_GUI_Status_SpecificOperand_DecimalPlaces(int i);
 
 
+#endif

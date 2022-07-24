@@ -1,3 +1,5 @@
+#ifndef GUI_CALL_H_INCLUDED
+#define GUI_CALL_H_INCLUDED
 
 void exitApp();
 void MyButton1_Clicked(GtkButton *b);
@@ -31,4 +33,4 @@ void MyEntry1_Changed(GtkEntry *e);
 
 
 
-
+#endif

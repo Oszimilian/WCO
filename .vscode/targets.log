@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sun Jul 24 00:34:40 2022
+# Make data base, printed on Sun Jul 24 17:04:31 2022
 
 # Variables
 
@@ -55,7 +55,7 @@ XDG_RUNTIME_DIR = /mnt/wslg/runtime-dir
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-VSCODE_IPC_HOOK_CLI = /mnt/wslg/runtime-dir/vscode-ipc-cd722556-1c1a-4556-acc8-ca67f2f36e72.sock
+VSCODE_IPC_HOOK_CLI = /mnt/wslg/runtime-dir/vscode-ipc-16c9e7f7-b07e-4ccb-b597-8399f74417b1.sock
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
@@ -69,9 +69,8 @@ PWD = /home/maximilian/Git/WorksheetCrafterOszimilian
 # default
 .LOADED := 
 # environment
-WSL_INTEROP = /run/WSL/1670_interop
+WSL_INTEROP = /run/WSL/32_interop
 # environment
- 
 PULSE_SERVER = /mnt/wslg/PulseServer
 # environment
 VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
@@ -156,7 +155,6 @@ LiberyLink = -lgtk-3 -lgdk-3 -lpangocairo-1.0 -lpango-1.0 -lharfbuzz -latk-1.0 -
 # environment
 WSL_DISTRO_NAME = Ubuntu_WorksheetEnv
 # variable set hash-table stats:
- 
 # Load=71/1024=7%, Rehash=0, Collisions=4/97=4%
 
 # Pattern-specific Variable Values
@@ -165,9 +163,9 @@ WSL_DISTRO_NAME = Ubuntu_WorksheetEnv
 
 # Directories
 
-# . (device 2080, inode 108405): 22 files, no impossibilities.
+# . (device 2080, inode 108405): 23 files, no impossibilities.
 
-# 22 files, no impossibilities in 1 directories.
+# 23 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -223,7 +221,7 @@ Worksheed_Adjust.o: Worksheed_Adjust.c
 # Not a target:
 makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-24 00:34:17.350585275
+#  Last modified 2022-07-24 16:17:09.260417621
 #  File has been updated.
 #  Successfully updated.
 
@@ -241,7 +239,7 @@ prog: main.o Background.o GUI.o PDF.o Worksheed_Adjust.o Worksheet_Creat.o GUI_C
 #  recipe to execute (from 'makefile', line 7):
 	gcc -o prog $(ObjectFiles) $(LiberyLink)
 
-Worksheet_Status.o: Worksheet_Status.cairo
+Worksheet_Status.o: Worksheet_Status.c
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -284,11 +282,18 @@ GUI_Call.o: GUI_Call.c
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
+ 
 #  recipe to execute (from 'makefile', line 19):
 	gcc $(KP) -c GUI_Call.c
 
 # Not a target:
 Worksheet_Creat.c:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+Worksheet_Status.c:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -306,12 +311,6 @@ GUI.o: GUI.c
 #  File has not been updated.
 #  recipe to execute (from 'makefile', line 16):
 	gcc $(KP) -c GUI.c
-
-# Not a target:
-Worksheet_Status.cairo:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
 
 # Not a target:
 PDF.c:
@@ -334,12 +333,12 @@ Background.o: Background.c
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 38 / storage = 398 B / avg = 10 B
-# current buf: size = 8162 B / used = 398 B / count = 38 / avg = 10 B
+# strcache buffers: 1 (0) / strings = 38 / storage = 388 B / avg = 10 B
+# current buf: size = 8162 B / used = 388 B / count = 38 / avg = 10 B
 
-# strcache performance: lookups = 71 / hit rate = 46%
+# strcache performance: lookups = 72 / hit rate = 47%
 # hash-table stats:
-# Load=38/8192=0%, Rehash=0, Collisions=1/71=1%
-# Finished Make data base on Sun Jul 24 00:34:40 2022
+# Load=38/8192=0%, Rehash=0, Collisions=1/72=1%
+# Finished Make data base on Sun Jul 24 17:04:31 2022
 
  

@@ -6,7 +6,7 @@
 #include <string.h>
 #include <pthread.h>
 #include <unistd.h>
-#include <time.h>a
+#include <time.h>
 #include <math.h>
 
 #include "hpdf.h"
@@ -22,17 +22,17 @@ void MyButton1_Clicked(GtkButton *b)
     printf("Button One is clicked! \n");
 
 
-    WCO_PDF_SetFilename(_Tasks, "Aufgaben");
-    WCO_PDF_SetFilename(_Solutions, "Lösungen");
+    WCO_PDF_SetFilename("Aufgaben", _Tasks);
+    WCO_PDF_SetFilename("Solution", _Solutions);
 
-    //if (!WCO_GUI_Status_PDFViewer()) WCO_GUI_Start_PDFViewer();
+    if (!WCO_GUI_Status_PDFViewer()) WCO_GUI_Start_PDFViewer();
 
- 
+    WCO_Worksheet_Create_Start();
 }
 
 void MyButton2_Clicked(GtkButton *b)
 {
-    WCO_GUI_ClosePDFViewer();
+    WCO_GUI_Close_PDFViewer();
 }
 
 void MyCheckButton1_Toggled(GtkCheckButton *b)

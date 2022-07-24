@@ -6,7 +6,7 @@
 #include <string.h>
 #include <pthread.h>
 #include <unistd.h>
-#include <time.h>a
+#include <time.h>
 #include <math.h>
 
 #include "hpdf.h"
@@ -15,6 +15,11 @@
 #include "PDF.h"
 #include "Worksheet.h"
 
+void WCO_Worksheet_Init()
+{
+    MyWorksheet.printBaseboard = _enable;
+    MyWorksheet.baseboardThreashold = 150;
+}
 
 /*
 *   This Funktion starts the process of generating a math-task-pdf from the beginning till the end
@@ -27,9 +32,11 @@ int WCO_Worksheet_Create_Start()
     MyPDF.pdf = HPDF_New (Error_Handler, NULL);
 
     //Check this pdf instanze
-    if (!WCO_PDF_Check())
+    if (WCO_PDF_Check())
     {
         printf("PDF hat einen Fehler, bzw. konnte nicht erzeugt werden \n");
+
+        goto failed;
     }else{
         printf("PDF wurde erfolgreich erzeugt \n");
     }
@@ -37,8 +44,10 @@ int WCO_Worksheet_Create_Start()
     //Generating a new page zero
     WCO_PDF_SetupPage(_Tasks);
 
+    
+
     //Wirte some text
-    if (WCO_Worksheet_Creat_TaskSheet())
+    if (!WCO_Worksheet_Creat_TaskSheet())
     {
         ret = _error;
 
@@ -55,8 +64,10 @@ int WCO_Worksheet_Create_Start()
     //Generatign a new pdf
     WCO_PDF_SetupPage(_Solutions);
 
+
+
     //Creates a Solution  - PDF
-    if (WCO_Worksheet_Create_SolutionSheed())
+    if (!WCO_Worksheet_Create_SolutionSheed())
     {
         ret = _error;
 
@@ -85,9 +96,9 @@ int WCO_Worksheet_Creat_TaskSheet()
     int pageSizeCounter;
     int taskCounter = 0;
     int startx[3];
-    startx[0] = HPDF_Page_GetWidth(MyPDF->page[_Tasks]) - (HPDF_Page_GetWidth(MyPDF->page[_Tasks]) * 0.9);
-    startx[1] = HPDF_Page_GetWidth(MyPDF->page[_Tasks]) - (HPDF_Page_GetWidth(MyPDF->page[_Tasks]) * 0.5);
-    startx[2] = HPDF_Page_GetWidth(MyPDF->page[_Tasks]) - (HPDF_Page_GetWidth(MyPDF->page[_Tasks]) * 0.3);
+    startx[0] = HPDF_Page_GetWidth(MyPDF.page[_Tasks]) - (HPDF_Page_GetWidth(MyPDF.page[_Tasks]) * 0.9);
+    startx[1] = HPDF_Page_GetWidth(MyPDF.page[_Tasks]) - (HPDF_Page_GetWidth(MyPDF.page[_Tasks]) * 0.6);
+    startx[2] = HPDF_Page_GetWidth(MyPDF.page[_Tasks]) - (HPDF_Page_GetWidth(MyPDF.page[_Tasks]) * 0.3);
 
     //print a baseboard
     if(!WCO_Worksheet_Creat_Baseboard(_Tasks))
@@ -129,7 +140,7 @@ int WCO_Worksheet_Creat_TaskSheet()
 
             pageSizeCounter -= 50;
 
-            taskCounter = 0;
+            taskCounter ++;
 
         }
 
@@ -151,12 +162,12 @@ int WCO_Worksheet_Create_SolutionSheed()
     int pageSizeCounter;
     int taskCounter = 0;
     int startx[3];
-    startx[0] = HPDF_Page_GetWidth(MyPDF->page[_Tasks]) - (HPDF_Page_GetWidth(MyPDF->page[_Tasks]) * 0.9);
-    startx[1] = HPDF_Page_GetWidth(MyPDF->page[_Tasks]) - (HPDF_Page_GetWidth(MyPDF->page[_Tasks]) * 0.5);
-    startx[2] = HPDF_Page_GetWidth(MyPDF->page[_Tasks]) - (HPDF_Page_GetWidth(MyPDF->page[_Tasks]) * 0.3);
+    startx[0] = HPDF_Page_GetWidth(MyPDF.page[_Solutions]) - (HPDF_Page_GetWidth(MyPDF.page[_Solutions]) * 0.9);
+    startx[1] = HPDF_Page_GetWidth(MyPDF.page[_Solutions]) - (HPDF_Page_GetWidth(MyPDF.page[_Solutions]) * 0.6);
+    startx[2] = HPDF_Page_GetWidth(MyPDF.page[_Solutions]) - (HPDF_Page_GetWidth(MyPDF.page[_Solutions]) * 0.3);
 
     //print a baseboard
-    if (!WCO_Worksheet_Creat_Baseboard(_Tasks))
+    if (!WCO_Worksheet_Creat_Baseboard(_Solutions))
     {
         ret = _error;
 
@@ -165,9 +176,9 @@ int WCO_Worksheet_Create_SolutionSheed()
 
     if (WCO_Worksheet_Status_Baseboard())
     {
-        pageSize = HPDF_Page_GetHeight(MyPDF.page[_Tasks]) - WCO_Worksheet_Status_Threashold();
+        pageSize = HPDF_Page_GetHeight(MyPDF.page[_Solutions]) - WCO_Worksheet_Status_Threashold();
     }else{
-        pageSize = HPDF_Page_GetHeight(MyPDF.page[_Tasks]);
+        pageSize = HPDF_Page_GetHeight(MyPDF.page[_Solutions]);
     }
 
      for(int i = 0; i <= 2; i++)
@@ -178,7 +189,7 @@ int WCO_Worksheet_Create_SolutionSheed()
         {
             char *task = WCO_Worksheet_Status_Task(taskCounter, _Solutions);
 
-            WCO_PDF_WriteText(startx[i], pageSizeCounter, task, _Tasks);
+            WCO_PDF_WriteText(startx[i], pageSizeCounter, task, _Solutions);
 
             pageSizeCounter -= 50;
 
@@ -207,7 +218,7 @@ int WCO_Worksheet_Create_RandomTask(int counter)
     int spinButtonValue[2];
     float value[2];
     int decimalPlaces;
-    char taskOperand = {"+", "-", "*", "+"};
+    char taskOperand[] = {'+', '-', '*', '/'};
     float solution;
 
 
@@ -238,7 +249,7 @@ int WCO_Worksheet_Create_RandomTask(int counter)
     spinButtonValue[0] = WCO_GUI_Status_SpecificOperand_SpinButton(operand, 0);
     spinButtonValue[1] = WCO_GUI_Status_SpecificOperand_SpinButton(operand, 1);
 
-    for (int i = 0; i >= 1; i++)
+    for (int i = 0; i <= 1; i++)
     {
         switch (spinButtonValue[i])
         {
@@ -282,12 +293,12 @@ int WCO_Worksheet_Create_RandomTask(int counter)
         default: break;
     }
 
-    solution = WCO_Worksheet_Status_Calculation(operand, value[0], value[1]);
+    solution = WCO_Worksheet_Status_Calculation(operand, &value[0], &value[1]);
 
     switch (decimalPlaces)
     {
         case 0:
-            sprintf(MyWorksheet.task[0][counter], "%d %c %d =", value[0], taskOperand[operand], value[1]);
+            sprintf(MyWorksheet.task[0][counter], "%d %c %d =", (int)value[0], taskOperand[operand], (int)value[1]);
             sprintf(MyWorksheet.task[1][counter], "%d %c %d = %.2f", (int)value[0], taskOperand[operand], (int)value[1], solution);
         break;
 
@@ -338,9 +349,9 @@ int WCO_Worksheet_Creat_Baseboard(int page)
     if (WCO_Worksheet_Status_Baseboard())
     {
         //Divide the page into three colums
-        int startx1 = HPDF_Page_GetWidth(MyPDF->page[page]) - (HPDF_Page_GetWidth(MyPDF->page[page]) * 0.9);
-        int startx2 = HPDF_Page_GetWidth(MyPDF->page[page]) - (HPDF_Page_GetWidth(MyPDF->page[page]) * 0.5);
-        int startx3 = HPDF_Page_GetWidth(MyPDF->page[page]) - (HPDF_Page_GetWidth(MyPDF->page[page]) * 0.3);
+        int startx1 = HPDF_Page_GetWidth(MyPDF.page[page]) - (HPDF_Page_GetWidth(MyPDF.page[page]) * 0.9);
+        int startx2 = HPDF_Page_GetWidth(MyPDF.page[page]) - (HPDF_Page_GetWidth(MyPDF.page[page]) * 0.5);
+        int startx3 = HPDF_Page_GetWidth(MyPDF.page[page]) - (HPDF_Page_GetWidth(MyPDF.page[page]) * 0.3);
 
         //Print a name field
         WCO_PDF_WriteText(startx1, 775, "Name:", page);
@@ -355,7 +366,7 @@ int WCO_Worksheet_Creat_Baseboard(int page)
         }
 
         //print the date
-        char *tmp = WCO_Background_GetDate("Datum: ");
+        char *tmp = WCO_Worksheet_Status_GetDate("Datum: ");
         WCO_PDF_WriteText(startx3, 775, tmp, page);
         WCO_PDF_DrawLine(50, 750, HPDF_Page_GetWidth(MyPDF.page[page]) - 50, 750, page);
     }
