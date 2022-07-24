@@ -25,34 +25,36 @@ void MyButton1_Clicked(GtkButton *b)
     WCO_PDF_SetFilename("Aufgaben", _Tasks);
     WCO_PDF_SetFilename("Solution", _Solutions);
 
-    if (!WCO_GUI_Status_PDFViewer()) WCO_GUI_Start_PDFViewer();
+    //if (!WCO_GUI_Status_PDFViewer()) WCO_GUI_Start_PDFViewer();
 
-    WCO_Worksheet_Create_Start();
+    if(!WCO_Worksheet_Create_Start()) printf("Es konnte keine neue PDF erzeugt werden! \n");
 }
+
 
 void MyButton2_Clicked(GtkButton *b)
 {
     WCO_GUI_Close_PDFViewer();
 }
 
+//Addition Enable
 void MyCheckButton1_Toggled(GtkCheckButton *b)
 {
-
+    WCO_GUI_Update_Addition();
 }
 
 void MyCheckButton2_Toggled(GtkCheckButton *b)
 {
-
+    WCO_GUI_Update_Subtraction();
 }
 
 void MyCheckButton3_Toggled(GtkCheckButton *b)
 {
-
+    WCO_GUI_Update_Multiplication();
 }
 
 void MyCheckButton4_Toggled(GtkCheckButton *b)
 {
-
+    WCO_GUI_Update_Division();
 }
 
 void MyCheckButton5_Toggled(GtkCheckButton *b)
@@ -84,7 +86,7 @@ void MySpinButton1_Changed(GtkSpinButton *s)
 */
 void MySpinButton2_Changed(GtkSpinButton *s)
 {
-
+    WCO_GUI_Update_Addition();
 }
 
 /*
@@ -92,7 +94,7 @@ void MySpinButton2_Changed(GtkSpinButton *s)
 */
 void MySpinButton8_Changed(GtkSpinButton *s)
 {
-
+    WCO_GUI_Update_Addition();
 }
 
 /*
@@ -100,7 +102,7 @@ void MySpinButton8_Changed(GtkSpinButton *s)
 */
 void MySpinButton5_Changed(GtkSpinButton *s)
 {
-
+    WCO_GUI_Update_Subtraction();
 }
 
 /*
@@ -108,7 +110,7 @@ void MySpinButton5_Changed(GtkSpinButton *s)
 */
 void MySpinButton9_Changed(GtkSpinButton *s)
 {
-
+    WCO_GUI_Update_Subtraction();
 }
 
 /*
@@ -116,7 +118,7 @@ void MySpinButton9_Changed(GtkSpinButton *s)
 */
 void MySpinButton3_Changed(GtkSpinButton *s)
 {
-
+    WCO_GUI_Update_Multiplication();
 }
 
 /*
@@ -124,7 +126,7 @@ void MySpinButton3_Changed(GtkSpinButton *s)
 */
 void MySpinButton4_Changed(GtkSpinButton *s)
 {
-
+    WCO_GUI_Update_Multiplication();
 }
 
 
@@ -133,7 +135,7 @@ void MySpinButton4_Changed(GtkSpinButton *s)
 */
 void MySpinButton6_Changed(GtkSpinButton *s)
 {
-
+    void WCO_GUI_Update_Division();
 }
 
 /*
@@ -141,7 +143,7 @@ void MySpinButton6_Changed(GtkSpinButton *s)
 */
 void MySpinButton7_Changed(GtkSpinButton *s)
 {
-
+    void WCO_GUI_Update_Division();
 }
 
 /**********************************************************************************************************************/
@@ -150,7 +152,7 @@ void MySpinButton7_Changed(GtkSpinButton *s)
 */
 void MySpinButton10_Changed(GtkSpinButton *s)
 {
-
+    WCO_GUI_Update_Addition();
 }
 
 /*
@@ -158,7 +160,7 @@ void MySpinButton10_Changed(GtkSpinButton *s)
 */
 void MySpinButton11_Changed(GtkSpinButton *s)
 {
-
+    WCO_GUI_Update_Subtraction();
 }
 
 /*
@@ -166,7 +168,7 @@ void MySpinButton11_Changed(GtkSpinButton *s)
 */
 void MySpinButton12_Changed(GtkSpinButton *s)
 {
-
+    WCO_GUI_Update_Multiplication();
 }
 
 /*
@@ -174,7 +176,7 @@ void MySpinButton12_Changed(GtkSpinButton *s)
 */
 void MySpinButton13_Changed(GtkSpinButton *s)
 {
-
+    void WCO_GUI_Update_Division();
 }
 
 /**********************************************************************************************************************/
@@ -186,7 +188,7 @@ void MyFileChosserButton1_FileSet(GtkFileChooserButton *f)
 
 void MyEntry1_Changed(GtkEntry *e)
 {
-
+    WCO_GUI_Update_PermissionButton1();
 }
 
 void MyButton4_Clicked(GtkButton *b)

@@ -61,6 +61,8 @@ void WCO_GUI_Start()
 
     gtk_widget_show(MyGUI.MyWindow1);
 
+    WCO_GUI_Init();
+
     gtk_main();
 }
 
@@ -68,7 +70,14 @@ void WCO_GUI_Start()
 void WCO_GUI_Init()
 {
     MyGUI.showPDF = _OFF;
+
+    WCO_GUI_Update_Addition();
+    WCO_GUI_Update_Division();
+    WCO_GUI_Update_Multiplication();
+    WCO_GUI_Update_Division();
+    WCO_GUI_Update_PermissionButton1();
 }
+    
 
 /**********************************************************************************************************************/
 

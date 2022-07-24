@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sun Jul 24 17:04:31 2022
+# Make data base, printed on Sun Jul 24 19:04:02 2022
 
 # Variables
 
@@ -36,8 +36,8 @@ VSCODE_NLS_CONFIG = {"locale":"en","availableLanguages":{}}
 _ = /root/.vscode-server/bin/3b889b090b5ad5793f524b5d1d39fda662b96a2a/node
 # makefile (from 'makefile', line 1)
 MAKEFILE_LIST :=  makefile
-# makefile (from 'makefile', line 4)
-KP = -Wall -g $(LiberyLink) $(HeaderDir)
+# makefile (from 'makefile', line 5)
+KP = -Wall -g  $(HeaderDir)
 # 'override' directive
 GNUMAKEFLAGS := 
 # environment
@@ -50,12 +50,14 @@ VSCODE_CWD = /mnt/c/Program Files/Microsoft VS Code
 MAKE_HOST := x86_64-pc-linux-gnu
 # environment
 PATH = /root/.vscode-server/bin/3b889b090b5ad5793f524b5d1d39fda662b96a2a/bin/remote-cli:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/Windows/system32:/mnt/c/Windows:/mnt/c/Windows/System32/Wbem:/mnt/c/Windows/System32/WindowsPowerShell/v1.0/:/mnt/c/Windows/System32/OpenSSH/:/mnt/c/Program Files (x86)/NVIDIA Corporation/PhysX/Common:/mnt/c/Program Files/PuTTY/:/mnt/c/Program Files/Microsoft VS Code/bin:/mnt/c/Users/maximilian/AppData/Local/Microsoft/WindowsApps:/snap/bin
+# makefile (from 'makefile', line 4)
+KP1 = -Wall -g $(LiberyLink) $(HeaderDir)
 # environment
 XDG_RUNTIME_DIR = /mnt/wslg/runtime-dir
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-VSCODE_IPC_HOOK_CLI = /mnt/wslg/runtime-dir/vscode-ipc-16c9e7f7-b07e-4ccb-b597-8399f74417b1.sock
+VSCODE_IPC_HOOK_CLI = /mnt/wslg/runtime-dir/vscode-ipc-895b9b1a-3c4e-4a97-bcba-3e4c3dfebdcc.sock
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
@@ -69,7 +71,7 @@ PWD = /home/maximilian/Git/WorksheetCrafterOszimilian
 # default
 .LOADED := 
 # environment
-WSL_INTEROP = /run/WSL/32_interop
+WSL_INTEROP = /run/WSL/11_interop
 # environment
 PULSE_SERVER = /mnt/wslg/PulseServer
 # environment
@@ -77,7 +79,7 @@ VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
 # environment
 HOME = /root
 # makefile (from 'makefile', line 2)
-ObjectFiles = main.o Background.o GUI.o PDF.o Worksheed_Adjust.o Worksheet_Creat.o GUI_Call.o Worksheet_Status.o GUI_Status.o
+ObjectFiles = main.o Background.o GUI.o PDF.o Worksheed_Adjust.o Worksheet_Creat.o GUI_Call.o Worksheet_Status.o GUI_Status.o GUI_Update.o
 # environment
 LESSCLOSE = /usr/bin/lesspipe %s %s
 # environment
@@ -155,7 +157,7 @@ LiberyLink = -lgtk-3 -lgdk-3 -lpangocairo-1.0 -lpango-1.0 -lharfbuzz -latk-1.0 -
 # environment
 WSL_DISTRO_NAME = Ubuntu_WorksheetEnv
 # variable set hash-table stats:
-# Load=71/1024=7%, Rehash=0, Collisions=4/97=4%
+# Load=72/1024=7%, Rehash=0, Collisions=4/98=4%
 
 # Pattern-specific Variable Values
 
@@ -163,9 +165,9 @@ WSL_DISTRO_NAME = Ubuntu_WorksheetEnv
 
 # Directories
 
-# . (device 2080, inode 108405): 23 files, no impossibilities.
+# . (device 2080, inode 108405): 34 files, no impossibilities.
 
-# 23 files, no impossibilities in 1 directories.
+# 34 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -190,7 +192,7 @@ GUI_Status.o: GUI_Status.c
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'makefile', line 34):
+#  recipe to execute (from 'makefile', line 35):
 	gcc $(KP) -c GUI_Status.c
 
 # Not a target:
@@ -211,17 +213,23 @@ Background.c:
 #  Modification time never checked.
 #  File has not been updated.
 
+# Not a target:
+GUI_Update.c:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
 Worksheed_Adjust.o: Worksheed_Adjust.c
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'makefile', line 25):
+#  recipe to execute (from 'makefile', line 26):
 	gcc $(KP) -c Worksheed_Adjust.c
 
 # Not a target:
 makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-24 16:17:09.260417621
+#  Last modified 2022-07-24 19:03:55.898717452
 #  File has been updated.
 #  Successfully updated.
 
@@ -229,21 +237,21 @@ Worksheet_Creat.o: Worksheet_Creat.c
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'makefile', line 28):
+#  recipe to execute (from 'makefile', line 29):
 	gcc $(KP) -c Worksheet_Creat.c
 
-prog: main.o Background.o GUI.o PDF.o Worksheed_Adjust.o Worksheet_Creat.o GUI_Call.o Worksheet_Status.o GUI_Status.o
+prog: main.o Background.o GUI.o PDF.o Worksheed_Adjust.o Worksheet_Creat.o GUI_Call.o Worksheet_Status.o GUI_Status.o GUI_Update.o
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'makefile', line 7):
+#  recipe to execute (from 'makefile', line 8):
 	gcc -o prog $(ObjectFiles) $(LiberyLink)
 
 Worksheet_Status.o: Worksheet_Status.c
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'makefile', line 31):
+#  recipe to execute (from 'makefile', line 32):
 	gcc $(KP) -c Worksheet_Status.c
 
 # Not a target:
@@ -262,14 +270,14 @@ PDF.o: PDF.c
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'makefile', line 22):
+#  recipe to execute (from 'makefile', line 23):
 	gcc $(KP) -c PDF.c
 
 clean:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'makefile', line 37):
+#  recipe to execute (from 'makefile', line 41):
 	rm *.o 
 
 # Not a target:
@@ -282,8 +290,7 @@ GUI_Call.o: GUI_Call.c
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
- 
-#  recipe to execute (from 'makefile', line 19):
+#  recipe to execute (from 'makefile', line 20):
 	gcc $(KP) -c GUI_Call.c
 
 # Not a target:
@@ -302,14 +309,14 @@ main.o: main.c
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'makefile', line 10):
+#  recipe to execute (from 'makefile', line 11):
 	gcc $(KP) -c main.c
 
 GUI.o: GUI.c
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'makefile', line 16):
+#  recipe to execute (from 'makefile', line 17):
 	gcc $(KP) -c GUI.c
 
 # Not a target:
@@ -322,23 +329,30 @@ Background.o: Background.c
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'makefile', line 13):
+#  recipe to execute (from 'makefile', line 14):
 	gcc $(KP) -c Background.c
 
+GUI_Update.o: GUI_Update.c
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'makefile', line 38):
+	gcc $(KP) -c GUI_Update.c
+
 # files hash-table stats:
-# Load=24/1024=2%, Rehash=0, Collisions=0/61=0%
+# Load=26/1024=3%, Rehash=0, Collisions=0/66=0%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 38 / storage = 388 B / avg = 10 B
-# current buf: size = 8162 B / used = 388 B / count = 38 / avg = 10 B
+# strcache buffers: 1 (0) / strings = 41 / storage = 428 B / avg = 10 B
+# current buf: size = 8162 B / used = 428 B / count = 41 / avg = 10 B
 
-# strcache performance: lookups = 72 / hit rate = 47%
+# strcache performance: lookups = 87 / hit rate = 52%
 # hash-table stats:
-# Load=38/8192=0%, Rehash=0, Collisions=1/72=1%
-# Finished Make data base on Sun Jul 24 17:04:31 2022
+# Load=41/8192=1%, Rehash=0, Collisions=1/87=1%
+# Finished Make data base on Sun Jul 24 19:04:02 2022
 
  

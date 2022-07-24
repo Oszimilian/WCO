@@ -80,6 +80,15 @@ int WCO_GUI_Status_Subtraction_DecimalPlaces();
 int WCO_GUI_Status_Multiplication_DecimalPlaces();
 int WCO_GUI_Status_Division_DecimalPlaces();
 int WCO_GUI_Status_SpecificOperand_DecimalPlaces(int i);
+char *WCO_GUI_Status_FileName();
+
+
+void WCO_GUI_Update_Addition();
+void WCO_GUI_Update_Subtraction();
+void WCO_GUI_Update_Multiplication();
+void WCO_GUI_Update_Division();
+
+void WCO_GUI_Update_PermissionButton1();
 
 
 #endif

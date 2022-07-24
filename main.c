@@ -30,8 +30,8 @@ int main(void)
     
 
 
-    pthread_t thread_id1;
-    pthread_create(&thread_id1, NULL, WCO_GUI_PDFViewer, NULL);
+    //pthread_t thread_id1;
+    //pthread_create(&thread_id1, NULL, WCO_GUI_PDFViewer, NULL);
     WCO_GUI_Start();
 
 

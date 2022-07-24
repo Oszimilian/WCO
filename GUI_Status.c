@@ -22,11 +22,11 @@ int WCO_GUI_Status_AllOperant_CheckButtons()
     gboolean c = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(MyGUI.MyCheckButton3));
     gboolean d = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(MyGUI.MyCheckButton4));
 
-    if (a && b && c && d)
+    if (!a && !b && !c && !d)
     {
-        return TRUE;
-    }else{
         return _FALSE;
+    }else{
+        return _TRUE;
     }
 }
 
@@ -72,8 +72,8 @@ int WCO_GUI_Status_Addition_SpinButton(int i)
 
     switch (i)
     {
-        case 0: ret = gtk_spin_button_get_value(GTK_SPIN_BUTTON(MyGUI.MySpinButton2));
-        case 1: ret = gtk_spin_button_get_value(GTK_SPIN_BUTTON(MyGUI.MySpinButton8));
+        case 0: ret = gtk_spin_button_get_value(GTK_SPIN_BUTTON(MyGUI.MySpinButton2)); break;
+        case 1: ret = gtk_spin_button_get_value(GTK_SPIN_BUTTON(MyGUI.MySpinButton8)); break;
         default: break;
     }
 
@@ -86,8 +86,8 @@ int WCO_GUI_Status_Subtraction_SpinButton(int i)
 
     switch (i)
     {
-        case 0: ret = gtk_spin_button_get_value(GTK_SPIN_BUTTON(MyGUI.MySpinButton5));
-        case 1: ret = gtk_spin_button_get_value(GTK_SPIN_BUTTON(MyGUI.MySpinButton9));
+        case 0: ret = gtk_spin_button_get_value(GTK_SPIN_BUTTON(MyGUI.MySpinButton5)); break;
+        case 1: ret = gtk_spin_button_get_value(GTK_SPIN_BUTTON(MyGUI.MySpinButton9)); break;
         default: break;
     }
 
@@ -100,8 +100,8 @@ int WCO_GUI_Status_Multiplication_SpinButton(int i)
 
     switch (i)
     {
-        case 0: ret = gtk_spin_button_get_value(GTK_SPIN_BUTTON(MyGUI.MySpinButton3));
-        case 1: ret = gtk_spin_button_get_value(GTK_SPIN_BUTTON(MyGUI.MySpinButton4));
+        case 0: ret = gtk_spin_button_get_value(GTK_SPIN_BUTTON(MyGUI.MySpinButton3)); break;
+        case 1: ret = gtk_spin_button_get_value(GTK_SPIN_BUTTON(MyGUI.MySpinButton4)); break;
         default: break;
     }
 
@@ -114,8 +114,8 @@ int WCO_GUI_Status_Division_SpinButton(int i)
 
     switch (i)
     {
-        case 0: ret = gtk_spin_button_get_value(GTK_SPIN_BUTTON(MyGUI.MySpinButton6));
-        case 1: ret = gtk_spin_button_get_value(GTK_SPIN_BUTTON(MyGUI.MySpinButton7));
+        case 0: ret = gtk_spin_button_get_value(GTK_SPIN_BUTTON(MyGUI.MySpinButton6)); break;
+        case 1: ret = gtk_spin_button_get_value(GTK_SPIN_BUTTON(MyGUI.MySpinButton7)); break;
         default: break;
     }
 
@@ -171,4 +171,11 @@ int WCO_GUI_Status_SpecificOperand_DecimalPlaces(int i)
     }
 
     return ret;
+}
+
+char *WCO_GUI_Status_FileName()
+{
+    char *tmp = malloc(100);
+    sprintf(tmp, "%s", gtk_entry_get_text(GTK_ENTRY(MyGUI.MyEntry1)));
+    return tmp;
 }
