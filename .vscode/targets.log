@@ -1,4 +1,6 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
+make: *** No rule to make target 'all'.  Stop.
+
 # GNU Make 4.2.1
 # Built for x86_64-pc-linux-gnu
 # Copyright (C) 1988-2016 Free Software Foundation, Inc.
@@ -6,7 +8,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Mon Jul 25 13:39:02 2022
+# Make data base, printed on Mon Jul 25 17:18:02 2022
 
 # Variables
 
@@ -55,7 +57,7 @@ XDG_RUNTIME_DIR = /mnt/wslg/runtime-dir
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-VSCODE_IPC_HOOK_CLI = /mnt/wslg/runtime-dir/vscode-ipc-28911abc-edfd-4fc4-af74-fe2849ece6d0.sock
+VSCODE_IPC_HOOK_CLI = /mnt/wslg/runtime-dir/vscode-ipc-cb9d3ef1-f930-4e05-a55f-80ec7b5c219f.sock
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
@@ -69,7 +71,7 @@ PWD = /home/maximilian/Git/WCO
 # default
 .LOADED := 
 # environment
-WSL_INTEROP = /run/WSL/5071_interop
+WSL_INTEROP = /run/WSL/22414_interop
 # environment
 PULSE_SERVER = /mnt/wslg/PulseServer
 # environment
@@ -275,10 +277,8 @@ clean:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
- 
-make: *** No rule to make target 'all'.  Stop.
-
 #  recipe to execute (from 'makefile', line 41):
+ 
 	rm *.o 
 
 # Not a target:
@@ -354,6 +354,6 @@ GUI_Update.o: GUI_Update.c
 # strcache performance: lookups = 76 / hit rate = 48%
 # hash-table stats:
 # Load=39/8192=0%, Rehash=0, Collisions=1/76=1%
-# Finished Make data base on Mon Jul 25 13:39:02 2022
+# Finished Make data base on Mon Jul 25 17:18:02 2022
 
  
