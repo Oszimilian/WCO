@@ -20,14 +20,14 @@ void WCO_GUI_Update_Addition()
     char numberSpace;
     double minRange = 0;
 
-    if (WCO_GUI_Status_Addition_DecimalPlaces() == 0)
+    if (WCO_GUI_Status_Get_AdditionDecimalPlaces_SpinButton() == 0)
     {
         numberSpace = 'Z';
     }else{
         numberSpace = 'R';
     }
 
-    if (WCO_GUI_Status_AdditionCheck_CheckButton())
+    if (WCO_GUI_Status_Get_Addition_CheckButton())
     {
         gtk_widget_show(MyGUI.MySpinButton2);
         gtk_widget_show(MyGUI.MySpinButton8);
@@ -40,11 +40,11 @@ void WCO_GUI_Update_Addition()
         gtk_label_set_text(MyGUI.MyLabel2, "");
     }
 
-    if (WCO_GUI_Status_Addition_SpinButton(0) < WCO_GUI_Status_Addition_SpinButton(1))
+    if (WCO_GUI_Status_Get_AdditionDigitRange_SpinButton(0) < WCO_GUI_Status_Get_AdditionDigitRange_SpinButton(1))
     {
-        gtk_spin_button_set_range(GTK_SPIN_BUTTON(MyGUI.MySpinButton10), minRange, (double) WCO_GUI_Status_Addition_SpinButton(0));
+        gtk_spin_button_set_range(GTK_SPIN_BUTTON(MyGUI.MySpinButton10), minRange, (double) WCO_GUI_Status_Get_AdditionDigitRange_SpinButton(0));
     }else{
-        gtk_spin_button_set_range(GTK_SPIN_BUTTON(MyGUI.MySpinButton10), minRange, (double) WCO_GUI_Status_Addition_SpinButton(1));
+        gtk_spin_button_set_range(GTK_SPIN_BUTTON(MyGUI.MySpinButton10), minRange, (double) WCO_GUI_Status_Get_AdditionDigitRange_SpinButton(1));
     }
 
     WCO_GUI_Update_PermissionButton1();
@@ -55,14 +55,14 @@ void WCO_GUI_Update_Subtraction()
     char numberSpace;
     double minRange = 0;
 
-    if (WCO_GUI_Status_Subtraction_DecimalPlaces() == 0)
+    if (WCO_GUI_Status_Get_SubtractionDecimalPlaces_SpinButton() == 0)
     {
         numberSpace = 'Z';
     }else{
         numberSpace = 'R';
     }
 
-    if (WCO_GUI_Status_Subtraction_CheckButton())
+    if (WCO_GUI_Status_Get_Subtraction_CheckButton())
     {
         gtk_widget_show(MyGUI.MySpinButton5);
         gtk_widget_show(MyGUI.MySpinButton9);
@@ -75,11 +75,11 @@ void WCO_GUI_Update_Subtraction()
         gtk_label_set_text(MyGUI.MyLabel3, "");
     }
 
-    if (WCO_GUI_Status_Subtraction_SpinButton(0) < WCO_GUI_Status_Subtraction_SpinButton(1))
+    if (WCO_GUI_Status_Get_SubtractionDigitRange_SpinButton(0) < WCO_GUI_Status_Get_SubtractionDigitRange_SpinButton(1))
     {
-        gtk_spin_button_set_range(GTK_SPIN_BUTTON(MyGUI.MySpinButton11), minRange, (double) WCO_GUI_Status_Subtraction_SpinButton(0));
+        gtk_spin_button_set_range(GTK_SPIN_BUTTON(MyGUI.MySpinButton11), minRange, (double) WCO_GUI_Status_Get_SubtractionDigitRange_SpinButton(0));
     }else{
-        gtk_spin_button_set_range(GTK_SPIN_BUTTON(MyGUI.MySpinButton11), minRange, (double) WCO_GUI_Status_Subtraction_SpinButton(1));
+        gtk_spin_button_set_range(GTK_SPIN_BUTTON(MyGUI.MySpinButton11), minRange, (double) WCO_GUI_Status_Get_SubtractionDigitRange_SpinButton(1));
     }
 
     WCO_GUI_Update_PermissionButton1();
@@ -90,14 +90,14 @@ void WCO_GUI_Update_Multiplication()
     char numberSpace;
     double minRange = 0;
 
-    if (WCO_GUI_Status_Multiplication_DecimalPlaces() == 0)
+    if (WCO_GUI_Status_Get_MultiplicationDecimalPlaces_SpinButton() == 0)
     {
         numberSpace = 'Z';
     }else{
         numberSpace = 'R';
     }
 
-    if (WCO_GUI_Status_Multiplication_CheckButton())
+    if (WCO_GUI_Status_Get_Multiplication_CheckButton())
     {
         gtk_widget_show(MyGUI.MySpinButton3);
         gtk_widget_show(MyGUI.MySpinButton4);
@@ -110,11 +110,11 @@ void WCO_GUI_Update_Multiplication()
         gtk_label_set_text(MyGUI.MyLabel4, "");
     }
 
-    if (WCO_GUI_Status_Multiplication_SpinButton(0) < WCO_GUI_Status_Multiplication_SpinButton(1))
+    if (WCO_GUI_Status_Get_MultiplicationDigitRange_SpinButton(0) < WCO_GUI_Status_Get_MultiplicationDigitRange_SpinButton(1))
     {
-        gtk_spin_button_set_range(GTK_SPIN_BUTTON(MyGUI.MySpinButton12), minRange, (double) WCO_GUI_Status_Multiplication_SpinButton(0));
+        gtk_spin_button_set_range(GTK_SPIN_BUTTON(MyGUI.MySpinButton12), minRange, (double) WCO_GUI_Status_Get_MultiplicationDigitRange_SpinButton(0));
     }else{
-        gtk_spin_button_set_range(GTK_SPIN_BUTTON(MyGUI.MySpinButton12), minRange, (double) WCO_GUI_Status_Multiplication_SpinButton(1));
+        gtk_spin_button_set_range(GTK_SPIN_BUTTON(MyGUI.MySpinButton12), minRange, (double) WCO_GUI_Status_Get_MultiplicationDigitRange_SpinButton(1));
     }
 
     WCO_GUI_Update_PermissionButton1();
@@ -125,14 +125,14 @@ void WCO_GUI_Update_Division()
     char numberSpace;
     double minRange = 0;
 
-    if (WCO_GUI_Status_Division_DecimalPlaces() == 0)
+    if (WCO_GUI_Status_Get_DevisionDecimalPlaces_SpinButton() == 0)
     {
         numberSpace = 'Z';
     }else{
         numberSpace = 'R';
     }
 
-    if (WCO_GUI_Status_DivisionButton_CheckButton())
+    if (WCO_GUI_Status_Get_Division_CheckButton())
     {
         gtk_widget_show(MyGUI.MySpinButton6);
         gtk_widget_show(MyGUI.MySpinButton7);
@@ -145,11 +145,11 @@ void WCO_GUI_Update_Division()
         gtk_label_set_text(MyGUI.MyLabel5, "");
     }
 
-    if (WCO_GUI_Status_Division_SpinButton(0) < WCO_GUI_Status_Division_SpinButton(1))
+    if (WCO_GUI_Status_Get_DivisionDigitRange_SpinButton(0) < WCO_GUI_Status_Get_DivisionDigitRange_SpinButton(1))
     {
-        gtk_spin_button_set_range(GTK_SPIN_BUTTON(MyGUI.MySpinButton13), minRange, (double) WCO_GUI_Status_Division_SpinButton(0));
+        gtk_spin_button_set_range(GTK_SPIN_BUTTON(MyGUI.MySpinButton13), minRange, (double) WCO_GUI_Status_Get_DivisionDigitRange_SpinButton(0));
     }else{
-        gtk_spin_button_set_range(GTK_SPIN_BUTTON(MyGUI.MySpinButton13), minRange, (double) WCO_GUI_Status_Division_SpinButton(1));
+        gtk_spin_button_set_range(GTK_SPIN_BUTTON(MyGUI.MySpinButton13), minRange, (double) WCO_GUI_Status_Get_DivisionDigitRange_SpinButton(1));
     }
 
     WCO_GUI_Update_PermissionButton1();
@@ -161,7 +161,7 @@ void WCO_GUI_Update_PermissionButton1()
 {
     int fileNameLeangh = strlen(WCO_GUI_Status_FileName());
 
-    if(!WCO_GUI_Status_AllOperant_CheckButtons() || fileNameLeangh == 0 || !WCO_GUI_Status_SaveButton4() || !WCO_GUI_Status_FolderButton())
+    if(!WCO_GUI_Status_Get_AllOperand_CheckButtons() || fileNameLeangh == 0 || !WCO_GUI_Status_SaveButton4() || !WCO_GUI_Status_FolderButton())
     {
         gtk_widget_hide(MyGUI.MyButton1);
     }else{

@@ -15,13 +15,19 @@
 #include "PDF.h"
 #include "Worksheet.h"
 
-int WCO_GUI_Status_AllOperant_CheckButtons()
+/*
+*   function is used to show when all opperands are disabled
+*   this is a condition for hiding the CreatButton because a worksheet with no opperands can not exist
+*/
+int WCO_GUI_Status_Get_AllOperand_CheckButtons()
 {
-    gboolean a = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(MyGUI.MyCheckButton1));
-    gboolean b = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(MyGUI.MyCheckButton2));
-    gboolean c = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(MyGUI.MyCheckButton3));
-    gboolean d = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(MyGUI.MyCheckButton4));
+    // store the states of the opperand in local vars
+    gboolean a = WCO_GUI_Status_Get_Addition_CheckButton();
+    gboolean b = WCO_GUI_Status_Get_Division_CheckButton();
+    gboolean c = WCO_GUI_Status_Get_Multiplication_CheckButton();
+    gboolean d = WCO_GUI_Status_Get_Division_CheckButton();
 
+    //if all opperand-buttons are disabled the return value is false else the return value is true
     if (!a && !b && !c && !d)
     {
         return _FALSE;
@@ -30,46 +36,100 @@ int WCO_GUI_Status_AllOperant_CheckButtons()
     }
 }
 
-int WCO_GUI_Status_SpecificOperand_CheckButton(int i)
+/**********************************************************************************************************************/
+
+/*
+*   function is used to search for the state of a specific opperand button
+*/
+int WCO_GUI_Status_Get_SpecificOperand_CheckButton(int i)
 {
+    //initialse a return value
     int ret;
 
+    //serach after the specific operand and store the return value of the called functions in the local var
     switch (i)
     {
-        case 0: ret = WCO_GUI_Status_AdditionCheck_CheckButton(); break;
-        case 1: ret = WCO_GUI_Status_Subtraction_CheckButton(); break;
-        case 2: ret = WCO_GUI_Status_Multiplication_CheckButton(); break;
-        case 3: ret = WCO_GUI_Status_DivisionButton_CheckButton(); break;
+        case 0: ret = WCO_GUI_Status_Get_Addition_CheckButton(); break;
+        case 1: ret = WCO_GUI_Status_Get_Subtraction_CheckButton(); break;
+        case 2: ret = WCO_GUI_Status_Get_Multiplication_CheckButton(); break;
+        case 3: ret = WCO_GUI_Status_Get_Division_CheckButton(); break;
         default: break;
     }
 
+    //return the local var
     return ret;
 }
 
-int WCO_GUI_Status_AdditionCheck_CheckButton()
+/*
+*   function returns the state of the addition check-button 
+*/
+int WCO_GUI_Status_Get_Addition_CheckButton()
 {
+    //the function returns the state of the button and requires a casted form of the check-button
     return gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(MyGUI.MyCheckButton1));
 }
 
-int WCO_GUI_Status_Subtraction_CheckButton()
+/*
+*   function returns the state of the subtraction check-button 
+*/
+int WCO_GUI_Status_Get_Subtraction_CheckButton()
 {
+    //the function returns the state of the button and requires a casted form of the check-button
     return gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(MyGUI.MyCheckButton2));   
 }
 
-int WCO_GUI_Status_Multiplication_CheckButton()
+/*
+*   function returns the state of the multiplication check-button 
+*/
+int WCO_GUI_Status_Get_Multiplication_CheckButton()
 {
+    //the function returns the state of the button and requires a casted form of the check-button
     return gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(MyGUI.MyCheckButton3));   
 }
 
-int WCO_GUI_Status_DivisionButton_CheckButton()
+/*
+*   function returns the state of the division check-button 
+*/
+int WCO_GUI_Status_Get_Division_CheckButton()
 {
+    //the function returns the state of the button and requires a casted form of the check-button
     return gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(MyGUI.MyCheckButton4));   
 }
 
-int WCO_GUI_Status_Addition_SpinButton(int i)
+/**********************************************************************************************************************/
+
+/*
+*   function is used to search after a specific value of operand-digit-spin-button 
+*   you can specify after the operand and after the left and right spin button (int i)
+*/
+int WCO_GUI_Status_Get_SpecificOperandDigitRange_spinButton(int operand, int i)
 {
+    //initialice a lokal return var
+    int ret;
+
+    //search after the operand and store the return value of the called function. The called function gets a input to distinguish between left and right
+    switch (operand)
+    {
+        case 0: ret = WCO_GUI_Status_Get_AdditionDigitRange_SpinButton(i); break;
+        case 1: ret = WCO_GUI_Status_Get_SubtractionDigitRange_SpinButton(i); break;
+        case 2: ret = WCO_GUI_Status_Get_MultiplicationDigitRange_SpinButton(i); break;
+        case 3: ret = WCO_GUI_Status_Get_DivisionDigitRange_SpinButton(i); break;
+        default: break;
+    }
+
+    //return the local var
+    return ret;
+}
+
+/*
+*   function returns the value of the right or left digit range addition spin button 
+*/
+int WCO_GUI_Status_Get_AdditionDigitRange_SpinButton(int i)
+{
+    //init a local return val
     gdouble ret;
 
+    //serach after the right or left spin button end store the returned value 
     switch (i)
     {
         case 0: ret = gtk_spin_button_get_value(GTK_SPIN_BUTTON(MyGUI.MySpinButton2)); break;
@@ -77,13 +137,19 @@ int WCO_GUI_Status_Addition_SpinButton(int i)
         default: break;
     }
 
+    //cast the return value from gdouble to int and return it
     return (int)ret;
 }
 
-int WCO_GUI_Status_Subtraction_SpinButton(int i)
+/*
+*   function returns the value of the right or left digit range subtraction spin button 
+*/
+int WCO_GUI_Status_Get_SubtractionDigitRange_SpinButton(int i)
 {
+    //init a local return val
     gdouble ret;
 
+    //serach after the right or left spin button end store the returned value 
     switch (i)
     {
         case 0: ret = gtk_spin_button_get_value(GTK_SPIN_BUTTON(MyGUI.MySpinButton5)); break;
@@ -91,13 +157,19 @@ int WCO_GUI_Status_Subtraction_SpinButton(int i)
         default: break;
     }
 
+    //cast the return value from gdouble to int and return it
     return (int)ret;
 }
 
-int WCO_GUI_Status_Multiplication_SpinButton(int i)
+/*
+*   function returns the value of the right or left digit range Multiplication spin button 
+*/
+int WCO_GUI_Status_Get_MultiplicationDigitRange_SpinButton(int i)
 {
+    //init a local return val
     gdouble ret;
 
+    //serach after the right or left spin button end store the returned value
     switch (i)
     {
         case 0: ret = gtk_spin_button_get_value(GTK_SPIN_BUTTON(MyGUI.MySpinButton3)); break;
@@ -105,13 +177,19 @@ int WCO_GUI_Status_Multiplication_SpinButton(int i)
         default: break;
     }
 
+    //cast the return value from gdouble to int and return it
     return (int)ret;
 }
 
-int WCO_GUI_Status_Division_SpinButton(int i)
+/*
+*   function returns the value of the right or left digit range Division spin button 
+*/
+int WCO_GUI_Status_Get_DivisionDigitRange_SpinButton(int i)
 {
+    //init a local return val
     gdouble ret;
 
+    //serach after the right or left spin button end store the returned value
     switch (i)
     {
         case 0: ret = gtk_spin_button_get_value(GTK_SPIN_BUTTON(MyGUI.MySpinButton6)); break;
@@ -119,59 +197,70 @@ int WCO_GUI_Status_Division_SpinButton(int i)
         default: break;
     }
 
+    //cast the return value from gdouble to int and return it
     return (int)ret;
 }
 
-int WCO_GUI_Status_SpecificOperand_SpinButton(int operand, int i)
+/**********************************************************************************************************************/
+
+/*
+*   funcition is used to search after a specific value of decimal-places-spin-button
+*/
+int WCO_GUI_Status_Get_SpecificOperandDecimalPlaces_SpinButton(int operand)
 {
+    //init a local return var
     int ret;
 
+    //search after the right operand and store the return value of the fuction in the local return var
     switch (operand)
     {
-        case 0: ret = WCO_GUI_Status_Addition_SpinButton(i); break;
-        case 1: ret = WCO_GUI_Status_Subtraction_SpinButton(i); break;
-        case 2: ret = WCO_GUI_Status_Multiplication_SpinButton(i); break;
-        case 3: ret = WCO_GUI_Status_Division_SpinButton(i); break;
-        default: break;
+        case 0: ret = WCO_GUI_Status_Get_AdditionDecimalPlaces_SpinButton(); break;
+        case 1: ret = WCO_GUI_Status_Get_SubtractionDecimalPlaces_SpinButton(); break;
+        case 2: ret = WCO_GUI_Status_Get_MultiplicationDecimalPlaces_SpinButton(); break;
+        case 3: ret = WCO_GUI_Status_Get_DevisionDecimalPlaces_SpinButton(); break;
     }
 
+    //return the local var
     return ret;
 }
 
-int WCO_GUI_Status_Addition_DecimalPlaces()
+/*
+*   returns the value of the addition-decimal-places spinbutton
+*/
+int WCO_GUI_Status_Get_AdditionDecimalPlaces_SpinButton()
 {
+    //calls the function and cast the return value from gdouble to int 
     return (int) gtk_spin_button_get_value(GTK_SPIN_BUTTON(MyGUI.MySpinButton10));
 }
 
-int WCO_GUI_Status_Subtraction_DecimalPlaces()
+/*
+*   returns the value of the division-decimal-places spinbutton
+*/
+int WCO_GUI_Status_Get_SubtractionDecimalPlaces_SpinButton()
 {
+    //calls the function and cast the return value from gdouble to int 
     return (int) gtk_spin_button_get_value(GTK_SPIN_BUTTON(MyGUI.MySpinButton11));
 }
 
-int WCO_GUI_Status_Multiplication_DecimalPlaces()
+/*
+*   returns the value of the multiplication-decimal-places spinbutton
+*/
+int WCO_GUI_Status_Get_MultiplicationDecimalPlaces_SpinButton()
 {
+    //calls the function and cast the return value from gdouble to int 
     return (int) gtk_spin_button_get_value(GTK_SPIN_BUTTON(MyGUI.MySpinButton12));
 }
 
-int WCO_GUI_Status_Division_DecimalPlaces()
+/*
+*   returns the value of the division-decimal-places spinbutton
+*/
+int WCO_GUI_Status_Get_DevisionDecimalPlaces_SpinButton()
 {   
+    //calls the function and cast the return value from gdouble to int 
     return (int) gtk_spin_button_get_value(GTK_SPIN_BUTTON(MyGUI.MySpinButton13));
 }
 
-int WCO_GUI_Status_SpecificOperand_DecimalPlaces(int i)
-{
-    int ret;
-
-    switch (i)
-    {
-        case 0: ret = WCO_GUI_Status_Addition_DecimalPlaces(); break;
-        case 1: ret = WCO_GUI_Status_Subtraction_DecimalPlaces(); break;
-        case 2: ret = WCO_GUI_Status_Multiplication_DecimalPlaces(); break;
-        case 3: ret = WCO_GUI_Status_Division_DecimalPlaces(); break;
-    }
-
-    return ret;
-}
+/**********************************************************************************************************************/
 
 char *WCO_GUI_Status_FileName()
 {

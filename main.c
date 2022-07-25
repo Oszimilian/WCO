@@ -24,24 +24,20 @@
 //Test
 int main(void)
 {
-
+    //calls the init function to preset the baseboardflag and the threashold value
     WCO_Worksheet_Init();
     
-
-
+    //initialises a thread instance and creats a thread which calls the function WCO_GUI_PDFViewer 
     pthread_t thread_id1;
     pthread_create(&thread_id1, NULL, WCO_GUI_PDFViewer, NULL);
+
+    //Starts the GTK GUI Window
     WCO_GUI_Start();
 
-
-
-    //pthread_join(thread_id2, NULL);
-
-
-
+    //Whaits till the thread is closed before the programm disapears
     pthread_exit(NULL);
+
     return EXIT_SUCCESS;
-    //exit(0);
 }
 
 

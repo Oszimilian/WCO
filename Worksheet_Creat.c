@@ -231,7 +231,7 @@ int WCO_Worksheet_Create_RandomTask(int counter)
     {
         operand = rand() % 4;
 
-        if (!WCO_GUI_Status_AllOperant_CheckButtons())
+        if (!WCO_GUI_Status_Get_AllOperand_CheckButtons())
         {
             gtk_label_set_text(MyGUI.MyLabel1, "Sie müssen auf jeden Fall einen Operator auswählen!");
             
@@ -240,14 +240,14 @@ int WCO_Worksheet_Create_RandomTask(int counter)
             goto fail;
         }
     
-        if (WCO_GUI_Status_SpecificOperand_CheckButton(operand)) break;
+        if (WCO_GUI_Status_Get_SpecificOperand_CheckButton(operand)) break;
     }
 
     /*
     *   This part
     */
-    spinButtonValue[0] = WCO_GUI_Status_SpecificOperand_SpinButton(operand, 0);
-    spinButtonValue[1] = WCO_GUI_Status_SpecificOperand_SpinButton(operand, 1);
+    spinButtonValue[0] = WCO_GUI_Status_Get_SpecificOperandDigitRange_spinButton(operand, 0);
+    spinButtonValue[1] = WCO_GUI_Status_Get_SpecificOperandDigitRange_spinButton(operand, 1);
 
     for (int i = 0; i <= 1; i++)
     {
@@ -276,7 +276,7 @@ int WCO_Worksheet_Create_RandomTask(int counter)
     /*
     *   stores the DecimalPlaces dependent of the operand into a local var "localDecimalPlaces"
     */
-   decimalPlaces = WCO_GUI_Status_SpecificOperand_DecimalPlaces(operand);
+   decimalPlaces = WCO_GUI_Status_Get_SpecificOperandDecimalPlaces_SpinButton(operand);
 
     /*
     *   if the current DecimalPlaces count is zero the task is print as a integer
