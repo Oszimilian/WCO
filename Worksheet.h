@@ -37,4 +37,8 @@ int WCO_Worksheet_Create_RandomTask(int counter);
 int WCO_Worksheet_Creat_TaskSheet();
 int WCO_Worksheet_Create_SolutionSheed();
 
+void WCO_Worksheet_Status_Config_Baseboard(int i);
+
+
+
 #endif

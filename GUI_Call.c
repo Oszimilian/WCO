@@ -19,13 +19,13 @@
 
 void MyButton1_Clicked(GtkButton *b)
 {
-    printf("Button One is clicked! \n");
+    printf("Button One is clicked! \n\n\n");
 
 
-    WCO_PDF_SetFilename("Aufgaben", _Tasks);
-    WCO_PDF_SetFilename("Solution", _Solutions);
+    //WCO_PDF_SetFilename("Aufgaben", _Tasks);
+    //WCO_PDF_SetFilename("Solution", _Solutions);
 
-    //if (!WCO_GUI_Status_PDFViewer()) WCO_GUI_Start_PDFViewer();
+    if (!WCO_GUI_Status_PDFViewer()) WCO_GUI_Start_PDFViewer();
 
     if(!WCO_Worksheet_Create_Start()) printf("Es konnte keine neue PDF erzeugt werden! \n");
 }
@@ -59,7 +59,12 @@ void MyCheckButton4_Toggled(GtkCheckButton *b)
 
 void MyCheckButton5_Toggled(GtkCheckButton *b)
 {
+    WCO_Worksheet_Status_Config_Baseboard(WCO_GUI_Status_Baseboard_CheckButton5());
+}
 
+void MycheckButton6_Toggled(GtkCheckButton *b)
+{
+    
 }
 
 /**********************************************************************************************************************************************************************************/
@@ -183,15 +188,16 @@ void MySpinButton13_Changed(GtkSpinButton *s)
 
 void MyFileChosserButton1_FileSet(GtkFileChooserButton *f)
 {
-
+    WCO_GUI_Update_Set_SaveFolder();
 }
 
 void MyEntry1_Changed(GtkEntry *e)
 {
+    WCO_GUI_Update_Reset_SavePDF();
     WCO_GUI_Update_PermissionButton1();
 }
 
 void MyButton4_Clicked(GtkButton *b)
 {
-
+    WCO_GUI_Update_Set_SavePDF();
 }

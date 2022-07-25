@@ -24,14 +24,12 @@
 int main(void)
 {
 
-    
-    WCO_GUI_Init();
     WCO_Worksheet_Init();
     
 
 
-    //pthread_t thread_id1;
-    //pthread_create(&thread_id1, NULL, WCO_GUI_PDFViewer, NULL);
+    pthread_t thread_id1;
+    pthread_create(&thread_id1, NULL, WCO_GUI_PDFViewer, NULL);
     WCO_GUI_Start();
 
 

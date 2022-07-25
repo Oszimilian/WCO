@@ -159,12 +159,46 @@ void WCO_GUI_Update_Division()
 
 void WCO_GUI_Update_PermissionButton1()
 {
-    int fileName = strlen(WCO_GUI_Status_FileName());
+    int fileNameLeangh = strlen(WCO_GUI_Status_FileName());
 
-    if(!WCO_GUI_Status_AllOperant_CheckButtons() || fileName == 0)
+    if(!WCO_GUI_Status_AllOperant_CheckButtons() || fileNameLeangh == 0 || !WCO_GUI_Status_SaveButton4() || !WCO_GUI_Status_FolderButton())
     {
         gtk_widget_hide(MyGUI.MyButton1);
     }else{
         gtk_widget_show(MyGUI.MyButton1);
     }
+}
+
+
+void WCO_GUI_Update_Set_SavePDF()
+{
+    MyGUI.savePDF = _TRUE;
+    int fileNameLeangh = strlen(WCO_GUI_Status_FileName());
+    if (fileNameLeangh >= 1)
+    {
+        WCO_PDF_SetFilename(WCO_GUI_Status_FileName(), _Tasks);
+        WCO_PDF_SetFilename(WCO_GUI_Status_FileName(), _Solutions);
+    }
+    WCO_GUI_Update_PermissionButton1();
+}
+
+void WCO_GUI_Update_Reset_SavePDF()
+{
+    MyGUI.savePDF = _FALSE;
+}
+
+void WCO_GUI_Update_Set_SaveFolder()
+{
+    MyGUI.saveFolder = _TRUE;
+    int folderLeangh = strlen(WCO_GUI_Status_FolderName());
+    if (folderLeangh >= 1)
+    {
+        WCO_PDF_SetFoldername(WCO_GUI_Status_FolderName());
+    }
+    WCO_GUI_Update_PermissionButton1();
+}
+
+void WCO_GUI_Update_Reset_SaveFolder()
+{
+    MyGUI.saveFolder = _FALSE;
 }

@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sun Jul 24 19:04:02 2022
+# Make data base, printed on Mon Jul 25 12:55:57 2022
 
 # Variables
 
@@ -27,7 +27,7 @@ WSLENV = VSCODE_WSL_EXT_LOCATION/up
 # automatic
 @F = $(notdir $@)
 # makefile
-CURDIR := /home/maximilian/Git/WorksheetCrafterOszimilian
+CURDIR := /home/maximilian/Git/WCO
 # makefile
 SHELL = /bin/sh
 # environment
@@ -45,11 +45,11 @@ XDG_DATA_DIRS = /usr/local/share:/usr/share:/var/lib/snapd/desktop
 # environment
 LESSOPEN = | /usr/bin/lesspipe %s
 # environment
-VSCODE_CWD = /mnt/c/Program Files/Microsoft VS Code
+VSCODE_CWD = /mnt/c/Users/Maximilian/AppData/Local/Programs/Microsoft VS Code
 # default
 MAKE_HOST := x86_64-pc-linux-gnu
 # environment
-PATH = /root/.vscode-server/bin/3b889b090b5ad5793f524b5d1d39fda662b96a2a/bin/remote-cli:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/Windows/system32:/mnt/c/Windows:/mnt/c/Windows/System32/Wbem:/mnt/c/Windows/System32/WindowsPowerShell/v1.0/:/mnt/c/Windows/System32/OpenSSH/:/mnt/c/Program Files (x86)/NVIDIA Corporation/PhysX/Common:/mnt/c/Program Files/PuTTY/:/mnt/c/Program Files/Microsoft VS Code/bin:/mnt/c/Users/maximilian/AppData/Local/Microsoft/WindowsApps:/snap/bin
+PATH = /root/.vscode-server/bin/3b889b090b5ad5793f524b5d1d39fda662b96a2a/bin/remote-cli:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/Windows/system32:/mnt/c/Windows:/mnt/c/Windows/System32/Wbem:/mnt/c/Windows/System32/WindowsPowerShell/v1.0/:/mnt/c/Windows/System32/OpenSSH/:/mnt/c/Users/Maximilian/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/Maximilian/AppData/Local/Programs/Microsoft VS Code/bin:/snap/bin
 # makefile (from 'makefile', line 4)
 KP1 = -Wall -g $(LiberyLink) $(HeaderDir)
 # environment
@@ -57,7 +57,7 @@ XDG_RUNTIME_DIR = /mnt/wslg/runtime-dir
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-VSCODE_IPC_HOOK_CLI = /mnt/wslg/runtime-dir/vscode-ipc-895b9b1a-3c4e-4a97-bcba-3e4c3dfebdcc.sock
+VSCODE_IPC_HOOK_CLI = /mnt/wslg/runtime-dir/vscode-ipc-fa32cf8f-2b8b-4623-8f90-1069b1300b08.sock
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
@@ -67,11 +67,11 @@ LS_COLORS = rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:
 # environment
 DISPLAY = :0
 # environment
-PWD = /home/maximilian/Git/WorksheetCrafterOszimilian
+PWD = /home/maximilian/Git/WCO
 # default
 .LOADED := 
 # environment
-WSL_INTEROP = /run/WSL/11_interop
+WSL_INTEROP = /run/WSL/26_interop
 # environment
 PULSE_SERVER = /mnt/wslg/PulseServer
 # environment
@@ -105,11 +105,11 @@ USER = root
 # makefile
 .DEFAULT_GOAL := prog
 # environment
-NAME = DESKTOP-DJ8CSHM
+NAME = DESKTOP-DUVTQRT
 # automatic
 %D = $(patsubst %/,%,$(dir $%))
 # environment
-VSCODE_WSL_EXT_LOCATION = /mnt/c/Users/maximilian/.vscode/extensions/ms-vscode-remote.remote-wsl-0.66.3
+VSCODE_WSL_EXT_LOCATION = /mnt/c/Users/Maximilian/.vscode/extensions/ms-vscode-remote.remote-wsl-0.66.3
 # default
 MAKE_COMMAND := make
 # default
@@ -155,7 +155,7 @@ TERM = xterm-256color
 # makefile (from 'makefile', line 3)
 LiberyLink = -lgtk-3 -lgdk-3 -lpangocairo-1.0 -lpango-1.0 -lharfbuzz -latk-1.0 -lcairo-gobject -lcairo -lgdk_pixbuf-2.0 -lgio-2.0 -lgobject-2.0 -lglib-2.0 -export-dynamic  /usr/local/lib/libhpdf.a -lz -lm -lpthread
 # environment
-WSL_DISTRO_NAME = Ubuntu_WorksheetEnv
+WSL_DISTRO_NAME = Ubuntu_WorkSheetEnv_Import
 # variable set hash-table stats:
 # Load=72/1024=7%, Rehash=0, Collisions=4/98=4%
 
@@ -165,9 +165,9 @@ WSL_DISTRO_NAME = Ubuntu_WorksheetEnv
 
 # Directories
 
-# . (device 2080, inode 108405): 34 files, no impossibilities.
+# . (device 2080, inode 111775): 33 files, no impossibilities.
 
-# 34 files, no impossibilities in 1 directories.
+# 33 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -229,7 +229,7 @@ Worksheed_Adjust.o: Worksheed_Adjust.c
 # Not a target:
 makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-24 19:03:55.898717452
+#  Last modified 2022-07-25 09:54:51.877495783
 #  File has been updated.
 #  Successfully updated.
 
@@ -280,6 +280,7 @@ clean:
 #  recipe to execute (from 'makefile', line 41):
 	rm *.o 
 
+ 
 # Not a target:
 Worksheed_Adjust.c:
 #  Implicit rule search has not been done.
@@ -347,12 +348,12 @@ GUI_Update.o: GUI_Update.c
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 41 / storage = 428 B / avg = 10 B
-# current buf: size = 8162 B / used = 428 B / count = 41 / avg = 10 B
+# strcache buffers: 1 (0) / strings = 39 / storage = 407 B / avg = 10 B
+# current buf: size = 8162 B / used = 407 B / count = 39 / avg = 10 B
 
-# strcache performance: lookups = 87 / hit rate = 52%
+# strcache performance: lookups = 86 / hit rate = 54%
 # hash-table stats:
-# Load=41/8192=1%, Rehash=0, Collisions=1/87=1%
-# Finished Make data base on Sun Jul 24 19:04:02 2022
+# Load=39/8192=0%, Rehash=0, Collisions=1/86=1%
+# Finished Make data base on Mon Jul 25 12:55:57 2022
 
  

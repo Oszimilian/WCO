@@ -20,6 +20,17 @@ int WCO_Worksheet_Status_Baseboard()
     return MyWorksheet.printBaseboard;
 }
 
+void WCO_Worksheet_Status_Config_Baseboard(int i)
+{
+    if (i) 
+    {
+        MyWorksheet.printBaseboard = _enable;
+    }else{
+        MyWorksheet.printBaseboard = _disable;
+    }
+}
+
+
 int WCO_Worksheet_Status_Threashold()
 {
     return MyWorksheet.baseboardThreashold;

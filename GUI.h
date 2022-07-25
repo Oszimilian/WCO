@@ -24,6 +24,7 @@ struct WCO_GUI_t{
     GtkWidget *MyCheckButton3;
     GtkWidget *MyCheckButton4;
     GtkWidget *MyCheckButton5;
+    GtkWidget *MyCheckButton6;
     GtkWidget *MyRadioButton1;
     GtkWidget *MyRadioButton2;
     GtkWidget *MySpinButton1;
@@ -43,6 +44,8 @@ struct WCO_GUI_t{
     GtkWidget *MyEntry1;
 
     int showPDF;
+    int savePDF;
+    int saveFolder;
 }MyGUI;
 
 
@@ -81,7 +84,10 @@ int WCO_GUI_Status_Multiplication_DecimalPlaces();
 int WCO_GUI_Status_Division_DecimalPlaces();
 int WCO_GUI_Status_SpecificOperand_DecimalPlaces(int i);
 char *WCO_GUI_Status_FileName();
-
+int WCO_GUI_Status_SaveButton4();
+char *WCO_GUI_Status_FolderName();
+int WCO_GUI_Status_FolderButton();
+int WCO_GUI_Status_Baseboard_CheckButton5();
 
 void WCO_GUI_Update_Addition();
 void WCO_GUI_Update_Subtraction();
@@ -90,5 +96,9 @@ void WCO_GUI_Update_Division();
 
 void WCO_GUI_Update_PermissionButton1();
 
+void WCO_GUI_Update_Set_SavePDF();
+void WCO_GUI_Update_Reset_SavePDF();
+void WCO_GUI_Update_Set_SaveFolder();
+void WCO_GUI_Update_Reset_SaveFolder();
 
 #endif

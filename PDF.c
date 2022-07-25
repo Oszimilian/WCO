@@ -70,14 +70,14 @@ void WCO_PDF_SetFilename(char *fileName, int page)
 {
     if (page == 0)
     {
-        sprintf(MyPDF.fileName[page], "%s.pdf", fileName);
+        sprintf(MyPDF.fileName[page], "%s/%s.pdf", MyPDF.folderName, fileName);
     }else{
-        sprintf(MyPDF.fileName[page], "Lösungen.pdf");
+        sprintf(MyPDF.fileName[page], "%s/%s_Lösungen.pdf", MyPDF.folderName, fileName);
     }
 
-    sprintf(MyPDF.systemOpenFile[page], "okular %s%s", MyPDF.folderName, MyPDF.fileName[page]);
+    sprintf(MyPDF.systemOpenFile[page], "okular %s", MyPDF.fileName[page]);
 
-    printf("PDF Path: %s\n", MyPDF.systemOpenFile[page]);
+    printf("PDF Path: %s\n", MyPDF.fileName[page]);
 }
 
 /*
@@ -97,6 +97,7 @@ void WCO_PDF_SavePDF(int page)
 {
     HPDF_SaveToFile(MyPDF.pdf, MyPDF.fileName[page]);
     printf("PDF Save: %s\n", MyPDF.fileName[page]);
+    //HPDF_SaveToFile(MyPDF.pdf, MyPDF.systemOpenFile[page])
 }
 
 

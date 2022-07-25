@@ -10,6 +10,7 @@ void MyCheckButton2_Toggled(GtkCheckButton *b);
 void MyCheckButton3_Toggled(GtkCheckButton *b);
 void MyCheckButton4_Toggled(GtkCheckButton *b);
 void MyCheckButton5_Toggled(GtkCheckButton *b);
+void MyCheckButton6_Toggled(GtkCheckButton *b);
 void MyRadioButton1_Toggled(GtkRadioButton *b);
 void MyRadioButton2_Toggled(GtkRadioButton *b);
 void MySpinButton1_Changed(GtkSpinButton *s);

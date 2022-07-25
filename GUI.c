@@ -16,7 +16,7 @@
 #include "Worksheet.h"
 
 
-//void *WCO_GUI_Start(void *vargp)
+
 void WCO_GUI_Start()
 {
     gtk_init(NULL, NULL);
@@ -33,12 +33,13 @@ void WCO_GUI_Start()
     MyGUI.MyButton1 = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MyButton1"));
     MyGUI.MyButton2 = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MyButton2"));
     MyGUI.MyButton3 = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MyButton3"));
-    MyGUI. MyButton4 = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MyButton4"));
+    MyGUI.MyButton4 = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MyButton4"));
     MyGUI.MyCheckButton1 = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MyCheckButton1"));
     MyGUI.MyCheckButton2 = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MyCheckButton2"));
     MyGUI.MyCheckButton3 = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MyCheckButton3"));
     MyGUI.MyCheckButton4 = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MyCheckButton4"));
     MyGUI.MyCheckButton5 = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MyCheckButton5"));
+    MyGUI.MyCheckButton6 = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MyCheckButton6"));
     MyGUI.MyRadioButton1 = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MyRadioButton1"));
     MyGUI.MyRadioButton2 = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MyRadioButton2"));
     MyGUI.MySpinButton1 = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MySpinButton1"));
@@ -54,14 +55,14 @@ void WCO_GUI_Start()
     MyGUI.MySpinButton11 = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MySpinButton11"));
     MyGUI.MySpinButton12 = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MySpinButton12"));
     MyGUI.MySpinButton13 = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MySpinButton13"));
-    MyGUI. MyFileChosserButton1 = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MyFileChosserButton1"));
+    MyGUI.MyFileChosserButton1 = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MyFileChosserButton1"));
     MyGUI.MyEntry1 = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MyEntry1"));
     
     gtk_builder_connect_signals(MyGUI.MyBuilder, NULL);
 
     gtk_widget_show(MyGUI.MyWindow1);
 
-    WCO_GUI_Init();
+    //WCO_GUI_Init();
 
     gtk_main();
 }
@@ -70,12 +71,16 @@ void WCO_GUI_Start()
 void WCO_GUI_Init()
 {
     MyGUI.showPDF = _OFF;
+    MyGUI.savePDF = _OFF;
+    MyGUI.saveFolder = _OFF;
 
+    
     WCO_GUI_Update_Addition();
     WCO_GUI_Update_Division();
     WCO_GUI_Update_Multiplication();
     WCO_GUI_Update_Division();
     WCO_GUI_Update_PermissionButton1();
+    
 }
     
 

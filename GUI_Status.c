@@ -179,3 +179,26 @@ char *WCO_GUI_Status_FileName()
     sprintf(tmp, "%s", gtk_entry_get_text(GTK_ENTRY(MyGUI.MyEntry1)));
     return tmp;
 }
+
+int WCO_GUI_Status_SaveButton4()
+{
+    return MyGUI.savePDF;
+}
+
+char *WCO_GUI_Status_FolderName()
+{
+    char *tmp = malloc(100);
+    sprintf(tmp, "%s", gtk_file_chooser_get_current_folder(GTK_FILE_CHOOSER(MyGUI.MyFileChosserButton1)));
+    return tmp;
+}
+
+int WCO_GUI_Status_FolderButton()
+{
+    return MyGUI.saveFolder;
+}
+
+int WCO_GUI_Status_Baseboard_CheckButton5()
+{
+    return gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(MyGUI.MyCheckButton5));   
+}
+
