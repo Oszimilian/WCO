@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Mon Jul 25 17:18:02 2022
+# Make data base, printed on Mon Jul 25 19:24:59 2022
 
 # Variables
 
@@ -27,11 +27,11 @@ WSLENV = VSCODE_WSL_EXT_LOCATION/up
 # automatic
 @F = $(notdir $@)
 # makefile
-CURDIR := /home/maximilian/Git/WCO
+CURDIR := /home/maximilian/NewGit/WCO
 # makefile
 SHELL = /bin/sh
 # environment
-VSCODE_NLS_CONFIG = {"locale":"en","availableLanguages":{}}
+VSCODE_NLS_CONFIG = {"locale":"de","availableLanguages":{"*":"de"},"_languagePackId":"ac49ed8871898f6ccc91afa1076d75a0.de","_translationsConfigFile":"/root/.vscode-server/data/clp/ac49ed8871898f6ccc91afa1076d75a0.de/tcf.json","_cacheRoot":"/root/.vscode-server/data/clp/ac49ed8871898f6ccc91afa1076d75a0.de","_resolvedLanguagePackCoreLocation":"/root/.vscode-server/data/clp/ac49ed8871898f6ccc91afa1076d75a0.de/3b889b090b5ad5793f524b5d1d39fda662b96a2a","_corruptedFile":"/root/.vscode-server/data/clp/ac49ed8871898f6ccc91afa1076d75a0.de/corrupted.info","_languagePackSupport":true}
 # environment
 _ = /root/.vscode-server/bin/3b889b090b5ad5793f524b5d1d39fda662b96a2a/node
 # makefile (from 'makefile', line 1)
@@ -45,11 +45,11 @@ XDG_DATA_DIRS = /usr/local/share:/usr/share:/var/lib/snapd/desktop
 # environment
 LESSOPEN = | /usr/bin/lesspipe %s
 # environment
-VSCODE_CWD = /mnt/c/Users/Maximilian/AppData/Local/Programs/Microsoft VS Code
+VSCODE_CWD = /mnt/c/Program Files/Microsoft VS Code
 # default
 MAKE_HOST := x86_64-pc-linux-gnu
 # environment
-PATH = /root/.vscode-server/bin/3b889b090b5ad5793f524b5d1d39fda662b96a2a/bin/remote-cli:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/Windows/system32:/mnt/c/Windows:/mnt/c/Windows/System32/Wbem:/mnt/c/Windows/System32/WindowsPowerShell/v1.0/:/mnt/c/Windows/System32/OpenSSH/:/mnt/c/Users/Maximilian/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/Maximilian/AppData/Local/Programs/Microsoft VS Code/bin:/mnt/c/Users/Maximilian/AppData/Local/GitHubDesktop/bin:/snap/bin
+PATH = /root/.vscode-server/bin/3b889b090b5ad5793f524b5d1d39fda662b96a2a/bin/remote-cli:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/Windows/system32:/mnt/c/Windows:/mnt/c/Windows/System32/Wbem:/mnt/c/Windows/System32/WindowsPowerShell/v1.0/:/mnt/c/Windows/System32/OpenSSH/:/mnt/c/Program Files (x86)/NVIDIA Corporation/PhysX/Common:/mnt/c/Program Files/PuTTY/:/mnt/c/Program Files/Microsoft VS Code/bin:/mnt/c/Program Files/Git/cmd:/mnt/c/Users/maximilian/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/maximilian/AppData/Local/GitHubDesktop/bin:/snap/bin
 # makefile (from 'makefile', line 4)
 KP1 = -Wall -g $(LiberyLink) $(HeaderDir)
 # environment
@@ -57,7 +57,7 @@ XDG_RUNTIME_DIR = /mnt/wslg/runtime-dir
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-VSCODE_IPC_HOOK_CLI = /mnt/wslg/runtime-dir/vscode-ipc-cb9d3ef1-f930-4e05-a55f-80ec7b5c219f.sock
+VSCODE_IPC_HOOK_CLI = /mnt/wslg/runtime-dir/vscode-ipc-d99616f0-b8ca-4f7d-941f-ea242c476168.sock
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
@@ -67,11 +67,11 @@ LS_COLORS = rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:
 # environment
 DISPLAY = :0
 # environment
-PWD = /home/maximilian/Git/WCO
+PWD = /home/maximilian/NewGit/WCO
 # default
 .LOADED := 
 # environment
-WSL_INTEROP = /run/WSL/22414_interop
+WSL_INTEROP = /run/WSL/26_interop
 # environment
 PULSE_SERVER = /mnt/wslg/PulseServer
 # environment
@@ -105,11 +105,11 @@ USER = root
 # makefile
 .DEFAULT_GOAL := prog
 # environment
-NAME = DESKTOP-DUVTQRT
+NAME = DESKTOP-DJ8CSHM
 # automatic
 %D = $(patsubst %/,%,$(dir $%))
 # environment
-VSCODE_WSL_EXT_LOCATION = /mnt/c/Users/Maximilian/.vscode/extensions/ms-vscode-remote.remote-wsl-0.66.3
+VSCODE_WSL_EXT_LOCATION = /mnt/c/Users/maximilian/.vscode/extensions/ms-vscode-remote.remote-wsl-0.66.3
 # default
 MAKE_COMMAND := make
 # default
@@ -155,7 +155,7 @@ TERM = xterm-256color
 # makefile (from 'makefile', line 3)
 LiberyLink = -lgtk-3 -lgdk-3 -lpangocairo-1.0 -lpango-1.0 -lharfbuzz -latk-1.0 -lcairo-gobject -lcairo -lgdk_pixbuf-2.0 -lgio-2.0 -lgobject-2.0 -lglib-2.0 -export-dynamic  /usr/local/lib/libhpdf.a -lz -lm -lpthread
 # environment
-WSL_DISTRO_NAME = Ubuntu_WorkSheetEnv_Import
+WSL_DISTRO_NAME = Ubuntu_WorksheetEnv
 # variable set hash-table stats:
 # Load=72/1024=7%, Rehash=0, Collisions=4/98=4%
 
@@ -165,7 +165,7 @@ WSL_DISTRO_NAME = Ubuntu_WorkSheetEnv_Import
 
 # Directories
 
-# . (device 2080, inode 111775): 23 files, no impossibilities.
+# . (device 2080, inode 112845): 23 files, no impossibilities.
 
 # 23 files, no impossibilities in 1 directories.
 
@@ -229,7 +229,7 @@ Worksheed_Adjust.o: Worksheed_Adjust.c
 # Not a target:
 makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-25 09:54:51.877495783
+#  Last modified 2022-07-25 18:21:48.481498937
 #  File has been updated.
 #  Successfully updated.
 
@@ -278,13 +278,13 @@ clean:
 #  Modification time never checked.
 #  File has not been updated.
 #  recipe to execute (from 'makefile', line 41):
- 
 	rm *.o 
 
 # Not a target:
 Worksheed_Adjust.c:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
+ 
 #  File has not been updated.
 
 GUI_Call.o: GUI_Call.c
@@ -354,6 +354,6 @@ GUI_Update.o: GUI_Update.c
 # strcache performance: lookups = 76 / hit rate = 48%
 # hash-table stats:
 # Load=39/8192=0%, Rehash=0, Collisions=1/76=1%
-# Finished Make data base on Mon Jul 25 17:18:02 2022
+# Finished Make data base on Mon Jul 25 19:24:59 2022
 
  

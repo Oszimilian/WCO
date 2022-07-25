@@ -262,32 +262,54 @@ int WCO_GUI_Status_Get_DevisionDecimalPlaces_SpinButton()
 
 /**********************************************************************************************************************/
 /*
-*   
+*   function return a pointer to a string where the filename is stored
 */
 char *WCO_GUI_Status_FileName()
 {
-    char *tmp = malloc(100);
+    //generating space for a 100 chars
+    char *tmp = malloc(100 * sizeof(char));
+
+    //stores the entry text from the gtk widget in the tmp
     sprintf(tmp, "%s", gtk_entry_get_text(GTK_ENTRY(MyGUI.MyEntry1)));
+
+    //return the pointer 
     return tmp;
 }
 
+/*
+*   function returns the savePDFFlag
+*/
 int WCO_GUI_Status_SaveButton4()
 {
     return MyGUI.savePDF;
 }
 
+/*
+*   function returns a pointer to a string where the foldername is stored
+*/
 char *WCO_GUI_Status_FolderName()
 {
-    char *tmp = malloc(100);
+    //generates space for a array of 100 chars
+    char *tmp = malloc(100 * sizeof(char));
+
+    //stores the string returned by the gtk function which prints the foldertree into tmp 
     sprintf(tmp, "%s", gtk_file_chooser_get_current_folder(GTK_FILE_CHOOSER(MyGUI.MyFileChosserButton1)));
+
+    //returns the pointer
     return tmp;
 }
 
+/*
+*   returns the saveFolder flag which point out if the user added a folder
+*/
 int WCO_GUI_Status_FolderButton()
 {
     return MyGUI.saveFolder;
 }
 
+/*
+*   returns if the checkbutton for the Baseboard is enabled or disabled
+*/
 int WCO_GUI_Status_Baseboard_CheckButton5()
 {
     return gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(MyGUI.MyCheckButton5));   
