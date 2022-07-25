@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Mon Jul 25 12:55:57 2022
+# Make data base, printed on Mon Jul 25 13:12:18 2022
 
 # Variables
 
@@ -57,7 +57,7 @@ XDG_RUNTIME_DIR = /mnt/wslg/runtime-dir
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-VSCODE_IPC_HOOK_CLI = /mnt/wslg/runtime-dir/vscode-ipc-fa32cf8f-2b8b-4623-8f90-1069b1300b08.sock
+VSCODE_IPC_HOOK_CLI = /mnt/wslg/runtime-dir/vscode-ipc-16a31b93-f89b-46f8-a33b-7f2430862a1e.sock
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
@@ -71,7 +71,7 @@ PWD = /home/maximilian/Git/WCO
 # default
 .LOADED := 
 # environment
-WSL_INTEROP = /run/WSL/26_interop
+WSL_INTEROP = /run/WSL/14245_interop
 # environment
 PULSE_SERVER = /mnt/wslg/PulseServer
 # environment
@@ -165,9 +165,9 @@ WSL_DISTRO_NAME = Ubuntu_WorkSheetEnv_Import
 
 # Directories
 
-# . (device 2080, inode 111775): 33 files, no impossibilities.
+# . (device 2080, inode 111775): 23 files, no impossibilities.
 
-# 33 files, no impossibilities in 1 directories.
+# 23 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -277,10 +277,10 @@ clean:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
+ 
 #  recipe to execute (from 'makefile', line 41):
 	rm *.o 
 
- 
 # Not a target:
 Worksheed_Adjust.c:
 #  Implicit rule search has not been done.
@@ -351,9 +351,9 @@ GUI_Update.o: GUI_Update.c
 # strcache buffers: 1 (0) / strings = 39 / storage = 407 B / avg = 10 B
 # current buf: size = 8162 B / used = 407 B / count = 39 / avg = 10 B
 
-# strcache performance: lookups = 86 / hit rate = 54%
+# strcache performance: lookups = 76 / hit rate = 48%
 # hash-table stats:
-# Load=39/8192=0%, Rehash=0, Collisions=1/86=1%
-# Finished Make data base on Mon Jul 25 12:55:57 2022
+# Load=39/8192=0%, Rehash=0, Collisions=1/76=1%
+# Finished Make data base on Mon Jul 25 13:12:18 2022
 
  
