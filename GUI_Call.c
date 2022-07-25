@@ -24,7 +24,7 @@ void MyButton1_Clicked(GtkButton *b)
     printf("Button One is clicked! \n\n\n");
 
     //if the PDFViewerFlag is enabled the tread starts two okular pdf-viewer
-    if (WCO_GUI_Status_PDFViewer()) WCO_GUI_Start_PDFViewer();
+    if (WCO_GUI_Status_Get_PDFViewer()) WCO_GUI_Start_PDFViewer();
 
     //starts creating the worksheet and if a error appears a message will be printet to the terminal
     if(!WCO_Worksheet_Create_Start()) printf("Es konnte keine neue PDF erzeugt werden! \n");

@@ -56,16 +56,13 @@ extern struct WCO_GUI_t MyGUI = {
 */
 
 void WCO_GUI_Init();
-
-
 void WCO_GUI_Start();
-
-void exitApp();
 void WCO_GUI_Start_PDFViewer();
 void WCO_GUI_Close_PDFViewer();
-int WCO_GUI_Status_PDFViewer();
 
 void *WCO_GUI_PDFViewer();
+void exitApp();
+
 
 int WCO_GUI_Status_Get_AllOperand_CheckButtons();
 int WCO_GUI_Status_Get_SpecificOperand_CheckButton(int i);
@@ -83,6 +80,8 @@ int WCO_GUI_Status_Get_SubtractionDecimalPlaces_SpinButton();
 int WCO_GUI_Status_Get_MultiplicationDecimalPlaces_SpinButton();
 int WCO_GUI_Status_Get_DevisionDecimalPlaces_SpinButton();
 int WCO_GUI_Status_Get_SpecificOperandDecimalPlaces_SpinButton(int operand);
+int WCO_GUI_Status_Get_PDFViewer();
+
 char *WCO_GUI_Status_FileName();
 int WCO_GUI_Status_SaveButton4();
 char *WCO_GUI_Status_FolderName();

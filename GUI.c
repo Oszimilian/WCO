@@ -62,7 +62,7 @@ void WCO_GUI_Start()
 
     gtk_widget_show(MyGUI.MyWindow1);
 
-    //WCO_GUI_Init();
+    WCO_GUI_Init();
 
     gtk_main();
 }
@@ -119,7 +119,7 @@ void WCO_GUI_Close_PDFViewer()
 *   Return the status of the viewer
 *   Is it on or off
 */
-int WCO_GUI_Status_PDFViewer()
+int WCO_GUI_Status_Get_PDFViewer()
 {
     return MyGUI.showPDF;
 }
