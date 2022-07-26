@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Mon Jul 25 19:24:59 2022
+# Make data base, printed on Tue Jul 26 18:03:53 2022
 
 # Variables
 
@@ -27,11 +27,11 @@ WSLENV = VSCODE_WSL_EXT_LOCATION/up
 # automatic
 @F = $(notdir $@)
 # makefile
-CURDIR := /home/maximilian/NewGit/WCO
+CURDIR := /home/maximilian/TestGit/WCO
 # makefile
 SHELL = /bin/sh
 # environment
-VSCODE_NLS_CONFIG = {"locale":"de","availableLanguages":{"*":"de"},"_languagePackId":"ac49ed8871898f6ccc91afa1076d75a0.de","_translationsConfigFile":"/root/.vscode-server/data/clp/ac49ed8871898f6ccc91afa1076d75a0.de/tcf.json","_cacheRoot":"/root/.vscode-server/data/clp/ac49ed8871898f6ccc91afa1076d75a0.de","_resolvedLanguagePackCoreLocation":"/root/.vscode-server/data/clp/ac49ed8871898f6ccc91afa1076d75a0.de/3b889b090b5ad5793f524b5d1d39fda662b96a2a","_corruptedFile":"/root/.vscode-server/data/clp/ac49ed8871898f6ccc91afa1076d75a0.de/corrupted.info","_languagePackSupport":true}
+VSCODE_NLS_CONFIG = {"locale":"en","availableLanguages":{}}
 # environment
 _ = /root/.vscode-server/bin/3b889b090b5ad5793f524b5d1d39fda662b96a2a/node
 # makefile (from 'makefile', line 1)
@@ -45,11 +45,11 @@ XDG_DATA_DIRS = /usr/local/share:/usr/share:/var/lib/snapd/desktop
 # environment
 LESSOPEN = | /usr/bin/lesspipe %s
 # environment
-VSCODE_CWD = /mnt/c/Program Files/Microsoft VS Code
+VSCODE_CWD = /mnt/c/Users/Maximilian/AppData/Local/Programs/Microsoft VS Code
 # default
 MAKE_HOST := x86_64-pc-linux-gnu
 # environment
-PATH = /root/.vscode-server/bin/3b889b090b5ad5793f524b5d1d39fda662b96a2a/bin/remote-cli:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/Windows/system32:/mnt/c/Windows:/mnt/c/Windows/System32/Wbem:/mnt/c/Windows/System32/WindowsPowerShell/v1.0/:/mnt/c/Windows/System32/OpenSSH/:/mnt/c/Program Files (x86)/NVIDIA Corporation/PhysX/Common:/mnt/c/Program Files/PuTTY/:/mnt/c/Program Files/Microsoft VS Code/bin:/mnt/c/Program Files/Git/cmd:/mnt/c/Users/maximilian/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/maximilian/AppData/Local/GitHubDesktop/bin:/snap/bin
+PATH = /root/.vscode-server/bin/3b889b090b5ad5793f524b5d1d39fda662b96a2a/bin/remote-cli:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/Windows/system32:/mnt/c/Windows:/mnt/c/Windows/System32/Wbem:/mnt/c/Windows/System32/WindowsPowerShell/v1.0/:/mnt/c/Windows/System32/OpenSSH/:/mnt/c/Users/Maximilian/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/Maximilian/AppData/Local/Programs/Microsoft VS Code/bin:/mnt/c/Users/Maximilian/AppData/Local/GitHubDesktop/bin:/snap/bin
 # makefile (from 'makefile', line 4)
 KP1 = -Wall -g $(LiberyLink) $(HeaderDir)
 # environment
@@ -57,7 +57,7 @@ XDG_RUNTIME_DIR = /mnt/wslg/runtime-dir
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-VSCODE_IPC_HOOK_CLI = /mnt/wslg/runtime-dir/vscode-ipc-d99616f0-b8ca-4f7d-941f-ea242c476168.sock
+VSCODE_IPC_HOOK_CLI = /mnt/wslg/runtime-dir/vscode-ipc-ab5492b9-fb4f-44b4-bdb1-360620d7bc28.sock
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
@@ -67,11 +67,11 @@ LS_COLORS = rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:
 # environment
 DISPLAY = :0
 # environment
-PWD = /home/maximilian/NewGit/WCO
+PWD = /home/maximilian/TestGit/WCO
 # default
 .LOADED := 
 # environment
-WSL_INTEROP = /run/WSL/26_interop
+WSL_INTEROP = /run/WSL/32646_interop
 # environment
 PULSE_SERVER = /mnt/wslg/PulseServer
 # environment
@@ -105,11 +105,11 @@ USER = root
 # makefile
 .DEFAULT_GOAL := prog
 # environment
-NAME = DESKTOP-DJ8CSHM
+NAME = DESKTOP-DUVTQRT
 # automatic
 %D = $(patsubst %/,%,$(dir $%))
 # environment
-VSCODE_WSL_EXT_LOCATION = /mnt/c/Users/maximilian/.vscode/extensions/ms-vscode-remote.remote-wsl-0.66.3
+VSCODE_WSL_EXT_LOCATION = /mnt/c/Users/Maximilian/.vscode/extensions/ms-vscode-remote.remote-wsl-0.66.3
 # default
 MAKE_COMMAND := make
 # default
@@ -155,9 +155,11 @@ TERM = xterm-256color
 # makefile (from 'makefile', line 3)
 LiberyLink = -lgtk-3 -lgdk-3 -lpangocairo-1.0 -lpango-1.0 -lharfbuzz -latk-1.0 -lcairo-gobject -lcairo -lgdk_pixbuf-2.0 -lgio-2.0 -lgobject-2.0 -lglib-2.0 -export-dynamic  /usr/local/lib/libhpdf.a -lz -lm -lpthread
 # environment
-WSL_DISTRO_NAME = Ubuntu_WorksheetEnv
+WSL_DISTRO_NAME = Ubuntu_WorkSheetEnv_Import
+# environment
+MOTD_SHOWN = update-motd
 # variable set hash-table stats:
-# Load=72/1024=7%, Rehash=0, Collisions=4/98=4%
+# Load=73/1024=7%, Rehash=0, Collisions=4/99=4%
 
 # Pattern-specific Variable Values
 
@@ -165,9 +167,9 @@ WSL_DISTRO_NAME = Ubuntu_WorksheetEnv
 
 # Directories
 
-# . (device 2080, inode 112845): 23 files, no impossibilities.
+# . (device 2080, inode 112706): 33 files, no impossibilities.
 
-# 23 files, no impossibilities in 1 directories.
+# 33 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -229,7 +231,7 @@ Worksheed_Adjust.o: Worksheed_Adjust.c
 # Not a target:
 makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-25 18:21:48.481498937
+#  Last modified 2022-07-25 17:59:43.371964225
 #  File has been updated.
 #  Successfully updated.
 
@@ -276,6 +278,7 @@ PDF.o: PDF.c
 clean:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
+ 
 #  File has not been updated.
 #  recipe to execute (from 'makefile', line 41):
 	rm *.o 
@@ -284,7 +287,6 @@ clean:
 Worksheed_Adjust.c:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
- 
 #  File has not been updated.
 
 GUI_Call.o: GUI_Call.c
@@ -351,9 +353,9 @@ GUI_Update.o: GUI_Update.c
 # strcache buffers: 1 (0) / strings = 39 / storage = 407 B / avg = 10 B
 # current buf: size = 8162 B / used = 407 B / count = 39 / avg = 10 B
 
-# strcache performance: lookups = 76 / hit rate = 48%
+# strcache performance: lookups = 86 / hit rate = 54%
 # hash-table stats:
-# Load=39/8192=0%, Rehash=0, Collisions=1/76=1%
-# Finished Make data base on Mon Jul 25 19:24:59 2022
+# Load=39/8192=0%, Rehash=0, Collisions=1/86=1%
+# Finished Make data base on Tue Jul 26 18:03:53 2022
 
  

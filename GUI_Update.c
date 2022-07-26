@@ -15,31 +15,48 @@
 #include "PDF.h"
 #include "Worksheet.h"
 
+/*
+*   this function updates all the conditions arround the visibility of buttons and labels depending on the addition enable button
+*/
 void WCO_GUI_Update_Addition()
 {
-    char numberSpace;
+    //Init a pointer
+    char *ptr;
+
+    //Set the local var which is responsible for the min range of the spinButton
     double minRange = 0;
 
-    if (WCO_GUI_Status_Get_AdditionDecimalPlaces_SpinButton() == 0)
+    if (!WCO_GUI_Status_Get_AdditionDecimalPlaces_SpinButton() && WCO_GUI_Status_Get_Addition_CheckButton())
     {
-        numberSpace = 'Z';
-    }else{
-        numberSpace = 'R';
+        //if the value of the spin-button is zero and the addition checkbutton is True, the lokal pointer gets the adress of anthour pointer
+        ptr = MyGUI.label[0];
+    }
+    else if(WCO_GUI_Status_Get_AdditionDecimalPlaces_SpinButton() && WCO_GUI_Status_Get_Addition_CheckButton())
+    {
+        //if the value of the spin-button is greather than zero and the addition checkbutton is True, the lokal pointer gets the adress of anthour pointer
+        ptr = MyGUI.label[1];
+    }
+    else if (!WCO_GUI_Status_Get_Addition_CheckButton())
+    {
+        //if the addition checkbutton is False the lokal pointer gets the address to a pointer which points to a empty string
+        ptr = MyGUI.label[2];
     }
 
+    //if the addition check button is enabled the specific buttons are displayed otherwise they were hide by gtk
     if (WCO_GUI_Status_Get_Addition_CheckButton())
     {
         gtk_widget_show(MyGUI.MySpinButton2);
         gtk_widget_show(MyGUI.MySpinButton8);
         gtk_widget_show(MyGUI.MySpinButton10);
-        gtk_label_set_text(MyGUI.MyLabel2, &numberSpace);
+        gtk_label_set_text(MyGUI.MyLabel2, ptr);
     }else{
         gtk_widget_hide(MyGUI.MySpinButton2);
         gtk_widget_hide(MyGUI.MySpinButton8);
         gtk_widget_hide(MyGUI.MySpinButton10);
-        gtk_label_set_text(MyGUI.MyLabel2, "");
+        gtk_label_set_text(MyGUI.MyLabel2, ptr);
     }
 
+    //this is responsible to make sure that the highest count of decimal places is never higher than the lowest digit count
     if (WCO_GUI_Status_Get_AdditionDigitRange_SpinButton(0) < WCO_GUI_Status_Get_AdditionDigitRange_SpinButton(1))
     {
         gtk_spin_button_set_range(GTK_SPIN_BUTTON(MyGUI.MySpinButton10), minRange, (double) WCO_GUI_Status_Get_AdditionDigitRange_SpinButton(0));
@@ -47,6 +64,7 @@ void WCO_GUI_Update_Addition()
         gtk_spin_button_set_range(GTK_SPIN_BUTTON(MyGUI.MySpinButton10), minRange, (double) WCO_GUI_Status_Get_AdditionDigitRange_SpinButton(1));
     }
 
+    //Update the permissions under the "Creatbutton" is allowed to be displayed
     WCO_GUI_Update_PermissionButton1();
 }
 
