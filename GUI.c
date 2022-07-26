@@ -75,12 +75,25 @@ void WCO_GUI_Init()
     MyGUI.saveFolder = _OFF;
 
     
+
+
+    MyGUI.label = malloc(3 * sizeof(char));
+    
+    for (int i = 0; i <= 2; i++)
+    {
+        MyGUI.label[i] = malloc(2 * sizeof(char));
+        printf("%d\n", i);
+    }
+
+    sprintf(MyGUI.label[0], "Z");
+    sprintf(MyGUI.label[1], "R");
+    sprintf(MyGUI.label[2], " ");
+
     WCO_GUI_Update_Addition();
     WCO_GUI_Update_Division();
     WCO_GUI_Update_Multiplication();
     WCO_GUI_Update_Division();
     WCO_GUI_Update_PermissionButton1();
-    
 }
     
 
