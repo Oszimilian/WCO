@@ -54,9 +54,8 @@ float WCO_Worksheet_Status_Calculation(int operand, float *a, float *b)
 
 char* WCO_Worksheet_Status_Task(int number, int page)
 {
-    char *tmp = malloc (50);
-    sprintf(tmp, "%s", MyWorksheet.task[page][number]);
-    
+    char *tmp;
+    tmp = MyWorksheet.task[page][number];
     return tmp;
 }
 

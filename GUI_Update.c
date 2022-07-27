@@ -136,7 +136,7 @@ void WCO_GUI_Update_Multiplication()
         //if the value of the spin-button is greather than zero and the multiplication checkbutton is True, the lokal pointer gets the adress of anthour pointer
         ptr = MyGUI.label[1];
     }
-    else if (!WCO_GUI_Status_Get_Multiplication_CheckButton)
+    else if (!WCO_GUI_Status_Get_Multiplication_CheckButton())
     {
         //if the multiplication checkbutton is False the lokal pointer gets the address to a pointer which points to a empty string
         ptr = MyGUI.label[2];

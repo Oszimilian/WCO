@@ -16,13 +16,18 @@
 #include "Worksheet.h"
 
 
-
+/*
+*   This function is responsible for initializing the gtk widgets and for starting the gtk main loop
+*/
 void WCO_GUI_Start()
 {
+    //Init the gtk. It is posible to give the arguments from the main function into this init function
     gtk_init(NULL, NULL);
 
+    //Set up the gtk builder from the glade xml file
     MyGUI.MyBuilder = gtk_builder_new_from_file("MyApp.glade");
 
+    //Set up the gtk widgets with the gtk builder
     MyGUI.MyWindow1 = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MyWindow"));
     MyGUI.MyFixed1 = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MyFixed1"));
     MyGUI.MyLabel1 = GTK_LABEL(gtk_builder_get_object(MyGUI.MyBuilder, "MyLabel1"));
@@ -58,37 +63,45 @@ void WCO_GUI_Start()
     MyGUI.MyFileChosserButton1 = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MyFileChosserButton1"));
     MyGUI.MyEntry1 = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MyEntry1"));
     
+    //connecting the signalls which were initilized by glade with the programm
     gtk_builder_connect_signals(MyGUI.MyBuilder, NULL);
 
+    //show the widgets in the window
     gtk_widget_show(MyGUI.MyWindow1);
 
+    //init the gui
     WCO_GUI_Init();
 
+    //starts the main loop. 
+    //to interrupt this main loop to carry out other functions is not possible. This functions have to be set up in a seperate thread
+    //but be carefull. GTK is not really thread save.
     gtk_main();
 }
 
-
+/*
+*   This function is used to initialize the GUI struct 
+*/
 void WCO_GUI_Init()
 {
+    //diffrent flags are set;
     MyGUI.showPDF = _OFF;
     MyGUI.savePDF = _OFF;
     MyGUI.saveFolder = _OFF;
 
-    
-
-
+    //the label pointer is now set to the adress of the heap 
     MyGUI.label = malloc(3 * sizeof(char));
     
+    //Every adress of the first "Spallte" gets now a additional adress in the heap for the two dimensional array
     for (int i = 0; i <= 2; i++)
     {
         MyGUI.label[i] = malloc(2 * sizeof(char));
-        printf("%d\n", i);
     }
 
+    //filling the two dimensional array with values which were used to display different label outputs
     sprintf(MyGUI.label[0], "Z");
     sprintf(MyGUI.label[1], "R");
     sprintf(MyGUI.label[2], " ");
-
+    //Update the gui conditions
     WCO_GUI_Update_Addition();
     WCO_GUI_Update_Division();
     WCO_GUI_Update_Multiplication();
@@ -100,13 +113,18 @@ void WCO_GUI_Init()
 /**********************************************************************************************************************/
 
 /*
-*   Called by press the X-Button in the right uppor corner
+*   Called by pressing the X-Button or the close button
 *   Closes the PDF-Viewer and the GTK Window
 */
 void exitApp()
 {
+    //Closes the PDFViewer
     WCO_GUI_Close_PDFViewer();
+    
+    //quites from the gtk main loop
     gtk_main_quit();
+
+    //stops the programm
     exit(0);
 }
 
@@ -124,7 +142,10 @@ void WCO_GUI_Start_PDFViewer()
 */
 void WCO_GUI_Close_PDFViewer()
 {
+    // disables the pdf show flag which stopps the loop in which a threads whait to display the pdf-viewer
     MyGUI.showPDF = _OFF;
+
+    //closes okular via a system command
     system("killall okular");
 }
 

@@ -15,6 +15,9 @@
 #include "PDF.h"
 #include "Worksheet.h"
 
+/*
+*   function initializes the variables in the worksheet struct
+*/
 void WCO_Worksheet_Init()
 {
     MyWorksheet.printBaseboard = _enable;
@@ -26,31 +29,37 @@ void WCO_Worksheet_Init()
 */
 int WCO_Worksheet_Create_Start()
 {
+    //init a lokal return var which is presset to a success value
     int ret = _succeded;
 
     //initialise a pdf instanze
     MyPDF.pdf = HPDF_New (Error_Handler, NULL);
 
-    //Check this pdf instanze
+    //Check if the pdf instanze already exist or something goes wrong
     if (WCO_PDF_Check())
     {
         printf("PDF hat einen Fehler, bzw. konnte nicht erzeugt werden \n");
 
+        //setting the lokal return var to an error value
+        ret = _error;
+
+        //if a failure occurs the programm jumps with the goto instruction to the end of this function end returns a error
         goto failed;
     }else{
+        //everything works fine
         printf("PDF wurde erfolgreich erzeugt \n");
     }
 
-    //Generating a new page zero
+    //Generating a new page zero in a array
     WCO_PDF_SetupPage(_Tasks);
 
-    
-
-    //Wirte some text
+    //Generating the task sheet
     if (!WCO_Worksheet_Creat_TaskSheet())
     {
+        //if a error okurs this ret var is set to error
         ret = _error;
 
+        //end the programm jumps to the end of this function
         goto failed;
     }
 
@@ -66,11 +75,13 @@ int WCO_Worksheet_Create_Start()
 
 
 
-    //Creates a Solution  - PDF
+    //generating a new solution task sheed
     if (!WCO_Worksheet_Create_SolutionSheed())
     {
+        //if a error occurs the local return var is set to an error value
         ret = _error;
 
+        //and the programm will be skiped to the and of this function
         goto failed;
     }
 
@@ -80,6 +91,7 @@ int WCO_Worksheet_Create_Start()
     //ends the hole progress with generating a pdf
     HPDF_Free(MyPDF.pdf);
 
+    //goto flag 
     failed:
 
     return ret;
@@ -89,25 +101,38 @@ int WCO_Worksheet_Create_Start()
 *   Creats a sheed with the asked solutions
 */
 int WCO_Worksheet_Creat_TaskSheet()
-{
+{   
+    //inti a lokal return value and set it to a success value
     int ret = _succeded;
 
+    //var to store the height of the sheed
     int pageSize;
+    
+    //var which is declared and initialized with the pageSize to manage the position of each task
     int pageSizeCounter;
+
+    //counter to store the amount of task of each sheed
     int taskCounter = 0;
+
+    //Array which includes the 3 x start points of each "spalte"
     int startx[3];
+    //The "spalten" are positionate at 30, 60, 90 percent of the page leangh
     startx[0] = HPDF_Page_GetWidth(MyPDF.page[_Tasks]) - (HPDF_Page_GetWidth(MyPDF.page[_Tasks]) * 0.9);
     startx[1] = HPDF_Page_GetWidth(MyPDF.page[_Tasks]) - (HPDF_Page_GetWidth(MyPDF.page[_Tasks]) * 0.6);
     startx[2] = HPDF_Page_GetWidth(MyPDF.page[_Tasks]) - (HPDF_Page_GetWidth(MyPDF.page[_Tasks]) * 0.3);
 
-    //print a baseboard
+    //printing a baseboard at the top of the sheed where the pupils can write there names down
     if(!WCO_Worksheet_Creat_Baseboard(_Tasks))
     {
+        //error handling
         ret = _error;
 
+        //jump to the end of the function
         goto failed;
     }
 
+    //if the user whished a baseboard this will need extraspace 
+    //to avoid that tasks are printet over the baseboard the pageSize is modified by a certain threashold
     if (WCO_Worksheet_Status_Baseboard())
     {
         pageSize = HPDF_Page_GetHeight(MyPDF.page[_Tasks]) - WCO_Worksheet_Status_Threashold();
@@ -115,37 +140,46 @@ int WCO_Worksheet_Creat_TaskSheet()
         pageSize = HPDF_Page_GetHeight(MyPDF.page[_Tasks]);
     }
 
-
+    //to generate random numbers the generator uses the time functions
     srand(time(NULL));
 
+    //start a loop which counts untill 3, which stands for the 3 "Spalten"
     for(int i = 0; i <= 2; i++)
     {
+        //at the beginning of each "Spalten" the pageSizeCounter is set to the fix value of pageSize
         pageSizeCounter = pageSize;
 
+        //this while loop be execute untill the value of the pageSizeCounter is lower or equal to 50
+        //if this happens a new "Spalte" will be started
         while(pageSizeCounter >= 50)
         {
-
+            //this function creats a random generated task and stores the task in the MyWorksheed sturct in a array
             if (!WCO_Worksheet_Create_RandomTask(taskCounter))
             {
+                //errorhandling
                 ret = _error;
 
                 goto failed;
             } 
 
+            //this function returns a pointer to the array in the MyWorksheed sturct 
             char *task = WCO_Worksheet_Status_Task(taskCounter, _Tasks);
 
+            //this fuction prints the task on the pdf-sheet
             WCO_PDF_WriteText(startx[i], pageSizeCounter, task, _Tasks);
 
+            //Behind every math-task this function prints a solution line 
             WCO_PDF_DrawSolutionLine(task, startx[i], pageSizeCounter, 60, _Tasks);
 
+            //All task in a "spalte" are printed below the others so the new starting point is 50 points under the previous
             pageSizeCounter -= 50;
 
+            //increment the taskCounter after every task
             taskCounter ++;
-
         }
-
     }
 
+    //error handling in this function
     failed:
 
     return ret;
@@ -156,24 +190,36 @@ int WCO_Worksheet_Creat_TaskSheet()
 */
 int WCO_Worksheet_Create_SolutionSheed()
 {   
+    //local return value with preset success
     int ret = _succeded;
 
+    //var to store the height of the sheed
     int pageSize;
+
+    //var which is declared and initialized with the pageSize to manage the position of each task
     int pageSizeCounter;
+
+    //counter to store the amount of task of each sheed
     int taskCounter = 0;
+
+    //Array which includes the 3 x start points of each "spalte"
     int startx[3];
+    //The "spalten" are positionate at 30, 60, 90 percent of the page leangh
     startx[0] = HPDF_Page_GetWidth(MyPDF.page[_Solutions]) - (HPDF_Page_GetWidth(MyPDF.page[_Solutions]) * 0.9);
     startx[1] = HPDF_Page_GetWidth(MyPDF.page[_Solutions]) - (HPDF_Page_GetWidth(MyPDF.page[_Solutions]) * 0.6);
     startx[2] = HPDF_Page_GetWidth(MyPDF.page[_Solutions]) - (HPDF_Page_GetWidth(MyPDF.page[_Solutions]) * 0.3);
 
-    //print a baseboard
+    //printing a baseboard at the top of the sheed where the pupils can write there names down
     if (!WCO_Worksheet_Creat_Baseboard(_Solutions))
     {
+        //error handling
         ret = _error;
 
         goto failed;
     }
 
+    //if the user whished a baseboard this will need extraspace 
+    //to avoid that tasks are printet over the baseboard the pageSize is modified by a certain threashold
     if (WCO_Worksheet_Status_Baseboard())
     {
         pageSize = HPDF_Page_GetHeight(MyPDF.page[_Solutions]) - WCO_Worksheet_Status_Threashold();
@@ -181,7 +227,8 @@ int WCO_Worksheet_Create_SolutionSheed()
         pageSize = HPDF_Page_GetHeight(MyPDF.page[_Solutions]);
     }
 
-     for(int i = 0; i <= 2; i++)
+    //start a loop which counts untill 3, which stands for the 3 "Spalten"
+    for(int i = 0; i <= 2; i++)
     {
         pageSizeCounter = pageSize;
 

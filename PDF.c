@@ -97,7 +97,6 @@ void WCO_PDF_SavePDF(int page)
 {
     HPDF_SaveToFile(MyPDF.pdf, MyPDF.fileName[page]);
     printf("PDF Save: %s\n", MyPDF.fileName[page]);
-    //HPDF_SaveToFile(MyPDF.pdf, MyPDF.systemOpenFile[page])
 }
 
 

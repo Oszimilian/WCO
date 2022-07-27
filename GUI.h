@@ -51,12 +51,6 @@ struct WCO_GUI_t{
 }MyGUI;
 
 
-/*
-extern struct WCO_GUI_t MyGUI = {
-    .showPDF = _OFF
-};
-*/
-
 void WCO_GUI_Init();
 void WCO_GUI_Start();
 void WCO_GUI_Start_PDFViewer();
