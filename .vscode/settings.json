@@ -3,5 +3,12 @@
         "stdio.h": "c",
         "setjmp.h": "c",
         "stdlib.h": "c"
-    }
+    },
+    "makefile.launchConfigurations": [
+        {
+            "cwd": "/home/maximilian/TestGit/WCO",
+            "binaryPath": "/home/maximilian/TestGit/WCO/prog",
+            "binaryArgs": []
+        }
+    ]
 }

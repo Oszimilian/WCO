@@ -1,6 +1,4 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
-make: *** No rule to make target 'all'.  Stop.
-
 # GNU Make 4.2.1
 # Built for x86_64-pc-linux-gnu
 # Copyright (C) 1988-2016 Free Software Foundation, Inc.
@@ -8,7 +6,9 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Mon Jul 25 18:21:56 2022
+
+# Make data base, printed on Fri Jul 29 22:02:34 2022
+
 
 # Variables
 
@@ -49,7 +49,9 @@ VSCODE_CWD = /mnt/c/Program Files/Microsoft VS Code
 # default
 MAKE_HOST := x86_64-pc-linux-gnu
 # environment
-PATH = /root/.vscode-server/bin/3b889b090b5ad5793f524b5d1d39fda662b96a2a/bin/remote-cli:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/Windows/system32:/mnt/c/Windows:/mnt/c/Windows/System32/Wbem:/mnt/c/Windows/System32/WindowsPowerShell/v1.0/:/mnt/c/Windows/System32/OpenSSH/:/mnt/c/Program Files (x86)/NVIDIA Corporation/PhysX/Common:/mnt/c/Program Files/PuTTY/:/mnt/c/Program Files/Microsoft VS Code/bin:/mnt/c/Program Files/Git/cmd:/mnt/c/Users/maximilian/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/maximilian/AppData/Local/GitHubDesktop/bin:/snap/bin
+
+PATH = /root/.vscode-server/bin/3b889b090b5ad5793f524b5d1d39fda662b96a2a/bin/remote-cli:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/Windows/system32:/mnt/c/Windows:/mnt/c/Windows/System32/Wbem:/mnt/c/Windows/System32/WindowsPowerShell/v1.0/:/mnt/c/Windows/System32/OpenSSH/:/mnt/c/Program Files (x86)/NVIDIA Corporation/PhysX/Common:/mnt/c/Program Files/PuTTY/:/mnt/c/Program Files/Microsoft VS Code/bin:/mnt/c/Program Files/Git/cmd:/mnt/c/Users/maximilian/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/maximilian/AppData/Local/GitHubDesktop/bin:/mnt/c/Users/maximilian/AppData/Local/atom/bin:/snap/bin
+
 # makefile (from 'makefile', line 4)
 KP1 = -Wall -g $(LiberyLink) $(HeaderDir)
 # environment
@@ -57,7 +59,9 @@ XDG_RUNTIME_DIR = /mnt/wslg/runtime-dir
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-VSCODE_IPC_HOOK_CLI = /mnt/wslg/runtime-dir/vscode-ipc-74815126-a7f5-46cc-85a5-0ec7948b9e40.sock
+
+VSCODE_IPC_HOOK_CLI = /mnt/wslg/runtime-dir/vscode-ipc-73a4fd10-a651-4a46-8309-55790b65579a.sock
+
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
@@ -71,7 +75,9 @@ PWD = /home/maximilian/NewGit/WCO
 # default
 .LOADED := 
 # environment
-WSL_INTEROP = /run/WSL/14181_interop
+
+WSL_INTEROP = /run/WSL/38_interop
+
 # environment
 PULSE_SERVER = /mnt/wslg/PulseServer
 # environment
@@ -79,7 +85,7 @@ VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
 # environment
 HOME = /root
 # makefile (from 'makefile', line 2)
-ObjectFiles = main.o Background.o GUI.o PDF.o Worksheed_Adjust.o Worksheet_Creat.o GUI_Call.o Worksheet_Status.o GUI_Status.o GUI_Update.o
+ObjectFiles = main.o Background.o GUI.o PDF.o PNG.o Worksheet_Creat.o GUI_Call.o Worksheet_Status.o GUI_Status.o GUI_Update.o
 # environment
 LESSCLOSE = /usr/bin/lesspipe %s %s
 # environment
@@ -165,9 +171,11 @@ WSL_DISTRO_NAME = Ubuntu_WorksheetEnv
 
 # Directories
 
-# . (device 2080, inode 112845): 23 files, no impossibilities.
 
-# 23 files, no impossibilities in 1 directories.
+# . (device 2080, inode 110244): 25 files, no impossibilities.
+
+
+# 25 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -208,6 +216,12 @@ GUI.c:
 #  File has not been updated.
 
 # Not a target:
+PNG.c:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
 Background.c:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
@@ -219,17 +233,12 @@ GUI_Update.c:
 #  Modification time never checked.
 #  File has not been updated.
 
-Worksheed_Adjust.o: Worksheed_Adjust.c
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-#  recipe to execute (from 'makefile', line 26):
-	gcc $(KP) -c Worksheed_Adjust.c
-
 # Not a target:
 makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-25 18:21:48.481498937
+
+#  Last modified 2022-07-29 15:03:35.941155973
+
 #  File has been updated.
 #  Successfully updated.
 
@@ -240,7 +249,7 @@ Worksheet_Creat.o: Worksheet_Creat.c
 #  recipe to execute (from 'makefile', line 29):
 	gcc $(KP) -c Worksheet_Creat.c
 
-prog: main.o Background.o GUI.o PDF.o Worksheed_Adjust.o Worksheet_Creat.o GUI_Call.o Worksheet_Status.o GUI_Status.o GUI_Update.o
+prog: main.o Background.o GUI.o PDF.o PNG.o Worksheet_Creat.o GUI_Call.o Worksheet_Status.o GUI_Status.o GUI_Update.o
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -278,13 +287,10 @@ clean:
 #  Modification time never checked.
 #  File has not been updated.
 #  recipe to execute (from 'makefile', line 41):
-	rm *.o 
+ 
+make: *** No rule to make target 'all'.  Stop.
 
-# Not a target:
-Worksheed_Adjust.c:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+	rm *.o 
 
 GUI_Call.o: GUI_Call.c
 #  Implicit rule search has not been done.
@@ -320,6 +326,13 @@ GUI.o: GUI.c
 #  recipe to execute (from 'makefile', line 17):
 	gcc $(KP) -c GUI.c
 
+PNG.o: PNG.c
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'makefile', line 26):
+	gcc $(KP) -c PNG.c
+
 # Not a target:
 PDF.c:
 #  Implicit rule search has not been done.
@@ -348,12 +361,14 @@ GUI_Update.o: GUI_Update.c
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 39 / storage = 407 B / avg = 10 B
-# current buf: size = 8162 B / used = 407 B / count = 39 / avg = 10 B
+# strcache buffers: 1 (0) / strings = 41 / storage = 392 B / avg = 9 B
+# current buf: size = 8162 B / used = 392 B / count = 41 / avg = 9 B
 
-# strcache performance: lookups = 76 / hit rate = 48%
+# strcache performance: lookups = 78 / hit rate = 47%
 # hash-table stats:
-# Load=39/8192=0%, Rehash=0, Collisions=1/76=1%
-# Finished Make data base on Mon Jul 25 18:21:56 2022
+
+# Load=41/8192=1%, Rehash=0, Collisions=1/78=1%
+# Finished Make data base on Fri Jul 29 22:02:34 2022
+
 
  

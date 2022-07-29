@@ -14,7 +14,11 @@
 #include "GUI.h"
 #include "PDF.h"
 #include "Worksheet.h"
+#include "PNG.h"
 
+/*
+*   function initializes the variables in the worksheet struct
+*/
 void WCO_Worksheet_Init()
 {
     MyWorksheet.printBaseboard = _enable;
@@ -26,31 +30,37 @@ void WCO_Worksheet_Init()
 */
 int WCO_Worksheet_Create_Start()
 {
+    //init a lokal return var which is presset to a success value
     int ret = _succeded;
 
     //initialise a pdf instanze
     MyPDF.pdf = HPDF_New (Error_Handler, NULL);
 
-    //Check this pdf instanze
+    //Check if the pdf instanze already exist or something goes wrong
     if (WCO_PDF_Check())
     {
         printf("PDF hat einen Fehler, bzw. konnte nicht erzeugt werden \n");
 
+        //setting the lokal return var to an error value
+        ret = _error;
+
+        //if a failure occurs the programm jumps with the goto instruction to the end of this function end returns a error
         goto failed;
     }else{
+        //everything works fine
         printf("PDF wurde erfolgreich erzeugt \n");
     }
 
-    //Generating a new page zero
+    //Generating a new page zero in a array
     WCO_PDF_SetupPage(_Tasks);
 
-    
-
-    //Wirte some text
+    //Generating the task sheet
     if (!WCO_Worksheet_Creat_TaskSheet())
     {
+        //if a error okurs this ret var is set to error
         ret = _error;
 
+        //end the programm jumps to the end of this function
         goto failed;
     }
 
@@ -66,11 +76,13 @@ int WCO_Worksheet_Create_Start()
 
 
 
-    //Creates a Solution  - PDF
+    //generating a new solution task sheed
     if (!WCO_Worksheet_Create_SolutionSheed())
     {
+        //if a error occurs the local return var is set to an error value
         ret = _error;
 
+        //and the programm will be skiped to the and of this function
         goto failed;
     }
 
@@ -80,6 +92,10 @@ int WCO_Worksheet_Create_Start()
     //ends the hole progress with generating a pdf
     HPDF_Free(MyPDF.pdf);
 
+    //converts the PDF into an png
+    WCO_PNG_Set_ConvertToPNG(0.23);
+
+    //goto flag 
     failed:
 
     return ret;
@@ -89,63 +105,85 @@ int WCO_Worksheet_Create_Start()
 *   Creats a sheed with the asked solutions
 */
 int WCO_Worksheet_Creat_TaskSheet()
-{
+{   
+    //inti a lokal return value and set it to a success value
     int ret = _succeded;
 
+    //var to store the height of the sheed
     int pageSize;
+    
+    //var which is declared and initialized with the pageSize to manage the position of each task
     int pageSizeCounter;
+
+    //counter to store the amount of task of each sheed
     int taskCounter = 0;
+
+    //Array which includes the 3 x start points of each "spalte"
     int startx[3];
+    //The "spalten" are positionate at 30, 60, 90 percent of the page leangh
     startx[0] = HPDF_Page_GetWidth(MyPDF.page[_Tasks]) - (HPDF_Page_GetWidth(MyPDF.page[_Tasks]) * 0.9);
     startx[1] = HPDF_Page_GetWidth(MyPDF.page[_Tasks]) - (HPDF_Page_GetWidth(MyPDF.page[_Tasks]) * 0.6);
     startx[2] = HPDF_Page_GetWidth(MyPDF.page[_Tasks]) - (HPDF_Page_GetWidth(MyPDF.page[_Tasks]) * 0.3);
 
-    //print a baseboard
+    //printing a baseboard at the top of the sheed where the pupils can write there names down
     if(!WCO_Worksheet_Creat_Baseboard(_Tasks))
     {
+        //error handling
         ret = _error;
 
+        //jump to the end of the function
         goto failed;
     }
 
+    //if the user whished a baseboard this will need extraspace 
+    //to avoid that tasks are printet over the baseboard the pageSize is modified by a certain threashold
     if (WCO_Worksheet_Status_Baseboard())
     {
         pageSize = HPDF_Page_GetHeight(MyPDF.page[_Tasks]) - WCO_Worksheet_Status_Threashold();
     }else{
-        pageSize = HPDF_Page_GetHeight(MyPDF.page[_Tasks]);
+        pageSize = HPDF_Page_GetHeight(MyPDF.page[_Tasks]) - 50;
     }
 
-
+    //to generate random numbers the generator uses the time functions
     srand(time(NULL));
 
+    //start a loop which counts untill 3, which stands for the 3 "Spalten"
     for(int i = 0; i <= 2; i++)
     {
+        //at the beginning of each "Spalten" the pageSizeCounter is set to the fix value of pageSize
         pageSizeCounter = pageSize;
 
+        //this while loop be execute untill the value of the pageSizeCounter is lower or equal to 50
+        //if this happens a new "Spalte" will be started
         while(pageSizeCounter >= 50)
         {
-
+            //this function creats a random generated task and stores the task in the MyWorksheed sturct in a array
             if (!WCO_Worksheet_Create_RandomTask(taskCounter))
             {
+                //errorhandling
                 ret = _error;
 
                 goto failed;
             } 
 
+            //this function returns a pointer to the array in the MyWorksheed sturct 
             char *task = WCO_Worksheet_Status_Task(taskCounter, _Tasks);
 
+            //this fuction prints the task on the pdf-sheet
             WCO_PDF_WriteText(startx[i], pageSizeCounter, task, _Tasks);
 
+            //Behind every math-task this function prints a solution line 
             WCO_PDF_DrawSolutionLine(task, startx[i], pageSizeCounter, 60, _Tasks);
 
+            //All task in a "spalte" are printed below the others so the new starting point is 50 points under the previous
             pageSizeCounter -= 50;
 
+            //increment the taskCounter after every task
             taskCounter ++;
-
         }
-
     }
 
+    //error handling in this function
     failed:
 
     return ret;
@@ -156,49 +194,69 @@ int WCO_Worksheet_Creat_TaskSheet()
 */
 int WCO_Worksheet_Create_SolutionSheed()
 {   
+    //local return value with preset success
     int ret = _succeded;
 
+    //var to store the height of the sheed
     int pageSize;
+
+    //var which is declared and initialized with the pageSize to manage the position of each task
     int pageSizeCounter;
+
+    //counter to store the amount of task of each sheed
     int taskCounter = 0;
+
+    //Array which includes the 3 x start points of each "spalte"
     int startx[3];
+    //The "spalten" are positionate at 30, 60, 90 percent of the page leangh
     startx[0] = HPDF_Page_GetWidth(MyPDF.page[_Solutions]) - (HPDF_Page_GetWidth(MyPDF.page[_Solutions]) * 0.9);
     startx[1] = HPDF_Page_GetWidth(MyPDF.page[_Solutions]) - (HPDF_Page_GetWidth(MyPDF.page[_Solutions]) * 0.6);
     startx[2] = HPDF_Page_GetWidth(MyPDF.page[_Solutions]) - (HPDF_Page_GetWidth(MyPDF.page[_Solutions]) * 0.3);
 
-    //print a baseboard
+    //printing a baseboard at the top of the sheed where the pupils can write there names down
     if (!WCO_Worksheet_Creat_Baseboard(_Solutions))
     {
+        //error handling
         ret = _error;
 
         goto failed;
     }
 
+    //if the user whished a baseboard this will need extraspace 
+    //to avoid that tasks are printet over the baseboard the pageSize is modified by a certain threashold
     if (WCO_Worksheet_Status_Baseboard())
     {
         pageSize = HPDF_Page_GetHeight(MyPDF.page[_Solutions]) - WCO_Worksheet_Status_Threashold();
     }else{
-        pageSize = HPDF_Page_GetHeight(MyPDF.page[_Solutions]);
+        pageSize = HPDF_Page_GetHeight(MyPDF.page[_Solutions]) - 50;
     }
 
-     for(int i = 0; i <= 2; i++)
+    //start a loop which counts untill 3, which stands for the 3 "Spalten"
+    for(int i = 0; i <= 2; i++)
     {
+        //initialize the pageSizeCounter with the value of of the pageSize which represent the PDF height
         pageSizeCounter = pageSize;
 
+        //This loop will be execute untill the pageSizeCounter is below 50
         while(pageSizeCounter >= 50)
         {
+            //inti the pointer with the adress of the solution
             char *task = WCO_Worksheet_Status_Task(taskCounter, _Solutions);
 
+            //printing the solution on the pdf
             WCO_PDF_WriteText(startx[i], pageSizeCounter, task, _Solutions);
 
+            //Set the next horicontal printingpoint 50 points below this point
             pageSizeCounter -= 50;
 
+            //increment the taskCounter
             taskCounter ++;
 
         }
 
     }
 
+    //errorhandling
     failed:
 
     return ret;
@@ -229,28 +287,38 @@ int WCO_Worksheet_Create_RandomTask(int counter)
     */
     while(1)
     {
+        //generating a operand for the task by random generating a number between zero and three wicht stand for -> + - * /
         operand = rand() % 4;
 
-        if (!WCO_GUI_Status_AllOperant_CheckButtons())
+        //this case is thrue if all operand buttons are disabled
+        if (!WCO_GUI_Status_Get_AllOperand_CheckButtons())
         {
+            //printing warning msg
             gtk_label_set_text(MyGUI.MyLabel1, "Sie müssen auf jeden Fall einen Operator auswählen!");
             
+            //set return value to error
             ret = _error;
 
+            //skip the hole function
             goto fail;
         }
     
-        if (WCO_GUI_Status_SpecificOperand_CheckButton(operand)) break;
+        //if the specific button for the generated opperand enabled this loop is breaked
+        //if not the a new operand is generated random
+        if (WCO_GUI_Status_Get_SpecificOperand_CheckButton(operand)) break;
     }
 
     /*
-    *   This part
+    *   This part is responsible for the max leangh of the generated task
     */
-    spinButtonValue[0] = WCO_GUI_Status_SpecificOperand_SpinButton(operand, 0);
-    spinButtonValue[1] = WCO_GUI_Status_SpecificOperand_SpinButton(operand, 1);
+   //The spin-value of the buttons is stored in the array
+    spinButtonValue[0] = WCO_GUI_Status_Get_SpecificOperandDigitRange_spinButton(operand, 0);
+    spinButtonValue[1] = WCO_GUI_Status_Get_SpecificOperandDigitRange_spinButton(operand, 1);
 
+    //this will be looped two times 
     for (int i = 0; i <= 1; i++)
     {
+        //depanding on the spinvalue the termLeangh gets a value
         switch (spinButtonValue[i])
         {
         case 1: termLeangh[i]  = 10; break;
@@ -276,7 +344,7 @@ int WCO_Worksheet_Create_RandomTask(int counter)
     /*
     *   stores the DecimalPlaces dependent of the operand into a local var "localDecimalPlaces"
     */
-   decimalPlaces = WCO_GUI_Status_SpecificOperand_DecimalPlaces(operand);
+   decimalPlaces = WCO_GUI_Status_Get_SpecificOperandDecimalPlaces_SpinButton(operand);
 
     /*
     *   if the current DecimalPlaces count is zero the task is print as a integer
@@ -293,8 +361,13 @@ int WCO_Worksheet_Create_RandomTask(int counter)
         default: break;
     }
 
+    //the function gets the adress of the two numbers and the opperand a calculates the solution and stores it in solution
     solution = WCO_Worksheet_Status_Calculation(operand, &value[0], &value[1]);
 
+    /*
+    *   writing the value into the output string
+    *   this is seperated into the amount of decimal places to display it more likely
+    */
     switch (decimalPlaces)
     {
         case 0:
@@ -373,9 +446,3 @@ int WCO_Worksheet_Creat_Baseboard(int page)
 
     return ret;
 }
-
-
-
-
-
-

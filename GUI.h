@@ -10,6 +10,9 @@ struct WCO_GUI_t{
     GtkBuilder *MyBuilder;
     GtkWidget *MyWindow1;
     GtkWidget *MyFixed1;
+    //GtkWidget *MyFixed2;
+    //GtkWidget *MyFixed3;
+    GtkWidget *MyWorksheetFixed[2];
     GtkLabel  *MyLabel1;
     GtkLabel  *MyLabel2;
     GtkLabel  *MyLabel3;
@@ -42,47 +45,51 @@ struct WCO_GUI_t{
     GtkWidget *MySpinButton13;
     GtkWidget *MyFileChosserButton1;
     GtkWidget *MyEntry1;
+    //GtkWidget *MyImage1;
+    //GtkWidget *MyImage2;
+    GtkWidget *MyWorksheetImage[2];
 
     int showPDF;
     int savePDF;
     int saveFolder;
+    int showPNG;
+
+    char **label;
 }MyGUI;
 
 
-/*
-extern struct WCO_GUI_t MyGUI = {
-    .showPDF = _OFF
-};
-*/
-
 void WCO_GUI_Init();
-
-
 void WCO_GUI_Start();
-
-void exitApp();
 void WCO_GUI_Start_PDFViewer();
 void WCO_GUI_Close_PDFViewer();
-int WCO_GUI_Status_PDFViewer();
 
 void *WCO_GUI_PDFViewer();
+void exitApp();
 
-int WCO_GUI_Status_AllOperant_CheckButtons();
-int WCO_GUI_Status_SpecificOperand_CheckButton(int i);
-int WCO_GUI_Status_AdditionCheck_CheckButton();
-int WCO_GUI_Status_Subtraction_CheckButton();
-int WCO_GUI_Status_Multiplication_CheckButton();
-int WCO_GUI_Status_DivisionButton_CheckButton();
-int WCO_GUI_Status_Addition_SpinButton(int i);
-int WCO_GUI_Status_Subtraction_SpinButton(int i);
-int WCO_GUI_Status_Multiplication_SpinButton(int i);
-int WCO_GUI_Status_Division_SpinButton(int i);
-int WCO_GUI_Status_SpecificOperand_SpinButton(int operand, int i);
-int WCO_GUI_Status_Addition_DecimalPlaces();
-int WCO_GUI_Status_Subtraction_DecimalPlaces();
-int WCO_GUI_Status_Multiplication_DecimalPlaces();
-int WCO_GUI_Status_Division_DecimalPlaces();
-int WCO_GUI_Status_SpecificOperand_DecimalPlaces(int i);
+
+int WCO_GUI_Status_Get_AllOperand_CheckButtons();
+int WCO_GUI_Status_Get_SpecificOperand_CheckButton(int i);
+int WCO_GUI_Status_Get_Addition_CheckButton();
+int WCO_GUI_Status_Get_Subtraction_CheckButton();
+int WCO_GUI_Status_Get_Multiplication_CheckButton();
+int WCO_GUI_Status_Get_Division_CheckButton();
+int WCO_GUI_Status_Get_AdditionDigitRange_SpinButton(int i);
+int WCO_GUI_Status_Get_SubtractionDigitRange_SpinButton(int i);
+int WCO_GUI_Status_Get_MultiplicationDigitRange_SpinButton(int i);
+int WCO_GUI_Status_Get_DivisionDigitRange_SpinButton(int i);
+int WCO_GUI_Status_Get_SpecificOperandDigitRange_spinButton(int operand, int i);
+int WCO_GUI_Status_Get_AdditionDecimalPlaces_SpinButton();
+int WCO_GUI_Status_Get_SubtractionDecimalPlaces_SpinButton();
+int WCO_GUI_Status_Get_MultiplicationDecimalPlaces_SpinButton();
+int WCO_GUI_Status_Get_DevisionDecimalPlaces_SpinButton();
+int WCO_GUI_Status_Get_SpecificOperandDecimalPlaces_SpinButton(int operand);
+int WCO_GUI_Status_Get_PDFViewer();
+int WCO_GUI_Status_Get_ShowPNG();
+
+void WCO_GUI_Status_Set_ShowPNG();
+
+void WCO_GUI_Status_Reset_ShowPNG();
+
 char *WCO_GUI_Status_FileName();
 int WCO_GUI_Status_SaveButton4();
 char *WCO_GUI_Status_FolderName();
@@ -100,5 +107,7 @@ void WCO_GUI_Update_Set_SavePDF();
 void WCO_GUI_Update_Reset_SavePDF();
 void WCO_GUI_Update_Set_SaveFolder();
 void WCO_GUI_Update_Reset_SaveFolder();
+
+void WCO_GUI_Show_Worksheet(int page);
 
 #endif
