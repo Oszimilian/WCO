@@ -315,4 +315,19 @@ int WCO_GUI_Status_Baseboard_CheckButton5()
     return gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(MyGUI.MyCheckButton5));   
 }
 
+int WCO_GUI_Status_Get_ShowPNG()
+{
+    return MyGUI.showPNG;
+}
+
+void WCO_GUI_Status_Set_ShowPNG()
+{
+    MyGUI.showPNG = _TRUE;
+}
+
+void WCO_GUI_Status_Reset_ShowPNG()
+{
+    MyGUI.showPNG = _FALSE;
+}
+
 

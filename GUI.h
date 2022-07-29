@@ -10,6 +10,9 @@ struct WCO_GUI_t{
     GtkBuilder *MyBuilder;
     GtkWidget *MyWindow1;
     GtkWidget *MyFixed1;
+    //GtkWidget *MyFixed2;
+    //GtkWidget *MyFixed3;
+    GtkWidget *MyWorksheetFixed[2];
     GtkLabel  *MyLabel1;
     GtkLabel  *MyLabel2;
     GtkLabel  *MyLabel3;
@@ -42,6 +45,9 @@ struct WCO_GUI_t{
     GtkWidget *MySpinButton13;
     GtkWidget *MyFileChosserButton1;
     GtkWidget *MyEntry1;
+    //GtkWidget *MyImage1;
+    //GtkWidget *MyImage2;
+    GtkWidget *MyWorksheetImage[2];
 
     int showPDF;
     int savePDF;
@@ -78,6 +84,11 @@ int WCO_GUI_Status_Get_MultiplicationDecimalPlaces_SpinButton();
 int WCO_GUI_Status_Get_DevisionDecimalPlaces_SpinButton();
 int WCO_GUI_Status_Get_SpecificOperandDecimalPlaces_SpinButton(int operand);
 int WCO_GUI_Status_Get_PDFViewer();
+int WCO_GUI_Status_Get_ShowPNG();
+
+void WCO_GUI_Status_Set_ShowPNG();
+
+void WCO_GUI_Status_Reset_ShowPNG();
 
 char *WCO_GUI_Status_FileName();
 int WCO_GUI_Status_SaveButton4();
@@ -96,5 +107,7 @@ void WCO_GUI_Update_Set_SavePDF();
 void WCO_GUI_Update_Reset_SavePDF();
 void WCO_GUI_Update_Set_SaveFolder();
 void WCO_GUI_Update_Reset_SaveFolder();
+
+void WCO_GUI_Show_Worksheet(int page);
 
 #endif

@@ -33,8 +33,11 @@ void WCO_PNG_Set_ConvertToPNG(float resize)
         sprintf(MyPNG.convertCommand, "convert -density 300 %s -resize %dx%d -quality 100 -colorspace RGB %s", MyPDF.fileName[i], x, y, MyPNG.fileName[i]);
         printf("%s\n", MyPNG.convertCommand);
         system(MyPNG.convertCommand);
+        WCO_GUI_Show_Worksheet(i);
     }
+
 }
+
 
 char *WCO_PNG_Get_FileName(int page)
 {
