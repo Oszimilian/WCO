@@ -94,8 +94,13 @@
     </child>
     <child>
       <object class="GtkFixed" id="MyFixed1">
+<<<<<<< HEAD
         <property name="width_request">1900</property>
         <property name="height_request">1000</property>
+=======
+        <property name="width_request">1400</property>
+        <property name="height_request">800</property>
+>>>>>>> c4cd8ef565ca339b81e473af3b872507b1c42194
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <child>
