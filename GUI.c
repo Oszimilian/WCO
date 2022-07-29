@@ -14,6 +14,7 @@
 #include "GUI.h"
 #include "PDF.h"
 #include "Worksheet.h"
+#include "PNG.h"
 
 
 /*
@@ -30,6 +31,8 @@ void WCO_GUI_Start()
     //Set up the gtk widgets with the gtk builder
     MyGUI.MyWindow1 = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MyWindow"));
     MyGUI.MyFixed1 = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MyFixed1"));
+    MyGUI.MyWorksheetFixed[0] = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MyFixed2"));
+    MyGUI.MyWorksheetFixed[1] = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MyFixed3"));
     MyGUI.MyLabel1 = GTK_LABEL(gtk_builder_get_object(MyGUI.MyBuilder, "MyLabel1"));
     MyGUI.MyLabel2 = GTK_LABEL(gtk_builder_get_object(MyGUI.MyBuilder, "MyLabel2"));
     MyGUI.MyLabel3 = GTK_LABEL(gtk_builder_get_object(MyGUI.MyBuilder, "MyLabel3"));
@@ -62,6 +65,9 @@ void WCO_GUI_Start()
     MyGUI.MySpinButton13 = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MySpinButton13"));
     MyGUI.MyFileChosserButton1 = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MyFileChosserButton1"));
     MyGUI.MyEntry1 = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MyEntry1"));
+
+
+    
     
     //connecting the signalls which were initilized by glade with the programm
     gtk_builder_connect_signals(MyGUI.MyBuilder, NULL);
@@ -205,6 +211,26 @@ void *WCO_GUI_PDFViewer()
             pthread_join(thread_id4, NULL);
         }
     }
+}
+
+/**********************************************************************************************************************/
+
+void WCO_GUI_Show_Worksheet(int page)
+{
+    if (WCO_GUI_Status_Get_ShowPNG())
+    {
+        gtk_container_remove(GTK_CONTAINER(MyGUI.MyWorksheetFixed[page]), MyGUI.MyWorksheetImage[page]);
+    }
+
+    MyGUI.MyWorksheetImage[page] = gtk_image_new_from_file(WCO_PNG_Get_FileName(page));
+
+    gtk_container_add(GTK_CONTAINER(MyGUI.MyWorksheetFixed[page]), MyGUI.MyWorksheetImage[page]);
+
+    gtk_widget_show(MyGUI.MyWorksheetImage[page]);
+
+    gtk_fixed_move(GTK_FIXED(MyGUI.MyWorksheetFixed[page]), MyGUI.MyWorksheetImage[page], 1, 1);
+
+    WCO_GUI_Status_Set_ShowPNG();
 }
 
 
