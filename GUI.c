@@ -87,6 +87,7 @@ void WCO_GUI_Init()
     MyGUI.showPDF = _OFF;
     MyGUI.savePDF = _OFF;
     MyGUI.saveFolder = _OFF;
+    MyGUI.showPNG = _OFF;
 
     //the label pointer is now set to the adress of the heap 
     MyGUI.label = malloc(3 * sizeof(char));

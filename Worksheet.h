@@ -30,6 +30,7 @@ int WCO_Worksheet_Status_Threashold();
 float WCO_Worksheet_Status_Calculation(int operand, float *a, float *b);
 char* WCO_Worksheet_Status_Task(int number, int page);
 char* WCO_Worksheet_Status_GetDate(char *str);
+char *WCO_Worksheet_Status_Get_ConvertCommand();
 
 int WCO_Worksheet_Create_Start();
 int WCO_Worksheet_Creat_Baseboard(int page);

@@ -69,3 +69,4 @@ char* WCO_Worksheet_Status_GetDate(char *str)
     sprintf(tmp, "%s %d.%d.%d", str, tm_instance->tm_mday, tm_instance->tm_mon + 1, tm_instance->tm_year + 1900);
     return tmp;
 }
+

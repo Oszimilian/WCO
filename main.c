@@ -14,6 +14,7 @@
 #include "GUI.h"
 #include "PDF.h"
 #include "Worksheet.h"
+#include "PNG.h"
 
 
 
@@ -26,6 +27,9 @@ int main(void)
 {
     //calls the init function to preset the baseboardflag and the threashold value
     WCO_Worksheet_Init();
+
+    //calls the init function to set the folder and file name for the convertet png
+    WCO_PNG_Init();
     
     //initialises a thread instance and creats a thread which calls the function WCO_GUI_PDFViewer 
     pthread_t thread_id1;

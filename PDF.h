@@ -5,9 +5,12 @@ struct WCO_PDF_t{
     HPDF_Doc pdf;
     HPDF_Page page[20];
 
+    int pageSize[2];
+
     char systemOpenFile[2][100];
     char fileName[2][100];
     char folderName[100];
+
 }MyPDF;
 
 //struct WCO_PDF_t MyPDF;

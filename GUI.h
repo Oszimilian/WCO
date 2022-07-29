@@ -46,6 +46,7 @@ struct WCO_GUI_t{
     int showPDF;
     int savePDF;
     int saveFolder;
+    int showPNG;
 
     char **label;
 }MyGUI;

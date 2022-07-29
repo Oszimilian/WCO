@@ -53,6 +53,9 @@ void WCO_PDF_SetupPage(int page)
     MyPDF.page[page] = HPDF_AddPage(MyPDF.pdf);
     HPDF_Font font = HPDF_GetFont(MyPDF.pdf, "Helvetica", NULL);
     HPDF_Page_SetFontAndSize(MyPDF.page[page], font, 14);
+
+    MyPDF.pageSize[0] = 2479;
+    MyPDF.pageSize[1] = 3504; 
 }
 
 /*

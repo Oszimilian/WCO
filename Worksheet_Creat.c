@@ -14,6 +14,7 @@
 #include "GUI.h"
 #include "PDF.h"
 #include "Worksheet.h"
+#include "PNG.h"
 
 /*
 *   function initializes the variables in the worksheet struct
@@ -90,6 +91,9 @@ int WCO_Worksheet_Create_Start()
 
     //ends the hole progress with generating a pdf
     HPDF_Free(MyPDF.pdf);
+
+    //converts the PDF into an png
+    WCO_PNG_Set_ConvertToPNG(0.2);
 
     //goto flag 
     failed:
