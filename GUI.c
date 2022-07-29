@@ -214,23 +214,31 @@ void *WCO_GUI_PDFViewer()
 }
 
 /**********************************************************************************************************************/
-
+/*
+*   function is responsible to display the created pdf in the gtk window as an png
+*/
 void WCO_GUI_Show_Worksheet(int page)
 {
+    //this case is true if this generated pdf was the first one since starting the programm
+    //this is necesserly because at the beginning the gtk-image is not initiliced
     if (WCO_GUI_Status_Get_ShowPNG())
     {
+        //this removes the container in which the image is conatained
+        //if this is not done the displayed pages lie on top of each other
         gtk_container_remove(GTK_CONTAINER(MyGUI.MyWorksheetFixed[page]), MyGUI.MyWorksheetImage[page]);
     }
 
+    //Initializing a new gtk image from a given file
     MyGUI.MyWorksheetImage[page] = gtk_image_new_from_file(WCO_PNG_Get_FileName(page));
 
+    //add the image to a new container
     gtk_container_add(GTK_CONTAINER(MyGUI.MyWorksheetFixed[page]), MyGUI.MyWorksheetImage[page]);
 
+    //display the image
     gtk_widget_show(MyGUI.MyWorksheetImage[page]);
 
-    gtk_fixed_move(GTK_FIXED(MyGUI.MyWorksheetFixed[page]), MyGUI.MyWorksheetImage[page], 1, 1);
-
-    WCO_GUI_Status_Set_ShowPNG();
+    //move the image to the left upor corner of the container
+    gtk_fixed_move(GTK_FIXED(MyGUI.MyWorksheetFixed[page]), MyGUI.MyWorksheetImage[page], 0, 0);
 }
 
 

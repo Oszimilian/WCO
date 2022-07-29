@@ -603,8 +603,8 @@
         </child>
         <child>
           <object class="GtkStack" id="MyStack1">
-            <property name="width_request">600</property>
-            <property name="height_request">700</property>
+            <property name="width_request">570</property>
+            <property name="height_request">810</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="transition_type">slide-left-right</property>
@@ -625,14 +625,14 @@
               </object>
               <packing>
                 <property name="name">page1</property>
-                <property name="title" translatable="yes">Lösung</property>
+                <property name="title" translatable="yes">Lösungen</property>
                 <property name="position">1</property>
               </packing>
             </child>
           </object>
           <packing>
-            <property name="x">745</property>
-            <property name="y">63</property>
+            <property name="x">750</property>
+            <property name="y">70</property>
           </packing>
         </child>
         <child>
@@ -644,8 +644,8 @@
             <property name="stack">MyStack1</property>
           </object>
           <packing>
-            <property name="x">934</property>
-            <property name="y">27</property>
+            <property name="x">800</property>
+            <property name="y">30</property>
           </packing>
         </child>
       </object>

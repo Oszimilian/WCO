@@ -315,16 +315,25 @@ int WCO_GUI_Status_Baseboard_CheckButton5()
     return gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(MyGUI.MyCheckButton5));   
 }
 
+/*
+*   returns if the PNG is enabled to be displayed or not
+*/
 int WCO_GUI_Status_Get_ShowPNG()
 {
     return MyGUI.showPNG;
 }
 
+/*
+*   Set the ShowPNG Flag 
+*/
 void WCO_GUI_Status_Set_ShowPNG()
 {
     MyGUI.showPNG = _TRUE;
 }
 
+/*
+*   Reset the ShowPNG Flag
+*/
 void WCO_GUI_Status_Reset_ShowPNG()
 {
     MyGUI.showPNG = _FALSE;

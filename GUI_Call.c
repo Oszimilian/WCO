@@ -28,12 +28,9 @@ void MyButton1_Clicked(GtkButton *b)
 
     //starts creating the worksheet and if a error appears a message will be printet to the terminal
     if(!WCO_Worksheet_Create_Start()) printf("Es konnte keine neue PDF erzeugt werden! \n");
-    else printf("Success \n");
 
-    char tmp[300];
-    sprintf(tmp, "convert -density 300 %s -resize 248x350 -quality 90 -colorspace RGB /home/maximilian/NewGit/WCO/Bild/sample1.png", MyPDF.fileName[_Tasks]);
-    printf("%s", tmp);
-    system(tmp);
+    //print success if evreything was carried out successfully
+    else printf("Success \n");
 }
 
 /*

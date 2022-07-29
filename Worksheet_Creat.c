@@ -93,7 +93,7 @@ int WCO_Worksheet_Create_Start()
     HPDF_Free(MyPDF.pdf);
 
     //converts the PDF into an png
-    WCO_PNG_Set_ConvertToPNG(0.3);
+    WCO_PNG_Set_ConvertToPNG(0.23);
 
     //goto flag 
     failed:
@@ -141,7 +141,7 @@ int WCO_Worksheet_Creat_TaskSheet()
     {
         pageSize = HPDF_Page_GetHeight(MyPDF.page[_Tasks]) - WCO_Worksheet_Status_Threashold();
     }else{
-        pageSize = HPDF_Page_GetHeight(MyPDF.page[_Tasks]);
+        pageSize = HPDF_Page_GetHeight(MyPDF.page[_Tasks]) - 50;
     }
 
     //to generate random numbers the generator uses the time functions
@@ -228,28 +228,35 @@ int WCO_Worksheet_Create_SolutionSheed()
     {
         pageSize = HPDF_Page_GetHeight(MyPDF.page[_Solutions]) - WCO_Worksheet_Status_Threashold();
     }else{
-        pageSize = HPDF_Page_GetHeight(MyPDF.page[_Solutions]);
+        pageSize = HPDF_Page_GetHeight(MyPDF.page[_Solutions]) - 50;
     }
 
     //start a loop which counts untill 3, which stands for the 3 "Spalten"
     for(int i = 0; i <= 2; i++)
     {
+        //initialize the pageSizeCounter with the value of of the pageSize which represent the PDF height
         pageSizeCounter = pageSize;
 
+        //This loop will be execute untill the pageSizeCounter is below 50
         while(pageSizeCounter >= 50)
         {
+            //inti the pointer with the adress of the solution
             char *task = WCO_Worksheet_Status_Task(taskCounter, _Solutions);
 
+            //printing the solution on the pdf
             WCO_PDF_WriteText(startx[i], pageSizeCounter, task, _Solutions);
 
+            //Set the next horicontal printingpoint 50 points below this point
             pageSizeCounter -= 50;
 
+            //increment the taskCounter
             taskCounter ++;
 
         }
 
     }
 
+    //errorhandling
     failed:
 
     return ret;
@@ -280,28 +287,38 @@ int WCO_Worksheet_Create_RandomTask(int counter)
     */
     while(1)
     {
+        //generating a operand for the task by random generating a number between zero and three wicht stand for -> + - * /
         operand = rand() % 4;
 
+        //this case is thrue if all operand buttons are disabled
         if (!WCO_GUI_Status_Get_AllOperand_CheckButtons())
         {
+            //printing warning msg
             gtk_label_set_text(MyGUI.MyLabel1, "Sie müssen auf jeden Fall einen Operator auswählen!");
             
+            //set return value to error
             ret = _error;
 
+            //skip the hole function
             goto fail;
         }
     
+        //if the specific button for the generated opperand enabled this loop is breaked
+        //if not the a new operand is generated random
         if (WCO_GUI_Status_Get_SpecificOperand_CheckButton(operand)) break;
     }
 
     /*
-    *   This part
+    *   This part is responsible for the max leangh of the generated task
     */
+   //The spin-value of the buttons is stored in the array
     spinButtonValue[0] = WCO_GUI_Status_Get_SpecificOperandDigitRange_spinButton(operand, 0);
     spinButtonValue[1] = WCO_GUI_Status_Get_SpecificOperandDigitRange_spinButton(operand, 1);
 
+    //this will be looped two times 
     for (int i = 0; i <= 1; i++)
     {
+        //depanding on the spinvalue the termLeangh gets a value
         switch (spinButtonValue[i])
         {
         case 1: termLeangh[i]  = 10; break;
@@ -344,8 +361,13 @@ int WCO_Worksheet_Create_RandomTask(int counter)
         default: break;
     }
 
+    //the function gets the adress of the two numbers and the opperand a calculates the solution and stores it in solution
     solution = WCO_Worksheet_Status_Calculation(operand, &value[0], &value[1]);
 
+    /*
+    *   writing the value into the output string
+    *   this is seperated into the amount of decimal places to display it more likely
+    */
     switch (decimalPlaces)
     {
         case 0:

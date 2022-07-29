@@ -1,6 +1,4 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
-make: *** No rule to make target 'all'.  Stop.
-
 # GNU Make 4.2.1
 # Built for x86_64-pc-linux-gnu
 # Copyright (C) 1988-2016 Free Software Foundation, Inc.
@@ -8,7 +6,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Fri Jul 29 21:36:45 2022
+# Make data base, printed on Fri Jul 29 22:02:34 2022
 
 # Variables
 
@@ -57,7 +55,7 @@ XDG_RUNTIME_DIR = /mnt/wslg/runtime-dir
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-VSCODE_IPC_HOOK_CLI = /mnt/wslg/runtime-dir/vscode-ipc-0fd7b558-f5ac-4ef8-b53e-4f3756d4903c.sock
+VSCODE_IPC_HOOK_CLI = /mnt/wslg/runtime-dir/vscode-ipc-73a4fd10-a651-4a46-8309-55790b65579a.sock
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
@@ -71,7 +69,7 @@ PWD = /home/maximilian/NewGit/WCO
 # default
 .LOADED := 
 # environment
-WSL_INTEROP = /run/WSL/83_interop
+WSL_INTEROP = /run/WSL/38_interop
 # environment
 PULSE_SERVER = /mnt/wslg/PulseServer
 # environment
@@ -165,9 +163,9 @@ WSL_DISTRO_NAME = Ubuntu_WorksheetEnv
 
 # Directories
 
-# . (device 2080, inode 110244): 24 files, no impossibilities.
+# . (device 2080, inode 110244): 25 files, no impossibilities.
 
-# 24 files, no impossibilities in 1 directories.
+# 25 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -278,6 +276,8 @@ clean:
 #  File has not been updated.
 #  recipe to execute (from 'makefile', line 41):
  
+make: *** No rule to make target 'all'.  Stop.
+
 	rm *.o 
 
 GUI_Call.o: GUI_Call.c
@@ -351,9 +351,9 @@ GUI_Update.o: GUI_Update.c
 # strcache buffers: 1 (0) / strings = 41 / storage = 392 B / avg = 9 B
 # current buf: size = 8162 B / used = 392 B / count = 41 / avg = 9 B
 
-# strcache performance: lookups = 77 / hit rate = 46%
+# strcache performance: lookups = 78 / hit rate = 47%
 # hash-table stats:
-# Load=41/8192=1%, Rehash=0, Collisions=1/77=1%
-# Finished Make data base on Fri Jul 29 21:36:45 2022
+# Load=41/8192=1%, Rehash=0, Collisions=1/78=1%
+# Finished Make data base on Fri Jul 29 22:02:34 2022
 
  
