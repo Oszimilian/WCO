@@ -15,6 +15,7 @@
 #include "PDF.h"
 #include "Worksheet.h"
 #include "PNG.h"
+#include <MagickWand/MagickWand.h>
 
 
 

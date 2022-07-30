@@ -15,6 +15,7 @@
 #include "PDF.h"
 #include "Worksheet.h"
 #include "PNG.h"
+#include <MagickWand/MagickWand.h>
 
 /*
 *   This function initalices some requirements to display the pdf
@@ -42,13 +43,31 @@ void WCO_PNG_Set_ConvertToPNG(float resize)
     for(int i = 0; i <= 1; i++)
     {
         //making the command to convert the pdf 
-        sprintf(MyPNG.convertCommand, "convert -density 300 %s -resize %dx%d -quality 100 -colorspace RGB %s", MyPDF.fileName[i], x, y, MyPNG.fileName[i]);
+        //sprintf(MyPNG.convertCommand, "convert -density 300 %s -resize %dx%d -quality 100 -colorspace RGB %s", MyPDF.fileName[i], x, y, MyPNG.fileName[i]);
         
         //printing the command for debuging
-        printf("%s\n", MyPNG.convertCommand);
+        //printf("%s\n", MyPNG.convertCommand);
 
         //executing the command in the command line
-        system(MyPNG.convertCommand);
+        //system(MyPNG.convertCommand);
+
+        MagickWand *newWand;
+
+        MagickWandGenesis();
+
+        newWand = NewMagickWand();
+
+        MagickReadImage(newWand, MyPDF.fileName[i] );
+
+        MagickResizeImage(newWand,x,y,LanczosFilter);
+
+        MagickSetImageCompressionQuality(newWand,100);
+
+        MagickWriteImage(newWand, MyPNG.fileName[i]);
+
+        if(newWand) DestroyMagickWand(newWand);
+
+        void MagickWandTerminus(void);
 
         //displaying the converted pdf in the gtk window
         WCO_GUI_Show_Worksheet(i);
