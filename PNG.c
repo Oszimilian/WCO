@@ -22,7 +22,7 @@
 void WCO_PNG_Init()
 {
     //store a fix path where the png is stored every time
-    sprintf(MyPNG.folderName,"/home/maximilian/NewGit/WCO/Bild/");
+    sprintf(MyPNG.folderName,"/home/maximilian/Git/WCO/Bild/");
 
     //store the two images to the fix folderpath 
     sprintf(MyPNG.fileName[0], "%sTask.png", MyPNG.folderName);
