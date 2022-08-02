@@ -76,6 +76,7 @@ int WCO_GUI_Status_Get_Subtraction_CheckButton()
 {
     //the function returns the state of the button and requires a casted form of the check-button
     return gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(MyGUI.MyCheckButton2));   
+    
 }
 
 /*
@@ -266,14 +267,7 @@ int WCO_GUI_Status_Get_DevisionDecimalPlaces_SpinButton()
 */
 char *WCO_GUI_Status_FileName()
 {
-    //generating space for a 100 chars
-    char *tmp = malloc(100 * sizeof(char));
-
-    //stores the entry text from the gtk widget in the tmp
-    sprintf(tmp, "%s", gtk_entry_get_text(GTK_ENTRY(MyGUI.MyEntry1)));
-
-    //return the pointer 
-    return tmp;
+    return gtk_entry_get_text(GTK_ENTRY(MyGUI.MyEntry1));
 }
 
 /*
@@ -289,14 +283,7 @@ int WCO_GUI_Status_SaveButton4()
 */
 char *WCO_GUI_Status_FolderName()
 {
-    //generates space for a array of 100 chars
-    char *tmp = malloc(100 * sizeof(char));
-
-    //stores the string returned by the gtk function which prints the foldertree into tmp 
-    sprintf(tmp, "%s", gtk_file_chooser_get_current_folder(GTK_FILE_CHOOSER(MyGUI.MyFileChosserButton1)));
-
-    //returns the pointer
-    return tmp;
+    return gtk_file_chooser_get_current_folder(GTK_FILE_CHOOSER(MyGUI.MyFileChosserButton1));
 }
 
 /*

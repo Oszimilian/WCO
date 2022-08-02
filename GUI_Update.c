@@ -112,6 +112,7 @@ void WCO_GUI_Update_Subtraction()
         gtk_spin_button_set_range(GTK_SPIN_BUTTON(MyGUI.MySpinButton11), minRange, (double) WCO_GUI_Status_Get_SubtractionDigitRange_SpinButton(0));
     }else{
         gtk_spin_button_set_range(GTK_SPIN_BUTTON(MyGUI.MySpinButton11), minRange, (double) WCO_GUI_Status_Get_SubtractionDigitRange_SpinButton(1));
+        
     }
 
     //Update the permissions under the "Creatbutton" is allowed to be displayed

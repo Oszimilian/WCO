@@ -182,7 +182,7 @@ void MySpinButton6_Changed(GtkSpinButton *s)
 void MySpinButton7_Changed(GtkSpinButton *s)
 {
     //updates all the conditions arround the divison buttons
-    void WCO_GUI_Update_Division();
+    WCO_GUI_Update_Division();
 }
 
 /**********************************************************************************************************************/
