@@ -442,6 +442,7 @@ int WCO_Worksheet_Creat_Baseboard(int page)
         char *tmp = WCO_Worksheet_Status_GetDate("Datum: ");
         WCO_PDF_WriteText(startx3, 775, tmp, page);
         WCO_PDF_DrawLine(50, 750, HPDF_Page_GetWidth(MyPDF.page[page]) - 50, 750, page);
+        free(tmp);
     }
 
     return ret;

@@ -68,9 +68,7 @@ float WCO_Worksheet_Status_Calculation(int operand, float *a, float *b)
 */
 char* WCO_Worksheet_Status_Task(int number, int page)
 {
-    char *tmp;
-    tmp = MyWorksheet.task[page][number];
-    return tmp;
+    return MyWorksheet.task[page][number];
 }
 
 /*
@@ -96,6 +94,9 @@ char* WCO_Worksheet_Status_GetDate(char *str)
 
     //store the date in a readable
     sprintf(tmp, "%s %d.%d.%d", str, tm_instance->tm_mday, tm_instance->tm_mon + 1, tm_instance->tm_year + 1900);
+
+    //make the storage smaller
+    tmp = (char*) realloc(tmp, strlen(tmp));
 
     //return the adress of this string
     return tmp;

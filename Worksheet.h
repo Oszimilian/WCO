@@ -14,13 +14,6 @@ struct WCO_Worksheet_t{
     char task[2][50][50];
 }MyWorksheet;
 
-/*
-struct WCO_Worksheet_t MyWorksheet = {
-    .printBaseboard = _enable,
-    .baseboardThreashold = 150
-};
-*/
-
 
 
 void WCO_Worksheet_Init();
