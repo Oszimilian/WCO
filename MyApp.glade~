@@ -113,70 +113,6 @@
           </packing>
         </child>
         <child>
-          <object class="GtkCheckButton" id="MyCheckButton1">
-            <property name="label" translatable="yes">+</property>
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">False</property>
-            <property name="active">True</property>
-            <property name="draw_indicator">True</property>
-            <signal name="toggled" handler="MyCheckButton1_Toggled" swapped="no"/>
-          </object>
-          <packing>
-            <property name="x">20</property>
-            <property name="y">125</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkCheckButton" id="MyCheckButton2">
-            <property name="label" translatable="yes"> -</property>
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">False</property>
-            <property name="active">True</property>
-            <property name="draw_indicator">True</property>
-            <signal name="toggled" handler="MyCheckButton2_Toggled" swapped="no"/>
-          </object>
-          <packing>
-            <property name="x">20</property>
-            <property name="y">185</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkCheckButton" id="MyCheckButton3">
-            <property name="label" translatable="yes"> *</property>
-            <property name="width_request">40</property>
-            <property name="height_request">22</property>
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">False</property>
-            <property name="active">True</property>
-            <property name="draw_indicator">True</property>
-            <signal name="toggled" handler="MyCheckButton3_Toggled" swapped="no"/>
-          </object>
-          <packing>
-            <property name="x">20</property>
-            <property name="y">245</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkCheckButton" id="MyCheckButton4">
-            <property name="label" translatable="yes"> /</property>
-            <property name="width_request">38</property>
-            <property name="height_request">22</property>
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">False</property>
-            <property name="active">True</property>
-            <property name="draw_indicator">True</property>
-            <signal name="toggled" handler="MyCheckButton4_Toggled" swapped="no"/>
-          </object>
-          <packing>
-            <property name="x">20</property>
-            <property name="y">305</property>
-          </packing>
-        </child>
-        <child>
           <object class="GtkButton" id="MyButton2">
             <property name="label" translatable="yes">Close PDF-Viewer</property>
             <property name="width_request">200</property>
@@ -304,18 +240,6 @@
           </packing>
         </child>
         <child>
-          <object class="GtkSpinButton" id="MySpinButton2">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="adjustment">adjustment2</property>
-            <signal name="value-changed" handler="MySpinButton2_Changed" swapped="no"/>
-          </object>
-          <packing>
-            <property name="x">100</property>
-            <property name="y">120</property>
-          </packing>
-        </child>
-        <child>
           <object class="GtkSpinButton" id="MySpinButton3">
             <property name="width_request">118</property>
             <property name="height_request">34</property>
@@ -384,18 +308,6 @@
           </packing>
         </child>
         <child>
-          <object class="GtkSpinButton" id="MySpinButton8">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="adjustment">adjustment8</property>
-            <signal name="value-changed" handler="MySpinButton8_Changed" swapped="no"/>
-          </object>
-          <packing>
-            <property name="x">250</property>
-            <property name="y">120</property>
-          </packing>
-        </child>
-        <child>
           <object class="GtkSpinButton" id="MySpinButton9">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
@@ -405,35 +317,6 @@
           <packing>
             <property name="x">250</property>
             <property name="y">180</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkSpinButton" id="MySpinButton10">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="adjustment">adjustment10</property>
-            <signal name="value-changed" handler="MySpinButton10_Changed" swapped="no"/>
-          </object>
-          <packing>
-            <property name="x">450</property>
-            <property name="y">120</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkLabel" id="DesignLabel1">
-            <property name="width_request">118</property>
-            <property name="height_request">22</property>
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="label" translatable="yes">Zahlenraum</property>
-            <attributes>
-              <attribute name="font-desc" value="Sans Bold 10"/>
-              <attribute name="scale" value="1.3"/>
-            </attributes>
-          </object>
-          <packing>
-            <property name="x">165</property>
-            <property name="y">60</property>
           </packing>
         </child>
         <child>
@@ -625,7 +508,7 @@
               </object>
               <packing>
                 <property name="name">page1</property>
-                <property name="title" translatable="yes">Lösung</property>
+                <property name="title" translatable="yes">Lösungen</property>
                 <property name="position">1</property>
               </packing>
             </child>
@@ -637,7 +520,7 @@
         </child>
         <child>
           <object class="GtkStackSwitcher" id="MySwitcher">
-            <property name="width_request">243</property>
+            <property name="width_request">364</property>
             <property name="height_request">34</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
@@ -645,6 +528,158 @@
           </object>
           <packing>
             <property name="x">800</property>
+            <property name="y">30</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkStack" id="MyStack2">
+            <property name="width_request">634</property>
+            <property name="height_request">384</property>
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <child>
+              <object class="GtkFixed">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <child>
+                  <object class="GtkCheckButton" id="MyCheckButton1">
+                    <property name="label" translatable="yes">+</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="receives_default">False</property>
+                    <property name="active">True</property>
+                    <property name="draw_indicator">True</property>
+                    <signal name="toggled" handler="MyCheckButton1_Toggled" swapped="no"/>
+                  </object>
+                  <packing>
+                    <property name="y">60</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkCheckButton" id="MyCheckButton2">
+                    <property name="label" translatable="yes"> -</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="receives_default">False</property>
+                    <property name="active">True</property>
+                    <property name="draw_indicator">True</property>
+                    <signal name="toggled" handler="MyCheckButton2_Toggled" swapped="no"/>
+                  </object>
+                  <packing>
+                    <property name="y">120</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkCheckButton" id="MyCheckButton3">
+                    <property name="label" translatable="yes"> *</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="receives_default">False</property>
+                    <property name="active">True</property>
+                    <property name="draw_indicator">True</property>
+                    <signal name="toggled" handler="MyCheckButton3_Toggled" swapped="no"/>
+                  </object>
+                  <packing>
+                    <property name="y">180</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkCheckButton" id="MyCheckButton4">
+                    <property name="label" translatable="yes"> /</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="receives_default">False</property>
+                    <property name="active">True</property>
+                    <property name="draw_indicator">True</property>
+                    <signal name="toggled" handler="MyCheckButton4_Toggled" swapped="no"/>
+                  </object>
+                  <packing>
+                    <property name="y">240</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="DesignLabel1">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="label" translatable="yes">Zahlenraum</property>
+                    <attributes>
+                      <attribute name="font-desc" value="Sans Bold 10"/>
+                      <attribute name="scale" value="1.3"/>
+                    </attributes>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkSpinButton" id="MySpinButton2">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="text" translatable="yes">1</property>
+                    <property name="adjustment">adjustment2</property>
+                    <property name="value">1.0000000002235174</property>
+                    <signal name="value-changed" handler="MySpinButton2_Changed" swapped="no"/>
+                  </object>
+                  <packing>
+                    <property name="x">100</property>
+                    <property name="y">55</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkSpinButton" id="MySpinButton8">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="text" translatable="yes">1</property>
+                    <property name="adjustment">adjustment8</property>
+                    <property name="value">1</property>
+                    <signal name="value-changed" handler="MySpinButton8_Changed" swapped="no"/>
+                  </object>
+                  <packing>
+                    <property name="x">250</property>
+                    <property name="y">55</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkSpinButton" id="MySpinButton10">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="text" translatable="yes">0</property>
+                    <property name="adjustment">adjustment10</property>
+                    <signal name="value-changed" handler="MySpinButton10_Changed" swapped="no"/>
+                  </object>
+                  <packing>
+                    <property name="x">450</property>
+                    <property name="y">55</property>
+                  </packing>
+                </child>
+              </object>
+              <packing>
+                <property name="name">page0</property>
+                <property name="title" translatable="yes">page0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkFixed">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+              </object>
+              <packing>
+                <property name="name">page1</property>
+                <property name="title" translatable="yes">page1</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="x">1388</property>
+            <property name="y">115</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkStackSwitcher" id="MySwitche">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="stack">MyStack2</property>
+          </object>
+          <packing>
+            <property name="x">1500</property>
             <property name="y">30</property>
           </packing>
         </child>
