@@ -90,7 +90,7 @@ void WCO_GUI_Status_Set_ShowPNG();
 
 void WCO_GUI_Status_Reset_ShowPNG();
 
-char *WCO_GUI_Status_FileName();
+const char *WCO_GUI_Status_FileName();
 int WCO_GUI_Status_SaveButton4();
 char *WCO_GUI_Status_FolderName();
 int WCO_GUI_Status_FolderButton();

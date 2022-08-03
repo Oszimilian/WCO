@@ -69,7 +69,7 @@ void WCO_PDF_SetFoldername(char *folderName)
 /*
 *   Set the filename for task and solution pdf global
 */
-void WCO_PDF_SetFilename(char *fileName, int page)
+void WCO_PDF_SetFilename(const char *fileName, int page)
 {
     if (page == 0)
     {

@@ -265,7 +265,7 @@ int WCO_GUI_Status_Get_DevisionDecimalPlaces_SpinButton()
 /*
 *   function return a pointer to a string where the filename is stored
 */
-char *WCO_GUI_Status_FileName()
+const char *WCO_GUI_Status_FileName()
 {
     return gtk_entry_get_text(GTK_ENTRY(MyGUI.MyEntry1));
 }
