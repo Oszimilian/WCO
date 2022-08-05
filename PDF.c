@@ -109,7 +109,7 @@ void WCO_PDF_SavePDF(int page)
 void WCO_PDF_DrawSolutionLine(char *text, int x1, int y1, int line_Lengh, int page)
 {
     int task_lengh = strlen(text) + 1;
-    int pattern_lengh = 6;
+    const int pattern_lengh = 6;
     int x2 = x1;
     int y2 = y1;
 
@@ -130,6 +130,10 @@ void WCO_PDF_DrawLine(int x1, int y1, int x2, int y2, int page)
     HPDF_Page_LineTo(MyPDF.page[page], x2, y2);
     HPDF_Page_Stroke(MyPDF.page[page]);
 }
+
+
+
+
 
 
 

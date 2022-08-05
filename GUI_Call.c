@@ -27,7 +27,7 @@ void MyButton1_Clicked(GtkButton *b)
     if (WCO_GUI_Status_Get_PDFViewer()) WCO_GUI_Start_PDFViewer();
 
     //starts creating the worksheet and if a error appears a message will be printet to the terminal
-    if(!WCO_Worksheet_Create_Start()) printf("Es konnte keine neue PDF erzeugt werden! \n");
+    if(!WCO_Worksheet_Create_Start(_Tasks)) printf("Es konnte keine neue PDF erzeugt werden! \n");
 
     //print success if evreything was carried out successfully
     else printf("Success \n");
@@ -253,4 +253,11 @@ void MyButton4_Clicked(GtkButton *b)
 {
     //sets the savePDFFlag 
     WCO_GUI_Update_Set_SavePDF();
+}
+
+/**********************************************************************************************************************/
+
+void MyButton5_Clicked(GtkButton *b)
+{
+    WCO_Worksheet_Creat_Fraction_Start();
 }

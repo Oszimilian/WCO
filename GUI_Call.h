@@ -5,6 +5,7 @@ void exitApp();
 void MyButton1_Clicked(GtkButton *b);
 void MyButton2_Clicked(GtkButton *b);
 void MyButton4_Clicked(GtkButton *b);
+void MyButton5_Clicked(GtkButton *b);
 void MyCheckButton1_Toggled(GtkCheckButton *b);
 void MyCheckButton2_Toggled(GtkCheckButton *b);
 void MyCheckButton3_Toggled(GtkCheckButton *b);

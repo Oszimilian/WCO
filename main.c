@@ -17,7 +17,7 @@
 #include "PNG.h"
 
 
-//Test
+
 int main(void)
 {
     //calls the init function to preset the baseboardflag and the threashold value

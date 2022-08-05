@@ -1,6 +1,9 @@
 #ifndef PDF_H_INCLUDED
 #define PDF_H_INCLUDED
 
+#define _Zahler 0
+#define _Nenner 1
+
 struct WCO_PDF_t{
     HPDF_Doc pdf;
     HPDF_Page page[20];
@@ -12,6 +15,8 @@ struct WCO_PDF_t{
     char folderName[100];
 
 }MyPDF;
+
+
 
 //struct WCO_PDF_t MyPDF;
 
@@ -27,6 +32,8 @@ void WCO_PDF_WriteText(int x, int y, char *text, int page);
 void WCO_PDF_SavePDF(int page);
 void WCO_PDF_DrawSolutionLine(char *text, int x1, int y1, int line_Lengh, int page);
 void WCO_PDF_DrawLine(int x1, int y1, int x2, int y2, int page);
+
+
 
 
 #endif

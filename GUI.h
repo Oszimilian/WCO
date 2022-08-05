@@ -22,6 +22,7 @@ struct WCO_GUI_t{
     GtkWidget *MyButton2;
     GtkWidget *MyButton3;
     GtkWidget *MyButton4;
+    GtkWidget *MyButton5;
     GtkWidget *MyCheckButton1;
     GtkWidget *MyCheckButton2;
     GtkWidget *MyCheckButton3;
