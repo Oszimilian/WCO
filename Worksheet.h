@@ -20,10 +20,11 @@ struct WCO_Worksheet_t{
     char task[2][50][50];
 }MyWorksheet;
 
-typedef struct Fraction_s
+typedef struct 
 {
-    int frac[3][2];
+    int frac[50][3][2];
     int operand;
+    int negFlag[50];
 
 }MyFraction_t;
 
@@ -46,11 +47,13 @@ int WCO_Worksheet_Create_SolutionSheed();
 
 void WCO_Worksheet_Status_Config_Baseboard(int i);
 
-int WCO_Worksheet_Creat_Fraction_Start();
-void WCO_Worksheet_Creat_FractionSheed(int page);
-
-void WCO_PDF_DrawFractionTask(MyFraction_t *MyFrac, int *x, int *y, int page);
-
+int WCO_Worksheet_Fraction_Start();
+void WCO_Worksheet_Fraction_Default(MyFraction_t *Frac);
+MyFraction_t *WCO_Worksheet_Fraction_Init();
+void WCO_Worksheet_Fraction_Free(MyFraction_t *MyFraction);
+void WCO_Worksheet_Fraction_Creat(int page);
 int IntLen(int *i);
+void WCO_Worksheet_Fraction_Draw(MyFraction_t *MyFrac, int *x, int *y,int count, int page);
+
 
 #endif

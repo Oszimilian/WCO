@@ -25,30 +25,41 @@ void WCO_GUI_Start()
     //Init the gtk. It is posible to give the arguments from the main function into this init function
     gtk_init(NULL, NULL);
 
+    
     //Set up the gtk builder from the glade xml file
     MyGUI.MyBuilder = gtk_builder_new_from_file("MyApp.glade");
+    
 
     //Set up the gtk widgets with the gtk builder
     MyGUI.MyWindow1 = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MyWindow"));
+
     MyGUI.MyFixed1 = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MyFixed1"));
     MyGUI.MyWorksheetFixed[0] = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MyFixed2"));
     MyGUI.MyWorksheetFixed[1] = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MyFixed3"));
+
     MyGUI.MyLabel1 = GTK_LABEL(gtk_builder_get_object(MyGUI.MyBuilder, "MyLabel1"));
     MyGUI.MyLabel2 = GTK_LABEL(gtk_builder_get_object(MyGUI.MyBuilder, "MyLabel2"));
     MyGUI.MyLabel3 = GTK_LABEL(gtk_builder_get_object(MyGUI.MyBuilder, "MyLabel3"));
     MyGUI.MyLabel4 = GTK_LABEL(gtk_builder_get_object(MyGUI.MyBuilder, "MyLabel4"));
     MyGUI.MyLabel5 = GTK_LABEL(gtk_builder_get_object(MyGUI.MyBuilder, "MyLabel5"));
+
     MyGUI.MyButton1 = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MyButton1"));
     MyGUI.MyButton2 = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MyButton2"));
     MyGUI.MyButton3 = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MyButton3"));
     MyGUI.MyButton4 = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MyButton4"));
     MyGUI.MyButton5 = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MyButton5"));
+
     MyGUI.MyCheckButton1 = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MyCheckButton1"));
     MyGUI.MyCheckButton2 = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MyCheckButton2"));
     MyGUI.MyCheckButton3 = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MyCheckButton3"));
     MyGUI.MyCheckButton4 = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MyCheckButton4"));
     MyGUI.MyCheckButton5 = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MyCheckButton5"));
     MyGUI.MyCheckButton6 = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MyCheckButton6"));
+    MyGUI.MyCheckButton7 = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MyCheckButton7"));
+    MyGUI.MyCheckButton8 = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MyCheckButton8"));
+    MyGUI.MyCheckButton9 = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MyCheckButton9"));
+    MyGUI.MyCheckButton10 = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MyCheckButton10"));
+
     MyGUI.MyRadioButton1 = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MyRadioButton1"));
     MyGUI.MyRadioButton2 = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MyRadioButton2"));
     MyGUI.MySpinButton1 = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MySpinButton1"));
@@ -64,6 +75,11 @@ void WCO_GUI_Start()
     MyGUI.MySpinButton11 = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MySpinButton11"));
     MyGUI.MySpinButton12 = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MySpinButton12"));
     MyGUI.MySpinButton13 = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MySpinButton13"));
+    MyGUI.MySpinButton14 = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MySpinButton14"));
+    MyGUI.MySpinButton15 = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MySpinButton15"));
+    MyGUI.MySpinButton16 = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MySpinButton16"));
+    MyGUI.MySpinButton17 = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MySpinButton17"));
+    
     MyGUI.MyFileChosserButton1 = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MyFileChosserButton1"));
     MyGUI.MyEntry1 = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MyEntry1"));
 

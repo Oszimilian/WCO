@@ -259,5 +259,45 @@ void MyButton4_Clicked(GtkButton *b)
 
 void MyButton5_Clicked(GtkButton *b)
 {
-    WCO_Worksheet_Creat_Fraction_Start();
+    WCO_Worksheet_Fraction_Start();
+}
+
+void MySpinButton14_Changed(GtkSpinButton *b)
+{
+
+}
+
+void MySpinButton15_Changed(GtkSpinButton *b)
+{
+    
+}
+
+void MySpinButton16_Changed(GtkSpinButton *b)
+{
+    
+}
+
+void MySpinButton17_Changed(GtkSpinButton *b)
+{
+    
+}
+
+void MyCheckButton7_Changed(GtkCheckButton *b)
+{
+
+}
+
+void MyCheckButton8_Changed(GtkCheckButton *b)
+{
+    
+}
+
+void MyCheckButton9_Changed(GtkCheckButton *b)
+{
+    
+}
+
+void MyCheckButton10_Changed(GtkCheckButton *b)
+{
+    
 }

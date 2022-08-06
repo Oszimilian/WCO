@@ -797,7 +797,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkCheckButton" id="MyCheckButton10">
+                  <object class="GtkCheckButton" id="makmakmake">
                     <property name="label" translatable="yes">/</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
