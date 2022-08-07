@@ -760,6 +760,7 @@
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">False</property>
+                    <property name="active">True</property>
                     <property name="draw_indicator">True</property>
                     <signal name="toggled" handler="MyCheckButton7_Changed" swapped="no"/>
                   </object>
@@ -774,6 +775,7 @@
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">False</property>
+                    <property name="active">True</property>
                     <property name="draw_indicator">True</property>
                     <signal name="toggled" handler="MyCheckButton8_Changed" swapped="no"/>
                   </object>
@@ -788,6 +790,7 @@
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">False</property>
+                    <property name="active">True</property>
                     <property name="draw_indicator">True</property>
                     <signal name="toggled" handler="MyCheckButton9_Changed" swapped="no"/>
                   </object>
@@ -802,6 +805,7 @@
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">False</property>
+                    <property name="active">True</property>
                     <property name="draw_indicator">True</property>
                     <signal name="toggled" handler="MyCheckButton10_Changed" swapped="no"/>
                   </object>
