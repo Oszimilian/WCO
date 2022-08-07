@@ -8,11 +8,18 @@
 #define _Tasks 0
 #define _Solutions 1
 
+#define _Terms 0 
+#define _Fractions 1
+
+#define _X 0
+#define _Y 1
+
 struct WCO_Worksheet_t{
     int printBaseboard;
     int baseboardThreashold;
     char task[2][50][50];
 }MyWorksheet;
+
 
 
 
@@ -33,6 +40,33 @@ int WCO_Worksheet_Create_SolutionSheed();
 
 void WCO_Worksheet_Status_Config_Baseboard(int i);
 
+/*
+*
+*   STRUCT FOR GENERATING A FRACTION-SHEET
+*   
+*/
+typedef struct 
+{
+    int frac[50][3][2];
+    int operand[50];
+    int negFlag[50];
 
+}MyFraction_t;
+
+/*
+*
+*   FUNKTIONS FOR CREAT_FRACTION
+*
+*/
+void WCO_Worksheet_Fraction_Start();
+void WCO_Worksheet_Fraction_Default(MyFraction_t *Frac);
+MyFraction_t *WCO_Worksheet_Fraction_Init();
+void WCO_Worksheet_Fraction_Free(MyFraction_t *MyFraction);
+void WCO_Worksheet_Fraction_Random(MyFraction_t *MyFrac, int count);
+void WCO_Worksheet_Fraction_Simplify(MyFraction_t *MyFrac, int count);
+void WCO_Worksheet_Fraction_Calculate(MyFraction_t *MyFrac, int count);
+void WCO_Worksheet_Fraction_Creat(MyFraction_t *MyFraction, int page);
+int IntLen(int *i);
+void WCO_Worksheet_Fraction_Draw(MyFraction_t *MyFrac, int *x, int *y,int count, int page);
 
 #endif

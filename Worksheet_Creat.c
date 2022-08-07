@@ -28,7 +28,7 @@ void WCO_Worksheet_Init()
 /*
 *   This Funktion starts the process of generating a math-task-pdf from the beginning till the end
 */
-int WCO_Worksheet_Create_Start()
+int WCO_Worksheet_Create_Start(int sheedType)
 {
     //init a lokal return var which is presset to a success value
     int ret = _succeded;
@@ -54,6 +54,7 @@ int WCO_Worksheet_Create_Start()
     //Generating a new page zero in a array
     WCO_PDF_SetupPage(_Tasks);
 
+
     //Generating the task sheet
     if (!WCO_Worksheet_Creat_TaskSheet())
     {
@@ -63,6 +64,7 @@ int WCO_Worksheet_Create_Start()
         //end the programm jumps to the end of this function
         goto failed;
     }
+
 
 
     //Save pdf and show it witch okular viewer
@@ -76,15 +78,18 @@ int WCO_Worksheet_Create_Start()
 
 
 
-    //generating a new solution task sheed
+
+    //Generating the task sheet
     if (!WCO_Worksheet_Create_SolutionSheed())
     {
-        //if a error occurs the local return var is set to an error value
+        //if a error okurs this ret var is set to error
         ret = _error;
 
-        //and the programm will be skiped to the and of this function
+        //end the programm jumps to the end of this function
         goto failed;
     }
+   
+
 
     //Saves the Solution - PDF
     WCO_PDF_SavePDF(_Solutions);

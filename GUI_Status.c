@@ -326,4 +326,29 @@ void WCO_GUI_Status_Reset_ShowPNG()
     MyGUI.showPNG = _FALSE;
 }
 
+void *WCO_GUI_Get(int i)
+{
+    void *ret;
+    int intRes;
+    char charRes;
+    bool boolRes;
+
+    switch(i)
+    {
+        case frac_zahler_1: intRes = (int)gtk_spin_button_get_value(GTK_SPIN_BUTTON(MyGUI.MySpinButton14)); ret = &intRes; break;
+        case frac_nenner_1: intRes = (int)gtk_spin_button_get_value(GTK_SPIN_BUTTON(MyGUI.MySpinButton15)); ret = &intRes; break;
+        case frac_zahler_2: intRes = (int)gtk_spin_button_get_value(GTK_SPIN_BUTTON(MyGUI.MySpinButton16)); ret = &intRes; break;
+        case frac_nenner_2: intRes = (int)gtk_spin_button_get_value(GTK_SPIN_BUTTON(MyGUI.MySpinButton17)); ret = &intRes; break;
+        case frac_addition:       intRes = (int)gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(MyGUI.MyCheckButton7));  ret = &intRes; break;
+        case frac_subtraction:    intRes = (int)gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(MyGUI.MyCheckButton8));  ret = &intRes; break;
+        case frac_multiplication: intRes = (int)gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(MyGUI.MyCheckButton9));  ret = &intRes; break;
+        case frac_division:       intRes = (int)gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(MyGUI.MyCheckButton10)); ret = &intRes; break;
+
+        case entry_1: ret = gtk_entry_get_text(GTK_ENTRY(MyGUI.MyEntry1)); break;
+        default: break;
+    }
+
+    return ret;
+}
+
 
