@@ -23,6 +23,9 @@ enum Buttons{
     frac_multiplication = 6,
     frac_division = 7,
 
+    task_setting,
+    fraction_setting,
+
     entry_1,
 };
 
@@ -31,6 +34,7 @@ struct WCO_GUI_t{
     GtkWidget *MyWindow1;
     GtkWidget *MyFixed1;
     GtkWidget *MyWorksheetFixed[2];
+    GtkWidget *MySettingsFixed[2];
     GtkLabel  *MyLabel1;
     GtkLabel  *MyLabel2;
     GtkLabel  *MyLabel3;
@@ -73,6 +77,10 @@ struct WCO_GUI_t{
     GtkWidget *MyFileChosserButton1;
     GtkWidget *MyEntry1;
     GtkWidget *MyWorksheetImage[2];
+    GtkStackSwitcher *MyStackSwitcher2;
+    GtkWidget *MyStack2;
+    //GtkWidget *MySpinButton18;
+
 
     int showPDF;
     int savePDF;
@@ -91,6 +99,7 @@ void WCO_GUI_Close_PDFViewer();
 void *WCO_GUI_PDFViewer();
 void exitApp();
 
+int WCO_GUI_Get_Stack();
 
 int WCO_GUI_Status_Get_AllOperand_CheckButtons();
 int WCO_GUI_Status_Get_SpecificOperand_CheckButton(int i);

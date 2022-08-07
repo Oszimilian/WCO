@@ -83,7 +83,10 @@ void WCO_GUI_Start()
     MyGUI.MyFileChosserButton1 = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MyFileChosserButton1"));
     MyGUI.MyEntry1 = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MyEntry1"));
 
-
+    MyGUI.MyStackSwitcher2 = GTK_STACK_SWITCHER(gtk_builder_get_object(MyGUI.MyBuilder, "MyStackSwitcher2"));
+    MyGUI.MyStack2 = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MyStack2"));
+    MyGUI.MySettingsFixed[0] = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MyFixed4"));
+    MyGUI.MySettingsFixed[1] = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MyFixed5"));
     
     
     //connecting the signalls which were initilized by glade with the programm
@@ -184,49 +187,13 @@ int WCO_GUI_Status_Get_PDFViewer()
 
 /**********************************************************************************************************************/
 
-/*
-*   Shows the final task-pdf
-*/
-static void *WCO_GUI_PDFViewer_Thread1()
+int WCO_GUI_Get_Stack()
 {
-    //Calling via a System call the okular pdf-viewer
-    system(MyPDF.systemOpenFile[_Tasks]);
-
-    return NULL;
-}
-
-/*
-*   Shows the final solution-pdf
-*/
-static void *WCO_GUI_PDFViewer_Thread2()
-{
-    //Calling via a System call the ocular pdf-viewer
-    system(MyPDF.systemOpenFile[_Solutions]);
-
-    return NULL;
-}
-
-/*
-*   This is a Thread which handles the PDF_Viewer Thread
-*/
-void *WCO_GUI_PDFViewer()
-{
-    while(1)
+    if(MyGUI.MySettingsFixed[0] == gtk_stack_get_visible_child(GTK_STACK(MyGUI.MyStack2)))
     {
-        while(MyGUI.showPDF)
-        {
-            //initialising tow instanzes of Threads
-            pthread_t thread_id3;
-            pthread_t thread_id4;
-
-            //Creat the Thread and teeling the function the function which have to be execute
-            pthread_create(&thread_id3, NULL, WCO_GUI_PDFViewer_Thread1, NULL);
-            pthread_create(&thread_id4, NULL, WCO_GUI_PDFViewer_Thread2, NULL);
-
-            //Joining the Threads
-            pthread_join(thread_id3, NULL);
-            pthread_join(thread_id4, NULL);
-        }
+        return task_setting;
+    }else{
+        return fraction_setting;
     }
 }
 

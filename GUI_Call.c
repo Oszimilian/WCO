@@ -23,11 +23,18 @@ void MyButton1_Clicked(GtkButton *b)
 {
     printf("Button One is clicked! \n\n\n");
 
-    //if the PDFViewerFlag is enabled the tread starts two okular pdf-viewer
-    if (WCO_GUI_Status_Get_PDFViewer()) WCO_GUI_Start_PDFViewer();
+    
 
     //starts creating the worksheet and if a error appears a message will be printet to the terminal
-    if(!WCO_Worksheet_Create_Start(_Tasks)) printf("Es konnte keine neue PDF erzeugt werden! \n");
+    if(WCO_GUI_Get_Stack() == task_setting)
+    {
+        if(!WCO_Worksheet_Create_Start(_Tasks)) printf("Es konnte keine neue PDF erzeugt werden! \n");
+    }
+    if(WCO_GUI_Get_Stack() == fraction_setting)
+    {
+        WCO_Worksheet_Fraction_Start();
+    }
+    
 
     //print success if evreything was carried out successfully
     else printf("Success \n");
@@ -38,8 +45,8 @@ void MyButton1_Clicked(GtkButton *b)
 */
 void MyButton2_Clicked(GtkButton *b)
 {
-    //disables the PDFViewer Flag
-    WCO_GUI_Close_PDFViewer();
+
+
 }
 
 /**********************************************************************************************************************/
@@ -260,6 +267,7 @@ void MyButton4_Clicked(GtkButton *b)
 void MyButton5_Clicked(GtkButton *b)
 {
     WCO_Worksheet_Fraction_Start();
+    
 }
 
 void MySpinButton14_Changed(GtkSpinButton *b)
@@ -300,4 +308,9 @@ void MyCheckButton9_Changed(GtkCheckButton *b)
 void MyCheckButton10_Changed(GtkCheckButton *b)
 {
     
+}
+
+void MyStackSwitcher2_Changed()
+{
+    printf("Hallo \n");
 }

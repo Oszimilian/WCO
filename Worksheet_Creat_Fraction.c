@@ -19,11 +19,9 @@
 #define WCO_ENTRY(obj)  ((gchar *)(obj))
 #define WCO_BUTTON(obj) (*(gboolean*)(obj))
 
-int WCO_Worksheet_Fraction_Start()
+void WCO_Worksheet_Fraction_Start()
 {
     MyFraction_t *MyFraction = WCO_Worksheet_Fraction_Init();
-
-    int ret = _succeded;
 
     WCO_PDF_SetFoldername("/home/maximilian/Git/WCO/PDF");
     WCO_PDF_SetFilename("001", _Tasks);
@@ -32,16 +30,10 @@ int WCO_Worksheet_Fraction_Start()
     MyPDF.pdf = HPDF_New(Error_Handler, NULL);
 
     if (WCO_PDF_Check())
-    {
         printf("PDF hat einen Fehler, bzw. konnte nicht erzeugt werden \n");
-
-        ret = _error;
-
-        goto failed;
-    }else{
+    else
         printf("PDF wurde erfolgreich erzeugt \n");
-    }
-
+    
     WCO_PDF_SetupPage(_Tasks);
 
     WCO_Worksheet_Fraction_Creat(MyFraction, _Tasks);
@@ -61,10 +53,6 @@ int WCO_Worksheet_Fraction_Start()
     WCO_PNG_Set_ConvertToPNG(0.23);
 
     WCO_Worksheet_Fraction_Free(MyFraction);
-
-    failed:
-
-    return ret;
 }
 
 void WCO_Worksheet_Fraction_Default(MyFraction_t *Frac)
@@ -125,8 +113,6 @@ void WCO_Worksheet_Fraction_Random(MyFraction_t *MyFrac, int count)
 void WCO_Worksheet_Fraction_Simplify(MyFraction_t *MyFrac, int count)
 {
     int highNum = (MyFrac->frac[count][2][0]>MyFrac->frac[count][2][1]) ? MyFrac->frac[count][2][0] : MyFrac->frac[count][2][1];
-    int a = MyFrac->frac[count][2][0];
-    int b = MyFrac->frac[count][2][1];
 
     for (int i = 2; i <= highNum; i++)
     {
