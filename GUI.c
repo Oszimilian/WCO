@@ -59,6 +59,7 @@ void WCO_GUI_Start()
     MyGUI.MyCheckButton8 = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MyCheckButton8"));
     MyGUI.MyCheckButton9 = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MyCheckButton9"));
     MyGUI.MyCheckButton10 = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MyCheckButton10"));
+    MyGUI.MyCheckButton11 = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MyCheckButton11"));
 
     MyGUI.MyRadioButton1 = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MyRadioButton1"));
     MyGUI.MyRadioButton2 = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MyRadioButton2"));
@@ -81,7 +82,9 @@ void WCO_GUI_Start()
     MyGUI.MySpinButton17 = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MySpinButton17"));
     
     MyGUI.MyFileChosserButton1 = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MyFileChosserButton1"));
+
     MyGUI.MyEntry1 = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MyEntry1"));
+    MyGUI.MyEntry2 = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MyEntry2"));
 
     MyGUI.MyStackSwitcher2 = GTK_STACK_SWITCHER(gtk_builder_get_object(MyGUI.MyBuilder, "MyStackSwitcher2"));
     MyGUI.MyStack2 = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MyStack2"));
@@ -145,44 +148,11 @@ void WCO_GUI_Init()
 */
 void exitApp()
 {
-    //Closes the PDFViewer
-    WCO_GUI_Close_PDFViewer();
-    
     //quites from the gtk main loop
     gtk_main_quit();
 
     //stops the programm
     exit(0);
-}
-
-
-/*
-*   Starts the PDF-Viewer
-*/
-void WCO_GUI_Start_PDFViewer()
-{
-    MyGUI.showPDF = _ON;
-}
-
-/*
-*   Closes the PDF-Viewer
-*/
-void WCO_GUI_Close_PDFViewer()
-{
-    // disables the pdf show flag which stopps the loop in which a threads whait to display the pdf-viewer
-    MyGUI.showPDF = _OFF;
-
-    //closes okular via a system command
-    system("killall okular");
-}
-
-/*
-*   Return the status of the viewer
-*   Is it on or off
-*/
-int WCO_GUI_Status_Get_PDFViewer()
-{
-    return MyGUI.showPDF;
 }
 
 /**********************************************************************************************************************/

@@ -9,7 +9,8 @@
 typedef int bool;
 
 
-
+#define WCO_ENTRY(obj)  ((gchar *)(obj))
+#define WCO_BUTTON(obj) (*(gboolean*)(obj))
 
 
 enum Buttons{
@@ -18,13 +19,39 @@ enum Buttons{
     frac_zahler_2 = 2,
     frac_nenner_2 = 3,
 
-    frac_addition = 4,
-    frac_subtraction = 5,
-    frac_multiplication = 6,
-    frac_division = 7,
+    frac_addition,
+    frac_subtraction,
+    frac_multiplication,
+    frac_division,
+
+    task_addition,
+    task_subtraction,
+    task_multiplication ,
+    task_division ,
+
+    task_addition_digit_1,
+    task_subtraction_digit_1,
+    task_multiplication_digit_1,
+    task_division_digit_1,
+    
+    task_addition_digit_2,
+    task_subtraction_digit_2,
+    task_multiplication_digit_2,
+    task_division_digit_2,
+
+    task_addition_dezcount,
+    task_subtraction_dezcount,
+    task_multiplication_dezcount,
+    task_division_dezcount,
 
     task_setting,
     fraction_setting,
+
+    base_baseboard,
+    base_date,
+    base_name,
+    base_text,
+
 
     entry_1,
 };
@@ -35,16 +62,19 @@ struct WCO_GUI_t{
     GtkWidget *MyFixed1;
     GtkWidget *MyWorksheetFixed[2];
     GtkWidget *MySettingsFixed[2];
+
     GtkLabel  *MyLabel1;
     GtkLabel  *MyLabel2;
     GtkLabel  *MyLabel3;
     GtkLabel  *MyLabel4;
     GtkLabel  *MyLabel5;
+
     GtkWidget *MyButton1;
     GtkWidget *MyButton2;
     GtkWidget *MyButton3;
     GtkWidget *MyButton4;
     GtkWidget *MyButton5;
+
     GtkWidget *MyCheckButton1;
     GtkWidget *MyCheckButton2;
     GtkWidget *MyCheckButton3;
@@ -55,8 +85,11 @@ struct WCO_GUI_t{
     GtkWidget *MyCheckButton8;
     GtkWidget *MyCheckButton9;
     GtkWidget *MyCheckButton10;
+    GtkWidget *MyCheckButton11;
+
     GtkWidget *MyRadioButton1;
     GtkWidget *MyRadioButton2;
+
     GtkWidget *MySpinButton1;
     GtkWidget *MySpinButton2;
     GtkWidget *MySpinButton3;
@@ -74,9 +107,14 @@ struct WCO_GUI_t{
     GtkWidget *MySpinButton15;
     GtkWidget *MySpinButton16;
     GtkWidget *MySpinButton17;
+
     GtkWidget *MyFileChosserButton1;
+
     GtkWidget *MyEntry1;
+    GtkWidget *MyEntry2;
+
     GtkWidget *MyWorksheetImage[2];
+
     GtkStackSwitcher *MyStackSwitcher2;
     GtkWidget *MyStack2;
     //GtkWidget *MySpinButton18;

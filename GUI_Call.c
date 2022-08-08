@@ -14,6 +14,9 @@
 #include "GUI.h"
 #include "PDF.h"
 #include "Worksheet.h"
+#include "Worksheet_Creat_Fraction.h"
+#include "Worksheet_Creat_Task.h"
+#include "Worksheet_Baseboard.h"
 
 
 /*
@@ -23,21 +26,15 @@ void MyButton1_Clicked(GtkButton *b)
 {
     printf("Button One is clicked! \n\n\n");
 
-    
-
     //starts creating the worksheet and if a error appears a message will be printet to the terminal
     if(WCO_GUI_Get_Stack() == task_setting)
     {
-        if(!WCO_Worksheet_Create_Start(_Tasks)) printf("Es konnte keine neue PDF erzeugt werden! \n");
+        WCO_Worksheet_Task_Start();
     }
     if(WCO_GUI_Get_Stack() == fraction_setting)
     {
         WCO_Worksheet_Fraction_Start();
     }
-    
-
-    //print success if evreything was carried out successfully
-    else printf("Success \n");
 }
 
 /*
@@ -93,7 +90,7 @@ void MyCheckButton4_Toggled(GtkCheckButton *b)
 void MyCheckButton5_Toggled(GtkCheckButton *b)
 {
     //sets the baseboardflag to the state of the return value of the checkbutton 
-    WCO_Worksheet_Status_Config_Baseboard(WCO_GUI_Status_Baseboard_CheckButton5());
+    //WCO_Worksheet_Status_Config_Baseboard(WCO_GUI_Status_Baseboard_CheckButton5());
 }
 
 void MycheckButton6_Toggled(GtkCheckButton *b)

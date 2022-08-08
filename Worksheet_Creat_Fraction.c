@@ -15,6 +15,9 @@
 #include "PDF.h"
 #include "Worksheet.h"
 #include "PNG.h"
+#include "Worksheet_Creat_Fraction.h"
+#include "Worksheet_Creat_Task.h"
+#include "Worksheet_Baseboard.h"
 
 #define WCO_ENTRY(obj)  ((gchar *)(obj))
 #define WCO_BUTTON(obj) (*(gboolean*)(obj))
@@ -55,6 +58,18 @@ void WCO_Worksheet_Fraction_Start()
     WCO_Worksheet_Fraction_Free(MyFraction);
 }
 
+MyFraction_t *WCO_Worksheet_Fraction_Init()
+{
+    MyFraction_t *MyFraction = malloc(sizeof(MyFraction_t));
+    if(MyFraction == NULL)
+    {
+        fprintf(stderr, "Worksheet_Fraction konnte nicht erzeugt werden! \n");
+        return NULL;
+    }
+    WCO_Worksheet_Fraction_Default(MyFraction);
+    return MyFraction;
+}
+
 void WCO_Worksheet_Fraction_Default(MyFraction_t *Frac)
 {
     for(int i = 0; i <= 49; i++)
@@ -69,21 +84,42 @@ void WCO_Worksheet_Fraction_Default(MyFraction_t *Frac)
     }
 }
 
-MyFraction_t *WCO_Worksheet_Fraction_Init()
+void WCO_Worksheet_Fraction_Creat(MyFraction_t *MyFraction, int page)
 {
-    MyFraction_t *MyFraction = malloc(sizeof(MyFraction_t));
-    if(MyFraction == NULL)
-    {
-        fprintf(stderr, "Worksheet_Fraction konnte nicht erzeugt werden! \n");
-        return NULL;
-    }
-    WCO_Worksheet_Fraction_Default(MyFraction);
-    return MyFraction;
-}
+    int pageSize;
+    int pageSizeCounter;
+    int taskCounter = 0;
+    int startx[2];
 
-void WCO_Worksheet_Fraction_Free(MyFraction_t *MyFraction)
-{
-    free(MyFraction);
+    startx[0] = HPDF_Page_GetWidth(MyPDF.page[page]) - (HPDF_Page_GetWidth(MyPDF.page[page]) * 0.9);
+    startx[1] = HPDF_Page_GetWidth(MyPDF.page[page]) - (HPDF_Page_GetWidth(MyPDF.page[page]) * 0.5);
+
+    WCO_Worksheet_Baseboard_Creat(page);
+    if (WCO_BUTTON(WCO_GUI_Get(base_baseboard)))
+    {
+        pageSize = HPDF_Page_GetHeight(MyPDF.page[page]) - *WCO_Worksheet_Baseboard_Threashold();
+    }else{
+        pageSize = HPDF_Page_GetHeight(MyPDF.page[page]) - 50;
+    }
+
+
+    for(int i = 0; i <= 1; i++)
+    {
+        pageSizeCounter = pageSize;
+
+        while(pageSizeCounter >= 50)
+        {
+            if (page == _Tasks) WCO_Worksheet_Fraction_Random(MyFraction, taskCounter);
+
+            if (page == _Tasks) WCO_Worksheet_Fraction_Calculate(MyFraction, taskCounter);
+
+            WCO_Worksheet_Fraction_Draw(MyFraction, &startx[i], &pageSizeCounter, taskCounter, page);
+
+            pageSizeCounter -= 50;
+
+            taskCounter ++;
+        }
+    }
 }
 
 void WCO_Worksheet_Fraction_Random(MyFraction_t *MyFrac, int count)
@@ -105,22 +141,7 @@ void WCO_Worksheet_Fraction_Random(MyFraction_t *MyFrac, int count)
     while(1)
     {
         MyFrac->operand[count] = rand() % 4;
-        if(WCO_BUTTON(WCO_GUI_Get(4 + MyFrac->operand[count]))) break;
-    }
-
-}
-
-void WCO_Worksheet_Fraction_Simplify(MyFraction_t *MyFrac, int count)
-{
-    int highNum = (MyFrac->frac[count][2][0]>MyFrac->frac[count][2][1]) ? MyFrac->frac[count][2][0] : MyFrac->frac[count][2][1];
-
-    for (int i = 2; i <= highNum; i++)
-    {
-        while(((MyFrac->frac[count][2][0] % i) == 0) && ((MyFrac->frac[count][2][1] % i) == 0))
-        {
-            MyFrac->frac[count][2][0] /= i;
-            MyFrac->frac[count][2][1] /= i;
-        }
+        if(WCO_BUTTON(WCO_GUI_Get(frac_addition + MyFrac->operand[count]))) break;
     }
 }
 
@@ -193,53 +214,18 @@ void WCO_Worksheet_Fraction_Calculate(MyFraction_t *MyFrac, int count)
     WCO_Worksheet_Fraction_Simplify(MyFrac, count);
 }
 
-void WCO_Worksheet_Fraction_Creat(MyFraction_t *MyFraction, int page)
+void WCO_Worksheet_Fraction_Simplify(MyFraction_t *MyFrac, int count)
 {
-    
+    int highNum = (MyFrac->frac[count][2][0]>MyFrac->frac[count][2][1]) ? MyFrac->frac[count][2][0] : MyFrac->frac[count][2][1];
 
-    int pageSize;
-    int pageSizeCounter;
-    int taskCounter = 0;
-    int startx[2];
-
-    startx[0] = HPDF_Page_GetWidth(MyPDF.page[page]) - (HPDF_Page_GetWidth(MyPDF.page[page]) * 0.9);
-    startx[1] = HPDF_Page_GetWidth(MyPDF.page[page]) - (HPDF_Page_GetWidth(MyPDF.page[page]) * 0.5);
-
-    WCO_Worksheet_Creat_Baseboard(page);
-    if (WCO_Worksheet_Status_Baseboard())
+    for (int i = 2; i <= highNum; i++)
     {
-        pageSize = HPDF_Page_GetHeight(MyPDF.page[page]) - WCO_Worksheet_Status_Threashold();
-    }else{
-        pageSize = HPDF_Page_GetHeight(MyPDF.page[page]) - 50;
-    }
-
-
-    for(int i = 0; i <= 1; i++)
-    {
-        pageSizeCounter = pageSize;
-
-        while(pageSizeCounter >= 50)
+        while(((MyFrac->frac[count][2][0] % i) == 0) && ((MyFrac->frac[count][2][1] % i) == 0))
         {
-            if (page == _Tasks) WCO_Worksheet_Fraction_Random(MyFraction, taskCounter);
-
-            if (page == _Tasks) WCO_Worksheet_Fraction_Calculate(MyFraction, taskCounter);
-
-            WCO_Worksheet_Fraction_Draw(MyFraction, &startx[i], &pageSizeCounter, taskCounter, page);
-
-            pageSizeCounter -= 50;
-
-            taskCounter ++;
+            MyFrac->frac[count][2][0] /= i;
+            MyFrac->frac[count][2][1] /= i;
         }
     }
-
-    
-}
-
-int IntLen(int *i)
-{
-    char str[10];
-    sprintf(str, "%d", *i);
-    return strlen(str);
 }
 
 void WCO_Worksheet_Fraction_Draw(MyFraction_t *MyFrac, int *x, int *y,int count, int page)
@@ -280,11 +266,9 @@ void WCO_Worksheet_Fraction_Draw(MyFraction_t *MyFrac, int *x, int *y,int count,
             WCO_PDF_WriteText(numPos[i][k][_X], numPos[i][k][_Y], numStr, page);
         }
     }
-
         
     if(MyFrac->negFlag[count] && page == _Solutions) WCO_PDF_DrawLine((staPos[2]-10), *y, (staPos[2]-5) , *y, page);
         
-    
     sprintf(numStr, "%c", ops[MyFrac->operand[count]]);
 
     WCO_PDF_WriteText((endPos[0] + ((staPos[1] - endPos[0]) / 2) - 3), *y - 4, numStr, page);
@@ -298,3 +282,22 @@ void WCO_Worksheet_Fraction_Draw(MyFraction_t *MyFrac, int *x, int *y,int count,
 
     free(numStr);
 }
+
+void WCO_Worksheet_Fraction_Free(MyFraction_t *MyFraction)
+{
+    free(MyFraction);
+}
+
+int IntLen(int *i)
+{
+    char str[10];
+    sprintf(str, "%d", *i);
+    return strlen(str);
+}
+
+
+
+
+
+
+

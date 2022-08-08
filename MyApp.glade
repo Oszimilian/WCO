@@ -248,9 +248,7 @@
         </child>
         <child>
           <object class="GtkCheckButton" id="MyCheckButton6">
-            <property name="label" translatable="yes">Aufgaben beschrieften</property>
-            <property name="width_request">193</property>
-            <property name="height_request">22</property>
+            <property name="label" translatable="yes">Datum</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">False</property>
@@ -259,8 +257,8 @@
             <signal name="toggled" handler="MycheckButton6_Toggled" swapped="no"/>
           </object>
           <packing>
-            <property name="x">200</property>
-            <property name="y">450</property>
+            <property name="x">146</property>
+            <property name="y">451</property>
           </packing>
         </child>
         <child>
@@ -839,6 +837,33 @@
           <packing>
             <property name="x">20</property>
             <property name="y">50</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkCheckButton" id="MyCheckButton11">
+            <property name="label" translatable="yes">Name</property>
+            <property name="width_request">67</property>
+            <property name="height_request">22</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">False</property>
+            <property name="draw_indicator">True</property>
+          </object>
+          <packing>
+            <property name="x">226</property>
+            <property name="y">452</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkEntry" id="MyEntry2">
+            <property name="width_request">309</property>
+            <property name="height_request">34</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+          </object>
+          <packing>
+            <property name="x">317</property>
+            <property name="y">447</property>
           </packing>
         </child>
       </object>
