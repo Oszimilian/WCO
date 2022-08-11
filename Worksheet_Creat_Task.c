@@ -70,10 +70,11 @@ void WCO_Worksheet_Task_Default(MyTask_t *MyTask)
             else sprintf(MyTask->task[i][k], "1 + 1 = 2");
         }
     }
-
+    /*
     WCO_PDF_SetFoldername("/home/maximilian/Git/WCO/PDF");
     WCO_PDF_SetFilename("001", _Tasks);
     WCO_PDF_SetFilename("001", _Solutions);
+    */
 }
 
 void WCO_Worksheet_Task_Free(MyTask_t *MyTask)

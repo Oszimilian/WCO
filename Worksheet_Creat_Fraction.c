@@ -26,9 +26,11 @@ void WCO_Worksheet_Fraction_Start()
 {
     MyFraction_t *MyFraction = WCO_Worksheet_Fraction_Init();
 
+    /*
     WCO_PDF_SetFoldername("/home/maximilian/Git/WCO/PDF");
     WCO_PDF_SetFilename("001", _Tasks);
     WCO_PDF_SetFilename("001", _Solutions);
+    */
 
     MyPDF.pdf = HPDF_New(Error_Handler, NULL);
 

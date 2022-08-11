@@ -16,6 +16,112 @@
 #include "Worksheet.h"
 #include "Worksheet_Creat_Task.h"
 
+void WCO_GUI_Update(int i)
+{
+    WCO_GUI_Update_Label(i);
+
+    WCO_GUI_Update_Visibility(i);
+
+    WCO_GUI_Update_DigitRange(i);
+
+    WCO_GUI_Update_CreateButton();
+}
+
+void WCO_GUI_Update_Label(int i)
+{
+    int spinValue = WCO_BUTTON(WCO_GUI_Get(task_addition_dezcount + i));
+    int checkButton = WCO_BUTTON(WCO_GUI_Get(task_addition + i));
+    char numSpace[5] = {'Z', '\0', 'R', '\0', ' '};
+
+
+    if((spinValue == 0) && checkButton) WCO_GUI_Set(&numSpace[0], (label_addition + i));
+    if((spinValue >= 1) && checkButton) WCO_GUI_Set(&numSpace[2], (label_addition + i));
+    if(!checkButton) WCO_GUI_Set(&numSpace[4], (label_addition + i));
+    
+}
+
+void WCO_GUI_Update_Visibility(int i)
+{
+    int jmpVal = (i == 0) ? 0 : (i == 1) ? 4 : (i == 2) ? 8 : (i == 3) ? 12 : 0;
+    if(WCO_BUTTON(WCO_GUI_Get(task_addition + i)))
+    {
+        for (int k = 0; k <= 2; k++)
+        {
+            gtk_widget_show(WCO_WDG(WCO_GUI_Get(task_addition_digit_1_ref + jmpVal + k)));
+        } 
+    }else{
+        for (int k = 0; k <= 2; k++)
+        {
+            gtk_widget_hide(WCO_WDG(WCO_GUI_Get(task_addition_digit_1_ref + jmpVal + k)));
+        } 
+    }
+    if(WCO_BUTTON(WCO_GUI_Get(base_baseboard)))
+    {
+        for (int i = 0; i <= 2; i++)
+        {
+            gtk_widget_show(WCO_WDG(WCO_GUI_Get(base_date_ref + i)));
+        }
+    }else{
+        for (int i = 0; i <= 2; i++)
+        {
+            gtk_widget_hide(WCO_WDG(WCO_GUI_Get(base_date_ref + i)));
+        }
+    }
+}
+
+void WCO_GUI_Update_DigitRange(int i)
+{
+    int leftRange = WCO_BUTTON(WCO_GUI_Get(task_addition_digit_1 + i));
+    int rightRange = WCO_BUTTON(WCO_GUI_Get(task_addition_digit_2 + i));
+    int jmpVal = (i == 0) ? 0 : (i == 1) ? 4 : (i == 2) ? 8 : (i == 3) ? 12 : 0;
+    int minRange = 0;
+    int maxRange = (leftRange < rightRange) ? leftRange : rightRange;
+    gtk_spin_button_set_range(GTK_SPIN_BUTTON(WCO_WDG(WCO_GUI_Get(task_addition_dezcount_ref + jmpVal))), (double)minRange, (double)maxRange);
+}
+
+void WCO_GUI_Update_CreateButton()
+{
+    int checkSum = 0;
+    int fileNameLeangh = strlen(WCO_ENTRY(WCO_GUI_Get(entry_1)));
+    if (WCO_WDG(WCO_GUI_Get(gtk_stack)) == WCO_WDG(WCO_GUI_Get(gtk_fixed_1)))
+    {
+        for (int i = 0; i <= 3; i++)
+        {
+            checkSum += (WCO_BUTTON(WCO_GUI_Get(task_addition + i))) ? 1 : 0;
+        }
+        printf("Fix 1 \n");
+    }
+    if (WCO_WDG(WCO_GUI_Get(gtk_stack)) == WCO_WDG(WCO_GUI_Get(gtk_fixed_2)))
+    {
+        for (int i = 0; i <= 3; i++)
+        {
+            checkSum += (WCO_BUTTON(WCO_GUI_Get(frac_addition + i))) ? 1 : 0;
+        }
+        printf("Fix 2 \n");
+    }
+    
+    if (checkSum == 0 || fileNameLeangh == 0 || !WCO_BUTTON(WCO_GUI_Get(savePDFButton)) || !WCO_BUTTON(WCO_GUI_Get(saveFolderButton)))
+    {
+        gtk_widget_hide(WCO_WDG(WCO_GUI_Get(creatButton_ref)));
+    }else{
+        gtk_widget_show(WCO_WDG(WCO_GUI_Get(creatButton_ref)));
+    }
+}
+
+void WCO_GUI_Update_FileName()
+{
+    int fileNameLeangh = strlen(WCO_ENTRY(WCO_GUI_Get(entry_1)));
+
+    if (fileNameLeangh >= 1)
+    {
+        WCO_PDF_SetFilename(WCO_GUI_Status_FileName(), _Tasks);
+        WCO_PDF_SetFilename(WCO_GUI_Status_FileName(), _Solutions);
+
+        int i = _TRUE;
+        WCO_GUI_Set(&i, savePDF);
+    }
+}
+
 /*
 *   this function updates all the conditions arround the visibility of buttons and labels depending on the addition enable button
 */
@@ -249,23 +355,21 @@ void WCO_GUI_Update_PermissionButton1()
 */
 void WCO_GUI_Update_Set_SavePDF()
 {
-    //store the leangh of the filename in a local var
-    int fileNameLeangh = strlen(WCO_GUI_Status_FileName());
 
-    //if the filename is greater than ten
+    int fileNameLeangh = strlen(WCO_ENTRY(WCO_GUI_Get(entry_1)));
+
+
     if (fileNameLeangh >= 1)
     {
-        //The filenames for the solution and the task sheets are set
         WCO_PDF_SetFilename(WCO_GUI_Status_FileName(), _Tasks);
         WCO_PDF_SetFilename(WCO_GUI_Status_FileName(), _Solutions);
 
-        //a global saveButtonFlag is set to true which is necesserly for the function above to show the "CreatButton"
-        MyGUI.savePDF = _TRUE;
+        int i = _TRUE;
+        WCO_GUI_Set(&i, savePDF);
     }
-
-    //Called to check the conditions for the "CreatButton"
-    WCO_GUI_Update_PermissionButton1();
 }
+
+
 
 /*
 *   This function is used to reset the global saveEnabledFlag

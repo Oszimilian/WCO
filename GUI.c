@@ -113,7 +113,6 @@ void WCO_GUI_Start()
 void WCO_GUI_Init()
 {
     //diffrent flags are set;
-    MyGUI.showPDF = _OFF;
     MyGUI.savePDF = _OFF;
     MyGUI.saveFolder = _OFF;
     MyGUI.showPNG = _OFF;

@@ -40,274 +40,103 @@ void MyButton1_Clicked(GtkButton *b)
 /*
 *   calle when the close PDF-Button is pressed
 */
-void MyButton2_Clicked(GtkButton *b)
-{
+void MyButton2_Clicked(GtkButton *b){}
 
-
-}
 
 /**********************************************************************************************************************/
 
-/*
-*   called when addition tasks are disabled or enabled
-*/
-void MyCheckButton1_Toggled(GtkCheckButton *b)
-{
-    //updates all the conditions arround the addition button
-    WCO_GUI_Update_Addition();
-}
+void MyCheckButton1_Toggled(GtkCheckButton *b){WCO_GUI_Update(_ADDITION);}
 
-/*
-*   called when subtraction tasks are disabled or enabled
-*/
-void MyCheckButton2_Toggled(GtkCheckButton *b)
-{
-    //updates all the conidtions arround the subtraction button
-    WCO_GUI_Update_Subtraction();
-}
+void MyCheckButton2_Toggled(GtkCheckButton *b){WCO_GUI_Update(_SUBTRACTION);}
 
-/*
-*   called when multiplication tasks are disabled or enabled
-*/
-void MyCheckButton3_Toggled(GtkCheckButton *b)
-{
-    //updates all the conditions arround the multiplication button
-    WCO_GUI_Update_Multiplication();
-}
+void MyCheckButton3_Toggled(GtkCheckButton *b){WCO_GUI_Update(_MULTIPLICATION);}
 
-/*
-*   called when division tasks are disabled or enabled
-*/
-void MyCheckButton4_Toggled(GtkCheckButton *b)
-{
-    //updates all the conditions arround the multiplication button
-    WCO_GUI_Update_Division();
-}
+void MyCheckButton4_Toggled(GtkCheckButton *b){WCO_GUI_Update(_DIVISION);}
 
-/*
-*   called when the baseboard is enabled or disabled
-*/
-void MyCheckButton5_Toggled(GtkCheckButton *b)
-{
-    //sets the baseboardflag to the state of the return value of the checkbutton 
-    //WCO_Worksheet_Status_Config_Baseboard(WCO_GUI_Status_Baseboard_CheckButton5());
-}
-
-void MycheckButton6_Toggled(GtkCheckButton *b)
-{
+/**********************************************************************************************************************/
     
-}
+void MyCheckButton5_Toggled(GtkCheckButton *b){}
+void MycheckButton6_Toggled(GtkCheckButton *b){}
 
 /**********************************************************************************************************************************************************************************/
 
-void MyRadioButton1_Toggled(GtkRadioButton *b)
-{
+void MyRadioButton1_Toggled(GtkRadioButton *b){}
 
-}
+void MyRadioButton2_Toggled(GtkRadioButton *b){}
 
-void MyRadioButton2_Toggled(GtkRadioButton *b)
-{
+void MySpinButton1_Changed(GtkSpinButton *s){}
 
-}
-
-void MySpinButton1_Changed(GtkSpinButton *s)
-{
-
-}
 /**********************************************************************************************************************************************************************************/
 
-/*
-*   called when the left digit range for additions is changed
-*/
-void MySpinButton2_Changed(GtkSpinButton *s)
-{
-    //updates all the conditions arround the addition buttons
-    WCO_GUI_Update_Addition();
-}
 
-/*
-*   called when the right digit range for additions is changed
-*/
-void MySpinButton8_Changed(GtkSpinButton *s)
-{
-    //updates all the conditions arround the addition buttons
-    WCO_GUI_Update_Addition();
-}
+void MySpinButton2_Changed(GtkSpinButton *s){WCO_GUI_Update(_ADDITION);} 
+void MySpinButton8_Changed(GtkSpinButton *s){WCO_GUI_Update(_ADDITION);} 
 
-/*
-*   called when the left digit range for subtraction is changed
-*/
-void MySpinButton5_Changed(GtkSpinButton *s)
-{
-    //updates all the conditions arround the subtraction buttons
-    WCO_GUI_Update_Subtraction();
-}
+void MySpinButton5_Changed(GtkSpinButton *s){WCO_GUI_Update(_SUBTRACTION);} 
+void MySpinButton9_Changed(GtkSpinButton *s){WCO_GUI_Update(_SUBTRACTION);} 
 
-/*
-*   called when the right digit range for subtraction is changed
-*/
-void MySpinButton9_Changed(GtkSpinButton *s)
-{
-    //updates all the conditions arround the subtraction buttons 
-    WCO_GUI_Update_Subtraction();
-}
+void MySpinButton3_Changed(GtkSpinButton *s){WCO_GUI_Update(_MULTIPLICATION);} 
+void MySpinButton4_Changed(GtkSpinButton *s){WCO_GUI_Update(_MULTIPLICATION);} 
 
-/*
-*   called when the left digit range for multiplication is changed
-*/
-void MySpinButton3_Changed(GtkSpinButton *s)
-{
-    //updates all the conditions arround the multiplication buttons
-    WCO_GUI_Update_Multiplication();
-}
+void MySpinButton6_Changed(GtkSpinButton *s){WCO_GUI_Update(_DIVISION);} 
+void MySpinButton7_Changed(GtkSpinButton *s){WCO_GUI_Update(_DIVISION);} 
 
-/*
-*   called when the right digit range for multiplication is changed
-*/
-void MySpinButton4_Changed(GtkSpinButton *s)
-{
-    //updates all the conditions arround the multiplication buttons
-    WCO_GUI_Update_Multiplication();
-}
-
-
-/*
-*   called when the left digit range for division is changed
-*/
-void MySpinButton6_Changed(GtkSpinButton *s)
-{
-    //updates all the conidtions arround the division buttons
-    void WCO_GUI_Update_Division();
-}
-
-/*
-*   called when the right digit range for division is changed
-*/
-void MySpinButton7_Changed(GtkSpinButton *s)
-{
-    //updates all the conditions arround the divison buttons
-    WCO_GUI_Update_Division();
-}
 
 /**********************************************************************************************************************/
 
-/*
-*   is called when the range for the decimal places of the addition task is changed
-*/
-void MySpinButton10_Changed(GtkSpinButton *s)
-{
-    //updates all the conditions arround the addition buttons
-    WCO_GUI_Update_Addition();
-}
+void MySpinButton10_Changed(GtkSpinButton *s){WCO_GUI_Update(_ADDITION);} 
 
-/*
-*   is called when the range for the decimal places of the subtraction task is changed
-*/
-void MySpinButton11_Changed(GtkSpinButton *s)
-{
-    //updates all the conditions arround the subtraction buttons
-    WCO_GUI_Update_Subtraction();
-}
+void MySpinButton11_Changed(GtkSpinButton *s){WCO_GUI_Update(_SUBTRACTION);} 
 
-/*
-*   is called when the range for the decimal places of the multiplication task is changed
-*/
-void MySpinButton12_Changed(GtkSpinButton *s)
-{
-    //updates all the conditions arround the multiplication buttons
-    WCO_GUI_Update_Multiplication();
-}
+void MySpinButton12_Changed(GtkSpinButton *s){WCO_GUI_Update(_MULTIPLICATION);} 
 
-/*
-*   is called when the range for the decimal places of the division task is changed
-*/
-void MySpinButton13_Changed(GtkSpinButton *s)
-{
-    //updates all the conditions arround the division buttons
-    void WCO_GUI_Update_Division();
-}
+void MySpinButton13_Changed(GtkSpinButton *s){WCO_GUI_Update(_DIVISION);} 
 
 /**********************************************************************************************************************/
 
-/*
-*   is called when the user choosed a folder directory 
-*/
 void MyFileChosserButton1_FileSet(GtkFileChooserButton *f)
 {
-    //Sets the saveFolderFlag and stores the folder. Finaly the CreatButton conditions are checked
-    WCO_GUI_Update_Set_SaveFolder();
+    int i = _TRUE;
+    WCO_GUI_Set(&i, saveFolder);
+    WCO_GUI_Update_CreateButton();
 }
 
-/*
-*   called when the user changed something in the filename entry
-*/
 void MyEntry1_Changed(GtkEntry *e)
 {
-    //resets the savePDFFlag to make sure that the user has to save the file again
-    WCO_GUI_Update_Reset_SavePDF();
-    
-    //Check the conditions to show the CreatButton
-    WCO_GUI_Update_PermissionButton1();
+    WCO_GUI_Update_FileName();
+    WCO_GUI_Update_CreateButton();
 }
 
-/*
-*   called when the user clicks on the save button
-*/
 void MyButton4_Clicked(GtkButton *b)
 {
-    //sets the savePDFFlag 
-    WCO_GUI_Update_Set_SavePDF();
+    int i = _TRUE;
+    WCO_GUI_Set(&i, savePDF);
+    WCO_GUI_Update_CreateButton();
 }
 
 /**********************************************************************************************************************/
 
-void MyButton5_Clicked(GtkButton *b)
-{
-    WCO_Worksheet_Fraction_Start();
-    
-}
+void MyButton5_Clicked(GtkButton *b){WCO_Worksheet_Fraction_Start(); }
 
-void MySpinButton14_Changed(GtkSpinButton *b)
-{
+/**********************************************************************************************************************/
 
-}
+void MySpinButton14_Changed(GtkSpinButton *b){}
 
-void MySpinButton15_Changed(GtkSpinButton *b)
-{
-    
-}
+void MySpinButton15_Changed(GtkSpinButton *b){}
 
-void MySpinButton16_Changed(GtkSpinButton *b)
-{
-    
-}
+void MySpinButton16_Changed(GtkSpinButton *b){}
 
-void MySpinButton17_Changed(GtkSpinButton *b)
-{
-    
-}
+void MySpinButton17_Changed(GtkSpinButton *b){}
 
-void MyCheckButton7_Changed(GtkCheckButton *b)
-{
+/**********************************************************************************************************************/
 
-}
+void MyCheckButton7_Changed(GtkCheckButton *b){WCO_GUI_Update(_ADDITION);}
 
-void MyCheckButton8_Changed(GtkCheckButton *b)
-{
-    
-}
+void MyCheckButton8_Changed(GtkCheckButton *b){WCO_GUI_Update(_SUBTRACTION);}
 
-void MyCheckButton9_Changed(GtkCheckButton *b)
-{
-    
-}
+void MyCheckButton9_Changed(GtkCheckButton *b){WCO_GUI_Update(_MULTIPLICATION);}
 
-void MyCheckButton10_Changed(GtkCheckButton *b)
-{
-    
-}
+void MyCheckButton10_Changed(GtkCheckButton *b){WCO_GUI_Update(_DIVISION);}
 
-void MyStackSwitcher2_Changed()
-{
-    printf("Hallo \n");
-}
+/**********************************************************************************************************************/
+void MyStackSwitcher2_Changed(){}
