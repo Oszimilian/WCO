@@ -55,8 +55,10 @@ void MyCheckButton4_Toggled(GtkCheckButton *b){WCO_GUI_Update(_DIVISION);}
 
 /**********************************************************************************************************************/
     
-void MyCheckButton5_Toggled(GtkCheckButton *b){}
-void MycheckButton6_Toggled(GtkCheckButton *b){}
+void MyCheckButton5_Toggled(GtkCheckButton *b){WCO_GUI_Update_Baseboard();}
+void MyCheckButton6_Toggled(GtkCheckButton *b){WCO_GUI_Update_Baseboard();}
+void MyCheckButton11_Changed(GtkCheckButton *b){WCO_GUI_Update_Baseboard();}
+void MyEntry2_Changed(GtkCheckButton *b){WCO_GUI_Update_Baseboard();}
 
 /**********************************************************************************************************************************************************************************/
 
@@ -103,6 +105,8 @@ void MyFileChosserButton1_FileSet(GtkFileChooserButton *f)
 
 void MyEntry1_Changed(GtkEntry *e)
 {
+    int i = _FALSE;
+    WCO_GUI_Set(&i, savePDF);
     WCO_GUI_Update_FileName();
     WCO_GUI_Update_CreateButton();
 }

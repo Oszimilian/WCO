@@ -63,6 +63,8 @@ void WCO_PNG_Set_ConvertToPNG(float resize)
 
         MagickSetImageCompressionQuality(newWand,100);
 
+        MagickContrastImage(newWand, 100);
+
         MagickWriteImage(newWand, MyPNG.fileName[i]);
 
         if(newWand) DestroyMagickWand(newWand);

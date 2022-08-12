@@ -55,6 +55,10 @@ void WCO_GUI_Update_Visibility(int i)
             gtk_widget_hide(WCO_WDG(WCO_GUI_Get(task_addition_digit_1_ref + jmpVal + k)));
         } 
     }
+}
+
+void WCO_GUI_Update_Baseboard()
+{
     if(WCO_BUTTON(WCO_GUI_Get(base_baseboard)))
     {
         for (int i = 0; i <= 2; i++)
@@ -89,7 +93,6 @@ void WCO_GUI_Update_CreateButton()
         {
             checkSum += (WCO_BUTTON(WCO_GUI_Get(task_addition + i))) ? 1 : 0;
         }
-        printf("Fix 1 \n");
     }
     if (WCO_WDG(WCO_GUI_Get(gtk_stack)) == WCO_WDG(WCO_GUI_Get(gtk_fixed_2)))
     {
@@ -97,7 +100,6 @@ void WCO_GUI_Update_CreateButton()
         {
             checkSum += (WCO_BUTTON(WCO_GUI_Get(frac_addition + i))) ? 1 : 0;
         }
-        printf("Fix 2 \n");
     }
     
     if (checkSum == 0 || fileNameLeangh == 0 || !WCO_BUTTON(WCO_GUI_Get(savePDFButton)) || !WCO_BUTTON(WCO_GUI_Get(saveFolderButton)))
@@ -117,8 +119,8 @@ void WCO_GUI_Update_FileName()
         WCO_PDF_SetFilename(WCO_GUI_Status_FileName(), _Tasks);
         WCO_PDF_SetFilename(WCO_GUI_Status_FileName(), _Solutions);
 
-        int i = _TRUE;
-        WCO_GUI_Set(&i, savePDF);
+        //int i = _TRUE;
+        //WCO_GUI_Set(&i, savePDF);
     }
 }
 

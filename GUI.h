@@ -117,17 +117,17 @@ struct WCO_GUI_t{
     GtkWidget *MyWorksheetFixed[2];
     GtkWidget *MySettingsFixed[2];
 
-    GtkLabel  *MyLabel1;
+    //GtkLabel  *MyLabel1;
     GtkLabel  *MyLabel2;
     GtkLabel  *MyLabel3;
     GtkLabel  *MyLabel4;
     GtkLabel  *MyLabel5;
 
     GtkWidget *MyButton1;
-    GtkWidget *MyButton2;
+    //GtkWidget *MyButton2;
     GtkWidget *MyButton3;
     GtkWidget *MyButton4;
-    GtkWidget *MyButton5;
+    //GtkWidget *MyButton5;
 
     GtkWidget *MyCheckButton1;
     GtkWidget *MyCheckButton2;
@@ -141,10 +141,10 @@ struct WCO_GUI_t{
     GtkWidget *MyCheckButton10;
     GtkWidget *MyCheckButton11;
 
-    GtkWidget *MyRadioButton1;
-    GtkWidget *MyRadioButton2;
+    //GtkWidget *MyRadioButton1;
+    //GtkWidget *MyRadioButton2;
 
-    GtkWidget *MySpinButton1;
+    //GtkWidget *MySpinButton1;
     GtkWidget *MySpinButton2;
     GtkWidget *MySpinButton3;
     GtkWidget *MySpinButton4;
@@ -241,6 +241,7 @@ void WCO_GUI_Set(void *input, int verify);
 void WCO_GUI_Update(int i);
 void WCO_GUI_Update_Label(int i);
 void WCO_GUI_Update_Visibility(int i);
+void WCO_GUI_Update_Baseboard();
 void WCO_GUI_Update_DigitRange(int i);
 void WCO_GUI_Update_CreateButton();
 void WCO_GUI_Update_FileName();
