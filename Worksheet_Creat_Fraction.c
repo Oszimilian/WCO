@@ -8,16 +8,18 @@
 #include <unistd.h>
 #include <time.h>
 #include <math.h>
+#include <MagickWand/MagickWand.h>
 
 #include "hpdf.h"
 #include "GUI_Call.h"
+#include "GUI_Status.h"
+#include "GUI_Update.h"
 #include "GUI.h"
 #include "PDF.h"
-#include "Worksheet.h"
 #include "PNG.h"
+#include "Worksheet_Baseboard.h"
 #include "Worksheet_Creat_Fraction.h"
 #include "Worksheet_Creat_Task.h"
-#include "Worksheet_Baseboard.h"
 
 #define WCO_ENTRY(obj)  ((gchar *)(obj))
 #define WCO_BUTTON(obj) (*(gboolean*)(obj))

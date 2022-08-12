@@ -13,103 +13,6 @@
 
 typedef int bool;
 
-#define WCO_ENTRY(obj)  ((gchar *)(obj))
-#define WCO_BUTTON(obj) (*(gboolean*)(obj))
-#define WCO_CHAR(obj) ((char*)(obj))
-#define WCO_WDG(obj) ((GtkWidget*)(obj))
-#define WCO_LAB(obj) ((GtkLabel*)(obj))
-#define WCO_INT(obj) ((int*)(obj))
-
-
-enum Gets{
-    frac_zahler_1 = 0,
-    frac_nenner_1 = 1,
-    frac_zahler_2 = 2,
-    frac_nenner_2 = 3,
-
-    frac_addition,
-    frac_subtraction,
-    frac_multiplication,
-    frac_division,
-
-    task_addition,
-    task_subtraction,
-    task_multiplication ,
-    task_division,
-
-    task_addition_digit_1_ref,
-    task_addition_digit_2_ref,
-    task_addition_dezcount_ref,
-    task_addition_label_ref,
-
-    task_subtraction_digit_1_ref,
-    task_subtraction_digit_2_ref,
-    task_subtraction_dezcount_ref,
-    task_subtraction_label_ref,
-    
-    task_multiplication_digit_1_ref,
-    task_multiplication_digit_2_ref,
-    task_multiplication_dezcount_ref,
-    task_multiplication_label_ref,
-
-    task_division_digit_1_ref,
-    task_division_digit_2_ref,
-    task_division_dezcount_ref,
-    task_division_label_ref,
-
-    task_addition_digit_1,
-    task_subtraction_digit_1,
-    task_multiplication_digit_1,
-    task_division_digit_1,
-    
-    task_addition_digit_2,
-    task_subtraction_digit_2,
-    task_multiplication_digit_2,
-    task_division_digit_2,
-
-    task_addition_dezcount,
-    task_subtraction_dezcount,
-    task_multiplication_dezcount,
-    task_division_dezcount,
-
-    task_setting,
-    fraction_setting,
-
-    base_baseboard,
-    base_date,
-    base_name,
-    base_text,
-
-    base_baseboard_ref,
-    base_date_ref,
-    base_name_ref,
-    base_text_ref,
-
-
-    entry_1,
-    savePDFButton,
-    saveFolderButton,
-    creatButton_ref,
-
-    gtk_stack,
-    gtk_fixed_1,
-    gtk_fixed_2,
-};
-
-enum Sets{
-
-    filename,
-    foldername,
-    savePDF,
-    saveFolder,
-
-    label_addition,
-    label_subtraction,
-    label_multiplication,
-    label_division,
-
-};
-
 struct WCO_GUI_t{
     GtkBuilder *MyBuilder;
     GtkWidget *MyWindow1;
@@ -181,70 +84,11 @@ struct WCO_GUI_t{
 }MyGUI;
 
 
-void WCO_GUI_Init();
 void WCO_GUI_Start();
-void WCO_GUI_Start_PDFViewer();
-void WCO_GUI_Close_PDFViewer();
-
-void *WCO_GUI_PDFViewer();
+void WCO_GUI_Init();
 void exitApp();
-
 int WCO_GUI_Get_Stack();
-
-int WCO_GUI_Status_Get_AllOperand_CheckButtons();
-int WCO_GUI_Status_Get_SpecificOperand_CheckButton(int i);
-int WCO_GUI_Status_Get_Addition_CheckButton();
-int WCO_GUI_Status_Get_Subtraction_CheckButton();
-int WCO_GUI_Status_Get_Multiplication_CheckButton();
-int WCO_GUI_Status_Get_Division_CheckButton();
-int WCO_GUI_Status_Get_AdditionDigitRange_SpinButton(int i);
-int WCO_GUI_Status_Get_SubtractionDigitRange_SpinButton(int i);
-int WCO_GUI_Status_Get_MultiplicationDigitRange_SpinButton(int i);
-int WCO_GUI_Status_Get_DivisionDigitRange_SpinButton(int i);
-int WCO_GUI_Status_Get_SpecificOperandDigitRange_spinButton(int operand, int i);
-int WCO_GUI_Status_Get_AdditionDecimalPlaces_SpinButton();
-int WCO_GUI_Status_Get_SubtractionDecimalPlaces_SpinButton();
-int WCO_GUI_Status_Get_MultiplicationDecimalPlaces_SpinButton();
-int WCO_GUI_Status_Get_DevisionDecimalPlaces_SpinButton();
-int WCO_GUI_Status_Get_SpecificOperandDecimalPlaces_SpinButton(int operand);
-int WCO_GUI_Status_Get_PDFViewer();
-int WCO_GUI_Status_Get_ShowPNG();
-
-void WCO_GUI_Status_Set_ShowPNG();
-
-void WCO_GUI_Status_Reset_ShowPNG();
-
-void *WCO_GUI_Get(int i);
-
-const char *WCO_GUI_Status_FileName();
-int WCO_GUI_Status_SaveButton4();
-char *WCO_GUI_Status_FolderName();
-int WCO_GUI_Status_FolderButton();
-int WCO_GUI_Status_Baseboard_CheckButton5();
-
-void WCO_GUI_Update_Addition();
-void WCO_GUI_Update_Subtraction();
-void WCO_GUI_Update_Multiplication();
-void WCO_GUI_Update_Division();
-
-void WCO_GUI_Update_PermissionButton1();
-
-void WCO_GUI_Update_Set_SavePDF();
-void WCO_GUI_Update_Reset_SavePDF();
-void WCO_GUI_Update_Set_SaveFolder();
-void WCO_GUI_Update_Reset_SaveFolder();
-
 void WCO_GUI_Show_Worksheet(int page);
-
-void WCO_GUI_Set(void *input, int verify);
-
-void WCO_GUI_Update(int i);
-void WCO_GUI_Update_Label(int i);
-void WCO_GUI_Update_Visibility(int i);
-void WCO_GUI_Update_Baseboard();
-void WCO_GUI_Update_DigitRange(int i);
-void WCO_GUI_Update_CreateButton();
-void WCO_GUI_Update_FileName();
 
 
 #endif

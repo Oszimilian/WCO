@@ -8,13 +8,19 @@
 #include <unistd.h>
 #include <time.h>
 #include <math.h>
+#include <MagickWand/MagickWand.h>
 
 #include "hpdf.h"
 #include "GUI_Call.h"
+#include "GUI_Status.h"
+#include "GUI_Update.h"
 #include "GUI.h"
 #include "PDF.h"
-#include "Worksheet.h"
 #include "PNG.h"
+#include "Worksheet_Baseboard.h"
+#include "Worksheet_Creat_Fraction.h"
+#include "Worksheet_Creat_Task.h"
+
 
 
 /*
@@ -132,11 +138,7 @@ void WCO_GUI_Init()
     sprintf(MyGUI.label[1], "R");
     sprintf(MyGUI.label[2], " ");
     //Update the gui conditions
-    WCO_GUI_Update_Addition();
-    WCO_GUI_Update_Division();
-    WCO_GUI_Update_Multiplication();
-    WCO_GUI_Update_Division();
-    WCO_GUI_Update_PermissionButton1();
+
 }
     
 
@@ -175,11 +177,14 @@ void WCO_GUI_Show_Worksheet(int page)
 {
     //this case is true if this generated pdf was the first one since starting the programm
     //this is necesserly because at the beginning the gtk-image is not initiliced
-    if (WCO_GUI_Status_Get_ShowPNG())
+
+    printf("Test remove: %d \n", *(int*)WCO_PNG_Get(get_showPNG));
+    if (*(int*)WCO_PNG_Get(get_showPNG))
     {
         //this removes the container in which the image is conatained
         //if this is not done the displayed pages lie on top of each other
         gtk_container_remove(GTK_CONTAINER(MyGUI.MyWorksheetFixed[page]), MyGUI.MyWorksheetImage[page]);
+        
     }
 
     //Initializing a new gtk image from a given file
