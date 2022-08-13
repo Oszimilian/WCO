@@ -107,7 +107,6 @@ void MyEntry1_Changed(GtkEntry *e)
 {
     int i = _FALSE;
     WCO_GUI_Set(&i, savePDF);
-    WCO_GUI_Update_FileName();
     WCO_GUI_Update_CreateButton();
 }
 
@@ -115,6 +114,7 @@ void MyButton4_Clicked(GtkButton *b)
 {
     int i = _TRUE;
     WCO_GUI_Set(&i, savePDF);
+    WCO_GUI_Update_FileName();
     WCO_GUI_Update_CreateButton();
 }
 

@@ -124,21 +124,6 @@ void WCO_GUI_Init()
     MyGUI.saveFolder = _OFF;
     MyGUI.showPNG = _OFF;
 
-    //the label pointer is now set to the adress of the heap 
-    MyGUI.label = malloc(3 * sizeof(char));
-    
-    //Every adress of the first "Spallte" gets now a additional adress in the heap for the two dimensional array
-    for (int i = 0; i <= 2; i++)
-    {
-        MyGUI.label[i] = malloc(2 * sizeof(char));
-    }
-
-    //filling the two dimensional array with values which were used to display different label outputs
-    sprintf(MyGUI.label[0], "Z");
-    sprintf(MyGUI.label[1], "R");
-    sprintf(MyGUI.label[2], " ");
-    //Update the gui conditions
-
 }
     
 
@@ -178,7 +163,6 @@ void WCO_GUI_Show_Worksheet(int page)
     //this case is true if this generated pdf was the first one since starting the programm
     //this is necesserly because at the beginning the gtk-image is not initiliced
 
-    printf("Test remove: %d \n", *(int*)WCO_PNG_Get(get_showPNG));
     if (*(int*)WCO_PNG_Get(get_showPNG))
     {
         //this removes the container in which the image is conatained

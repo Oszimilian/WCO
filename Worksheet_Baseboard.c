@@ -20,12 +20,19 @@
 #include "Worksheet_Baseboard.h"
 #include "Worksheet_Creat_Fraction.h"
 #include "Worksheet_Creat_Task.h"
+
+/*
+*   Sets the variables for the threashold 
+*/
 void WCO_Worksheet_Baseboard_Init()
 {
     MyBase.threashold[0] = 150;
     MyBase.threashold[1] = 50;
 }
 
+/*
+*   Updates the basebaord settings maybe for saving it in a seperate file
+*/
 void WCO_Worksheet_Baseboard_Update()
 {
     MyBase.baseEnable = WCO_BUTTON(WCO_GUI_Get(base_baseboard));
@@ -36,6 +43,9 @@ void WCO_Worksheet_Baseboard_Update()
     sprintf(MyBase.text, "%s", WCO_ENTRY(WCO_GUI_Get(base_text)));
 }
 
+/*
+*   This function returns a pointer to a string with the up to date date and a string which is append at the front of the returned pointer
+*/
 char* WCO_Worksheet_Baseboard_Date(char *str)
 {
     time_t now;
@@ -55,7 +65,9 @@ char* WCO_Worksheet_Baseboard_Date(char *str)
     return tmp;
 }
 
-
+/*
+*   This function generates a baseboard on a specific page
+*/
 void WCO_Worksheet_Baseboard_Creat(int page)
 {
     
@@ -89,6 +101,9 @@ void WCO_Worksheet_Baseboard_Creat(int page)
     }
 }
 
+/*
+*   Returns a pointer to the baseboard threashold depending on if the baseboard is enabled or not
+*/
 int *WCO_Worksheet_Baseboard_Threashold()
 {
     return (WCO_BUTTON(WCO_GUI_Get(base_baseboard))) ? &MyBase.threashold[0] : &MyBase.threashold[1];

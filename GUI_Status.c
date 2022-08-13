@@ -21,11 +21,13 @@
 #include "Worksheet_Creat_Fraction.h"
 #include "Worksheet_Creat_Task.h"
 
+/*
+*   Function returns a NULL-Pointer to the requested thing
+*/
 void *WCO_GUI_Get(int i)
 {
     void *ret;
     int intRes;
-    char charRes;
     GtkWidget *wdgRes;
     GtkLabel *labRes;
 
@@ -78,6 +80,7 @@ void *WCO_GUI_Get(int i)
         case savePDFButton: ret = &MyGUI.savePDF; break; 
         case saveFolderButton: ret = &MyGUI.saveFolder; break;
         case creatButton_ref: ret = MyGUI.MyButton1; break;
+        case folder_name: ret = gtk_file_chooser_get_current_folder(GTK_FILE_CHOOSER(MyGUI.MyFileChosserButton1)); break;
 
         //Referenze to addition widgets
         case task_addition_digit_1_ref:    wdgRes = MyGUI.MySpinButton2; ret = wdgRes; break;
@@ -119,6 +122,11 @@ void *WCO_GUI_Get(int i)
     return ret;
 }
 
+/*
+*   Function sets specific variabels in the programms
+*   -> needs a void pointer as input
+*   -> needs a verify value to the specific variable
+*/
 void WCO_GUI_Set(void *input, int verify)
 {
     switch (verify)

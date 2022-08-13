@@ -21,6 +21,9 @@
 #include "Worksheet_Creat_Fraction.h"
 #include "Worksheet_Creat_Task.h"
 
+/*
+*   Function updates all the GUI settings if a specific button is pressed
+*/
 void WCO_GUI_Update(int i)
 {
     WCO_GUI_Update_Label(i);
@@ -32,6 +35,9 @@ void WCO_GUI_Update(int i)
     WCO_GUI_Update_CreateButton();
 }
 
+/*
+*   Function updates the GUI-Label which represents the num-Space of the functions 
+*/
 void WCO_GUI_Update_Label(int i)
 {
     int spinValue = WCO_BUTTON(WCO_GUI_Get(task_addition_dezcount + i));
@@ -45,6 +51,9 @@ void WCO_GUI_Update_Label(int i)
     
 }
 
+/*
+*   Function updates the GUI-Widget-Visibility if the Opperand-Check-Buttons are pressed
+*/
 void WCO_GUI_Update_Visibility(int i)
 {
     int jmpVal = (i == 0) ? 0 : (i == 1) ? 4 : (i == 2) ? 8 : (i == 3) ? 12 : 0;
@@ -62,6 +71,9 @@ void WCO_GUI_Update_Visibility(int i)
     }
 }
 
+/*
+*   This function updates the visibility of the settings for the baseboard
+*/
 void WCO_GUI_Update_Baseboard()
 {
     if(WCO_BUTTON(WCO_GUI_Get(base_baseboard)))
@@ -78,6 +90,9 @@ void WCO_GUI_Update_Baseboard()
     }
 }
 
+/*
+*   This function updates the range of the digitRange of the opperands
+*/
 void WCO_GUI_Update_DigitRange(int i)
 {
     int leftRange = WCO_BUTTON(WCO_GUI_Get(task_addition_digit_1 + i));
@@ -88,6 +103,9 @@ void WCO_GUI_Update_DigitRange(int i)
     gtk_spin_button_set_range(GTK_SPIN_BUTTON(WCO_WDG(WCO_GUI_Get(task_addition_dezcount_ref + jmpVal))), (double)minRange, (double)maxRange);
 }
 
+/*
+*   Checks the conditions under the creatButton is able to displayed for a better userbility
+*/
 void WCO_GUI_Update_CreateButton()
 {
     int checkSum = 0;
@@ -115,13 +133,18 @@ void WCO_GUI_Update_CreateButton()
     }
 }
 
+/*
+*   sets the filename and the folder name
+*/
 void WCO_GUI_Update_FileName()
 {
     int fileNameLeangh = strlen(WCO_ENTRY(WCO_GUI_Get(entry_1)));
+    WCO_PDF_SetFoldername(WCO_ENTRY(WCO_GUI_Get(folder_name)));
+
 
     if (fileNameLeangh >= 1)
     {
-        WCO_PDF_SetFilename(WCO_ENTRY(WCO_GUI_Get(filename)), _Tasks);
-        WCO_PDF_SetFilename(WCO_ENTRY(WCO_GUI_Get(filename)), _Solutions);
+    WCO_PDF_SetFilename(WCO_ENTRY(WCO_GUI_Get(entry_1)), _Tasks);
+    WCO_PDF_SetFilename(WCO_ENTRY(WCO_GUI_Get(entry_1)), _Solutions);
     }
 }

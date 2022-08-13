@@ -77,6 +77,7 @@ enum Gets{
     savePDFButton,
     saveFolderButton,
     creatButton_ref,
+    folder_name,
 
     gtk_stack,
     gtk_fixed_1,
