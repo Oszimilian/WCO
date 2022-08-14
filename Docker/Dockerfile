@@ -49,6 +49,8 @@ RUN make install
 RUN apt-get install -y libgtk-3-dev
 
 WORKDIR /home/maximilian
+RUN mkdir Git
+WORKDIR /home/maximilian/Git
 RUN git clone https://github.com/Oszimilian/WCO.git
 
 RUN apt install -y software-properties-common
@@ -56,3 +58,8 @@ RUN add-apt-repository ppa:ubuntu-toolchain-r/test
 RUN apt install -y gcc-9 g++-9
 RUN update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-9 90 --slave /usr/bin/g++ g++ /usr/bin/g++-9 --slave /usr/bin/gcov gcov /usr/bin/gcov-9
 RUN update-alternatives --config gcc
+
+WORKDIR /home/maximilian/Git/WCO
+RUN make
+RUN make clean
+CMD ./prog

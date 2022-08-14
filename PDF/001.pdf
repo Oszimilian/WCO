@@ -39,19 +39,8 @@ endobj
 stream
 /F1 14 Tf
 BT
-59 775 Td
-(Name:) Tj
-ET
-107 770 m
-257 770 l
-S
-BT
-297 775 Td
-(Test1) Tj
-ET
-BT
 416 775 Td
-(Datum:  13.8.2022) Tj
+(Datum:  14.8.2022) Tj
 ET
 50 750 m
 545 750 l
@@ -61,67 +50,67 @@ S
 S
 BT
 64 696 Td
-(7) Tj
+(3) Tj
 ET
 BT
 64 676 Td
-(2) Tj
+(8) Tj
 ET
 104 691 m
 119 691 l
 S
 BT
 109 696 Td
-(4) Tj
+(2) Tj
 ET
 BT
 109 676 Td
-(8) Tj
+(5) Tj
 ET
 BT
 86 687 Td
 (*) Tj
 ET
 BT
-131 687 Td
+138 687 Td
 (=) Tj
 ET
 59 641 m
-89 641 l
+74 641 l
 S
 BT
 64 646 Td
-(17) Tj
+(5) Tj
 ET
 BT
 64 626 Td
-(8) Tj
+(5) Tj
 ET
 104 641 m
 119 641 l
 S
 BT
 109 646 Td
-(8) Tj
+(7) Tj
 ET
 BT
 109 626 Td
-(3) Tj
+(8) Tj
 ET
 BT
-93 637 Td
+86 637 Td
 (*) Tj
 ET
 BT
-138 637 Td
+131 637 Td
 (=) Tj
 ET
 59 591 m
-89 591 l
+74 591 l
 S
 BT
 64 596 Td
-(10) Tj
+(4) Tj
 ET
 BT
 64 576 Td
@@ -132,74 +121,74 @@ ET
 S
 BT
 109 596 Td
-(5) Tj
+(7) Tj
 ET
 BT
 109 576 Td
-(6) Tj
+(4) Tj
 ET
 BT
-93 587 Td
-(*) Tj
+86 587 Td
+(+) Tj
 ET
 BT
 138 587 Td
 (=) Tj
 ET
 59 541 m
-89 541 l
+74 541 l
 S
 BT
 64 546 Td
-(15) Tj
+(1) Tj
 ET
 BT
 64 526 Td
-(5) Tj
+(6) Tj
 ET
 104 541 m
 119 541 l
 S
 BT
 109 546 Td
-(7) Tj
+(6) Tj
 ET
 BT
 109 526 Td
 (6) Tj
 ET
 BT
-93 537 Td
-(*) Tj
+86 537 Td
+(\057) Tj
 ET
 BT
 131 537 Td
 (=) Tj
 ET
 59 491 m
-89 491 l
+74 491 l
 S
 BT
 64 496 Td
-(11) Tj
+(3) Tj
 ET
 BT
 64 476 Td
-(7) Tj
+(5) Tj
 ET
 104 491 m
 119 491 l
 S
 BT
 109 496 Td
-(7) Tj
+(8) Tj
 ET
 BT
 109 476 Td
 (9) Tj
 ET
 BT
-93 487 Td
+86 487 Td
 (*) Tj
 ET
 BT
@@ -211,26 +200,26 @@ ET
 S
 BT
 64 446 Td
-(4) Tj
+(8) Tj
 ET
 BT
 64 426 Td
-(3) Tj
+(1) Tj
 ET
 104 441 m
 119 441 l
 S
 BT
 109 446 Td
-(4) Tj
+(9) Tj
 ET
 BT
 109 426 Td
-(4) Tj
+(3) Tj
 ET
 BT
 86 437 Td
-(*) Tj
+(\057) Tj
 ET
 BT
 131 437 Td
@@ -241,29 +230,29 @@ ET
 S
 BT
 64 396 Td
-(6) Tj
+(4) Tj
 ET
 BT
 64 376 Td
-(6) Tj
+(5) Tj
 ET
 104 391 m
 119 391 l
 S
 BT
 109 396 Td
-(5) Tj
+(6) Tj
 ET
 BT
 109 376 Td
-(8) Tj
+(2) Tj
 ET
 BT
 86 387 Td
-(\057) Tj
+(+) Tj
 ET
 BT
-131 387 Td
+138 387 Td
 (=) Tj
 ET
 59 341 m
@@ -271,7 +260,7 @@ ET
 S
 BT
 64 346 Td
-(7) Tj
+(2) Tj
 ET
 BT
 64 326 Td
@@ -282,48 +271,48 @@ ET
 S
 BT
 109 346 Td
-(2) Tj
+(4) Tj
 ET
 BT
 109 326 Td
-(5) Tj
+(8) Tj
 ET
 BT
 86 337 Td
-(*) Tj
+(\057) Tj
 ET
 BT
-138 337 Td
+131 337 Td
 (=) Tj
 ET
 59 291 m
-89 291 l
+74 291 l
 S
 BT
 64 296 Td
-(17) Tj
+(4) Tj
 ET
 BT
 64 276 Td
-(9) Tj
+(6) Tj
 ET
 104 291 m
 119 291 l
 S
 BT
 109 296 Td
-(6) Tj
+(8) Tj
 ET
 BT
 109 276 Td
-(1) Tj
+(6) Tj
 ET
 BT
-93 287 Td
-(\057) Tj
+86 287 Td
+(-) Tj
 ET
 BT
-138 287 Td
+124 287 Td
 (=) Tj
 ET
 59 241 m
@@ -331,7 +320,7 @@ ET
 S
 BT
 64 246 Td
-(2) Tj
+(3) Tj
 ET
 BT
 64 226 Td
@@ -350,10 +339,10 @@ BT
 ET
 BT
 86 237 Td
-(\057) Tj
+(*) Tj
 ET
 BT
-131 237 Td
+138 237 Td
 (=) Tj
 ET
 59 191 m
@@ -361,29 +350,29 @@ ET
 S
 BT
 64 196 Td
-(8) Tj
+(9) Tj
 ET
 BT
 64 176 Td
-(3) Tj
+(8) Tj
 ET
 104 191 m
 119 191 l
 S
 BT
 109 196 Td
-(6) Tj
+(9) Tj
 ET
 BT
 109 176 Td
-(4) Tj
+(9) Tj
 ET
 BT
 86 187 Td
-(\057) Tj
+(-) Tj
 ET
 BT
-138 187 Td
+131 187 Td
 (=) Tj
 ET
 59 141 m
@@ -391,41 +380,41 @@ ET
 S
 BT
 64 146 Td
-(7) Tj
+(5) Tj
 ET
 BT
 64 126 Td
-(8) Tj
+(9) Tj
 ET
 104 141 m
 119 141 l
 S
 BT
 109 146 Td
-(5) Tj
+(7) Tj
 ET
 BT
 109 126 Td
-(8) Tj
+(2) Tj
 ET
 BT
 86 137 Td
-(*) Tj
+(\057) Tj
 ET
 BT
 138 137 Td
 (=) Tj
 ET
 59 91 m
-89 91 l
+74 91 l
 S
 BT
 64 96 Td
-(10) Tj
+(7) Tj
 ET
 BT
 64 76 Td
-(2) Tj
+(3) Tj
 ET
 104 91 m
 119 91 l
@@ -436,86 +425,86 @@ BT
 ET
 BT
 109 76 Td
-(1) Tj
+(3) Tj
 ET
 BT
-93 87 Td
-(*) Tj
+86 87 Td
+(-) Tj
 ET
 BT
-138 87 Td
+131 87 Td
 (=) Tj
 ET
 297 691 m
-327 691 l
+312 691 l
 S
 BT
 302 696 Td
-(10) Tj
+(2) Tj
 ET
 BT
 302 676 Td
-(7) Tj
+(3) Tj
 ET
 342 691 m
 357 691 l
 S
 BT
 347 696 Td
-(3) Tj
+(7) Tj
 ET
 BT
 347 676 Td
 (2) Tj
 ET
 BT
-331 687 Td
-(\057) Tj
+324 687 Td
+(+) Tj
 ET
 BT
 376 687 Td
 (=) Tj
 ET
 297 641 m
-327 641 l
+312 641 l
 S
 BT
 302 646 Td
-(18) Tj
+(9) Tj
 ET
 BT
 302 626 Td
-(1) Tj
+(8) Tj
 ET
 342 641 m
 357 641 l
 S
 BT
 347 646 Td
-(1) Tj
+(6) Tj
 ET
 BT
 347 626 Td
-(8) Tj
+(6) Tj
 ET
 BT
-331 637 Td
-(\057) Tj
+324 637 Td
+(+) Tj
 ET
 BT
-384 637 Td
+376 637 Td
 (=) Tj
 ET
 297 591 m
-327 591 l
+312 591 l
 S
 BT
 302 596 Td
-(15) Tj
+(3) Tj
 ET
 BT
 302 576 Td
-(5) Tj
+(6) Tj
 ET
 342 591 m
 357 591 l
@@ -526,11 +515,11 @@ BT
 ET
 BT
 347 576 Td
-(5) Tj
+(6) Tj
 ET
 BT
-331 587 Td
-(\057) Tj
+324 587 Td
+(*) Tj
 ET
 BT
 369 587 Td
@@ -541,11 +530,11 @@ ET
 S
 BT
 302 546 Td
-(1) Tj
+(4) Tj
 ET
 BT
 302 526 Td
-(1) Tj
+(9) Tj
 ET
 342 541 m
 357 541 l
@@ -556,71 +545,71 @@ BT
 ET
 BT
 347 526 Td
-(2) Tj
+(1) Tj
 ET
 BT
 324 537 Td
-(*) Tj
+(\057) Tj
 ET
 BT
 369 537 Td
 (=) Tj
 ET
 297 491 m
-327 491 l
+312 491 l
 S
 BT
 302 496 Td
-(10) Tj
+(1) Tj
 ET
 BT
 302 476 Td
-(3) Tj
+(8) Tj
 ET
 342 491 m
 357 491 l
 S
 BT
 347 496 Td
-(4) Tj
+(1) Tj
 ET
 BT
 347 476 Td
-(7) Tj
+(4) Tj
 ET
 BT
-331 487 Td
+324 487 Td
 (\057) Tj
 ET
 BT
-376 487 Td
+369 487 Td
 (=) Tj
 ET
 297 441 m
-327 441 l
+312 441 l
 S
 BT
 302 446 Td
-(18) Tj
+(4) Tj
 ET
 BT
 302 426 Td
-(2) Tj
+(7) Tj
 ET
 342 441 m
 357 441 l
 S
 BT
 347 446 Td
-(1) Tj
-ET
-BT
-347 426 Td
 (7) Tj
 ET
 BT
-331 437 Td
-(\057) Tj
+347 426 Td
+(9) Tj
+ET
+BT
+324 437 Td
+(+) Tj
 ET
 BT
 376 437 Td
@@ -631,29 +620,29 @@ ET
 S
 BT
 302 396 Td
-(5) Tj
+(6) Tj
 ET
 BT
 302 376 Td
-(8) Tj
+(3) Tj
 ET
 342 391 m
 357 391 l
 S
 BT
 347 396 Td
-(5) Tj
+(8) Tj
 ET
 BT
 347 376 Td
-(6) Tj
+(5) Tj
 ET
 BT
 324 387 Td
-(\057) Tj
+(+) Tj
 ET
 BT
-369 387 Td
+376 387 Td
 (=) Tj
 ET
 297 341 m
@@ -661,67 +650,67 @@ ET
 S
 BT
 302 346 Td
-(4) Tj
+(6) Tj
 ET
 BT
 302 326 Td
-(3) Tj
+(2) Tj
 ET
 342 341 m
 357 341 l
 S
 BT
 347 346 Td
-(4) Tj
+(2) Tj
 ET
 BT
 347 326 Td
-(1) Tj
+(2) Tj
 ET
 BT
 324 337 Td
-(\057) Tj
+(-) Tj
 ET
 BT
 369 337 Td
 (=) Tj
 ET
 297 291 m
-327 291 l
+312 291 l
 S
 BT
 302 296 Td
-(13) Tj
+(8) Tj
 ET
 BT
 302 276 Td
-(6) Tj
+(2) Tj
 ET
 342 291 m
 357 291 l
 S
 BT
 347 296 Td
-(8) Tj
+(4) Tj
 ET
 BT
 347 276 Td
-(5) Tj
+(2) Tj
 ET
 BT
-331 287 Td
-(\057) Tj
+324 287 Td
+(*) Tj
 ET
 BT
-376 287 Td
+369 287 Td
 (=) Tj
 ET
 297 241 m
-327 241 l
+312 241 l
 S
 BT
 302 246 Td
-(10) Tj
+(5) Tj
 ET
 BT
 302 226 Td
@@ -732,18 +721,18 @@ ET
 S
 BT
 347 246 Td
-(1) Tj
-ET
-BT
-347 226 Td
 (7) Tj
 ET
 BT
-331 237 Td
-(\057) Tj
+347 226 Td
+(4) Tj
 ET
 BT
-376 237 Td
+324 237 Td
+(*) Tj
+ET
+BT
+369 237 Td
 (=) Tj
 ET
 297 191 m
@@ -751,29 +740,29 @@ ET
 S
 BT
 302 196 Td
-(8) Tj
+(6) Tj
 ET
 BT
 302 176 Td
-(4) Tj
+(7) Tj
 ET
 342 191 m
 357 191 l
 S
 BT
 347 196 Td
-(9) Tj
+(3) Tj
 ET
 BT
 347 176 Td
-(9) Tj
+(5) Tj
 ET
 BT
 324 187 Td
-(*) Tj
+(+) Tj
 ET
 BT
-369 187 Td
+376 187 Td
 (=) Tj
 ET
 297 141 m
@@ -781,56 +770,56 @@ ET
 S
 BT
 302 146 Td
-(6) Tj
+(8) Tj
 ET
 BT
 302 126 Td
-(4) Tj
+(3) Tj
 ET
 342 141 m
 357 141 l
 S
 BT
 347 146 Td
-(9) Tj
+(2) Tj
 ET
 BT
 347 126 Td
-(5) Tj
+(4) Tj
 ET
 BT
 324 137 Td
-(\057) Tj
+(*) Tj
 ET
 BT
 369 137 Td
 (=) Tj
 ET
 297 91 m
-327 91 l
+312 91 l
 S
 BT
 302 96 Td
-(14) Tj
+(5) Tj
 ET
 BT
 302 76 Td
-(9) Tj
+(2) Tj
 ET
 342 91 m
 357 91 l
 S
 BT
 347 96 Td
-(6) Tj
+(7) Tj
 ET
 BT
 347 76 Td
 (1) Tj
 ET
 BT
-331 87 Td
-(\057) Tj
+324 87 Td
+(*) Tj
 ET
 BT
 376 87 Td
@@ -840,7 +829,7 @@ ET
 endstream
 endobj
 6 0 obj
-5010
+4892
 endobj
 7 0 obj
 <<
@@ -858,8 +847,8 @@ xref
 0000000123 00000 n
 0000000187 00000 n
 0000000363 00000 n
-0000005427 00000 n
-0000005447 00000 n
+0000005309 00000 n
+0000005329 00000 n
 trailer
 <<
 /Root 1 0 R
@@ -867,5 +856,5 @@ trailer
 /Size 8
 >>
 startxref
-5545
+5427
 %%EOF
