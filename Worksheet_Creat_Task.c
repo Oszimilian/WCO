@@ -8,17 +8,22 @@
 #include <unistd.h>
 #include <time.h>
 #include <math.h>
+#include <MagickWand/MagickWand.h>
 
 #include "hpdf.h"
 #include "GUI_Call.h"
+#include "GUI_Status.h"
+#include "GUI_Update.h"
 #include "GUI.h"
 #include "PDF.h"
-#include "Worksheet.h"
 #include "PNG.h"
 #include "Worksheet_Baseboard.h"
+#include "Worksheet_Creat_Fraction.h"
 #include "Worksheet_Creat_Task.h"
 
-
+/*
+*   This function actually builds the worksheets
+*/
 void WCO_Worksheet_Task_Start()
 {
     MyTask_t *MyTask = WCO_Worksheet_Task_Init();
@@ -49,6 +54,9 @@ void WCO_Worksheet_Task_Start()
     WCO_PNG_Set_ConvertToPNG(0.23);
 }
 
+/*
+*   This function creats space on the heap and returns a pointer to this storage space on which the worksheet is stored
+*/
 MyTask_t *WCO_Worksheet_Task_Init()
 {
     MyTask_t *MyTask = malloc(sizeof(MyTask_t));
@@ -60,6 +68,9 @@ MyTask_t *WCO_Worksheet_Task_Init()
     return MyTask;
 }
 
+/*
+*   This function sets up a default worksheet (only for developing)
+*/
 void WCO_Worksheet_Task_Default(MyTask_t *MyTask)
 {
     for(int i = 0; i <= 1; i++)
@@ -70,18 +81,19 @@ void WCO_Worksheet_Task_Default(MyTask_t *MyTask)
             else sprintf(MyTask->task[i][k], "1 + 1 = 2");
         }
     }
-    /*
-    WCO_PDF_SetFoldername("/home/maximilian/Git/WCO/PDF");
-    WCO_PDF_SetFilename("001", _Tasks);
-    WCO_PDF_SetFilename("001", _Solutions);
-    */
 }
 
+/*
+*   This function frees the space in the heap of the worksheet struct
+*/
 void WCO_Worksheet_Task_Free(MyTask_t *MyTask)
 {
     free(MyTask);
 }
 
+/*
+*   This function creats the task sheet
+*/
 void WCO_Worksheet_Task_Creat(MyTask_t *MyTask, int page)
 {
     int pageSize;
@@ -114,6 +126,9 @@ void WCO_Worksheet_Task_Creat(MyTask_t *MyTask, int page)
     }
 }
 
+/*
+*   This function creats random tasks and stores it in a string
+*/
 void WCO_Worksheet_Task_Random(MyTask_t *MyTask, int count)
 {
     int digit[2];
@@ -190,6 +205,9 @@ void WCO_Worksheet_Task_Random(MyTask_t *MyTask, int count)
     }
 }
 
+/*
+*   This function caluclates the function and returns the solution float
+*/
 float WCO_Worksheet_Task_Calculate(MyTask_t *MyTask, int *count, float *a, float *b)
 {
     float ret; 
@@ -206,6 +224,9 @@ float WCO_Worksheet_Task_Calculate(MyTask_t *MyTask, int *count, float *a, float
     return ret;
 }
 
+/*
+*   This functiion draws the task on the pdfSheet
+*/
 void WCO_Worksheet_Task_Draw(MyTask_t *MyTask, int *x, int *y, int count, int page)
 {
     WCO_PDF_WriteText(*x, *y, MyTask->task[page][count], page);

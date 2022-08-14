@@ -8,15 +8,18 @@
 #include <unistd.h>
 #include <time.h>
 #include <math.h>
+#include <MagickWand/MagickWand.h>
 
 #include "hpdf.h"
 #include "GUI_Call.h"
+#include "GUI_Status.h"
+#include "GUI_Update.h"
 #include "GUI.h"
 #include "PDF.h"
-#include "Worksheet.h"
+#include "PNG.h"
+#include "Worksheet_Baseboard.h"
 #include "Worksheet_Creat_Fraction.h"
 #include "Worksheet_Creat_Task.h"
-#include "Worksheet_Baseboard.h"
 
 
 /*
@@ -37,9 +40,6 @@ void MyButton1_Clicked(GtkButton *b)
     }
 }
 
-/*
-*   calle when the close PDF-Button is pressed
-*/
 void MyButton2_Clicked(GtkButton *b){}
 
 
@@ -107,7 +107,6 @@ void MyEntry1_Changed(GtkEntry *e)
 {
     int i = _FALSE;
     WCO_GUI_Set(&i, savePDF);
-    WCO_GUI_Update_FileName();
     WCO_GUI_Update_CreateButton();
 }
 
@@ -115,6 +114,7 @@ void MyButton4_Clicked(GtkButton *b)
 {
     int i = _TRUE;
     WCO_GUI_Set(&i, savePDF);
+    WCO_GUI_Update_FileName();
     WCO_GUI_Update_CreateButton();
 }
 
@@ -143,4 +143,5 @@ void MyCheckButton9_Changed(GtkCheckButton *b){WCO_GUI_Update(_MULTIPLICATION);}
 void MyCheckButton10_Changed(GtkCheckButton *b){WCO_GUI_Update(_DIVISION);}
 
 /**********************************************************************************************************************/
+
 void MyStackSwitcher2_Changed(){}

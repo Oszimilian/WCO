@@ -8,14 +8,18 @@
 #include <unistd.h>
 #include <time.h>
 #include <math.h>
+#include <MagickWand/MagickWand.h>
 
 #include "hpdf.h"
 #include "GUI_Call.h"
+#include "GUI_Status.h"
+#include "GUI_Update.h"
 #include "GUI.h"
 #include "PDF.h"
-#include "Worksheet.h"
 #include "PNG.h"
-#include <MagickWand/MagickWand.h>
+#include "Worksheet_Baseboard.h"
+#include "Worksheet_Creat_Fraction.h"
+#include "Worksheet_Creat_Task.h"
 
 /*
 *   This function initalices some requirements to display the pdf
@@ -28,6 +32,9 @@ void WCO_PNG_Init()
     //store the two images to the fix folderpath 
     sprintf(MyPNG.fileName[0], "%sTask.png", MyPNG.folderName);
     sprintf(MyPNG.fileName[1], "%sSolution.png", MyPNG.folderName);
+
+    int i = _FALSE;
+    WCO_PNG_Set(&i, set_showPNG);
 }
 
 /*
@@ -42,14 +49,6 @@ void WCO_PNG_Set_ConvertToPNG(float resize)
     //converting both pages. The task and the solution sheet via a for loop
     for(int i = 0; i <= 1; i++)
     {
-        //making the command to convert the pdf 
-        //sprintf(MyPNG.convertCommand, "convert -density 300 %s -resize %dx%d -quality 100 -colorspace RGB %s", MyPDF.fileName[i], x, y, MyPNG.fileName[i]);
-        
-        //printing the command for debuging
-        //printf("%s\n", MyPNG.convertCommand);
-
-        //executing the command in the command line
-        //system(MyPNG.convertCommand);
 
         MagickWand *newWand;
 
@@ -61,9 +60,9 @@ void WCO_PNG_Set_ConvertToPNG(float resize)
 
         MagickResizeImage(newWand,x,y,LanczosFilter);
 
-        MagickSetImageCompressionQuality(newWand,100);
-
         MagickContrastImage(newWand, 100);
+
+        MagickSetImageCompressionQuality(newWand,100);
 
         MagickWriteImage(newWand, MyPNG.fileName[i]);
 
@@ -77,7 +76,8 @@ void WCO_PNG_Set_ConvertToPNG(float resize)
 
     //Set the PNGShowFlag 
     //This is only done once. After that the flag is always set
-    WCO_GUI_Status_Set_ShowPNG();
+    int i = _TRUE;
+    WCO_PNG_Set(&i, set_showPNG);
 }
 
 /*
@@ -93,4 +93,26 @@ char *WCO_PNG_Get_FileName(int page)
 
     //return the adress
     return file;
+}
+
+void *WCO_PNG_Get(int verify)
+{
+    void *ret = NULL;
+
+    switch (verify)
+    {
+        case get_showPNG: ret = &MyPNG.showPNG;
+        default: break;
+    }
+
+    return ret;
+}
+
+void WCO_PNG_Set(void *input, int verify)
+{
+    switch(verify)
+    {
+        case set_showPNG: MyPNG.showPNG = *(int*)input; break;
+        default: break;
+    }
 }

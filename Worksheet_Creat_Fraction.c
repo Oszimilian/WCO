@@ -8,29 +8,28 @@
 #include <unistd.h>
 #include <time.h>
 #include <math.h>
+#include <MagickWand/MagickWand.h>
 
 #include "hpdf.h"
 #include "GUI_Call.h"
+#include "GUI_Status.h"
+#include "GUI_Update.h"
 #include "GUI.h"
 #include "PDF.h"
-#include "Worksheet.h"
 #include "PNG.h"
+#include "Worksheet_Baseboard.h"
 #include "Worksheet_Creat_Fraction.h"
 #include "Worksheet_Creat_Task.h"
-#include "Worksheet_Baseboard.h"
 
 #define WCO_ENTRY(obj)  ((gchar *)(obj))
 #define WCO_BUTTON(obj) (*(gboolean*)(obj))
 
+/*
+*   This function actually builds the worksheets
+*/
 void WCO_Worksheet_Fraction_Start()
 {
     MyFraction_t *MyFraction = WCO_Worksheet_Fraction_Init();
-
-    /*
-    WCO_PDF_SetFoldername("/home/maximilian/Git/WCO/PDF");
-    WCO_PDF_SetFilename("001", _Tasks);
-    WCO_PDF_SetFilename("001", _Solutions);
-    */
 
     MyPDF.pdf = HPDF_New(Error_Handler, NULL);
 
@@ -60,6 +59,9 @@ void WCO_Worksheet_Fraction_Start()
     WCO_Worksheet_Fraction_Free(MyFraction);
 }
 
+/*
+*   This function creats space on the heap and returns a pointer to this storage space on which the worksheet is stored
+*/
 MyFraction_t *WCO_Worksheet_Fraction_Init()
 {
     MyFraction_t *MyFraction = malloc(sizeof(MyFraction_t));
@@ -72,6 +74,9 @@ MyFraction_t *WCO_Worksheet_Fraction_Init()
     return MyFraction;
 }
 
+/*
+*   This function sets up a default worksheet (only for developing)
+*/
 void WCO_Worksheet_Fraction_Default(MyFraction_t *Frac)
 {
     for(int i = 0; i <= 49; i++)
@@ -86,6 +91,9 @@ void WCO_Worksheet_Fraction_Default(MyFraction_t *Frac)
     }
 }
 
+/*
+*   This function creats the the sheet 
+*/
 void WCO_Worksheet_Fraction_Creat(MyFraction_t *MyFraction, int page)
 {
     int pageSize;
@@ -124,6 +132,9 @@ void WCO_Worksheet_Fraction_Creat(MyFraction_t *MyFraction, int page)
     }
 }
 
+/*
+*   This function creats a random task
+*/
 void WCO_Worksheet_Fraction_Random(MyFraction_t *MyFrac, int count)
 {
     if (count == 0) srand(time(NULL));
@@ -147,6 +158,9 @@ void WCO_Worksheet_Fraction_Random(MyFraction_t *MyFrac, int count)
     }
 }
 
+/*
+*   This function calculates the fractions 
+*/
 void WCO_Worksheet_Fraction_Calculate(MyFraction_t *MyFrac, int count)
 {
     int fraction[3][2];
@@ -216,6 +230,9 @@ void WCO_Worksheet_Fraction_Calculate(MyFraction_t *MyFrac, int count)
     WCO_Worksheet_Fraction_Simplify(MyFrac, count);
 }
 
+/*
+*   This function simplifies the fraction 
+*/
 void WCO_Worksheet_Fraction_Simplify(MyFraction_t *MyFrac, int count)
 {
     int highNum = (MyFrac->frac[count][2][0]>MyFrac->frac[count][2][1]) ? MyFrac->frac[count][2][0] : MyFrac->frac[count][2][1];
@@ -230,6 +247,9 @@ void WCO_Worksheet_Fraction_Simplify(MyFraction_t *MyFrac, int count)
     }
 }
 
+/*
+*   This function draws the fractions on the pdf-sheet
+*/
 void WCO_Worksheet_Fraction_Draw(MyFraction_t *MyFrac, int *x, int *y,int count, int page)
 {
     const int patLen = 15;
@@ -285,11 +305,17 @@ void WCO_Worksheet_Fraction_Draw(MyFraction_t *MyFrac, int *x, int *y,int count,
     free(numStr);
 }
 
+/*
+*   This function frees the space in the heap of the worksheet struct
+*/
 void WCO_Worksheet_Fraction_Free(MyFraction_t *MyFraction)
 {
     free(MyFraction);
 }
 
+/*
+*   this function gets a pointer to a integar and returns the amount of digits
+*/
 int IntLen(int *i)
 {
     char str[10];
