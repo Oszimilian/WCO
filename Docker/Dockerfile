@@ -62,4 +62,4 @@ RUN update-alternatives --config gcc
 WORKDIR /home/maximilian/Git/WCO
 RUN make
 RUN make clean
-CMD ./prog
+CMD ./bin/prog
