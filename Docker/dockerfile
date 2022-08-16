@@ -5,7 +5,6 @@ ARG IM_NAME=ImageMagick-{IM_VERSION}
 
 
 RUN apt-get update
-RUN apt-get upgrade
 RUN apt-get install -y build-essential
 RUN apt-get install -y libjpeg62-dev
 RUN apt-get install -y libtiff-dev
@@ -34,14 +33,14 @@ WORKDIR /home/maximilian
 RUN git clone https://github.com/libharu/libharu.git
 
 WORKDIR /home/maximilian/libharu
+RUN git checkout 2_3
 RUN apt-get install make
 RUN apt-get install -y automake
 RUN apt-get install autoconf
 RUN apt-get install -y libtool
 RUN apt-get -y install libpng-dev
 RUN apt install zlib1g-dev
-
-RUN ./buildconf.sh; return 0
+RUN ./buildconf.sh --force; return 0
 RUN ./configure --prefix=/usr/local --with-zlib --with-png --with-libdir=lib
 RUN make clean
 RUN make
@@ -61,7 +60,7 @@ RUN update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-9 90 --slave /us
 RUN update-alternatives --config gcc
 
 WORKDIR /home/maximilian/Git/WCO
-RUN make
-RUN make clean
-RUN git checkout NewDirectory_01
-CMD prog
+RUN make; return 0
+WORKDIR /home/maximilian/Git/WCO/bin
+
+CMD ./prog
