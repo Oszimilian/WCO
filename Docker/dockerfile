@@ -5,6 +5,7 @@ ARG IM_NAME=ImageMagick-{IM_VERSION}
 
 
 RUN apt-get update
+RUN apt-get upgrade
 RUN apt-get install -y build-essential
 RUN apt-get install -y libjpeg62-dev
 RUN apt-get install -y libtiff-dev
@@ -62,4 +63,5 @@ RUN update-alternatives --config gcc
 WORKDIR /home/maximilian/Git/WCO
 RUN make
 RUN make clean
-CMD ./bin/prog
+RUN git checkout NewDirectory_01
+CMD prog
