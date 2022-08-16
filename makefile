@@ -18,4 +18,4 @@ obj/%.o: src/%.c
 	$(CC) $(CCF) $(KP) -c $< -o $@
 
 clean:
-	rm  bin/*
+	rm  $(BIN)

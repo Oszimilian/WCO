@@ -49,7 +49,7 @@ void *WCO_GUI_Get(int i)
         case base_baseboard:    intRes = (int)gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(MyGUI.MyCheckButton5)); ret = &intRes; break;
         case base_date:         intRes = (int)gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(MyGUI.MyCheckButton6)); ret = &intRes; break;
         case base_name:         intRes = (int)gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(MyGUI.MyCheckButton11)); ret = &intRes; break;
-        case base_text:         ret = gtk_entry_get_text(GTK_ENTRY(MyGUI.MyEntry2)); break;
+        case base_text:         ret = (char*)gtk_entry_get_text(GTK_ENTRY(MyGUI.MyEntry2)); break;
 
         //CheckButtons for the taskmode
         case task_addition:         intRes = (int)gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(MyGUI.MyCheckButton1)); ret = &intRes; break;
@@ -76,7 +76,7 @@ void *WCO_GUI_Get(int i)
         case task_division_digit_2:         intRes = (int)gtk_spin_button_get_value(GTK_SPIN_BUTTON(MyGUI.MySpinButton7)); ret = &intRes; break;
 
         //EntryField for typing the filename and saving it 
-        case entry_1: ret = gtk_entry_get_text(GTK_ENTRY(MyGUI.MyEntry1)); break;
+        case entry_1: ret = (char*)gtk_entry_get_text(GTK_ENTRY(MyGUI.MyEntry1)); break;
         case savePDFButton: ret = &MyGUI.savePDF; break; 
         case saveFolderButton: ret = &MyGUI.saveFolder; break;
         case creatButton_ref: ret = MyGUI.MyButton1; break;
@@ -131,7 +131,7 @@ void WCO_GUI_Set(void *input, int verify)
 {
     switch (verify)
     {
-        case filename: sprintf(MyPDF.fileName, "%s", WCO_ENTRY(input)); break;
+        case filename: sprintf(MyPDF.fileName[0], "%s", WCO_ENTRY(input)); break;
         case foldername: sprintf(MyPDF.folderName, "%s", WCO_ENTRY(input)); break;
         case savePDF: MyGUI.savePDF = WCO_BUTTON(input); break;
         case saveFolder: MyGUI.saveFolder = WCO_BUTTON(input); break;
