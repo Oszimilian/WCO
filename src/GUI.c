@@ -33,7 +33,7 @@ void WCO_GUI_Start()
 
     
     //Set up the gtk builder from the glade xml file
-    MyGUI.MyBuilder = gtk_builder_new_from_file("home/maximilian/Git/WCO/glade/MyApp.glade");
+    MyGUI.MyBuilder = gtk_builder_new_from_file("glade/MyApp.glade");
     
 
     //Set up the gtk widgets with the gtk builder
