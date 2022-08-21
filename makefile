@@ -9,7 +9,20 @@ HeaderDir = -I/usr/include/gtk-3.0 -I/usr/include/at-spi2-atk/2.0 -I/usr/include
 
 LiberyLink = -lgtk-3 -lgdk-3 -lpangocairo-1.0 -lpango-1.0 -lharfbuzz -latk-1.0 -lcairo-gobject -lcairo -lgdk_pixbuf-2.0 -lgio-2.0 -lgobject-2.0 -lglib-2.0 -export-dynamic  /usr/local/lib/libhpdf.a -L/usr/local/lib -lz -lm -lpthread -lMagickWand-7.Q16HDRI -lMagickCore-7.Q16HDRI -llzma -ljbig -ljpeg -lpng -ltiff
 
-KP =   $(Flags) $(HeaderDir) $(LiberyLink)
+LibGTK = $(shell pkg-config --libs gtk+-3.0)
+FlagGTK = $(shell pkg-config --cflags gtk+-3.0)
+DynGTK = -export-dynamic
+
+LibLibHaru = /usr/local/lib/libhpdf.a -L/usr/local/lib -lz -lm -lpthread
+
+LibIM = $(shell pkg-config --libs MagickWand) -llzma -ljbig -ljpeg -lpng -ltiff
+FlagIM = $(shell pkg-config --cflags MagickWand)
+
+FlagWCO = -I/home/maximilian/Git/WCO/headers
+
+KP_old =   $(Flags) $(HeaderDir) $(LiberyLink)
+
+KP = $(LibGTK) $(LibLibHaru) $(LibIM) $(FlagWCO) $(FlagGTK) $(FlagIM) $(DynGTK)
 
 $(BIN): $(OBJS)
 	$(CC) $(OBJS) $(KP) -o $@
