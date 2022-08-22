@@ -4,7 +4,7 @@
 #define _Zahler 0
 #define _Nenner 1
 
-struct WCO_PDF_t{
+static struct WCO_PDF_t{
     HPDF_Doc pdf;
     HPDF_Page page[20];
 
@@ -20,7 +20,7 @@ struct WCO_PDF_t{
 
 //struct WCO_PDF_t MyPDF;
 
-jmp_buf env;
+static jmp_buf env;
 
 //PDF
 void Error_Handler (HPDF_STATUS error_no, HPDF_STATUS detail_no, void *user_data);
