@@ -12,18 +12,18 @@ docker run -v D:\14_Docker:/home/maximilian/Data worksheet_crafter_oszimilian
 # Win Cross Compile Build #
 
 ## Base-Setup ##
-Markup :    * setup a virtual windows machine
-            * install MSYS2
-            * install Cygwin
-            * install VSCode
-            * install Git for Windows
+* setup a virtual windows machine
+* install MSYS2
+* install Cygwin
+* install VSCode
+* install Git for Windows
 
 ## Init Git ##
 
 ```bash 
 git clone https://github.com/Oszimilian/WCO.git
 ```
-Markup :    * clone repo
-                * git clone https://github.com/Oszimilian/WCO.git
+* clone repo
+* git clone https://github.com/Oszimilian/WCO.git
 
 
