@@ -68,15 +68,21 @@ Install following packages with the setup programm
 * zlib-devel
 * libpng-devel
 
-Clone the LibHaru GitHub Repository 
+Clone the LibHaru GitHub Repository and navigate into the folder
 ```bash
 git clone https://github.com/libharu/libharu.git
 ```
 
-Change the branch to a previous one (2_3)
+Change the branch to a previous one (2_3) 
 ```bash
 git checkout 2_3
 ```
+
+Maybe you have to run 
+    ```bash
+    sed -i 's/\r//' ./buildconf.sh
+    ```
+because of missmatching lineendings
 
 Build the Configure-File
 ```bash
