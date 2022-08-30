@@ -25,28 +25,28 @@ git clone https://github.com/Oszimilian/WCO.git
 
 ## Init GTK 3 with MSYS2 ##
 Installing mingw
-    ```bash
-    pacman -Syy
-    ```
+```bash
+pacman -Syy
+```
 Installing packages for mingw
-    ```bash
-    pacman -Syuu
-    ```
+```bash
+pacman -Syuu
+```
 Restart MSYS2 and repeat the previous two steps
 
 Install GTK3
-    ```bash
-    pacman -S mingw-w64-x86_64-gtk3
-    ```
+```bash
+pacman -S mingw-w64-x86_64-gtk3
+```
 Install requirements for compiling gtk3
-    ```bash
-    pacman -S mingw-w64-x86_64-toolchain base-devel
-    ```
+```bash
+pacman -S mingw-w64-x86_64-toolchain base-devel
+```
 
 Set new environment variables to this path
-    ```bash
-    C:\msys64\mingw64\bin
-    ```
+```bash
+C:\msys64\mingw64\bin
+```
 
 
 
