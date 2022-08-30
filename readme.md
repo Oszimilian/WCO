@@ -1,12 +1,17 @@
 # Dockerbuild #
 
-## Building the dockerimage ##
+Building the docker image 
+```build
 docker build -t worksheet_crafter_oszimilian .
-
+```
+```build
 docker build --no-cache -t worksheet_crafter_oszimilian .
+```
 
-## Execute the dockerimage with a bind mount ##
+Execute the dockerimage with a bind mount
+```build
 docker run -v D:\14_Docker:/home/maximilian/Data worksheet_crafter_oszimilian
+```
 
 
 # Win Cross Compile Build #
