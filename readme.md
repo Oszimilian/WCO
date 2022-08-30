@@ -16,7 +16,7 @@ docker run -v D:\14_Docker:/home/maximilian/Data worksheet_crafter_oszimilian
 
 # Win Cross Compile Build #
 
-## Base-Setup ##
+### Base-Setup ###
 
 * setup a virtual windows machine
 * install MSYS2
@@ -24,13 +24,13 @@ docker run -v D:\14_Docker:/home/maximilian/Data worksheet_crafter_oszimilian
 * install VSCode
 * install Git for Windows
 
-## Init Git ##
+### Init Git ###
 
 ```bash 
 git clone https://github.com/Oszimilian/WCO.git
 ```
 
-## Install GTK 3 with MSYS2 ##
+### Install GTK 3 with MSYS2 ###
 
 Installing mingw
 ```bash
@@ -56,14 +56,14 @@ Set new environment variables to this path
 C:\msys64\mingw64\bin
 ```
 
-## Install ImageMagick with MSYS2 ##
+### Install ImageMagick with MSYS2 ###
 
 Install MSYS2
 ```bash
 pacman -S mingw-w64-x86_64-imagemagick
 ```
 
-## Install LibHaru with Cygwin ##
+### Install LibHaru with Cygwin ###
 
 Install following packages with the setup programm
 * autoconf
@@ -106,7 +106,7 @@ make
 make install
 ```
 
-## Install MinGW for Windows ##
+### Install MinGW for Windows ###
 
 Go to this webside and download MinGW
 ```bash
