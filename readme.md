@@ -101,6 +101,20 @@ make
 make install
 ```
 
+## Install MinGW for Windows ##
+
+Go to this webside and download MinGW
+```bash
+https://sourceforge.net/projects/mingw/
+```
+
+Set the environment variables to this folder
+```bash
+C:\MinGW\bin
+```
+
+Open CMD. So now you can run mingw32-make on windows like make on linux
+
 
 
 
