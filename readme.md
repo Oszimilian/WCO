@@ -22,7 +22,7 @@ Markup :    * setup a virtual windows machine
 
 ```bash 
 git clone https://github.com/Oszimilian/WCO.git
-´´´
+```
 Markup :    * clone repo
                 * git clone https://github.com/Oszimilian/WCO.git
 
