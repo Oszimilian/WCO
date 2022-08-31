@@ -4,7 +4,7 @@
 #define _Zahler 0
 #define _Nenner 1
 
-struct WCO_PDF_t{
+typedef struct MyPDF_s{
     HPDF_Doc pdf;
     HPDF_Page page[20];
 
@@ -14,8 +14,9 @@ struct WCO_PDF_t{
     char fileName[2][100];
     char folderName[100];
 
-}MyPDF;
+} MyPDF_t;
 
+MyPDF_t MyPDF;
 
 
 //struct WCO_PDF_t MyPDF;

@@ -1,10 +1,11 @@
-struct PNG_t
-{
+typedef struct MyPNG_s{
     char convertCommand[300];
     char fileName[2][200];
     char folderName[100];
     int showPNG;
-}MyPNG;
+}MyPNG_t;
+
+MyPNG_t MyPNG;
 
 enum PNG_Gets{
     get_showPNG,

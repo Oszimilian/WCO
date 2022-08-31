@@ -1,11 +1,13 @@
-struct MyBase_t{
+typedef struct MyBase_s{
     int baseEnable;
     int dateEnable;
     int nameEnable;
     char text[50];
     int textLen;
     int threashold[2];
-}MyBase;
+}MyBase_t;
+
+MyBase_t MyBase;
 
 void WCO_Worksheet_Baseboard_Init();
 void WCO_Worksheet_Baseboard_Update();

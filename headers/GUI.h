@@ -13,7 +13,7 @@
 
 typedef int bool;
 
-struct WCO_GUI_t{
+typedef struct WCO_GUI_s{
     GtkBuilder *MyBuilder;
     GtkWidget *MyWindow1;
     GtkWidget *MyFixed1;
@@ -81,7 +81,9 @@ struct WCO_GUI_t{
     int showPNG;
 
     char **label;
-}MyGUI;
+}WCO_GUI_t;
+
+WCO_GUI_t MyGUI;
 
 
 void WCO_GUI_Start();
