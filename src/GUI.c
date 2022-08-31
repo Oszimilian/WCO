@@ -108,6 +108,7 @@ void WCO_GUI_Start()
     //init the gui
     WCO_GUI_Init();
 
+
     //starts the main loop. 
     //to interrupt this main loop to carry out other functions is not possible. This functions have to be set up in a seperate thread
     //but be carefull. GTK is not really thread save.
