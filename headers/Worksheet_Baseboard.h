@@ -1,4 +1,4 @@
-static struct MyBase_t{
+struct MyBase_t{
     int baseEnable;
     int dateEnable;
     int nameEnable;

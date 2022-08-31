@@ -1,4 +1,4 @@
-static struct PNG_t
+struct PNG_t
 {
     char convertCommand[300];
     char fileName[2][200];

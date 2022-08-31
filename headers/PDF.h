@@ -4,7 +4,7 @@
 #define _Zahler 0
 #define _Nenner 1
 
-static struct WCO_PDF_t{
+struct WCO_PDF_t{
     HPDF_Doc pdf;
     HPDF_Page page[20];
 
