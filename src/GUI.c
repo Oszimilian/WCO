@@ -20,6 +20,7 @@
 #include "Worksheet_Baseboard.h"
 #include "Worksheet_Creat_Fraction.h"
 #include "Worksheet_Creat_Task.h"
+#include "main.h"
 
 
 
@@ -33,77 +34,77 @@ void WCO_GUI_Start()
 
     
     //Set up the gtk builder from the glade xml file
-    MyGUI.MyBuilder = gtk_builder_new_from_file("glade/MyApp.glade");
+    WCO_GUI_Ref()->MyBuilder = gtk_builder_new_from_file("glade/MyApp.glade");
     
 
     //Set up the gtk widgets with the gtk builder
-    MyGUI.MyWindow1 = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MyWindow"));
+    WCO_GUI_Ref()->MyWindow1 = GTK_WIDGET(gtk_builder_get_object(WCO_GUI_Ref()->MyBuilder, "MyWindow"));
 
-    MyGUI.MyFixed1 = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MyFixed1"));
-    MyGUI.MyWorksheetFixed[0] = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MyFixed2"));
-    MyGUI.MyWorksheetFixed[1] = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MyFixed3"));
+    WCO_GUI_Ref()->MyFixed1 = GTK_WIDGET(gtk_builder_get_object(WCO_GUI_Ref()->MyBuilder, "MyFixed1"));
+    WCO_GUI_Ref()->MyWorksheetFixed[0] = GTK_WIDGET(gtk_builder_get_object(WCO_GUI_Ref()->MyBuilder, "MyFixed2"));
+    WCO_GUI_Ref()->MyWorksheetFixed[1] = GTK_WIDGET(gtk_builder_get_object(WCO_GUI_Ref()->MyBuilder, "MyFixed3"));
 
     //MyGUI.MyLabel1 = GTK_LABEL(gtk_builder_get_object(MyGUI.MyBuilder, "MyLabel1"));
-    MyGUI.MyLabel2 = GTK_LABEL(gtk_builder_get_object(MyGUI.MyBuilder, "MyLabel2"));
-    MyGUI.MyLabel3 = GTK_LABEL(gtk_builder_get_object(MyGUI.MyBuilder, "MyLabel3"));
-    MyGUI.MyLabel4 = GTK_LABEL(gtk_builder_get_object(MyGUI.MyBuilder, "MyLabel4"));
-    MyGUI.MyLabel5 = GTK_LABEL(gtk_builder_get_object(MyGUI.MyBuilder, "MyLabel5"));
+    WCO_GUI_Ref()->MyLabel2 = GTK_LABEL(gtk_builder_get_object(WCO_GUI_Ref()->MyBuilder, "MyLabel2"));
+    WCO_GUI_Ref()->MyLabel3 = GTK_LABEL(gtk_builder_get_object(WCO_GUI_Ref()->MyBuilder, "MyLabel3"));
+    WCO_GUI_Ref()->MyLabel4 = GTK_LABEL(gtk_builder_get_object(WCO_GUI_Ref()->MyBuilder, "MyLabel4"));
+    WCO_GUI_Ref()->MyLabel5 = GTK_LABEL(gtk_builder_get_object(WCO_GUI_Ref()->MyBuilder, "MyLabel5"));
 
-    MyGUI.MyButton1 = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MyButton1"));
+    WCO_GUI_Ref()->MyButton1 = GTK_WIDGET(gtk_builder_get_object(WCO_GUI_Ref()->MyBuilder, "MyButton1"));
     //MyGUI.MyButton2 = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MyButton2"));
-    MyGUI.MyButton3 = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MyButton3"));
-    MyGUI.MyButton4 = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MyButton4"));
+    WCO_GUI_Ref()->MyButton3 = GTK_WIDGET(gtk_builder_get_object(WCO_GUI_Ref()->MyBuilder, "MyButton3"));
+    WCO_GUI_Ref()->MyButton4 = GTK_WIDGET(gtk_builder_get_object(WCO_GUI_Ref()->MyBuilder, "MyButton4"));
     //MyGUI.MyButton5 = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MyButton5"));
 
-    MyGUI.MyCheckButton1 = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MyCheckButton1"));
-    MyGUI.MyCheckButton2 = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MyCheckButton2"));
-    MyGUI.MyCheckButton3 = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MyCheckButton3"));
-    MyGUI.MyCheckButton4 = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MyCheckButton4"));
-    MyGUI.MyCheckButton5 = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MyCheckButton5"));
-    MyGUI.MyCheckButton6 = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MyCheckButton6"));
-    MyGUI.MyCheckButton7 = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MyCheckButton7"));
-    MyGUI.MyCheckButton8 = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MyCheckButton8"));
-    MyGUI.MyCheckButton9 = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MyCheckButton9"));
-    MyGUI.MyCheckButton10 = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MyCheckButton10"));
-    MyGUI.MyCheckButton11 = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MyCheckButton11"));
+    WCO_GUI_Ref()->MyCheckButton1 = GTK_WIDGET(gtk_builder_get_object(WCO_GUI_Ref()->MyBuilder, "MyCheckButton1"));
+    WCO_GUI_Ref()->MyCheckButton2 = GTK_WIDGET(gtk_builder_get_object(WCO_GUI_Ref()->MyBuilder, "MyCheckButton2"));
+    WCO_GUI_Ref()->MyCheckButton3 = GTK_WIDGET(gtk_builder_get_object(WCO_GUI_Ref()->MyBuilder, "MyCheckButton3"));
+    WCO_GUI_Ref()->MyCheckButton4 = GTK_WIDGET(gtk_builder_get_object(WCO_GUI_Ref()->MyBuilder, "MyCheckButton4"));
+    WCO_GUI_Ref()->MyCheckButton5 = GTK_WIDGET(gtk_builder_get_object(WCO_GUI_Ref()->MyBuilder, "MyCheckButton5"));
+    WCO_GUI_Ref()->MyCheckButton6 = GTK_WIDGET(gtk_builder_get_object(WCO_GUI_Ref()->MyBuilder, "MyCheckButton6"));
+    WCO_GUI_Ref()->MyCheckButton7 = GTK_WIDGET(gtk_builder_get_object(WCO_GUI_Ref()->MyBuilder, "MyCheckButton7"));
+    WCO_GUI_Ref()->MyCheckButton8 = GTK_WIDGET(gtk_builder_get_object(WCO_GUI_Ref()->MyBuilder, "MyCheckButton8"));
+    WCO_GUI_Ref()->MyCheckButton9 = GTK_WIDGET(gtk_builder_get_object(WCO_GUI_Ref()->MyBuilder, "MyCheckButton9"));
+    WCO_GUI_Ref()->MyCheckButton10 = GTK_WIDGET(gtk_builder_get_object(WCO_GUI_Ref()->MyBuilder, "MyCheckButton10"));
+    WCO_GUI_Ref()->MyCheckButton11 = GTK_WIDGET(gtk_builder_get_object(WCO_GUI_Ref()->MyBuilder, "MyCheckButton11"));
 
     //MyGUI.MyRadioButton1 = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MyRadioButton1"));
     //MyGUI.MyRadioButton2 = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MyRadioButton2"));
 
     //MyGUI.MySpinButton1 = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MySpinButton1"));
-    MyGUI.MySpinButton2 = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MySpinButton2"));
-    MyGUI.MySpinButton3 = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MySpinButton3"));
-    MyGUI.MySpinButton4 = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MySpinButton4"));
-    MyGUI.MySpinButton5 = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MySpinButton5"));
-    MyGUI.MySpinButton6 = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MySpinButton6"));
-    MyGUI.MySpinButton7 = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MySpinButton7"));
-    MyGUI.MySpinButton8 = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MySpinButton8"));
-    MyGUI.MySpinButton9 = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MySpinButton9"));
-    MyGUI.MySpinButton10 = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MySpinButton10"));
-    MyGUI.MySpinButton11 = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MySpinButton11"));
-    MyGUI.MySpinButton12 = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MySpinButton12"));
-    MyGUI.MySpinButton13 = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MySpinButton13"));
-    MyGUI.MySpinButton14 = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MySpinButton14"));
-    MyGUI.MySpinButton15 = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MySpinButton15"));
-    MyGUI.MySpinButton16 = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MySpinButton16"));
-    MyGUI.MySpinButton17 = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MySpinButton17"));
+    WCO_GUI_Ref()->MySpinButton2 = GTK_WIDGET(gtk_builder_get_object(WCO_GUI_Ref()->MyBuilder, "MySpinButton2"));
+    WCO_GUI_Ref()->MySpinButton3 = GTK_WIDGET(gtk_builder_get_object(WCO_GUI_Ref()->MyBuilder, "MySpinButton3"));
+    WCO_GUI_Ref()->MySpinButton4 = GTK_WIDGET(gtk_builder_get_object(WCO_GUI_Ref()->MyBuilder, "MySpinButton4"));
+    WCO_GUI_Ref()->MySpinButton5 = GTK_WIDGET(gtk_builder_get_object(WCO_GUI_Ref()->MyBuilder, "MySpinButton5"));
+    WCO_GUI_Ref()->MySpinButton6 = GTK_WIDGET(gtk_builder_get_object(WCO_GUI_Ref()->MyBuilder, "MySpinButton6"));
+    WCO_GUI_Ref()->MySpinButton7 = GTK_WIDGET(gtk_builder_get_object(WCO_GUI_Ref()->MyBuilder, "MySpinButton7"));
+    WCO_GUI_Ref()->MySpinButton8 = GTK_WIDGET(gtk_builder_get_object(WCO_GUI_Ref()->MyBuilder, "MySpinButton8"));
+    WCO_GUI_Ref()->MySpinButton9 = GTK_WIDGET(gtk_builder_get_object(WCO_GUI_Ref()->MyBuilder, "MySpinButton9"));
+    WCO_GUI_Ref()->MySpinButton10 = GTK_WIDGET(gtk_builder_get_object(WCO_GUI_Ref()->MyBuilder, "MySpinButton10"));
+    WCO_GUI_Ref()->MySpinButton11 = GTK_WIDGET(gtk_builder_get_object(WCO_GUI_Ref()->MyBuilder, "MySpinButton11"));
+    WCO_GUI_Ref()->MySpinButton12 = GTK_WIDGET(gtk_builder_get_object(WCO_GUI_Ref()->MyBuilder, "MySpinButton12"));
+    WCO_GUI_Ref()->MySpinButton13 = GTK_WIDGET(gtk_builder_get_object(WCO_GUI_Ref()->MyBuilder, "MySpinButton13"));
+    WCO_GUI_Ref()->MySpinButton14 = GTK_WIDGET(gtk_builder_get_object(WCO_GUI_Ref()->MyBuilder, "MySpinButton14"));
+    WCO_GUI_Ref()->MySpinButton15 = GTK_WIDGET(gtk_builder_get_object(WCO_GUI_Ref()->MyBuilder, "MySpinButton15"));
+    WCO_GUI_Ref()->MySpinButton16 = GTK_WIDGET(gtk_builder_get_object(WCO_GUI_Ref()->MyBuilder, "MySpinButton16"));
+    WCO_GUI_Ref()->MySpinButton17 = GTK_WIDGET(gtk_builder_get_object(WCO_GUI_Ref()->MyBuilder, "MySpinButton17"));
     
-    MyGUI.MyFileChosserButton1 = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MyFileChosserButton1"));
+    WCO_GUI_Ref()->MyFileChosserButton1 = GTK_WIDGET(gtk_builder_get_object(WCO_GUI_Ref()->MyBuilder, "MyFileChosserButton1"));
 
-    MyGUI.MyEntry1 = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MyEntry1"));
-    MyGUI.MyEntry2 = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MyEntry2"));
+    WCO_GUI_Ref()->MyEntry1 = GTK_WIDGET(gtk_builder_get_object(WCO_GUI_Ref()->MyBuilder, "MyEntry1"));
+    WCO_GUI_Ref()->MyEntry2 = GTK_WIDGET(gtk_builder_get_object(WCO_GUI_Ref()->MyBuilder, "MyEntry2"));
 
-    MyGUI.MyStackSwitcher2 = GTK_STACK_SWITCHER(gtk_builder_get_object(MyGUI.MyBuilder, "MyStackSwitcher2"));
-    MyGUI.MyStack2 = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MyStack2"));
-    MyGUI.MySettingsFixed[0] = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MyFixed4"));
-    MyGUI.MySettingsFixed[1] = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MyFixed5"));
+    WCO_GUI_Ref()->MyStackSwitcher2 = GTK_STACK_SWITCHER(gtk_builder_get_object(WCO_GUI_Ref()->MyBuilder, "MyStackSwitcher2"));
+    WCO_GUI_Ref()->MyStack2 = GTK_WIDGET(gtk_builder_get_object(WCO_GUI_Ref()->MyBuilder, "MyStack2"));
+    WCO_GUI_Ref()->MySettingsFixed[0] = GTK_WIDGET(gtk_builder_get_object(WCO_GUI_Ref()->MyBuilder, "MyFixed4"));
+    WCO_GUI_Ref()->MySettingsFixed[1] = GTK_WIDGET(gtk_builder_get_object(WCO_GUI_Ref()->MyBuilder, "MyFixed5"));
     
     
     //connecting the signalls which were initilized by glade with the programm
-    gtk_builder_connect_signals(MyGUI.MyBuilder, NULL);
+    gtk_builder_connect_signals(WCO_GUI_Ref()->MyBuilder, NULL);
 
     //show the widgets in the window
-    gtk_widget_show(MyGUI.MyWindow1);
+    gtk_widget_show(WCO_GUI_Ref()->MyWindow1);
 
     //init the gui
     WCO_GUI_Init();
@@ -121,9 +122,9 @@ void WCO_GUI_Start()
 void WCO_GUI_Init()
 {
     //diffrent flags are set;
-    MyGUI.savePDF = _OFF;
-    MyGUI.saveFolder = _OFF;
-    MyGUI.showPNG = _OFF;
+    WCO_GUI_Ref()->savePDF = _OFF;
+    WCO_GUI_Ref()->saveFolder = _OFF;
+    WCO_GUI_Ref()->showPNG = _OFF;
 
 }
     
@@ -147,7 +148,7 @@ void exitApp()
 
 int WCO_GUI_Get_Stack()
 {
-    if(MyGUI.MySettingsFixed[0] == gtk_stack_get_visible_child(GTK_STACK(MyGUI.MyStack2)))
+    if(WCO_GUI_Ref()->MySettingsFixed[0] == gtk_stack_get_visible_child(GTK_STACK(WCO_GUI_Ref()->MyStack2)))
     {
         return task_setting;
     }else{
@@ -168,21 +169,21 @@ void WCO_GUI_Show_Worksheet(int page)
     {
         //this removes the container in which the image is conatained
         //if this is not done the displayed pages lie on top of each other
-        gtk_container_remove(GTK_CONTAINER(MyGUI.MyWorksheetFixed[page]), MyGUI.MyWorksheetImage[page]);
+        gtk_container_remove(GTK_CONTAINER(WCO_GUI_Ref()->MyWorksheetFixed[page]), WCO_GUI_Ref()->MyWorksheetImage[page]);
         
     }
 
     //Initializing a new gtk image from a given file
-    MyGUI.MyWorksheetImage[page] = gtk_image_new_from_file(WCO_PNG_Get_FileName(page));
+    WCO_GUI_Ref()->MyWorksheetImage[page] = gtk_image_new_from_file(WCO_PNG_Get_FileName(page));
 
     //add the image to a new container
-    gtk_container_add(GTK_CONTAINER(MyGUI.MyWorksheetFixed[page]), MyGUI.MyWorksheetImage[page]);
+    gtk_container_add(GTK_CONTAINER(WCO_GUI_Ref()->MyWorksheetFixed[page]), WCO_GUI_Ref()->MyWorksheetImage[page]);
 
     //display the image
-    gtk_widget_show(MyGUI.MyWorksheetImage[page]);
+    gtk_widget_show(WCO_GUI_Ref()->MyWorksheetImage[page]);
 
     //move the image to the left upor corner of the container
-    gtk_fixed_move(GTK_FIXED(MyGUI.MyWorksheetFixed[page]), MyGUI.MyWorksheetImage[page], 0, 0);
+    gtk_fixed_move(GTK_FIXED(WCO_GUI_Ref()->MyWorksheetFixed[page]), WCO_GUI_Ref()->MyWorksheetImage[page], 0, 0);
 }
 
 

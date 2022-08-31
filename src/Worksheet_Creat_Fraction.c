@@ -20,6 +20,7 @@
 #include "Worksheet_Baseboard.h"
 #include "Worksheet_Creat_Fraction.h"
 #include "Worksheet_Creat_Task.h"
+#include "main.h"
 
 #define WCO_ENTRY(obj)  ((gchar *)(obj))
 #define WCO_BUTTON(obj) (*(gboolean*)(obj))
@@ -31,7 +32,7 @@ void WCO_Worksheet_Fraction_Start()
 {
     MyFraction_t *MyFraction = WCO_Worksheet_Fraction_Init();
 
-    MyPDF.pdf = HPDF_New(Error_Handler, NULL);
+    WCO_PDF_Ref()->pdf = HPDF_New(Error_Handler, NULL);
 
     if (WCO_PDF_Check())
         printf("PDF hat einen Fehler, bzw. konnte nicht erzeugt werden \n");
@@ -44,7 +45,7 @@ void WCO_Worksheet_Fraction_Start()
 
     WCO_PDF_SavePDF(_Tasks);
 
-    HPDF_NewDoc(MyPDF.pdf);
+    HPDF_NewDoc(WCO_PDF_Ref()->pdf);
 
     WCO_PDF_SetupPage(_Solutions);
 
@@ -52,7 +53,7 @@ void WCO_Worksheet_Fraction_Start()
 
     WCO_PDF_SavePDF(_Solutions);
 
-    HPDF_Free(MyPDF.pdf);
+    HPDF_Free(WCO_PDF_Ref()->pdf);
 
     WCO_PNG_Set_ConvertToPNG(0.23);
 
@@ -101,15 +102,15 @@ void WCO_Worksheet_Fraction_Creat(MyFraction_t *MyFraction, int page)
     int taskCounter = 0;
     int startx[2];
 
-    startx[0] = HPDF_Page_GetWidth(MyPDF.page[page]) - (HPDF_Page_GetWidth(MyPDF.page[page]) * 0.9);
-    startx[1] = HPDF_Page_GetWidth(MyPDF.page[page]) - (HPDF_Page_GetWidth(MyPDF.page[page]) * 0.5);
+    startx[0] = HPDF_Page_GetWidth(WCO_PDF_Ref()->page[page]) - (HPDF_Page_GetWidth(WCO_PDF_Ref()->page[page]) * 0.9);
+    startx[1] = HPDF_Page_GetWidth(WCO_PDF_Ref()->page[page]) - (HPDF_Page_GetWidth(WCO_PDF_Ref()->page[page]) * 0.5);
 
     WCO_Worksheet_Baseboard_Creat(page);
     if (WCO_BUTTON(WCO_GUI_Get(base_baseboard)))
     {
-        pageSize = HPDF_Page_GetHeight(MyPDF.page[page]) - *WCO_Worksheet_Baseboard_Threashold();
+        pageSize = HPDF_Page_GetHeight(WCO_PDF_Ref()->page[page]) - *WCO_Worksheet_Baseboard_Threashold();
     }else{
-        pageSize = HPDF_Page_GetHeight(MyPDF.page[page]) - 50;
+        pageSize = HPDF_Page_GetHeight(WCO_PDF_Ref()->page[page]) - 50;
     }
 
 

@@ -20,14 +20,15 @@
 #include "Worksheet_Baseboard.h"
 #include "Worksheet_Creat_Fraction.h"
 #include "Worksheet_Creat_Task.h"
+#include "main.h"
 
 /*
 *   Sets the variables for the threashold 
 */
 void WCO_Worksheet_Baseboard_Init()
 {
-    MyBase.threashold[0] = 150;
-    MyBase.threashold[1] = 50;
+    WCO_Baseboard_Ref()->threashold[0] = 150;
+    WCO_Baseboard_Ref()->threashold[1] = 50;
 }
 
 /*
@@ -35,12 +36,12 @@ void WCO_Worksheet_Baseboard_Init()
 */
 void WCO_Worksheet_Baseboard_Update()
 {
-    MyBase.baseEnable = WCO_BUTTON(WCO_GUI_Get(base_baseboard));
-    MyBase.dateEnable = WCO_BUTTON(WCO_GUI_Get(base_date));
-    MyBase.nameEnable = WCO_BUTTON(WCO_GUI_Get(base_name));
+    WCO_Baseboard_Ref()->baseEnable = WCO_BUTTON(WCO_GUI_Get(base_baseboard));
+    WCO_Baseboard_Ref()->dateEnable = WCO_BUTTON(WCO_GUI_Get(base_date));
+    WCO_Baseboard_Ref()->nameEnable = WCO_BUTTON(WCO_GUI_Get(base_name));
 
-    MyBase.textLen = strlen(WCO_ENTRY(WCO_GUI_Get(base_text)));
-    sprintf(MyBase.text, "%s", WCO_ENTRY(WCO_GUI_Get(base_text)));
+    WCO_Baseboard_Ref()->textLen = strlen(WCO_ENTRY(WCO_GUI_Get(base_text)));
+    sprintf(WCO_Baseboard_Ref()->text, "%s", WCO_ENTRY(WCO_GUI_Get(base_text)));
 }
 
 /*
@@ -75,9 +76,9 @@ void WCO_Worksheet_Baseboard_Creat(int page)
     {
         int startx[3];
 
-        startx[0] = (int)(HPDF_Page_GetWidth(MyPDF.page[page]) - (HPDF_Page_GetWidth(MyPDF.page[page]) * 0.9));
-        startx[1] = (int)(HPDF_Page_GetWidth(MyPDF.page[page]) - (HPDF_Page_GetWidth(MyPDF.page[page]) * 0.5));
-        startx[2] = (int)(HPDF_Page_GetWidth(MyPDF.page[page]) - (HPDF_Page_GetWidth(MyPDF.page[page]) * 0.3));
+        startx[0] = (int)(HPDF_Page_GetWidth(WCO_PDF_Ref()->page[page]) - (HPDF_Page_GetWidth(WCO_PDF_Ref()->page[page]) * 0.9));
+        startx[1] = (int)(HPDF_Page_GetWidth(WCO_PDF_Ref()->page[page]) - (HPDF_Page_GetWidth(WCO_PDF_Ref()->page[page]) * 0.5));
+        startx[2] = (int)(HPDF_Page_GetWidth(WCO_PDF_Ref()->page[page]) - (HPDF_Page_GetWidth(WCO_PDF_Ref()->page[page]) * 0.3));
 
         if(WCO_BUTTON(WCO_GUI_Get(base_name)))
         {
@@ -97,7 +98,7 @@ void WCO_Worksheet_Baseboard_Creat(int page)
             free(tmp);
         }
 
-        WCO_PDF_DrawLine(50, 750, HPDF_Page_GetWidth(MyPDF.page[page]) - 50, 750, page);
+        WCO_PDF_DrawLine(50, 750, HPDF_Page_GetWidth(WCO_PDF_Ref()->page[page]) - 50, 750, page);
     }
 }
 
@@ -106,5 +107,5 @@ void WCO_Worksheet_Baseboard_Creat(int page)
 */
 int *WCO_Worksheet_Baseboard_Threashold()
 {
-    return (WCO_BUTTON(WCO_GUI_Get(base_baseboard))) ? &MyBase.threashold[0] : &MyBase.threashold[1];
+    return (WCO_BUTTON(WCO_GUI_Get(base_baseboard))) ? &WCO_Baseboard_Ref()->threashold[0] : &WCO_Baseboard_Ref()->threashold[1];
 }
