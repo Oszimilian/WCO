@@ -20,6 +20,7 @@
 #include "Worksheet_Baseboard.h"
 #include "Worksheet_Creat_Fraction.h"
 #include "Worksheet_Creat_Task.h"
+#include "main.h"
 
 /*
 *   This function is a official error handler
@@ -36,7 +37,7 @@ void Error_Handler (HPDF_STATUS error_no, HPDF_STATUS detail_no, void *user_data
 */
 int WCO_PDF_Check()
 {
-    if (!MyPDF.pdf)
+    if (!WCO_PDF_Ref()->pdf)
     {
         printf ("ERROR: cannot create pdf object.\n");
         return 1;
@@ -44,7 +45,7 @@ int WCO_PDF_Check()
 
     if (setjmp(env))
     {
-        HPDF_Free (MyPDF.pdf);
+        HPDF_Free (WCO_PDF_Ref()->pdf);
         return 1;
     }
 
@@ -56,12 +57,12 @@ int WCO_PDF_Check()
 */
 void WCO_PDF_SetupPage(int page)
 {
-    MyPDF.page[page] = HPDF_AddPage(MyPDF.pdf);
-    HPDF_Font font = HPDF_GetFont(MyPDF.pdf, "Helvetica", NULL);
-    HPDF_Page_SetFontAndSize(MyPDF.page[page], font, 14);
+    WCO_PDF_Ref()->page[page] = HPDF_AddPage(WCO_PDF_Ref()->pdf);
+    HPDF_Font font = HPDF_GetFont(WCO_PDF_Ref()->pdf, "Helvetica", NULL);
+    HPDF_Page_SetFontAndSize(WCO_PDF_Ref()->page[page], font, 14);
 
-    MyPDF.pageSize[0] = 2479;
-    MyPDF.pageSize[1] = 3504; 
+    WCO_PDF_Ref()->pageSize[0] = 2479;
+    WCO_PDF_Ref()->pageSize[1] = 3504; 
 }
 
 /*
@@ -69,7 +70,7 @@ void WCO_PDF_SetupPage(int page)
 */
 void WCO_PDF_SetFoldername(char *folderName)
 {
-    sprintf(MyPDF.folderName, "%s", folderName);
+    sprintf(WCO_PDF_Ref()->folderName, "%s", folderName);
 }
 
 /*
@@ -79,14 +80,14 @@ void WCO_PDF_SetFilename(const char *fileName, int page)
 {
     if (page == 0)
     {
-        sprintf(MyPDF.fileName[page], "%s/%s.pdf", MyPDF.folderName, fileName);
+        sprintf(WCO_PDF_Ref()->fileName[page], "%s/%s.pdf", WCO_PDF_Ref()->folderName, fileName);
     }else{
-        sprintf(MyPDF.fileName[page], "%s/%s_Lösungen.pdf", MyPDF.folderName, fileName);
+        sprintf(WCO_PDF_Ref()->fileName[page], "%s/%s_Lösungen.pdf", WCO_PDF_Ref()->folderName, fileName);
     }
 
-    sprintf(MyPDF.systemOpenFile[page], "okular %s", MyPDF.fileName[page]);
+    sprintf(WCO_PDF_Ref()->systemOpenFile[page], "okular %s", WCO_PDF_Ref()->fileName[page]);
 
-    printf("PDF Path: %s\n", MyPDF.fileName[page]);
+    printf("PDF Path: %s\n", WCO_PDF_Ref()->fileName[page]);
 }
 
 /*
@@ -94,9 +95,9 @@ void WCO_PDF_SetFilename(const char *fileName, int page)
 */
 void WCO_PDF_WriteText(int x, int y, char *text, int page)
 {
-    HPDF_Page_BeginText(MyPDF.page[page]);
-    HPDF_Page_TextOut(MyPDF.page[page], x, y, text);
-    HPDF_Page_EndText(MyPDF.page[page]);
+    HPDF_Page_BeginText(WCO_PDF_Ref()->page[page]);
+    HPDF_Page_TextOut(WCO_PDF_Ref()->page[page], x, y, text);
+    HPDF_Page_EndText(WCO_PDF_Ref()->page[page]);
 }
 
 /*
@@ -104,8 +105,8 @@ void WCO_PDF_WriteText(int x, int y, char *text, int page)
 */
 void WCO_PDF_SavePDF(int page)
 {
-    HPDF_SaveToFile(MyPDF.pdf, MyPDF.fileName[page]);
-    printf("PDF Save: %s\n", MyPDF.fileName[page]);
+    HPDF_SaveToFile(WCO_PDF_Ref()->pdf, WCO_PDF_Ref()->fileName[page]);
+    printf("PDF Save: %s\n", WCO_PDF_Ref()->fileName[page]);
 }
 
 
@@ -122,9 +123,9 @@ void WCO_PDF_DrawSolutionLine(char *text, int x1, int y1, int line_Lengh, int pa
     x1 = x1 + (task_lengh * pattern_lengh);
     x2 = x2 + (task_lengh * pattern_lengh) + line_Lengh;
 
-    HPDF_Page_MoveTo(MyPDF.page[page], x1, y1);
-    HPDF_Page_LineTo(MyPDF.page[page], x2, y2);
-    HPDF_Page_Stroke(MyPDF.page[page]);
+    HPDF_Page_MoveTo(WCO_PDF_Ref()->page[page], x1, y1);
+    HPDF_Page_LineTo(WCO_PDF_Ref()->page[page], x2, y2);
+    HPDF_Page_Stroke(WCO_PDF_Ref()->page[page]);
 }
 
 /*
@@ -132,9 +133,9 @@ void WCO_PDF_DrawSolutionLine(char *text, int x1, int y1, int line_Lengh, int pa
 */
 void WCO_PDF_DrawLine(int x1, int y1, int x2, int y2, int page)
 {
-    HPDF_Page_MoveTo(MyPDF.page[page], x1, y1);
-    HPDF_Page_LineTo(MyPDF.page[page], x2, y2);
-    HPDF_Page_Stroke(MyPDF.page[page]);
+    HPDF_Page_MoveTo(WCO_PDF_Ref()->page[page], x1, y1);
+    HPDF_Page_LineTo(WCO_PDF_Ref()->page[page], x2, y2);
+    HPDF_Page_Stroke(WCO_PDF_Ref()->page[page]);
 }
 
 

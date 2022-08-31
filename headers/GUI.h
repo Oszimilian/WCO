@@ -13,7 +13,7 @@
 
 typedef int bool;
 
-typedef struct MyGUI_s{
+typedef struct{
     GtkBuilder *MyBuilder;
     GtkWidget *MyWindow1;
     GtkWidget *MyFixed1;
@@ -83,7 +83,7 @@ typedef struct MyGUI_s{
     char **label;
 }MyGUI_t;
 
-MyGUI_t MyGUI;
+
 
 
 

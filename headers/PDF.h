@@ -4,7 +4,7 @@
 #define _Zahler 0
 #define _Nenner 1
 
-typedef struct MyPDF_s{
+typedef struct{
     HPDF_Doc pdf;
     HPDF_Page page[20];
 
@@ -16,7 +16,7 @@ typedef struct MyPDF_s{
 
 } MyPDF_t;
 
-MyPDF_t MyPDF;
+
 
 
 
