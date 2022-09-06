@@ -5,7 +5,7 @@
 #ifndef GUI_CALL_H_INCLUDED
 #define GUI_CALL_H_INCLUDED
 
-#if OP == Windows
+#if OP == Linux
 void MyButton1_Clicked(GtkButton *b);
 void MyButton2_Clicked(GtkButton *b);
 

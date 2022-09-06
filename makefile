@@ -17,7 +17,7 @@ DynGTK = -export-dynamic
 LibLibHaru_Lin = /usr/local/lib/libhpdf.a -L/usr/local/lib -lz -lm -lpthread
 LibLibHaru_Win = C:/cygwin64/usr/local/lib/libhpdf.a -lz -lm -lpthread -IC:/cygwin64/usr/local/include
 
-LibIM_Lin = $(shell pkg-config --libs MagickWand) -llzma -ljbig -ljpeg -lpng -ltiff
+LibIM_Lin = $(shell pkg-config --libs MagickWand) -llzma -ljpeg -lpng -ltiff
 FlagIM_Lin = $(shell pkg-config --cflags MagickWand)
 
 LibIM_Cyg = -LC:/msys64/mingw64/lib -lMagickWand-7.Q16HDRI -lMagickCore-7.Q16HDRI
@@ -27,9 +27,9 @@ FlagWCO_Lin = -I/home/maximilian/Git/WCO/headers
 FlagWCO_Win = -IC:\msys64\home\maximilian\Git\WCO\headers
 
 
-#KP = $(LibGTK_Lin) $(LibLibHaru_Lin) $(LibIM_Lin) $(FlagWCO_Lin) $(FlagGTK_Lin) $(FlagIM_Lin) $(DynGTK)
+KP = $(LibGTK_Lin) $(LibLibHaru_Lin) $(LibIM_Lin) $(FlagWCO_Lin) $(FlagGTK_Lin) $(FlagIM_Lin) $(DynGTK)
 #KP = $(LibGTK_Lin) $(LibLibHaru_Win) $(LibIM_Lin) $(FlagWCO_Win) $(FlagGTK_Lin) $(FlagIM_Lin) 
-KP = $(LibGTK_Lin) $(LibLibHaru_Win) $(LibIM_Cyg) $(FlagWCO_Win) $(FlagGTK_Lin) $(FlagIm_Cyg) -rdynamic
+#KP = $(LibGTK_Lin) $(LibLibHaru_Win) $(LibIM_Cyg) $(FlagWCO_Win) $(FlagGTK_Lin) $(FlagIm_Cyg) -rdynamic
 
 $(BIN): $(OBJS)
 	$(CC) $(OBJS) $(KP) -o $@

@@ -9,6 +9,7 @@
 #include <time.h>
 #include <math.h>
 #include <MagickWand/MagickWand.h>
+#include <dirent.h>
 
 #include "hpdf.h"
 #include "GUI_Call.h"
@@ -22,13 +23,45 @@
 #include "Worksheet_Creat_Task.h"
 #include "main.h"
 
+
 /*
 *   This function initalices some requirements to display the pdf
 */
 void WCO_PNG_Init()
 {
-    //store a fix path where the png is stored every time
-    sprintf(WCO_PNG_Ref()->folderName,"/home/maximilian/Git/WCO/Bild/");
+
+    DIR *folder;
+    struct dirent *entry;
+    int files = 0;
+    int folder_flag = _FALSE;
+
+    folder = opendir(".");
+    if (folder == NULL)
+    {
+        printf("unable to read the folder \n");
+        goto failed;
+    }
+
+    while( (entry = readdir(folder)) )
+    {
+        printf("File/Folder %d: %s ->%d\n", files, entry->d_name, strlen(entry->d_name));
+        
+
+        if (strcmp("png", entry->d_name) && !folder_flag)
+        {
+            folder_flag = _TRUE;
+            printf("%s \n", entry->d_name);
+            system("mkdir png");
+        }
+    }
+
+    closedir(folder);
+
+    failed:
+
+    sprintf(WCO_PNG_Ref()->folderName, "%s/%s/",getcwd(NULL, 0), "png");
+    printf("Current Folder: %s \n", getcwd(NULL, 0));
+    printf("PNG_Folder: %s \n", WCO_PNG_Ref()->folderName);
 
     //store the two images to the fix folderpath 
     sprintf(WCO_PNG_Ref()->fileName[0], "%sTask.png", WCO_PNG_Ref()->folderName);
