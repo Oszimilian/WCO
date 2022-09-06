@@ -20,6 +20,7 @@
 #include "Worksheet_Baseboard.h"
 #include "Worksheet_Creat_Fraction.h"
 #include "Worksheet_Creat_Task.h"
+#include "main.h"
 
 /*
 *   This function actually builds the worksheets
@@ -28,7 +29,7 @@ void WCO_Worksheet_Task_Start()
 {
     MyTask_t *MyTask = WCO_Worksheet_Task_Init();
 
-    MyPDF.pdf = HPDF_New(Error_Handler, NULL);
+    WCO_PDF_Ref()->pdf = HPDF_New(Error_Handler, NULL);
 
     if (WCO_PDF_Check())
         printf("PDF hat einen Fehler, bzw. konnte nicht erzeugt werden \n");
@@ -41,7 +42,7 @@ void WCO_Worksheet_Task_Start()
 
     WCO_PDF_SavePDF(_Tasks);
 
-    HPDF_NewDoc(MyPDF.pdf);
+    HPDF_NewDoc(WCO_PDF_Ref()->pdf);
 
     WCO_PDF_SetupPage(_Solutions);
 
@@ -101,13 +102,13 @@ void WCO_Worksheet_Task_Creat(MyTask_t *MyTask, int page)
     int taskCounter = 0;
     int startx[3];
 
-    startx[0] = HPDF_Page_GetWidth(MyPDF.page[page]) - (HPDF_Page_GetWidth(MyPDF.page[page]) * 0.9);
-    startx[1] = HPDF_Page_GetWidth(MyPDF.page[page]) - (HPDF_Page_GetWidth(MyPDF.page[page]) * 0.6);
-    startx[2] = HPDF_Page_GetWidth(MyPDF.page[page]) - (HPDF_Page_GetWidth(MyPDF.page[page]) * 0.3);
+    startx[0] = HPDF_Page_GetWidth(WCO_PDF_Ref()->page[page]) - (HPDF_Page_GetWidth(WCO_PDF_Ref()->page[page]) * 0.9);
+    startx[1] = HPDF_Page_GetWidth(WCO_PDF_Ref()->page[page]) - (HPDF_Page_GetWidth(WCO_PDF_Ref()->page[page]) * 0.6);
+    startx[2] = HPDF_Page_GetWidth(WCO_PDF_Ref()->page[page]) - (HPDF_Page_GetWidth(WCO_PDF_Ref()->page[page]) * 0.3);
 
     WCO_Worksheet_Baseboard_Creat(page);
 
-    pageSize = HPDF_Page_GetHeight(MyPDF.page[page]) - *WCO_Worksheet_Baseboard_Threashold();
+    pageSize = HPDF_Page_GetHeight(WCO_PDF_Ref()->page[page]) - *WCO_Worksheet_Baseboard_Threashold();
 
     for(int i = 0; i <= 2; i++)
     {

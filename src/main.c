@@ -20,12 +20,51 @@
 #include "Worksheet_Baseboard.h"
 #include "Worksheet_Creat_Fraction.h"
 #include "Worksheet_Creat_Task.h"
+#include "main.h"
 
+typedef struct
+{
+    MyGUI_t *MyGUI_r;
+    MyPDF_t *MyPDF_r;
+    MyPNG_t *MyPNG_r;
+    MyBase_t *MyBase_r;
+}MyExchange_t;
+MyExchange_t MyExchange;
 
+void WCO_Exchange_Init()
+{
+    MyGUI_t *MyGUI = malloc(sizeof(MyGUI_t));
+    MyPDF_t *MyPDF = malloc(sizeof(MyPDF_t));
+    MyPNG_t *MyPNG = malloc(sizeof(MyPNG_t));;
+    MyBase_t *MyBase = malloc(sizeof(MyBase_t));
+
+    MyExchange.MyGUI_r = MyGUI;
+    MyExchange.MyPDF_r = MyPDF;
+    MyExchange.MyPNG_r = MyPNG;
+    MyExchange.MyBase_r = MyBase;
+}
+
+MyGUI_t *WCO_GUI_Ref()
+{
+    return MyExchange.MyGUI_r;
+} 
+MyPDF_t *WCO_PDF_Ref()
+{
+    return MyExchange.MyPDF_r;
+}
+MyPNG_t *WCO_PNG_Ref()
+{
+    return MyExchange.MyPNG_r;
+}
+MyBase_t *WCO_Baseboard_Ref()
+{
+    return MyExchange.MyBase_r;
+}
 
 int main(void)
 {
     //Init
+    WCO_Exchange_Init();
     WCO_PNG_Init();
     WCO_Worksheet_Baseboard_Init();
     
