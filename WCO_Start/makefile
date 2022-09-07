@@ -1,4 +1,5 @@
-CC = i686-w64-mingw32-gcc
+#CC = i686-w64-mingw32-gcc
+CC = gcc
 CCF = -Wall -g
 SRCS = $(wildcard src/*.c)
 OBJS = $(patsubst src/*.c, obj/*.o, $(SRCS))
@@ -13,4 +14,4 @@ obj/%.o: src/%.c
 	$(CC) $(CCF) $(HEAD) -c $< -o $@
 
 clean: 
-	rm $(BIN).
+	rm $(BIN)

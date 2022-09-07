@@ -3,13 +3,20 @@
 #include <string.h>
 #include <unistd.h>
 
-int main(void)
+int main(int argc, char *argv[])
 {
-    char s[100];
-    printf("Dir: %s \n", getcwd(s, 100));
-    chdir("/home/maximilian/Git/WCO/bin/");
-    printf("Dir: %s \n", getcwd(s, 100));
-    system("./prog");
+    
+    if(argc >= 2)
+    {
+        char *path = (char*) malloc(sizeof(char) * strlen(getcwd(NULL, 0)));
+        strcat(path, getcwd(NULL, 0));
+        printf("%d -> %s\n", argc, strcat(path, "/File/path.txt"));
+        FILE *init = fopen(path, "r");
+        char *text = (char*) malloc((sizeof(char) * fgetc(init)));
+        printf("%s", fgets(text, fgetc(init), init));
+        fclose(init);
+    }
+
 
     return 0;
 }
