@@ -1,1 +1,1 @@
--mDokcer-f/home/maximilian/Git/WCO/WCO_Start/bin-ddockerrunskjskjksjksjskjskjs
+-mDocker-f/home/maximilian/Git/WCO/WCO_Start/bin/File/path.txt-ddocker run img hallo

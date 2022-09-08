@@ -78,7 +78,6 @@ void WCO_Start_Add_Dir(MyStart_t *MyStart, char *folder, char *name)
             FILE *fp;
             fp = fopen("path.txt", "w");
             fputs(user_input, fp);
-            printf("Create file \n");
             fclose(fp);
         }
         closedir(d);
@@ -91,6 +90,7 @@ void WCO_Start_Get_Txt(MyStart_t *MyStart, int pos)
     int counter = pos;
     while((MyStart->input[counter] = fgetc(MyStart->file)) != EOF && MyStart->input[counter] != '\r' && MyStart->input[counter] != '\n')
     {
+        //printf("TXT: %d -> %c -> %x \n", counter, MyStart->input[counter], MyStart->input[counter]);
         counter++;
     }
 
@@ -109,9 +109,9 @@ void WCO_Start_Get_Txt(MyStart_t *MyStart, int pos)
         WCO_Start_Get_Txt(MyStart, counter);
     }else{
         ungetc(MyStart->input[counter], MyStart->file);
-        MyStart->input = realloc(MyStart->input, sizeof(char) * (strlen(MyStart->input) - 2));
-        MyStart->input[strlen(MyStart->input) - 1] = '\0';
-        MyStart->input_Len = strlen(MyStart->input);
+        MyStart->input = realloc(MyStart->input, sizeof(char) * counter);
+        MyStart->input[counter] = '\0';
+        MyStart->input_Len = counter;
         return;
     }
     
@@ -132,6 +132,9 @@ MyStart_t *WCO_Start_Init(char *folder, char *name)
 
 void WCO_Start_Free(MyStart_t *MyStart)
 {
+    free(MyStart->mode);
+    free(MyStart->prog_folder);
+    free(MyStart->docker_cmd);
     free(MyStart->directory);
     fclose(MyStart->file);
     free(MyStart);
@@ -171,7 +174,8 @@ void WCO_Start_CMD_Seperate(MyStart_t *MyStart)
                 case 'd':
                             while(MyStart->input[++i] != '-' && MyStart->input[i] != '\0')
                             {
-                                if (MyStart->input[i] != ' ') MyStart->docker_cmd[k++] = MyStart->input[i];
+                                //printf("i: %d -> k: %d -> %c -> %x \n", i, k,  MyStart->input[i], MyStart->input[i]);
+                                MyStart->docker_cmd[k++] = MyStart->input[i];
                             }
                 break; 
 
@@ -180,15 +184,41 @@ void WCO_Start_CMD_Seperate(MyStart_t *MyStart)
         }
     }
 
+    MyStart->mode[strlen(MyStart->mode)] = '\0';
+    MyStart->prog_folder[strlen(MyStart->prog_folder)] = '\0';
+    MyStart->docker_cmd[strlen(MyStart->docker_cmd)] = '\0';
+
     MyStart->mode = realloc(MyStart->mode, strlen(MyStart->mode));
     MyStart->prog_folder = realloc(MyStart->prog_folder, strlen(MyStart->prog_folder));
     MyStart->docker_cmd = realloc(MyStart->docker_cmd, strlen(MyStart->docker_cmd));
+
+    for(int i = 0; i <= strlen(MyStart->docker_cmd);i++)
+    {
+        //printf("%d -> %c -> %x \n", i, MyStart->docker_cmd[i], MyStart->docker_cmd[i]);
+    }
+}
+
+void WCO_Start_wco(MyStart_t *MyStart)
+{
+    if (!strcmp("Docker", MyStart->mode))
+    {
+        printf("Docker modus aktiv \n");
+
+        if(system(MyStart->prog_folder) != 0)
+        {
+            if((!system(MyStart->docker_cmd) != 0))
+            {
+                printf("Docker-Container konnte nicht gestartet werden: %s\n", MyStart->docker_cmd);
+            }
+        }else{
+            printf("X-Server konnte nicht gestartet werden: %s\n", MyStart->prog_folder);
+        }
+        
+    }
 }
 
 int main(int argc, char *argv[])
 {
-
-
     if (argc >= 2)
     {
         user_input_flag = 1;
@@ -206,6 +236,8 @@ int main(int argc, char *argv[])
     WCO_Start_CMD_Seperate(MyStart);
 
         printf("CMD: %s \nCMD: %s \nCMD: %s \n", MyStart->mode, MyStart->prog_folder, MyStart->docker_cmd);
+
+    WCO_Start_wco(MyStart);
 
     WCO_Start_Free(MyStart);
 
