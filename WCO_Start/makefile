@@ -8,7 +8,7 @@ HEAD = -I/home/maximilian/git/WCO/WCO_Start/header
 
 
 $(BIN): $(OBJS)
-	$(CC) $(OBJS) $(HEAD) -o $@
+	$(CC) $(CCF) $(OBJS) $(HEAD) -o $@
 
 obj/%.o: src/%.c
 	$(CC) $(CCF) $(HEAD) -c $< -o $@
