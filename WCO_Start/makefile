@@ -1,4 +1,5 @@
 #CC = i686-w64-mingw32-gcc
+#CC = x86_64-w64-mingw32
 CC = gcc
 CCF = -Wall -g
 SRCS = $(wildcard src/*.c)
@@ -8,10 +9,10 @@ HEAD = -I/home/maximilian/git/WCO/WCO_Start/header
 
 
 $(BIN): $(OBJS)
-	$(CC) $(OBJS) $(HEAD) -o $@
+	$(CC) $(CCF) $(OBJS) -o $@
 
 obj/%.o: src/%.c
-	$(CC) $(CCF) $(HEAD) -c $< -o $@
+	$(CC) $(CCF) -c $< -o $@
 
 clean: 
 	rm $(BIN)
