@@ -281,10 +281,8 @@ void WCO_Worksheet_Fraction_Draw(MyFraction_t *MyFrac, int *x, int *y,int count,
 
         if (WCO_BUTTON(WCO_GUI_Get(task_enum)) && i == 0)
         {
-            if (i == 0)
-            {
-                WCO_PDF_WriteText(staPos[i], *y - 2, enum_task, page);
-            }
+            WCO_PDF_WriteText(staPos[i], *y - 2, enum_task, page);
+
             staPos[i] += enumLen;
             endPos[i] += enumLen;
         }
