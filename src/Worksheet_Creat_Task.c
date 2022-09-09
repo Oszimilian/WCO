@@ -135,7 +135,14 @@ void WCO_Worksheet_Task_Random(MyTask_t *MyTask, int count)
     float value[2];
     float solution[2];
     char ops[4] = "+-*:";
-    
+
+    char *enum_task = (char*) malloc(sizeof(char) * ((WCO_BUTTON(WCO_GUI_Get(task_enum)))? 6:1 ) );
+    if (WCO_BUTTON(WCO_GUI_Get(task_enum)))
+    {
+        sprintf(enum_task, "(%d): ", (count + 1));
+    }else{
+        sprintf(enum_task, " ");
+    }
 
     if(count == 0) srand(time(NULL));
 
@@ -173,12 +180,17 @@ void WCO_Worksheet_Task_Random(MyTask_t *MyTask, int count)
     {
         switch (WCO_BUTTON(WCO_GUI_Get(task_addition_dezcount + MyTask->operand[count])))
         {
-            case 0: value[i] *= 1;       break;
-            case 1: value[i] *= 0.1;     break;
-            case 2: value[i] *= 0.01;    break;
-            case 3: value[i] *= 0.001;   break;
-            case 4: value[i] *= 0.0001;  break;
-            case 5: value[i] *= 0.00001; break;
+            case 0:  value[i] *= 1;            break;
+            case 1:  value[i] *= 0.1;          break;
+            case 2:  value[i] *= 0.01;         break;
+            case 3:  value[i] *= 0.001;        break;
+            case 4:  value[i] *= 0.0001;       break;
+            case 5:  value[i] *= 0.00001;      break;
+            case 6:  value[i] *= 0.000001;     break;
+            case 7:  value[i] *= 0.0000001;    break;
+            case 8:  value[i] *= 0.00000001;   break;
+            case 9:  value[i] *= 0.000000001;  break;
+            case 10: value[i] *= 0.0000000001; break;
             default: break;
         }
     }
@@ -187,23 +199,34 @@ void WCO_Worksheet_Task_Random(MyTask_t *MyTask, int count)
 
     switch(WCO_BUTTON(WCO_GUI_Get(task_addition_dezcount + MyTask->operand[count])))
     {
-        case 0: sprintf(MyTask->task[0][count], "%d %c %d =", (int)value[0], ops[MyTask->operand[count]], (int)value[1]); break;
-        case 1: sprintf(MyTask->task[0][count], "%.1f %c %.1f =", value[0], ops[MyTask->operand[count]], value[1]); break;
-        case 2: sprintf(MyTask->task[0][count], "%.2f %c %.2f =", value[0], ops[MyTask->operand[count]], value[1]); break;
-        case 3: sprintf(MyTask->task[0][count], "%.3f %c %.3f =", value[0], ops[MyTask->operand[count]], value[1]); break;
-        case 4: sprintf(MyTask->task[0][count], "%.4f %c %.4f =", value[0], ops[MyTask->operand[count]], value[1]); break;
-        case 5: sprintf(MyTask->task[0][count], "%.5f %c %.5f =", value[0], ops[MyTask->operand[count]], value[1]); break;
+        case 0: sprintf(MyTask->task[0][count], "%s%d %c %d =", enum_task, (int)value[0], ops[MyTask->operand[count]], (int)value[1]); break;
+        case 1: sprintf(MyTask->task[0][count], "%s%.1f %c %.1f =", enum_task, value[0], ops[MyTask->operand[count]], value[1]); break;
+        case 2: sprintf(MyTask->task[0][count], "%s%.2f %c %.2f =", enum_task, value[0], ops[MyTask->operand[count]], value[1]); break;
+        case 3: sprintf(MyTask->task[0][count], "%s%.3f %c %.3f =", enum_task, value[0], ops[MyTask->operand[count]], value[1]); break;
+        case 4: sprintf(MyTask->task[0][count], "%s%.4f %c %.4f =", enum_task, value[0], ops[MyTask->operand[count]], value[1]); break;
+        case 5: sprintf(MyTask->task[0][count], "%s%.5f %c %.5f =", enum_task, value[0], ops[MyTask->operand[count]], value[1]); break;
+        case 6: sprintf(MyTask->task[0][count], "%s%.6f %c %.6f =", enum_task, value[0], ops[MyTask->operand[count]], value[1]); break;
+        case 7: sprintf(MyTask->task[0][count], "%s%.7f %c %.7f =", enum_task, value[0], ops[MyTask->operand[count]], value[1]); break;
+        case 8: sprintf(MyTask->task[0][count], "%s%.8f %c %.8f =", enum_task, value[0], ops[MyTask->operand[count]], value[1]); break;
+        case 9: sprintf(MyTask->task[0][count], "%s%.9f %c %.9f =", enum_task, value[0], ops[MyTask->operand[count]], value[1]); break;
+        case 10: sprintf(MyTask->task[0][count], "%s%.10f %c %.10f =", enum_task, value[0], ops[MyTask->operand[count]], value[1]); break;
+
         default: break;
     }
 
     switch(WCO_BUTTON(WCO_GUI_Get(task_addition_dezcount + MyTask->operand[count])))
     {
-        case 0: sprintf(MyTask->task[1][count], "%d %c %d = %.2f", (int)value[0], ops[MyTask->operand[count]], (int)value[1], solution[1]); break;
-        case 1: sprintf(MyTask->task[1][count], "%.1f %c %.1f = %.2f", value[0], ops[MyTask->operand[count]], value[1], solution[1]); break;
-        case 2: sprintf(MyTask->task[1][count], "%.2f %c %.2f = %.2f", value[0], ops[MyTask->operand[count]], value[1], solution[1]); break;
-        case 3: sprintf(MyTask->task[1][count], "%.3f %c %.3f = %.2f", value[0], ops[MyTask->operand[count]], value[1], solution[1]); break;
-        case 4: sprintf(MyTask->task[1][count], "%.4f %c %.4f = %.2f", value[0], ops[MyTask->operand[count]], value[1], solution[1]); break;
-        case 5: sprintf(MyTask->task[1][count], "%.5f %c %.5f = %.2f", value[0], ops[MyTask->operand[count]], value[1], solution[1]); break;
+        case 0: sprintf(MyTask->task[1][count], "%s%d %c %d = %.2f", enum_task, (int)value[0], ops[MyTask->operand[count]], (int)value[1], solution[1]); break;
+        case 1: sprintf(MyTask->task[1][count], "%s%.1f %c %.1f = %.2f", enum_task, value[0], ops[MyTask->operand[count]], value[1], solution[1]); break;
+        case 2: sprintf(MyTask->task[1][count], "%s%.2f %c %.2f = %.2f", enum_task, value[0], ops[MyTask->operand[count]], value[1], solution[1]); break;
+        case 3: sprintf(MyTask->task[1][count], "%s%.3f %c %.3f = %.2f", enum_task, value[0], ops[MyTask->operand[count]], value[1], solution[1]); break;
+        case 4: sprintf(MyTask->task[1][count], "%s%.4f %c %.4f = %.2f", enum_task, value[0], ops[MyTask->operand[count]], value[1], solution[1]); break;
+        case 5: sprintf(MyTask->task[1][count], "%s%.5f %c %.5f = %.2f", enum_task, value[0], ops[MyTask->operand[count]], value[1], solution[1]); break;
+        case 6: sprintf(MyTask->task[1][count], "%s%.6f %c %.6f = %.2f", enum_task, value[0], ops[MyTask->operand[count]], value[1], solution[1]); break;
+        case 7: sprintf(MyTask->task[1][count], "%s%.7f %c %.7f = %.2f", enum_task, value[0], ops[MyTask->operand[count]], value[1], solution[1]); break;
+        case 8: sprintf(MyTask->task[1][count], "%s%.8f %c %.8f = %.2f", enum_task, value[0], ops[MyTask->operand[count]], value[1], solution[1]); break;
+        case 9: sprintf(MyTask->task[1][count], "%s%.9f %c %.9f = %.2f", enum_task, value[0], ops[MyTask->operand[count]], value[1], solution[1]); break;
+        case 10: sprintf(MyTask->task[1][count], "%s%.10f %c %.10f = %.2f", enum_task, value[0], ops[MyTask->operand[count]], value[1], solution[1]); break;
         default: break;
     }
 }

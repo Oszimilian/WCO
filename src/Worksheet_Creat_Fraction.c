@@ -255,6 +255,7 @@ void WCO_Worksheet_Fraction_Draw(MyFraction_t *MyFrac, int *x, int *y,int count,
 {
     const int patLen = 15;
     const int gabLen = 30;
+    const int enumLen = 50;
     int numLen[3];
     int endPos[3];
     int staPos[3];
@@ -264,18 +265,33 @@ void WCO_Worksheet_Fraction_Draw(MyFraction_t *MyFrac, int *x, int *y,int count,
 
     char *numStr = malloc(10 * sizeof(char));
 
+    char *enum_task = (char*) malloc(sizeof(char) * ((WCO_BUTTON(WCO_GUI_Get(task_enum)))? 6:1 ) );
+    if (WCO_BUTTON(WCO_GUI_Get(task_enum)))
+    {
+        sprintf(enum_task, "(%d): ", (count + 1));
+    }else{
+        sprintf(enum_task, " ");
+    }
+
     for (int i = 0; i <= 2; i++)
     {
         numLen[i] = (IntLen(&MyFrac->frac[count][i][0]) > IntLen(&MyFrac->frac[count][i][1])) ? IntLen(&MyFrac->frac[count][i][0]) : IntLen(&MyFrac->frac[count][i][1]);
         staPos[i] = (i == 0) ? *x : (staPos[i - 1] + (numLen[i] * patLen) + gabLen);
         endPos[i] = (i == 0) ? (staPos[i] + (numLen[i] * patLen)) : (staPos[i] + (numLen[i] * patLen));
 
+        if (WCO_BUTTON(WCO_GUI_Get(task_enum)) && i == 0)
+        {
+            WCO_PDF_WriteText(staPos[i], *y - 2, enum_task, page);
+
+            staPos[i] += enumLen;
+            endPos[i] += enumLen;
+        }
+
         if (printSol == 1 && i == 2)
         {
             break;
         }else{
-            //staPos[i] = (MyFrac->negFlag[count]) ? (staPos[i] + 10) : staPos[i];
-            //endPos[i] = (MyFrac->negFlag[count]) ? (endPos[i] + 10) : endPos[i];
+
             WCO_PDF_DrawLine(staPos[i], *y, endPos[i], *y, page);
         }
  
