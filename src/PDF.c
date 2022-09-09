@@ -58,7 +58,7 @@ int WCO_PDF_Check()
 void WCO_PDF_SetupPage(int page)
 {
     WCO_PDF_Ref()->page[page] = HPDF_AddPage(WCO_PDF_Ref()->pdf);
-    HPDF_Font font = HPDF_GetFont(WCO_PDF_Ref()->pdf, "Helvetica", NULL);
+    HPDF_Font font = HPDF_GetFont(WCO_PDF_Ref()->pdf, "Courier", NULL);
     HPDF_Page_SetFontAndSize(WCO_PDF_Ref()->page[page], font, 14);
 
     WCO_PDF_Ref()->pageSize[0] = 2479;
@@ -116,7 +116,7 @@ void WCO_PDF_SavePDF(int page)
 void WCO_PDF_DrawSolutionLine(char *text, int x1, int y1, int line_Lengh, int page)
 {
     int task_lengh = strlen(text) + 1;
-    const int pattern_lengh = 6;
+    const int pattern_lengh = 8;
     int x2 = x1;
     int y2 = y1;
 

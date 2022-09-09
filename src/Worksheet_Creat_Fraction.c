@@ -259,7 +259,7 @@ void WCO_Worksheet_Fraction_Draw(MyFraction_t *MyFrac, int *x, int *y,int count,
     int endPos[3];
     int staPos[3];
     int numPos[3][2][2];
-    char ops[4] = "+-*/";
+    char ops[4] = "+-*:";
     int printSol = (page == _Solutions) ? 2 : 1;
 
     char *numStr = malloc(10 * sizeof(char));

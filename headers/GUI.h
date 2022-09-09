@@ -43,6 +43,8 @@ typedef struct{
     GtkWidget *MyCheckButton9;
     GtkWidget *MyCheckButton10;
     GtkWidget *MyCheckButton11;
+    GtkWidget *MyCheckButton12;
+    GtkWidget *MyCheckButton13;
 
     //GtkWidget *MyRadioButton1;
     //GtkWidget *MyRadioButton2;

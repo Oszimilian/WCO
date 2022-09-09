@@ -145,3 +145,9 @@ void MyCheckButton10_Changed(GtkCheckButton *b){WCO_GUI_Update(_DIVISION);}
 /**********************************************************************************************************************/
 
 void MyStackSwitcher2_Changed(){}
+
+/**********************************************************************************************************************/
+
+void MyCheckButton12_Changed(GtkCheckButton *b){}
+
+void MyCheckButton13_Changed(GtkCheckButton *b){} 

@@ -100,17 +100,16 @@ void WCO_Worksheet_Task_Creat(MyTask_t *MyTask, int page)
     int pageSize;
     int pageSizeCounter;
     int taskCounter = 0;
-    int startx[3];
+    int startx[2];
 
     startx[0] = HPDF_Page_GetWidth(WCO_PDF_Ref()->page[page]) - (HPDF_Page_GetWidth(WCO_PDF_Ref()->page[page]) * 0.9);
-    startx[1] = HPDF_Page_GetWidth(WCO_PDF_Ref()->page[page]) - (HPDF_Page_GetWidth(WCO_PDF_Ref()->page[page]) * 0.6);
-    startx[2] = HPDF_Page_GetWidth(WCO_PDF_Ref()->page[page]) - (HPDF_Page_GetWidth(WCO_PDF_Ref()->page[page]) * 0.3);
+    startx[1] = HPDF_Page_GetWidth(WCO_PDF_Ref()->page[page]) - (HPDF_Page_GetWidth(WCO_PDF_Ref()->page[page]) * 0.5);
 
     WCO_Worksheet_Baseboard_Creat(page);
 
     pageSize = HPDF_Page_GetHeight(WCO_PDF_Ref()->page[page]) - *WCO_Worksheet_Baseboard_Threashold();
 
-    for(int i = 0; i <= 2; i++)
+    for(int i = 0; i <= 1; i++)
     {
         pageSizeCounter = pageSize;
 
@@ -132,10 +131,10 @@ void WCO_Worksheet_Task_Creat(MyTask_t *MyTask, int page)
 */
 void WCO_Worksheet_Task_Random(MyTask_t *MyTask, int count)
 {
-    int digit[2];
+    long int digit[2];
     float value[2];
     float solution[2];
-    char ops[4] = "+-*/";
+    char ops[4] = "+-*:";
     
 
     if(count == 0) srand(time(NULL));
@@ -150,13 +149,16 @@ void WCO_Worksheet_Task_Random(MyTask_t *MyTask, int count)
     {
         switch (WCO_BUTTON(WCO_GUI_Get(task_addition_digit_1 + MyTask->operand[count] + ((!i) ? 0 : 4) )))
         {
-            case 1: digit[i]  = 10;       break;
-            case 2: digit[i]  = 100;      break;
-            case 3: digit[i]  = 1000;     break;
-            case 4: digit[i]  = 10000;    break;
-            case 5: digit[i]  = 100000;   break;
-            case 6: digit[i]  = 1000000;  break;
-            case 7: digit[i]  = 10000000; break;
+            case 1:  digit[i]   = 10;          break;
+            case 2:  digit[i]   = 100;         break;
+            case 3:  digit[i]   = 1000;        break;
+            case 4:  digit[i]   = 10000;       break;
+            case 5:  digit[i]   = 100000;      break;
+            case 6:  digit[i]   = 1000000;     break;
+            case 7:  digit[i]   = 10000000;    break;
+            case 8:  digit[i]   = 100000000;   break;
+            case 9:  digit[i]   = 1000000000;  break;
+            case 10: digit[i]   = 10000000000;  break;
             default: break;
         }
     }
