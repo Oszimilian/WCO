@@ -1,6 +1,6 @@
 #CC = i686-w64-mingw32-gcc
-CC = x86_64-w64-mingw32
-#CC = gcc
+#CC = x86_64-w64-mingw32
+CC = gcc
 CCF = -Wall -g
 SRCS = $(wildcard src/*.c)
 OBJS = $(patsubst src/*.c, obj/*.o, $(SRCS))
