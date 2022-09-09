@@ -82,6 +82,9 @@ enum Gets{
     gtk_stack,
     gtk_fixed_1,
     gtk_fixed_2,
+
+    task_enum,
+    solution_advice,
 };
 
 enum Sets{
