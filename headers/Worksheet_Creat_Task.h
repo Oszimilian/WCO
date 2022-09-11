@@ -13,6 +13,8 @@
 
 typedef struct {
     char task[2][50][50];
+    char solutions[50][50];
+    int rand_sug[26];
     int operand[50];
 }MyTask_t;
 
@@ -24,3 +26,4 @@ void WCO_Worksheet_Task_Creat(MyTask_t *MyTask, int page);
 void WCO_Worksheet_Task_Random(MyTask_t *MyTask, int count);
 float WCO_Worksheet_Task_Calculate(MyTask_t *MyTask, int *count, float *a, float *b);
 void WCO_Worksheet_Task_Draw(MyTask_t *MyTask, int *x, int *y, int count, int page);
+void WCO_Worksheet_Task_Suggestion(MyTask_t *MyTask, int max_task, int page);

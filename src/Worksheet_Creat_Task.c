@@ -20,6 +20,7 @@
 #include "Worksheet_Baseboard.h"
 #include "Worksheet_Creat_Fraction.h"
 #include "Worksheet_Creat_Task.h"
+#include "Worksheet_Rand.h"
 #include "main.h"
 
 /*
@@ -67,6 +68,7 @@ MyTask_t *WCO_Worksheet_Task_Init()
     }
     WCO_Worksheet_Task_Default(MyTask);
     return MyTask;
+
 }
 
 /*
@@ -83,6 +85,8 @@ void WCO_Worksheet_Task_Default(MyTask_t *MyTask)
         }
     }
 }
+
+
 
 /*
 *   This function frees the space in the heap of the worksheet struct
@@ -124,6 +128,9 @@ void WCO_Worksheet_Task_Creat(MyTask_t *MyTask, int page)
             taskCounter ++;
         }
     }
+
+    if (WCO_BUTTON(WCO_GUI_Get(solution_advice)) && page == 0) WCO_Worksheet_Task_Suggestion(MyTask, taskCounter, page);
+
 }
 
 /*
@@ -196,6 +203,7 @@ void WCO_Worksheet_Task_Random(MyTask_t *MyTask, int count)
     }
 
     solution[1] = WCO_Worksheet_Task_Calculate(MyTask, &count, &value[0], &value[1]);
+    sprintf(MyTask->solutions[count], "%.2f", solution[1]);
 
     switch(WCO_BUTTON(WCO_GUI_Get(task_addition_dezcount + MyTask->operand[count])))
     {
@@ -257,4 +265,31 @@ void WCO_Worksheet_Task_Draw(MyTask_t *MyTask, int *x, int *y, int count, int pa
 {
     WCO_PDF_WriteText(*x, *y, MyTask->task[page][count], page);
     if (page == _Tasks) WCO_PDF_DrawSolutionLine(MyTask->task[page][count], *x, *y, 60, page);
+}
+
+void WCO_Worksheet_Task_Suggestion(MyTask_t *MyTask, int max_task, int page)
+{
+    HPDF_Font font = HPDF_GetFont(WCO_PDF_Ref()->pdf, "Courier", NULL);
+    HPDF_Page_SetFontAndSize(WCO_PDF_Ref()->page[page], font, 8);
+
+    const int caracterLen = 5;
+
+    WCO_Worksheet_Get_Rand_List(max_task);
+
+    int x = 50;
+    int y = 50;
+
+    for(int i = 0; i <= max_task; i++)
+    {
+        WCO_PDF_WriteText(x, y, MyTask->solutions[WCO_Rand_Ref()->rand_list[i]], page);
+    
+        x += (int)(caracterLen * floatLen(strtof(MyTask->solutions[WCO_Rand_Ref()->rand_list[i]], NULL)));
+        
+        
+        if (x >= (HPDF_Page_GetWidth(WCO_PDF_Ref()->page[page]) - 100))
+        {
+            x = 50;
+            y -= 10;
+        }
+    } 
 }
