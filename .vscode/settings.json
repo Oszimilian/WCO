@@ -9,6 +9,11 @@
             "cwd": "/home/maximilian/TestGit/WCO",
             "binaryPath": "/home/maximilian/TestGit/WCO/prog",
             "binaryArgs": []
+        },
+        {
+            "cwd": "/home/maximilian/Git/WCO/bin",
+            "binaryPath": "/home/maximilian/Git/WCO/bin/prog",
+            "binaryArgs": []
         }
     ]
 }

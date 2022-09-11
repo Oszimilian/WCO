@@ -8,7 +8,6 @@
                 "/usr/include/at-spi2-atk/2.0",
                 "/usr/include/at-spi-2.0",
                 "/usr/include/dbus-1.0",
-                "/usr/lib/x86_64-linux-gnu/dbus-1.0/include",
                 "/usr/include/gtk-3.0",
                 "/usr/include/gio-unix-2.0",
                 "/usr/include/cairo",
@@ -25,8 +24,7 @@
                 "/usr/include/libmount",
                 "/usr/include/blkid",
                 "/usr/include/glib-2.0",
-                "/usr/lib/x86_64-linux-gnu/glib-2.0/include",
-                "/usr/local/include/ImageMagick-7"
+                "/usr/include/ImageMagick-7"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/gcc",
@@ -38,9 +36,20 @@
                 "-Wextra",
                 "-mtune=native",
                 "-no-pie",
-                "`pkg-config gtk+-3.0 --cflags`",
                 "`pkg-config --libs gtk+-3.0`",
-                "-lm"
+                "`pkg-config --cflags gtk+-3.0`",
+                "`pkg-config --libs MagickWand`",
+                "`pkg-config --cflags MagickWand`",
+                "/usr/local/lib/libhpdf.a",
+                "-L/usr/local/lib",
+                "-lz",
+                "-lm",
+                "-lpthread",
+                "-llzma",
+                "-ljpeg",
+                "-lpng",
+                "-ltiff",
+                "-I/home/maximilian/Git/WCO/headers"
             ],
             "configurationProvider": "ms-vscode.makefile-tools"
         }

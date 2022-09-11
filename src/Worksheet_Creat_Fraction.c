@@ -340,6 +340,13 @@ int IntLen(int *i)
     return strlen(str);
 }
 
+int floatLen(float f)
+{
+    char str[20];
+    sprintf(str, "%f", f);
+    return strlen(str);
+}
+
 
 
 
