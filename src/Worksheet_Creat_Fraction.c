@@ -360,7 +360,7 @@ void WCO_Worksheet_Fraction_Suggestion(MyFraction_t *MyFrac, int max_task, int p
     for (int i = 0; i <= (max_task-1); i++)
     {  
         rand = WCO_Rand_Ref()->rand_list[i];
-        printf("%d -> %d:%d %d:%d %d:%d ", rand, MyFrac->frac[rand][0][0], MyFrac->frac[rand][0][1], MyFrac->frac[rand][1][0], MyFrac->frac[rand][1][1], MyFrac->frac[rand][2][0], MyFrac->frac[rand][2][1]);
+        //printf("%d -> %d:%d %d:%d %d:%d ", rand, MyFrac->frac[rand][0][0], MyFrac->frac[rand][0][1], MyFrac->frac[rand][1][0], MyFrac->frac[rand][1][1], MyFrac->frac[rand][2][0], MyFrac->frac[rand][2][1]);
         x += (int)(cabLen + WCO_Worksheet_Fraction_Draw_Single_Fraction(x, y, MyFrac->frac[rand][2][0], MyFrac->frac[rand][2][1], MyFrac->negFlag[rand], page));
 
         if (x >= (HPDF_Page_GetWidth(WCO_PDF_Ref()->page[page]) - 100))
@@ -378,7 +378,7 @@ int WCO_Worksheet_Fraction_Draw_Single_Fraction(int x, int y, int a, int b, int 
     HPDF_Font font = HPDF_GetFont(WCO_PDF_Ref()->pdf, "Courier", NULL);
     HPDF_Page_SetFontAndSize(WCO_PDF_Ref()->page[page], font, 8);
 
-    printf("%d:%d \n", a, b);
+    
 
     static int i = 0;
 
