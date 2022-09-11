@@ -118,7 +118,7 @@ void WCO_Worksheet_Fraction_Creat(MyFraction_t *MyFraction, int page)
     {
         pageSizeCounter = pageSize;
 
-        while(pageSizeCounter >= 50)
+        while(pageSizeCounter >= 100)
         {
             if (page == _Tasks) WCO_Worksheet_Fraction_Random(MyFraction, taskCounter);
 
@@ -131,6 +131,8 @@ void WCO_Worksheet_Fraction_Creat(MyFraction_t *MyFraction, int page)
             taskCounter ++;
         }
     }
+
+    if(WCO_BUTTON(WCO_GUI_Get(solution_advice)) && page == _Tasks) WCO_Worksheet_Fraction_Suggestion(MyFraction, taskCounter, page);
 }
 
 /*
@@ -345,6 +347,53 @@ int floatLen(float f)
     char str[20];
     sprintf(str, "%f", f);
     return strlen(str);
+}
+
+void WCO_Worksheet_Fraction_Suggestion(MyFraction_t *MyFrac, int max_task, int page)
+{
+    WCO_Worksheet_Get_Rand_List(max_task);
+    int x = 50;
+    int y = 50;
+    const int cabLen = 10;
+    int rand;
+
+    for (int i = 0; i <= (max_task-1); i++)
+    {  
+        rand = WCO_Rand_Ref()->rand_list[i];
+        printf("%d -> %d:%d %d:%d %d:%d ", rand, MyFrac->frac[rand][0][0], MyFrac->frac[rand][0][1], MyFrac->frac[rand][1][0], MyFrac->frac[rand][1][1], MyFrac->frac[rand][2][0], MyFrac->frac[rand][2][1]);
+        x += (int)(cabLen + WCO_Worksheet_Fraction_Draw_Single_Fraction(x, y, MyFrac->frac[rand][2][0], MyFrac->frac[rand][2][1], MyFrac->negFlag[rand], page));
+
+        if (x >= (HPDF_Page_GetWidth(WCO_PDF_Ref()->page[page]) - 100))
+        {
+            x = 50;
+            y -= 25;
+        }
+
+        
+    }
+}
+
+int WCO_Worksheet_Fraction_Draw_Single_Fraction(int x, int y, int a, int b, int neg, int page)
+{
+    HPDF_Font font = HPDF_GetFont(WCO_PDF_Ref()->pdf, "Courier", NULL);
+    HPDF_Page_SetFontAndSize(WCO_PDF_Ref()->page[page], font, 8);
+
+    printf("%d:%d \n", a, b);
+
+    static int i = 0;
+
+    const int patLen = 10;
+    char num1[IntLen(&a)];
+    char num2[IntLen(&b)];
+    if (neg) a *= -1;
+    sprintf(num1, "%d", a);
+    sprintf(num2, "%d", b);
+    int fracLen = (IntLen(&a) > IntLen(&b)) ? (IntLen(&a) * patLen) : (IntLen(&b) * patLen);
+    WCO_PDF_DrawLine(x, y, (x + fracLen), y, page);
+    WCO_PDF_WriteText((x + 2), (y + 2), num1, page);
+    WCO_PDF_WriteText((x + 2), (y - 8), num2, page);
+
+    return fracLen;
 }
 
 

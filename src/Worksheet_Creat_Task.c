@@ -279,9 +279,6 @@ void WCO_Worksheet_Task_Suggestion(MyTask_t *MyTask, int max_task, int page)
     int x = 50;
     int y = 50;
 
-    
-
-    
     for(int i = 0; i <= max_task; i++)
     {
         WCO_PDF_WriteText(x, y, MyTask->solutions[WCO_Rand_Ref()->rand_list[i]], page);
