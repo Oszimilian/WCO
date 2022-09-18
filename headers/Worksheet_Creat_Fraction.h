@@ -25,4 +25,7 @@ void WCO_Worksheet_Fraction_Simplify(MyFraction_t *MyFrac, int count);
 void WCO_Worksheet_Fraction_Calculate(MyFraction_t *MyFrac, int count);
 void WCO_Worksheet_Fraction_Creat(MyFraction_t *MyFraction, int page);
 int IntLen(int *i);
+int floatLen(float f);
 void WCO_Worksheet_Fraction_Draw(MyFraction_t *MyFrac, int *x, int *y,int count, int page);
+int WCO_Worksheet_Fraction_Draw_Single_Fraction(int x, int y, int a, int b, int neg, int page);
+void WCO_Worksheet_Fraction_Suggestion(MyFraction_t *MyFrac, int max_task, int page);

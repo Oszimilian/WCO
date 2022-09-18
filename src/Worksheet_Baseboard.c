@@ -82,19 +82,19 @@ void WCO_Worksheet_Baseboard_Creat(int page)
 
         if(WCO_BUTTON(WCO_GUI_Get(base_name)))
         {
-            WCO_PDF_WriteText(startx[0], 775, "Name:", page);
-            WCO_PDF_DrawSolutionLine("Name:  ", startx[0], 770, 150, page);
+            WCO_PDF_WriteText(startx[1], 790, "Name:", page);
+            WCO_PDF_DrawSolutionLine("Name: ", startx[1], 785, 150, page);
         }
 
         if(strlen(WCO_ENTRY(WCO_GUI_Get(base_text))) >= 1)
         {
-            WCO_PDF_WriteText(startx[1], 775, WCO_ENTRY(WCO_GUI_Get(base_text)), page);
+            WCO_PDF_WriteText(startx[0], 775, WCO_ENTRY(WCO_GUI_Get(base_text)), page);
         }
 
         if(WCO_BUTTON(WCO_GUI_Get(base_date)))
         {
             char *tmp = WCO_Worksheet_Baseboard_Date("Datum: ");
-            WCO_PDF_WriteText(startx[2], 775, tmp, page);
+            WCO_PDF_WriteText(startx[1], 760, tmp, page);
             free(tmp);
         }
 

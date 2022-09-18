@@ -118,6 +118,10 @@ void *WCO_GUI_Get(int i)
         case base_name_ref:         wdgRes = WCO_GUI_Ref()->MyCheckButton11; ret = wdgRes; break;
         case base_text_ref:         wdgRes = WCO_GUI_Ref()->MyEntry2; ret = wdgRes; break;
 
+        //Task extensions
+        case task_enum: intRes = (int)gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(WCO_GUI_Ref()->MyCheckButton12)); ret = &intRes; break;
+        case solution_advice: intRes = (int)gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(WCO_GUI_Ref()->MyCheckButton13)); ret = &intRes; break;
+
         default: break;
     }
     return ret;

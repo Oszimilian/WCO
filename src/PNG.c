@@ -44,16 +44,22 @@ void WCO_PNG_Init()
 
     while( (entry = readdir(folder)) )
     {
-        printf("File/Folder %d: %s ->%d\n", files, entry->d_name, strlen(entry->d_name));
-        
+        //printf("File/Folder %d: %s ->%d\n", files, entry->d_name, strlen(entry->d_name));
+
+                
 
         if (strcmp("png", entry->d_name) && !folder_flag)
         {
             folder_flag = _TRUE;
-            printf("%s \n", entry->d_name);
+            //printf("%s \n", entry->d_name);
             system("mkdir png");
+            //goto detact_folder;
+
         }
+
+        if (strcmp("png", entry->d_name)) break;
     }
+
 
     closedir(folder);
 

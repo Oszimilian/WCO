@@ -20,6 +20,7 @@
 #include "Worksheet_Baseboard.h"
 #include "Worksheet_Creat_Fraction.h"
 #include "Worksheet_Creat_Task.h"
+#include "Worksheet_Rand.h"
 #include "main.h"
 
 /*
@@ -67,6 +68,7 @@ MyTask_t *WCO_Worksheet_Task_Init()
     }
     WCO_Worksheet_Task_Default(MyTask);
     return MyTask;
+
 }
 
 /*
@@ -84,6 +86,8 @@ void WCO_Worksheet_Task_Default(MyTask_t *MyTask)
     }
 }
 
+
+
 /*
 *   This function frees the space in the heap of the worksheet struct
 */
@@ -100,17 +104,16 @@ void WCO_Worksheet_Task_Creat(MyTask_t *MyTask, int page)
     int pageSize;
     int pageSizeCounter;
     int taskCounter = 0;
-    int startx[3];
+    int startx[2];
 
     startx[0] = HPDF_Page_GetWidth(WCO_PDF_Ref()->page[page]) - (HPDF_Page_GetWidth(WCO_PDF_Ref()->page[page]) * 0.9);
-    startx[1] = HPDF_Page_GetWidth(WCO_PDF_Ref()->page[page]) - (HPDF_Page_GetWidth(WCO_PDF_Ref()->page[page]) * 0.6);
-    startx[2] = HPDF_Page_GetWidth(WCO_PDF_Ref()->page[page]) - (HPDF_Page_GetWidth(WCO_PDF_Ref()->page[page]) * 0.3);
+    startx[1] = HPDF_Page_GetWidth(WCO_PDF_Ref()->page[page]) - (HPDF_Page_GetWidth(WCO_PDF_Ref()->page[page]) * 0.5);
 
     WCO_Worksheet_Baseboard_Creat(page);
 
     pageSize = HPDF_Page_GetHeight(WCO_PDF_Ref()->page[page]) - *WCO_Worksheet_Baseboard_Threashold();
 
-    for(int i = 0; i <= 2; i++)
+    for(int i = 0; i <= 1; i++)
     {
         pageSizeCounter = pageSize;
 
@@ -125,6 +128,9 @@ void WCO_Worksheet_Task_Creat(MyTask_t *MyTask, int page)
             taskCounter ++;
         }
     }
+
+    if (WCO_BUTTON(WCO_GUI_Get(solution_advice)) && page == 0) WCO_Worksheet_Task_Suggestion(MyTask, taskCounter, page);
+
 }
 
 /*
@@ -132,11 +138,18 @@ void WCO_Worksheet_Task_Creat(MyTask_t *MyTask, int page)
 */
 void WCO_Worksheet_Task_Random(MyTask_t *MyTask, int count)
 {
-    int digit[2];
+    long int digit[2];
     float value[2];
     float solution[2];
-    char ops[4] = "+-*/";
-    
+    char ops[4] = "+-*:";
+
+    char *enum_task = (char*) malloc(sizeof(char) * ((WCO_BUTTON(WCO_GUI_Get(task_enum)))? 6:1 ) );
+    if (WCO_BUTTON(WCO_GUI_Get(task_enum)))
+    {
+        sprintf(enum_task, "(%d): ", (count + 1));
+    }else{
+        sprintf(enum_task, " ");
+    }
 
     if(count == 0) srand(time(NULL));
 
@@ -150,13 +163,16 @@ void WCO_Worksheet_Task_Random(MyTask_t *MyTask, int count)
     {
         switch (WCO_BUTTON(WCO_GUI_Get(task_addition_digit_1 + MyTask->operand[count] + ((!i) ? 0 : 4) )))
         {
-            case 1: digit[i]  = 10;       break;
-            case 2: digit[i]  = 100;      break;
-            case 3: digit[i]  = 1000;     break;
-            case 4: digit[i]  = 10000;    break;
-            case 5: digit[i]  = 100000;   break;
-            case 6: digit[i]  = 1000000;  break;
-            case 7: digit[i]  = 10000000; break;
+            case 1:  digit[i]   = 10;          break;
+            case 2:  digit[i]   = 100;         break;
+            case 3:  digit[i]   = 1000;        break;
+            case 4:  digit[i]   = 10000;       break;
+            case 5:  digit[i]   = 100000;      break;
+            case 6:  digit[i]   = 1000000;     break;
+            case 7:  digit[i]   = 10000000;    break;
+            case 8:  digit[i]   = 100000000;   break;
+            case 9:  digit[i]   = 1000000000;  break;
+            case 10: digit[i]   = 10000000000;  break;
             default: break;
         }
     }
@@ -171,37 +187,54 @@ void WCO_Worksheet_Task_Random(MyTask_t *MyTask, int count)
     {
         switch (WCO_BUTTON(WCO_GUI_Get(task_addition_dezcount + MyTask->operand[count])))
         {
-            case 0: value[i] *= 1;       break;
-            case 1: value[i] *= 0.1;     break;
-            case 2: value[i] *= 0.01;    break;
-            case 3: value[i] *= 0.001;   break;
-            case 4: value[i] *= 0.0001;  break;
-            case 5: value[i] *= 0.00001; break;
+            case 0:  value[i] *= 1;            break;
+            case 1:  value[i] *= 0.1;          break;
+            case 2:  value[i] *= 0.01;         break;
+            case 3:  value[i] *= 0.001;        break;
+            case 4:  value[i] *= 0.0001;       break;
+            case 5:  value[i] *= 0.00001;      break;
+            case 6:  value[i] *= 0.000001;     break;
+            case 7:  value[i] *= 0.0000001;    break;
+            case 8:  value[i] *= 0.00000001;   break;
+            case 9:  value[i] *= 0.000000001;  break;
+            case 10: value[i] *= 0.0000000001; break;
             default: break;
         }
     }
 
     solution[1] = WCO_Worksheet_Task_Calculate(MyTask, &count, &value[0], &value[1]);
+    sprintf(MyTask->solutions[count], "%.2f", solution[1]);
 
     switch(WCO_BUTTON(WCO_GUI_Get(task_addition_dezcount + MyTask->operand[count])))
     {
-        case 0: sprintf(MyTask->task[0][count], "%d %c %d =", (int)value[0], ops[MyTask->operand[count]], (int)value[1]); break;
-        case 1: sprintf(MyTask->task[0][count], "%.1f %c %.1f =", value[0], ops[MyTask->operand[count]], value[1]); break;
-        case 2: sprintf(MyTask->task[0][count], "%.2f %c %.2f =", value[0], ops[MyTask->operand[count]], value[1]); break;
-        case 3: sprintf(MyTask->task[0][count], "%.3f %c %.3f =", value[0], ops[MyTask->operand[count]], value[1]); break;
-        case 4: sprintf(MyTask->task[0][count], "%.4f %c %.4f =", value[0], ops[MyTask->operand[count]], value[1]); break;
-        case 5: sprintf(MyTask->task[0][count], "%.5f %c %.5f =", value[0], ops[MyTask->operand[count]], value[1]); break;
+        case 0: sprintf(MyTask->task[0][count], "%s%d %c %d =", enum_task, (int)value[0], ops[MyTask->operand[count]], (int)value[1]); break;
+        case 1: sprintf(MyTask->task[0][count], "%s%.1f %c %.1f =", enum_task, value[0], ops[MyTask->operand[count]], value[1]); break;
+        case 2: sprintf(MyTask->task[0][count], "%s%.2f %c %.2f =", enum_task, value[0], ops[MyTask->operand[count]], value[1]); break;
+        case 3: sprintf(MyTask->task[0][count], "%s%.3f %c %.3f =", enum_task, value[0], ops[MyTask->operand[count]], value[1]); break;
+        case 4: sprintf(MyTask->task[0][count], "%s%.4f %c %.4f =", enum_task, value[0], ops[MyTask->operand[count]], value[1]); break;
+        case 5: sprintf(MyTask->task[0][count], "%s%.5f %c %.5f =", enum_task, value[0], ops[MyTask->operand[count]], value[1]); break;
+        case 6: sprintf(MyTask->task[0][count], "%s%.6f %c %.6f =", enum_task, value[0], ops[MyTask->operand[count]], value[1]); break;
+        case 7: sprintf(MyTask->task[0][count], "%s%.7f %c %.7f =", enum_task, value[0], ops[MyTask->operand[count]], value[1]); break;
+        case 8: sprintf(MyTask->task[0][count], "%s%.8f %c %.8f =", enum_task, value[0], ops[MyTask->operand[count]], value[1]); break;
+        case 9: sprintf(MyTask->task[0][count], "%s%.9f %c %.9f =", enum_task, value[0], ops[MyTask->operand[count]], value[1]); break;
+        case 10: sprintf(MyTask->task[0][count], "%s%.10f %c %.10f =", enum_task, value[0], ops[MyTask->operand[count]], value[1]); break;
+
         default: break;
     }
 
     switch(WCO_BUTTON(WCO_GUI_Get(task_addition_dezcount + MyTask->operand[count])))
     {
-        case 0: sprintf(MyTask->task[1][count], "%d %c %d = %.2f", (int)value[0], ops[MyTask->operand[count]], (int)value[1], solution[1]); break;
-        case 1: sprintf(MyTask->task[1][count], "%.1f %c %.1f = %.2f", value[0], ops[MyTask->operand[count]], value[1], solution[1]); break;
-        case 2: sprintf(MyTask->task[1][count], "%.2f %c %.2f = %.2f", value[0], ops[MyTask->operand[count]], value[1], solution[1]); break;
-        case 3: sprintf(MyTask->task[1][count], "%.3f %c %.3f = %.2f", value[0], ops[MyTask->operand[count]], value[1], solution[1]); break;
-        case 4: sprintf(MyTask->task[1][count], "%.4f %c %.4f = %.2f", value[0], ops[MyTask->operand[count]], value[1], solution[1]); break;
-        case 5: sprintf(MyTask->task[1][count], "%.5f %c %.5f = %.2f", value[0], ops[MyTask->operand[count]], value[1], solution[1]); break;
+        case 0: sprintf(MyTask->task[1][count], "%s%d %c %d = %.2f", enum_task, (int)value[0], ops[MyTask->operand[count]], (int)value[1], solution[1]); break;
+        case 1: sprintf(MyTask->task[1][count], "%s%.1f %c %.1f = %.2f", enum_task, value[0], ops[MyTask->operand[count]], value[1], solution[1]); break;
+        case 2: sprintf(MyTask->task[1][count], "%s%.2f %c %.2f = %.2f", enum_task, value[0], ops[MyTask->operand[count]], value[1], solution[1]); break;
+        case 3: sprintf(MyTask->task[1][count], "%s%.3f %c %.3f = %.2f", enum_task, value[0], ops[MyTask->operand[count]], value[1], solution[1]); break;
+        case 4: sprintf(MyTask->task[1][count], "%s%.4f %c %.4f = %.2f", enum_task, value[0], ops[MyTask->operand[count]], value[1], solution[1]); break;
+        case 5: sprintf(MyTask->task[1][count], "%s%.5f %c %.5f = %.2f", enum_task, value[0], ops[MyTask->operand[count]], value[1], solution[1]); break;
+        case 6: sprintf(MyTask->task[1][count], "%s%.6f %c %.6f = %.2f", enum_task, value[0], ops[MyTask->operand[count]], value[1], solution[1]); break;
+        case 7: sprintf(MyTask->task[1][count], "%s%.7f %c %.7f = %.2f", enum_task, value[0], ops[MyTask->operand[count]], value[1], solution[1]); break;
+        case 8: sprintf(MyTask->task[1][count], "%s%.8f %c %.8f = %.2f", enum_task, value[0], ops[MyTask->operand[count]], value[1], solution[1]); break;
+        case 9: sprintf(MyTask->task[1][count], "%s%.9f %c %.9f = %.2f", enum_task, value[0], ops[MyTask->operand[count]], value[1], solution[1]); break;
+        case 10: sprintf(MyTask->task[1][count], "%s%.10f %c %.10f = %.2f", enum_task, value[0], ops[MyTask->operand[count]], value[1], solution[1]); break;
         default: break;
     }
 }
@@ -232,4 +265,31 @@ void WCO_Worksheet_Task_Draw(MyTask_t *MyTask, int *x, int *y, int count, int pa
 {
     WCO_PDF_WriteText(*x, *y, MyTask->task[page][count], page);
     if (page == _Tasks) WCO_PDF_DrawSolutionLine(MyTask->task[page][count], *x, *y, 60, page);
+}
+
+void WCO_Worksheet_Task_Suggestion(MyTask_t *MyTask, int max_task, int page)
+{
+    HPDF_Font font = HPDF_GetFont(WCO_PDF_Ref()->pdf, "Courier", NULL);
+    HPDF_Page_SetFontAndSize(WCO_PDF_Ref()->page[page], font, 8);
+
+    const int caracterLen = 5;
+
+    WCO_Worksheet_Get_Rand_List(max_task - 1);
+
+    int x = 50;
+    int y = 50;
+
+    for(int i = 0; i <= (max_task - 1); i++)
+    {
+        WCO_PDF_WriteText(x, y, MyTask->solutions[WCO_Rand_Ref()->rand_list[i]], page);
+    
+        x += (int)(caracterLen * floatLen(strtof(MyTask->solutions[WCO_Rand_Ref()->rand_list[i]], NULL)));
+        
+        
+        if (x >= (HPDF_Page_GetWidth(WCO_PDF_Ref()->page[page]) - 100))
+        {
+            x = 50;
+            y -= 10;
+        }
+    } 
 }

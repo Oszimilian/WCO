@@ -67,6 +67,8 @@ void WCO_GUI_Start()
     WCO_GUI_Ref()->MyCheckButton9 = GTK_WIDGET(gtk_builder_get_object(WCO_GUI_Ref()->MyBuilder, "MyCheckButton9"));
     WCO_GUI_Ref()->MyCheckButton10 = GTK_WIDGET(gtk_builder_get_object(WCO_GUI_Ref()->MyBuilder, "MyCheckButton10"));
     WCO_GUI_Ref()->MyCheckButton11 = GTK_WIDGET(gtk_builder_get_object(WCO_GUI_Ref()->MyBuilder, "MyCheckButton11"));
+    WCO_GUI_Ref()->MyCheckButton12 = GTK_WIDGET(gtk_builder_get_object(WCO_GUI_Ref()->MyBuilder, "MyCheckButton12"));
+    WCO_GUI_Ref()->MyCheckButton13 = GTK_WIDGET(gtk_builder_get_object(WCO_GUI_Ref()->MyBuilder, "MyCheckButton13"));
 
     //MyGUI.MyRadioButton1 = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MyRadioButton1"));
     //MyGUI.MyRadioButton2 = GTK_WIDGET(gtk_builder_get_object(MyGUI.MyBuilder, "MyRadioButton2"));
