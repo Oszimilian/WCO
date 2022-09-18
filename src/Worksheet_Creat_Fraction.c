@@ -368,8 +368,6 @@ void WCO_Worksheet_Fraction_Suggestion(MyFraction_t *MyFrac, int max_task, int p
             x = 50;
             y -= 25;
         }
-
-        
     }
 }
 

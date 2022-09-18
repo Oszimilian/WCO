@@ -12,7 +12,7 @@ DynGTK = -export-dynamic
 LibLibHaru_Lin = /usr/local/lib/libhpdf.a -L/usr/local/lib -lz -lm -lpthread
 LibLibHaru_Win = C:/cygwin64/usr/local/lib/libhpdf.a -lz -lm -lpthread -IC:/cygwin64/usr/local/include
 
-LibIM_Lin = $(shell pkg-config --libs MagickWand) -llzma -ljpeg -lpng -ltiff
+LibIM_Lin = $(shell pkg-config --libs MagickWand) -llzma -ljpeg -lpng -ltiff -ljbig
 FlagIM_Lin = $(shell pkg-config --cflags MagickWand)
 
 LibIM_Cyg = -LC:/msys64/mingw64/lib -lMagickWand-7.Q16HDRI -lMagickCore-7.Q16HDRI
