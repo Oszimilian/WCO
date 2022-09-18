@@ -52,6 +52,7 @@ WORKDIR /home/maximilian
 RUN mkdir Git
 WORKDIR /home/maximilian/Git
 RUN git clone https://github.com/Oszimilian/WCO.git
+RUN git checkout master_docker_01
 
 RUN apt install -y software-properties-common
 RUN add-apt-repository ppa:ubuntu-toolchain-r/test
