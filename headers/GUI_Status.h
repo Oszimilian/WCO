@@ -78,6 +78,7 @@ enum Gets{
     saveFolderButton,
     creatButton_ref,
     folder_name,
+    folder_name_uri,
 
     gtk_stack,
     gtk_fixed_1,
