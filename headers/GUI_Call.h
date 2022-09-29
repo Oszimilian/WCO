@@ -1,6 +1,6 @@
 #define Linux 0
 #define Windows 1
-#define OP Linux
+//#define OP Windows
 
 #ifndef GUI_CALL_H_INCLUDED
 #define GUI_CALL_H_INCLUDED
