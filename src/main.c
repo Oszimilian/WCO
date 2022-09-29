@@ -73,7 +73,8 @@ MyRand_t *WCO_Rand_Ref()
 
 int main(void)
 {
-    
+    if (OP == 1) printf("OP: Linux \n");
+    else printf("OP: Windows \n");
     //Init
     WCO_Exchange_Init();
 
