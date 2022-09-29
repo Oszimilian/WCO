@@ -45,39 +45,49 @@ C:\msys64\mingw64\bin
 
 ```bash
 git clone https://github.com/libharu/libharu.git
-https://github.com/Oszimilian/WCO.git
+git clone https://github.com/Oszimilian/WCO.git
 ```
 
-Change the branch to a previous one (2_3) 
+## Build the LibHaru Library
+
+#### Change the branch to a previous one (2_3) 
 ```bash
 git checkout 2_3
 ```
 
-Maybe you have to run 
-    ```bash
-    sed -i 's/\r//' ./buildconf.sh
-    ```
-because of missmatching lineendings
-
-Build the Configure-File
+#### Maybe you have to run because of missmatching lineendings
 ```bash
-./buildconf.sh
+sed -i 's/\r//' ./buildconf.sh
 ```
 
-Run the configure file with the prefix-paths
+#### Generate the configure spript with this command
 ```bash
-./configure --prefix=/usr/local --with-zlib --with-png --with-libdir=lib
+./buildconf.sh --force
 ```
 
-Build the Library
+#### Generate the makefile with this command 
+* Replacing the previous version with this one ```--with-png=/msys64/``` is very important because without this the script cant find the png headers.
+```bash
+./configure --prefix=/usr/local --with-zlib --with-png=/msys64/ --with-libdir=lib
+```
+
+#### Build the Library
 ```bash
 make clean
 make
 make install
 ```
 
+* The result should be that you can find a ```libhpdf.a``` file under ```/msys64/usr/local/lib/``` 
 
+## Building the 
 
+#### Adapt the makefile
+* In line 6 there is a variable called OP which holds something like this ```OP = -DOP=1``` which is responsible for setting a variable in the sourcecode during the compileprocess. Change this part to this ```OP = -DOP=2```
+
+#### Building the programm
+* make sure that you use the mingw64 terminal to type ``` make```
+* maybe you have to type ```make clean``` before this
 
 
 
