@@ -81,7 +81,7 @@ void *WCO_GUI_Get(int i)
         case savePDFButton: ret = &WCO_GUI_Ref()->savePDF; break; 
         case saveFolderButton: ret = &WCO_GUI_Ref()->saveFolder; break;
         case creatButton_ref: ret = WCO_GUI_Ref()->MyButton1; break;
-        case folder_name: ret = gtk_file_chooser_get_current_folder(GTK_FILE_CHOOSER(WCO_GUI_Ref()->MyFileChosserButton1)); break;
+        case folder_name: ret = &WCO_GUI_Ref()->folderName; break;
 
         //Referenze to addition widgets
         case task_addition_digit_1_ref:    wdgRes = WCO_GUI_Ref()->MySpinButton2; ret = wdgRes; break;

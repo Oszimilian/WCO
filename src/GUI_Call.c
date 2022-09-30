@@ -97,10 +97,7 @@ void MySpinButton13_Changed(GtkSpinButton *s){WCO_GUI_Update(_DIVISION);}
 
 /**********************************************************************************************************************/
 
-void MyFileChosserButton1_FileSet(GtkFileChooserButton *f)
-{
 
-}
 
 void MyEntry1_Changed(GtkEntry *e)
 {
@@ -117,10 +114,8 @@ void MyButton4_Clicked(GtkButton *b)
     WCO_GUI_Update_CreateButton();
 }
 
-void MyButtonTest_Clicked()
+void MyFileChooserButton1_Clicked()
 {
-
-
     GtkWidget *dialog;
     dialog = gtk_file_chooser_dialog_new("Chosse a folder", GTK_WINDOW(WCO_GUI_Ref()->MyWindow1), GTK_FILE_CHOOSER_ACTION_SELECT_FOLDER, GTK_STOCK_OK, GTK_RESPONSE_OK, GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL, NULL);
     gtk_widget_show_all(dialog);
@@ -129,26 +124,19 @@ void MyButtonTest_Clicked()
 
     gint resp = gtk_dialog_run(GTK_DIALOG(dialog));
     if(resp == GTK_RESPONSE_OK)
+    {
         g_print("%s\n", gtk_file_chooser_get_filename(GTK_FILE_CHOOSER(dialog)));
-    else
+        sprintf(WCO_GUI_Ref()->folderName, "%s", gtk_file_chooser_get_filename(GTK_FILE_CHOOSER(dialog)));
+    }else{        
         g_print("You pressed Cancel\n");
-    
+    }
 
     int i = _TRUE;
     WCO_GUI_Set(&i, saveFolder);
     WCO_GUI_Update_CreateButton();
 
-    int fileNameLeangh = strlen(gtk_file_chooser_get_filename(GTK_FILE_CHOOSER(dialog)));
-    WCO_PDF_SetFoldername(gtk_file_chooser_get_filename(GTK_FILE_CHOOSER(dialog)));
+    WCO_GUI_Update_FileName();
 
-
-    if (fileNameLeangh >= 1)
-    {
-        WCO_PDF_SetFilename(WCO_ENTRY(WCO_GUI_Get(entry_1)), _Tasks);
-        WCO_PDF_SetFilename(WCO_ENTRY(WCO_GUI_Get(entry_1)), _Solutions);
-    }
-
-    
     gtk_widget_destroy(dialog);
 }
 

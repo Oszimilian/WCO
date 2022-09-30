@@ -51,7 +51,7 @@
                 "-ljpeg",
                 "-lpng",
                 "-ltiff",
-                "-I/home/maximilian/Git/WCO/headers"
+                "-I/home/maximilian/Git/WCO/headers/"
             ],
             "configurationProvider": "ms-vscode.makefile-tools"
         }

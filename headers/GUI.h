@@ -67,10 +67,8 @@ typedef struct{
     GtkWidget *MySpinButton16;
     GtkWidget *MySpinButton17;
 
-    GtkWidget *MyFileChosserButton1;
-    GtkFileChooserNative *MyFileChosserButtonNative;
-    GtkFileChooserAction MyFileChooserAction;
-    GtkWidget *MyTestButton;
+
+    GtkWidget *MyFileChooserButton1;
 
     GtkWidget *MyEntry1;
     GtkWidget *MyEntry2;
@@ -86,6 +84,7 @@ typedef struct{
     int showPNG;
 
     char **label;
+    char folderName[100];
 }MyGUI_t;
 
 

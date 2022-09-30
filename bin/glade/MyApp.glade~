@@ -927,21 +927,6 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkFileChooserButton" id="MyFileChosserButton1">
-                                <property name="width-request">129</property>
-                                <property name="height-request">-1</property>
-                                <property name="visible">True</property>
-                                <property name="can-focus">False</property>
-                                <property name="action">select-folder</property>
-                                <property name="title" translatable="yes"/>
-                                <signal name="file-set" handler="MyFileChosserButton1_FileSet" swapped="no"/>
-                              </object>
-                              <packing>
-                                <property name="x">330</property>
-                                <property name="y">10</property>
-                              </packing>
-                            </child>
-                            <child>
                               <object class="GtkButton" id="MyButton4">
                                 <property name="label" translatable="yes">Save</property>
                                 <property name="name">Update</property>
@@ -954,6 +939,22 @@
                               <packing>
                                 <property name="x">540</property>
                                 <property name="y">10</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkButton" id="MyFilechooserButton1">
+                                <property name="label">gtk-floppy</property>
+                                <property name="visible">True</property>
+                                <property name="can-focus">True</property>
+                                <property name="receives-default">True</property>
+                                <property name="use-stock">True</property>
+                                <property name="image-position">bottom</property>
+                                <property name="always-show-image">True</property>
+                                <signal name="clicked" handler="MyButtonTest_Clicked" swapped="no"/>
+                              </object>
+                              <packing>
+                                <property name="x">383</property>
+                                <property name="y">1</property>
                               </packing>
                             </child>
                           </object>
@@ -1056,19 +1057,6 @@
           <packing>
             <property name="x">20</property>
             <property name="y">800</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkButton" id="MyButtonTest">
-            <property name="label" translatable="yes">button</property>
-            <property name="visible">True</property>
-            <property name="can-focus">True</property>
-            <property name="receives-default">True</property>
-            <signal name="clicked" handler="MyButtonTest_Clicked" swapped="no"/>
-          </object>
-          <packing>
-            <property name="x">85</property>
-            <property name="y">760</property>
           </packing>
         </child>
       </object>

@@ -38,10 +38,10 @@ void MySpinButton11_Changed(GtkSpinButton *s);
 void MySpinButton12_Changed(GtkSpinButton *s);
 void MySpinButton13_Changed(GtkSpinButton *s);
 
-void MyFileChosserButton1_FileSet(GtkFileChooserButton *f);
+
 void MyEntry1_Changed(GtkEntry *e);
 void MyButton4_Clicked(GtkButton *b);
-
+void MyFileChooserButton1_Clicked();
 void MyButton5_Clicked(GtkButton *b);
 
 void MySpinButton14_Changed(GtkSpinButton *b);
@@ -89,7 +89,7 @@ G_MODULE_EXPORT void MySpinButton11_Changed(GtkSpinButton *s);
 G_MODULE_EXPORT void MySpinButton12_Changed(GtkSpinButton *s);
 G_MODULE_EXPORT void MySpinButton13_Changed(GtkSpinButton *s);
 
-G_MODULE_EXPORT void MyFileChosserButton1_FileSet(GtkFileChooserButton *f);
+G_MODULE_EXPORT void MyFilechooserButton1_Clicked();
 G_MODULE_EXPORT void MyEntry1_Changed(GtkEntry *e);
 G_MODULE_EXPORT void MyButton4_Clicked(GtkButton *b);
 
@@ -106,7 +106,7 @@ G_MODULE_EXPORT void MyCheckButton9_Changed(GtkCheckButton *b);
 G_MODULE_EXPORT void MyCheckButton10_Changed(GtkCheckButton *b);
 
 G_MODULE_EXPORT void MyStackSwitcher2_Changed();
-G_MODULE_EXPORT void MyButtonTest_Clicked();
+
 #endif
 
 #endif
