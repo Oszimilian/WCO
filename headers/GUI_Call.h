@@ -89,7 +89,7 @@ G_MODULE_EXPORT void MySpinButton11_Changed(GtkSpinButton *s);
 G_MODULE_EXPORT void MySpinButton12_Changed(GtkSpinButton *s);
 G_MODULE_EXPORT void MySpinButton13_Changed(GtkSpinButton *s);
 
-G_MODULE_EXPORT void MyFilechooserButton1_Clicked();
+G_MODULE_EXPORT void MyFileChooserButton1_Clicked();
 G_MODULE_EXPORT void MyEntry1_Changed(GtkEntry *e);
 G_MODULE_EXPORT void MyButton4_Clicked(GtkButton *b);
 

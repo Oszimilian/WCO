@@ -942,7 +942,7 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkButton" id="MyFilechooserButton1">
+                              <object class="GtkButton" id="MyFileChooserButton1">
                                 <property name="label">gtk-floppy</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
@@ -950,7 +950,7 @@
                                 <property name="use-stock">True</property>
                                 <property name="image-position">bottom</property>
                                 <property name="always-show-image">True</property>
-                                <signal name="clicked" handler="MyButtonTest_Clicked" swapped="no"/>
+                                <signal name="clicked" handler="MyFileChooserButton1_Clicked" swapped="no"/>
                               </object>
                               <packing>
                                 <property name="x">383</property>

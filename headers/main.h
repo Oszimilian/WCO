@@ -9,3 +9,4 @@ MyPDF_t *WCO_PDF_Ref();
 MyPNG_t *WCO_PNG_Ref();
 MyBase_t *WCO_Baseboard_Ref();
 MyRand_t *WCO_Rand_Ref();
+char dirSyntaxHelper();

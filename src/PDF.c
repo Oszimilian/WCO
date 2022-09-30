@@ -80,9 +80,9 @@ void WCO_PDF_SetFilename(const char *fileName, int page)
 {
     if (page == 0)
     {
-        sprintf(WCO_PDF_Ref()->fileName[page], "%s/%s.pdf", WCO_PDF_Ref()->folderName, fileName);
+        sprintf(WCO_PDF_Ref()->fileName[page], "%s%c%s.pdf", WCO_PDF_Ref()->folderName, dirSyntaxHelper(),  fileName);
     }else{
-        sprintf(WCO_PDF_Ref()->fileName[page], "%s/%s_Losungen.pdf", WCO_PDF_Ref()->folderName, fileName);
+        sprintf(WCO_PDF_Ref()->fileName[page], "%s%c%s_Losungen.pdf", WCO_PDF_Ref()->folderName, dirSyntaxHelper(), fileName);
     }
 
     sprintf(WCO_PDF_Ref()->systemOpenFile[page], "okular %s", WCO_PDF_Ref()->fileName[page]);

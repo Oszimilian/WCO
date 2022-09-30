@@ -71,6 +71,11 @@ MyRand_t *WCO_Rand_Ref()
     return MyExchange.MyRand_r;
 }
 
+char dirSyntaxHelper()
+{
+    return (OP == Linux) ? '/' : '\\';
+}
+
 int main(void)
 {
     if (OP == 1) printf("OP: Linux \n");

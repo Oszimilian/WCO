@@ -65,7 +65,7 @@ void WCO_PNG_Init()
 
     failed:
 
-    sprintf(WCO_PNG_Ref()->folderName, "%s/%s/",getcwd(NULL, 0), "png");
+    sprintf(WCO_PNG_Ref()->folderName, "%s%c%s%c",getcwd(NULL, 0), dirSyntaxHelper(), "png", dirSyntaxHelper());
     printf("Current Folder: %s \n", getcwd(NULL, 0));
     printf("PNG_Folder: %s \n", WCO_PNG_Ref()->folderName);
 
@@ -96,7 +96,11 @@ void WCO_PNG_Set_ConvertToPNG(float resize)
 
         newWand = NewMagickWand();
 
-        MagickReadImage(newWand, WCO_PDF_Ref()->fileName[i] );
+        
+
+        printf("PDF->PNG: %s \n", WCO_PDF_Ref()->fileName[i]);
+
+        MagickReadImage(newWand, WCO_PDF_Ref()->fileName[i]);
 
         MagickResizeImage(newWand,x,y,LanczosFilter);
 
@@ -105,6 +109,8 @@ void WCO_PNG_Set_ConvertToPNG(float resize)
         MagickSetImageCompressionQuality(newWand,100);
 
         MagickWriteImage(newWand, WCO_PNG_Ref()->fileName[i]);
+
+        printf("PNG: %s \n", WCO_PNG_Ref()->fileName[i]);
 
         if(newWand) DestroyMagickWand(newWand);
 
