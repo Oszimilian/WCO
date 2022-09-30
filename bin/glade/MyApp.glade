@@ -1058,6 +1058,19 @@
             <property name="y">800</property>
           </packing>
         </child>
+        <child>
+          <object class="GtkButton" id="MyButtonTest">
+            <property name="label" translatable="yes">button</property>
+            <property name="visible">True</property>
+            <property name="can-focus">True</property>
+            <property name="receives-default">True</property>
+            <signal name="clicked" handler="MyButtonTest_Clicked" swapped="no"/>
+          </object>
+          <packing>
+            <property name="x">85</property>
+            <property name="y">760</property>
+          </packing>
+        </child>
       </object>
     </child>
   </object>

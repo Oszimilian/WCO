@@ -92,6 +92,8 @@ void WCO_GUI_Start()
     WCO_GUI_Ref()->MySpinButton17 = GTK_WIDGET(gtk_builder_get_object(WCO_GUI_Ref()->MyBuilder, "MySpinButton17"));
     
     WCO_GUI_Ref()->MyFileChosserButton1 = GTK_WIDGET(gtk_builder_get_object(WCO_GUI_Ref()->MyBuilder, "MyFileChosserButton1"));
+    WCO_GUI_Ref()->MyTestButton = GTK_WIDGET(gtk_builder_get_object(WCO_GUI_Ref()->MyBuilder, "MyButtonTest"));
+    
 
     WCO_GUI_Ref()->MyEntry1 = GTK_WIDGET(gtk_builder_get_object(WCO_GUI_Ref()->MyBuilder, "MyEntry1"));
     WCO_GUI_Ref()->MyEntry2 = GTK_WIDGET(gtk_builder_get_object(WCO_GUI_Ref()->MyBuilder, "MyEntry2"));

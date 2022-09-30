@@ -106,6 +106,7 @@ G_MODULE_EXPORT void MyCheckButton9_Changed(GtkCheckButton *b);
 G_MODULE_EXPORT void MyCheckButton10_Changed(GtkCheckButton *b);
 
 G_MODULE_EXPORT void MyStackSwitcher2_Changed();
+G_MODULE_EXPORT void MyButtonTest_Clicked();
 #endif
 
 #endif

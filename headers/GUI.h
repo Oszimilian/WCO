@@ -68,6 +68,9 @@ typedef struct{
     GtkWidget *MySpinButton17;
 
     GtkWidget *MyFileChosserButton1;
+    GtkFileChooserNative *MyFileChosserButtonNative;
+    GtkFileChooserAction MyFileChooserAction;
+    GtkWidget *MyTestButton;
 
     GtkWidget *MyEntry1;
     GtkWidget *MyEntry2;
