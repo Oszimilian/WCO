@@ -9,6 +9,7 @@
 #include <time.h>
 #include <math.h>
 #include <MagickWand/MagickWand.h>
+#include <cairo.h>
 
 #include "hpdf.h"
 #include "GUI_Call.h"
@@ -20,6 +21,7 @@
 #include "Worksheet_Baseboard.h"
 #include "Worksheet_Creat_Fraction.h"
 #include "Worksheet_Creat_Task.h"
+
 #include "main.h"
 
 
@@ -102,6 +104,11 @@ void WCO_GUI_Start()
     WCO_GUI_Ref()->MyStack2 = GTK_WIDGET(gtk_builder_get_object(WCO_GUI_Ref()->MyBuilder, "MyStack2"));
     WCO_GUI_Ref()->MySettingsFixed[0] = GTK_WIDGET(gtk_builder_get_object(WCO_GUI_Ref()->MyBuilder, "MyFixed4"));
     WCO_GUI_Ref()->MySettingsFixed[1] = GTK_WIDGET(gtk_builder_get_object(WCO_GUI_Ref()->MyBuilder, "MyFixed5"));
+
+    WCO_GUI_Ref()->MyDrawArea[0] = GTK_WIDGET(gtk_builder_get_object(WCO_GUI_Ref()->MyBuilder, "MyDrawArea1"));
+    WCO_GUI_Ref()->MyDrawArea[1] = GTK_WIDGET(gtk_builder_get_object(WCO_GUI_Ref()->MyBuilder, "MyDrawArea2"));
+
+
     
     
     //connecting the signalls which were initilized by glade with the programm
@@ -164,6 +171,7 @@ int WCO_GUI_Get_Stack()
 /*
 *   function is responsible to display the created pdf in the gtk window as an png
 */
+/*
 void WCO_GUI_Show_Worksheet(int page)
 {
     //this case is true if this generated pdf was the first one since starting the programm
@@ -189,8 +197,12 @@ void WCO_GUI_Show_Worksheet(int page)
     //move the image to the left upor corner of the container
     gtk_fixed_move(GTK_FIXED(WCO_GUI_Ref()->MyWorksheetFixed[page]), WCO_GUI_Ref()->MyWorksheetImage[page], 0, 0);
 }
+*/
 
-
+void WCO_GUI_Show_Worksheet(int page)
+{
+    cairo_pdf_surface_create(WCO_ENTRY(WCO_GUI_Get(folder_name)), HPDF_Page_GetWidth(WCO_PDF_Ref()->page[page]), HPDF_Page_GetHeight(WCO_PDF_Ref()->page[page]));
+}
 
 
 

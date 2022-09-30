@@ -79,6 +79,8 @@ typedef struct{
     GtkWidget *MyStack2;
     //GtkWidget *MySpinButton18;
 
+    GtkWidget *MyDrawArea[2];
+
     int savePDF;
     int saveFolder;
     int showPNG;
