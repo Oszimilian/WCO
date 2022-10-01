@@ -91,16 +91,29 @@ void WCO_PNG_Set_ConvertToPNG(float resize)
     {
 
         MagickWand *newWand;
+	
+        #define ThrowWandException(wand) \
+        { \
+            char *description; \
+            ExceptionType severity; \
+            description = MagickGetException(wand, &severity);\
+            (void) fprintf(stderr, "%s %s %lu %s \n", GetMagickModule(), description);\
+            description = (char *) MagickRelinquishMemory(description);\
+        }        
+	
+	    MagickBooleanType status;
 
-        MagickWandGenesis();
+	    MagickWandGenesis();
 
         newWand = NewMagickWand();
 
-        
+	    printf("PDF->PNG: %s \n", WCO_PDF_Ref()->fileName[i]);
 
-        printf("PDF->PNG: %s \n", WCO_PDF_Ref()->fileName[i]);
+        status = MagickReadImage(newWand, WCO_PDF_Ref()->fileName[i]);
+        //status = MagickReadImage(newWand, "C:\\Users\\maximilian\\Downloads\\test001.jpeg");
 
-        MagickReadImage(newWand, WCO_PDF_Ref()->fileName[i]);
+	    if (status == MagickFalse) ThrowWandException(newWand);
+
 
         MagickResizeImage(newWand,x,y,LanczosFilter);
 
@@ -110,11 +123,11 @@ void WCO_PNG_Set_ConvertToPNG(float resize)
 
         MagickWriteImage(newWand, WCO_PNG_Ref()->fileName[i]);
 
-        printf("PNG: %s \n", WCO_PNG_Ref()->fileName[i]);
+	        printf("PNG: %s \n", WCO_PNG_Ref()->fileName[i]);
 
         if(newWand) DestroyMagickWand(newWand);
-
-        void MagickWandTerminus(void);
+  
+        MagickWandTerminus();
 
         //displaying the converted pdf in the gtk window
         WCO_GUI_Show_Worksheet(i);
