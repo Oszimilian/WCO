@@ -55,7 +55,7 @@ void WCO_Worksheet_Fraction_Start()
 
     HPDF_Free(WCO_PDF_Ref()->pdf);
 
-    WCO_PNG_Set_ConvertToPNG(0.23);
+    WCO_PNG_Set_ConvertToPNG(0.1);
 
     WCO_Worksheet_Fraction_Free(MyFraction);
 }

@@ -148,7 +148,21 @@ void WCO_PNG_Set_ConvertToPNG(float resize)
 #if OP == Windows
 void WCO_PNG_Set_ConvertToPNG(float resize)
 {
-    //execute python programm
+    int x = (int)(resize * WCO_PDF_Ref()->pageSize[0]);
+    int y = (int)(resize * WCO_PDF_Ref()->pageSize[1]);
+    printf("%d %d", WCO_PDF_Ref()->pageSize[0], WCO_PDF_Ref()->pageSize[1]);
+    char cmd[2][200];
+    for(int i = 0; i <= 1; i++)
+    {
+        
+        sprintf(cmd[i], ".\\dist\\convert.exe %s %s %d %d", WCO_PDF_Ref()->fileName[i], WCO_PNG_Ref()->fileName[i], x, y);
+        system(cmd[i]);
+        
+        WCO_GUI_Show_Worksheet(i);
+    }
+    
+    int i = _TRUE;
+    WCO_PNG_Set(&i, set_showPNG);
 }
 #endif
 

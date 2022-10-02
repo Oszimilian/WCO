@@ -53,7 +53,7 @@ void WCO_Worksheet_Task_Start()
 
     WCO_Worksheet_Task_Free(MyTask);
 
-    WCO_PNG_Set_ConvertToPNG(0.23);
+    WCO_PNG_Set_ConvertToPNG(0.1);
 }
 
 /*
