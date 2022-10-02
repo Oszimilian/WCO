@@ -130,6 +130,32 @@
               <object class="GtkFixed" id="MyFixed2">
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
+                <child>
+                  <object class="GtkFrame">
+                    <property name="width-request">570</property>
+                    <property name="height-request">810</property>
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="label-xalign">0</property>
+                    <property name="shadow-type">none</property>
+                    <child>
+                      <object class="GtkAlignment">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="left-padding">12</property>
+                        <child>
+                          <placeholder/>
+                        </child>
+                      </object>
+                    </child>
+                    <child type="label">
+                      <object class="GtkLabel">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
               </object>
               <packing>
                 <property name="name">page0</property>
@@ -140,6 +166,32 @@
               <object class="GtkFixed" id="MyFixed3">
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
+                <child>
+                  <object class="GtkFrame">
+                    <property name="width-request">570</property>
+                    <property name="height-request">810</property>
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="label-xalign">0</property>
+                    <property name="shadow-type">out</property>
+                    <child>
+                      <object class="GtkAlignment">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="left-padding">12</property>
+                        <child>
+                          <placeholder/>
+                        </child>
+                      </object>
+                    </child>
+                    <child type="label">
+                      <object class="GtkLabel">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
               </object>
               <packing>
                 <property name="name">page1</property>
