@@ -8,7 +8,11 @@
 #include <unistd.h>
 #include <time.h>
 #include <math.h>
-#include <MagickWand/MagickWand.h>
+
+#if OP == Linux
+    #include <MagickWand/MagickWand.h>
+#endif
+
 #include <dirent.h>
 
 #include "hpdf.h"
@@ -80,6 +84,7 @@ void WCO_PNG_Init()
 /*
 *   This function converts the pdf to an png using an installed converter on the system via the system command
 */
+#if OP == Linux
 void WCO_PNG_Set_ConvertToPNG(float resize)
 {
     //resizing the pdf by an given factor and casting it to an int
@@ -138,6 +143,14 @@ void WCO_PNG_Set_ConvertToPNG(float resize)
     int i = _TRUE;
     WCO_PNG_Set(&i, set_showPNG);
 }
+#endif
+
+#if OP == Windows
+void WCO_PNG_Set_ConvertToPNG(float resize)
+{
+    //execute python programm
+}
+#endif
 
 /*
 *   this function returns a pointer to the file name depanding on the page

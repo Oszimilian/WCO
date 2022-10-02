@@ -8,7 +8,7 @@
 #include <unistd.h>
 #include <time.h>
 #include <math.h>
-#include <MagickWand/MagickWand.h>
+
 
 #include "hpdf.h"
 #include "GUI_Call.h"
