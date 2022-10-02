@@ -3,7 +3,7 @@ CCF = -g
 SRCS = $(wildcard src/*.c)
 OBJS = $(patsubst src/*.c, obj/*.o, $(SRCS))
 BIN = bin/wco
-OP = -DOP=1
+OP = -DOP=2
 
 LibGTK_Lin = $(shell pkg-config --libs gtk+-3.0)
 FlagGTK_Lin = $(shell pkg-config --cflags gtk+-3.0)
@@ -23,8 +23,8 @@ FlagWCO_Lin = -I/home/maximilian/Git/WCO/headers $(OP)
 FlagWCO_Win = -IC:\msys64\home\maximilian\Git\WCO\headers -IC:\msys64\mingw64\include\c++\v1 $(OP) 
 
 
-#KP = $(LibGTK_Lin) $(LibLibHaru_Win) $(LibIM_Lin) $(FlagWCO_Win) $(FlagGTK_Lin) $(FlagIM_Lin) 
-KP = $(LibGTK_Lin) $(LibLibHaru_Lin) $(LibIM_Lin) $(FlagWCO_Lin) $(FlagGTK_Lin) $(FlagIM_Lin) $(DynGTK) 
+KP = $(LibGTK_Lin) $(LibLibHaru_Win) $(LibIM_Lin) $(FlagWCO_Win) $(FlagGTK_Lin) $(FlagIM_Lin) 
+#KP = $(LibGTK_Lin) $(LibLibHaru_Lin) $(LibIM_Lin) $(FlagWCO_Lin) $(FlagGTK_Lin) $(FlagIM_Lin) $(DynGTK) 
 
 
 $(BIN): $(OBJS)

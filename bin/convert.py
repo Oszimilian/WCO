@@ -13,7 +13,7 @@ try:
         x = sys.argv[3]
         y = sys.argv[4]
     else:
-        print("PyConvert no Input")
+        print("---> Error: PyConvert no Input")
 
     pdf = fitz.open(pdfPath)
     pdfPage = pdf.load_page(0)
@@ -21,8 +21,8 @@ try:
     pix.set_dpi(int(x), int(y))
     pix.save(pngPath)
 
-    print("PyConvert Succeeded")
+    print("-> PyConvert Succeeded")
 except:
-    print("PyConvert Failed")
+    print("-> PyConvert Failed")
 
 

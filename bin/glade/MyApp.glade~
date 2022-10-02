@@ -112,7 +112,7 @@
     <property name="width-request">1800</property>
     <property name="height-request">1000</property>
     <property name="can-focus">False</property>
-    <signal name="destroy" handler="exitApp" swapped="no"/>
+    <signal name="destroy" handler="MyExit" swapped="no"/>
     <child>
       <object class="GtkFixed" id="MyFixed1">
         <property name="width-request">1700</property>
@@ -125,7 +125,7 @@
             <property name="height-request">810</property>
             <property name="visible">True</property>
             <property name="can-focus">False</property>
-            <property name="transition-type">slide-left-right</property>
+            <property name="transition-type">slide-right</property>
             <child>
               <object class="GtkFixed" id="MyFixed2">
                 <property name="visible">True</property>
@@ -137,7 +137,7 @@
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="label-xalign">0</property>
-                    <property name="shadow-type">none</property>
+                    <property name="shadow-type">out</property>
                     <child>
                       <object class="GtkAlignment">
                         <property name="visible">True</property>
@@ -571,8 +571,7 @@
                 </child>
               </object>
               <packing>
-                <property name="name">page0</property>
-                <property name="title" translatable="yes">page0</property>
+                <property name="title" translatable="yes">Normal</property>
               </packing>
             </child>
             <child>
@@ -727,7 +726,7 @@
               </object>
               <packing>
                 <property name="name">page1</property>
-                <property name="title" translatable="yes">page1</property>
+                <property name="title" translatable="yes">Bruch</property>
                 <property name="position">1</property>
               </packing>
             </child>
@@ -851,7 +850,7 @@
               </object>
               <packing>
                 <property name="name">page0</property>
-                <property name="title" translatable="yes">page0</property>
+                <property name="title" translatable="yes">Kopfzeile</property>
               </packing>
             </child>
             <child>
@@ -918,7 +917,7 @@
               </object>
               <packing>
                 <property name="name">page1</property>
-                <property name="title" translatable="yes">page1</property>
+                <property name="title" translatable="yes">Lösungen</property>
                 <property name="position">1</property>
               </packing>
             </child>
@@ -1079,7 +1078,7 @@
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
                                 <property name="receives-default">True</property>
-                                <signal name="clicked" handler="exitApp" swapped="no"/>
+                                <signal name="clicked" handler="MyExit" swapped="no"/>
                               </object>
                               <packing>
                                 <property name="x">330</property>

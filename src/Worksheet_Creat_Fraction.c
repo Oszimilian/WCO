@@ -57,7 +57,8 @@ void WCO_Worksheet_Fraction_Start()
 
     #if OP == Linux
     WCO_PNG_Set_ConvertToPNG(0.23);
-    #elif
+    #endif
+    #if OP == Windows
     WCO_PNG_Set_ConvertToPNG(0.1);
     #endif
 

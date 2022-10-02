@@ -112,7 +112,7 @@
     <property name="width-request">1800</property>
     <property name="height-request">1000</property>
     <property name="can-focus">False</property>
-    <signal name="destroy" handler="exitApp" swapped="no"/>
+    <signal name="destroy" handler="MyExit" swapped="no"/>
     <child>
       <object class="GtkFixed" id="MyFixed1">
         <property name="width-request">1700</property>
@@ -571,8 +571,7 @@
                 </child>
               </object>
               <packing>
-                <property name="name">page0</property>
-                <property name="title" translatable="yes">page0</property>
+                <property name="title" translatable="yes">Normal</property>
               </packing>
             </child>
             <child>
@@ -727,7 +726,7 @@
               </object>
               <packing>
                 <property name="name">page1</property>
-                <property name="title" translatable="yes">page1</property>
+                <property name="title" translatable="yes">Bruch</property>
                 <property name="position">1</property>
               </packing>
             </child>
@@ -851,7 +850,7 @@
               </object>
               <packing>
                 <property name="name">page0</property>
-                <property name="title" translatable="yes">page0</property>
+                <property name="title" translatable="yes">Kopfzeile</property>
               </packing>
             </child>
             <child>
@@ -918,7 +917,7 @@
               </object>
               <packing>
                 <property name="name">page1</property>
-                <property name="title" translatable="yes">page1</property>
+                <property name="title" translatable="yes">Lösungen</property>
                 <property name="position">1</property>
               </packing>
             </child>
@@ -995,18 +994,17 @@
                             </child>
                             <child>
                               <object class="GtkButton" id="MyFileChooserButton1">
-                                <property name="label">gtk-floppy</property>
+                                <property name="label">gtk-harddisk</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
                                 <property name="receives-default">True</property>
                                 <property name="use-stock">True</property>
-                                <property name="image-position">bottom</property>
                                 <property name="always-show-image">True</property>
                                 <signal name="clicked" handler="MyFileChooserButton1_Clicked" swapped="no"/>
                               </object>
                               <packing>
                                 <property name="x">383</property>
-                                <property name="y">1</property>
+                                <property name="y">10</property>
                               </packing>
                             </child>
                           </object>
@@ -1079,7 +1077,7 @@
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
                                 <property name="receives-default">True</property>
-                                <signal name="clicked" handler="exitApp" swapped="no"/>
+                                <signal name="clicked" handler="MyExit" swapped="no"/>
                               </object>
                               <packing>
                                 <property name="x">330</property>

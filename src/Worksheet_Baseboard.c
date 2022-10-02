@@ -61,7 +61,7 @@ char* WCO_Worksheet_Baseboard_Date(char *str)
 
     sprintf(tmp, "%s %d.%d.%d", str, tm_instance->tm_mday, tm_instance->tm_mon + 1, tm_instance->tm_year + 1900);
 
-    tmp = (char*) realloc(tmp, strlen(tmp));
+    //tmp = (char*) realloc(tmp, strlen(tmp));
 
     return tmp;
 }
