@@ -10,8 +10,9 @@
 #include <math.h>
 
 #if OP == Linux
-    #include <MagickWand/MagickWand.h>
+    
 #endif
+#include <MagickWand/MagickWand.h>
 
 #include <dirent.h>
 
@@ -42,20 +43,19 @@ void WCO_PNG_Init()
     folder = opendir(".");
     if (folder == NULL)
     {
-        printf("unable to read the folder \n");
+        printf("---> Error: Unable to open folder \n");
         goto failed;
     }
 
     while( (entry = readdir(folder)) )
     {
-        //printf("File/Folder %d: %s ->%d\n", files, entry->d_name, strlen(entry->d_name));
+
 
                 
 
         if (strcmp("png", entry->d_name) && !folder_flag)
         {
             folder_flag = _TRUE;
-            //printf("%s \n", entry->d_name);
             system("mkdir png");
             //goto detact_folder;
 
@@ -70,8 +70,7 @@ void WCO_PNG_Init()
     failed:
 
     sprintf(WCO_PNG_Ref()->folderName, "%s%c%s%c",getcwd(NULL, 0), dirSyntaxHelper(), "png", dirSyntaxHelper());
-    printf("Current Folder: %s \n", getcwd(NULL, 0));
-    printf("PNG_Folder: %s \n", WCO_PNG_Ref()->folderName);
+
 
     //store the two images to the fix folderpath 
     sprintf(WCO_PNG_Ref()->fileName[0], "%sTask.png", WCO_PNG_Ref()->folderName);
@@ -112,8 +111,6 @@ void WCO_PNG_Set_ConvertToPNG(float resize)
 
         newWand = NewMagickWand();
 
-	    printf("PDF->PNG: %s \n", WCO_PDF_Ref()->fileName[i]);
-
         status = MagickReadImage(newWand, WCO_PDF_Ref()->fileName[i]);
         //status = MagickReadImage(newWand, "C:\\Users\\maximilian\\Downloads\\test001.jpeg");
 
@@ -128,7 +125,7 @@ void WCO_PNG_Set_ConvertToPNG(float resize)
 
         MagickWriteImage(newWand, WCO_PNG_Ref()->fileName[i]);
 
-	        printf("PNG: %s \n", WCO_PNG_Ref()->fileName[i]);
+	        printf("-> PNG Directory: %s \n", WCO_PNG_Ref()->fileName[i]);
 
         if(newWand) DestroyMagickWand(newWand);
   
@@ -150,7 +147,7 @@ void WCO_PNG_Set_ConvertToPNG(float resize)
 {
     int x = (int)(resize * WCO_PDF_Ref()->pageSize[0]);
     int y = (int)(resize * WCO_PDF_Ref()->pageSize[1]);
-    printf("%d %d", WCO_PDF_Ref()->pageSize[0], WCO_PDF_Ref()->pageSize[1]);
+    printf("-> PNG Resize: %d x %d \n", WCO_PDF_Ref()->pageSize[0], WCO_PDF_Ref()->pageSize[1]);
     char cmd[2][200];
     for(int i = 0; i <= 1; i++)
     {

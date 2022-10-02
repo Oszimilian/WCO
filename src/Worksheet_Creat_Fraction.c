@@ -35,9 +35,9 @@ void WCO_Worksheet_Fraction_Start()
     WCO_PDF_Ref()->pdf = HPDF_New(Error_Handler, NULL);
 
     if (WCO_PDF_Check())
-        printf("PDF hat einen Fehler, bzw. konnte nicht erzeugt werden \n");
+        printf("---> Error: PDF hat einen Fehler, bzw. konnte nicht erzeugt werden \n");
     else
-        printf("PDF wurde erfolgreich erzeugt \n");
+        printf("-> PDF wurde erfolgreich erzeugt \n");
     
     WCO_PDF_SetupPage(_Tasks);
 
@@ -55,7 +55,11 @@ void WCO_Worksheet_Fraction_Start()
 
     HPDF_Free(WCO_PDF_Ref()->pdf);
 
+    #if OP == Linux
+    WCO_PNG_Set_ConvertToPNG(0.23);
+    #elif
     WCO_PNG_Set_ConvertToPNG(0.1);
+    #endif
 
     WCO_Worksheet_Fraction_Free(MyFraction);
 }
@@ -360,7 +364,7 @@ void WCO_Worksheet_Fraction_Suggestion(MyFraction_t *MyFrac, int max_task, int p
     for (int i = 0; i <= (max_task - 1); i++)
     {  
         rand = WCO_Rand_Ref()->rand_list[i];
-        printf("%d -> %d:%d %d:%d %d:%d \n", rand, MyFrac->frac[rand][0][0], MyFrac->frac[rand][0][1], MyFrac->frac[rand][1][0], MyFrac->frac[rand][1][1], MyFrac->frac[rand][2][0], MyFrac->frac[rand][2][1]);
+        //printf("%d -> %d:%d %d:%d %d:%d \n", rand, MyFrac->frac[rand][0][0], MyFrac->frac[rand][0][1], MyFrac->frac[rand][1][0], MyFrac->frac[rand][1][1], MyFrac->frac[rand][2][0], MyFrac->frac[rand][2][1]);
         x += (int)(cabLen + WCO_Worksheet_Fraction_Draw_Single_Fraction(x, y, MyFrac->frac[rand][2][0], MyFrac->frac[rand][2][1], MyFrac->negFlag[rand], page));
 
         if (x >= (HPDF_Page_GetWidth(WCO_PDF_Ref()->page[page]) - 100))

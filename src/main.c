@@ -78,13 +78,11 @@ char dirSyntaxHelper()
 
 int main(void)
 {
-    if (OP == 1) printf("OP: Linux \n");
-    else printf("OP: Windows \n");
+    if (OP == 1) printf("OP: Linux \n\n");
+    else printf("OP: Windows \n\n");
     //Init
     WCO_Exchange_Init();
 
-
-    printf("\n");
 
     WCO_PNG_Init();
     WCO_Worksheet_Baseboard_Init();

@@ -33,9 +33,9 @@ void WCO_Worksheet_Task_Start()
     WCO_PDF_Ref()->pdf = HPDF_New(Error_Handler, NULL);
 
     if (WCO_PDF_Check())
-        printf("PDF hat einen Fehler, bzw. konnte nicht erzeugt werden \n");
+        printf("---> Error: PDF hat einen Fehler, bzw. konnte nicht erzeugt werden \n");
     else
-        printf("PDF wurde erfolgreich erzeugt \n");
+        printf("-> PDF wurde erfolgreich erzeugt \n");
 
     WCO_PDF_SetupPage(_Tasks);
 
@@ -53,7 +53,11 @@ void WCO_Worksheet_Task_Start()
 
     WCO_Worksheet_Task_Free(MyTask);
 
+    #if OP == Linux
+    WCO_PNG_Set_ConvertToPNG(0.23);
+    #elif
     WCO_PNG_Set_ConvertToPNG(0.1);
+    #endif
 }
 
 /*

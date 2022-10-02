@@ -43,6 +43,11 @@ void MyButton1_Clicked(GtkButton *b)
 
 void MyButton2_Clicked(GtkButton *b){}
 
+void MyExit()
+{
+    exit(-1);
+}
+
 
 /**********************************************************************************************************************/
 
@@ -116,7 +121,6 @@ void MyButton4_Clicked(GtkButton *b)
 
 void MyFileChooserButton1_Clicked()
 {
-    printf("Hallo \n");
     GtkWidget *dialog;
     dialog = gtk_file_chooser_dialog_new("Chosse a folder", GTK_WINDOW(WCO_GUI_Ref()->MyWindow1), GTK_FILE_CHOOSER_ACTION_SELECT_FOLDER, GTK_STOCK_OK, GTK_RESPONSE_OK, GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL, NULL);
     gtk_widget_show_all(dialog);

@@ -1,10 +1,10 @@
+#ifndef GUI_CALL_H_INCLUDED
+#define GUI_CALL_H_INCLUDED
+
 #define Linux 1
 #define Windows 2
 
 //#define OP Linux
-
-#ifndef GUI_CALL_H_INCLUDED
-#define GUI_CALL_H_INCLUDED
 
 #if OP == Linux
 void MyButton1_Clicked(GtkButton *b);
@@ -18,6 +18,8 @@ void MyCheckButton4_Toggled(GtkCheckButton *b);
 void MyCheckButton5_Toggled(GtkCheckButton *b);
 void MyCheckButton6_Toggled(GtkCheckButton *b);
 void MyCheckButton11_Changed(GtkCheckButton *b);
+void MyCheckButton12_Changed(GtkCheckButton *b);
+void MyCheckButton13_Changed(GtkCheckButton *b);
 void MyEntry2_Changed(GtkCheckButton *b);
 
 void MyRadioButton1_Toggled(GtkRadioButton *b);
@@ -55,6 +57,8 @@ void MyCheckButton9_Changed(GtkCheckButton *b);
 void MyCheckButton10_Changed(GtkCheckButton *b);
 
 void MyStackSwitcher2_Changed();
+
+void MyExit();
 #endif
 
 #if OP == Windows
@@ -69,6 +73,8 @@ G_MODULE_EXPORT void MyCheckButton4_Toggled(GtkCheckButton *b);
 G_MODULE_EXPORT void MyCheckButton5_Toggled(GtkCheckButton *b);
 G_MODULE_EXPORT void MyCheckButton6_Toggled(GtkCheckButton *b);
 G_MODULE_EXPORT void MyCheckButton11_Changed(GtkCheckButton *b);
+G_MODULE_EXPORT void MyCheckButton12_Changed(GtkCheckButton *b);
+G_MODULE_EXPORT void MyCheckButton13_Changed(GtkCheckButton *b);
 G_MODULE_EXPORT void MyEntry2_Changed(GtkCheckButton *b);
 
 G_MODULE_EXPORT void MyRadioButton1_Toggled(GtkRadioButton *b);
@@ -106,6 +112,8 @@ G_MODULE_EXPORT void MyCheckButton9_Changed(GtkCheckButton *b);
 G_MODULE_EXPORT void MyCheckButton10_Changed(GtkCheckButton *b);
 
 G_MODULE_EXPORT void MyStackSwitcher2_Changed();
+
+G_MODULE_EXPORT void MyExit();
 
 #endif
 

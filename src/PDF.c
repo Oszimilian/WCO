@@ -86,8 +86,6 @@ void WCO_PDF_SetFilename(const char *fileName, int page)
     }
 
     sprintf(WCO_PDF_Ref()->systemOpenFile[page], "okular %s", WCO_PDF_Ref()->fileName[page]);
-
-    printf("PDF Path: %s\n", WCO_PDF_Ref()->fileName[page]);
 }
 
 /*
@@ -106,7 +104,7 @@ void WCO_PDF_WriteText(int x, int y, char *text, int page)
 void WCO_PDF_SavePDF(int page)
 {
     HPDF_SaveToFile(WCO_PDF_Ref()->pdf, WCO_PDF_Ref()->fileName[page]);
-    printf("PDF Save: %s\n", WCO_PDF_Ref()->fileName[page]);
+    printf("-> PDF Directory: %s\n", WCO_PDF_Ref()->fileName[page]);
 }
 
 
