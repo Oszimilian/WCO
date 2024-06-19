@@ -10,8 +10,8 @@ FlagGTK_Lin = $(shell pkg-config --cflags gtk+-3.0)
 
 DynGTK = -export-dynamic
 
-LibLibHaru_Lin = /usr/local/lib/libhpdf.a -L/usr/local/lib -lz -lm -lpthread
-LibLibHaru_Win = C:/msys64/usr/local/lib/libhpdf.a -lz -lm -lpthread -IC:/msys64/usr/include -IC:/msys64/usr/local/include
+LibLibHaru_Lin = /usr/local/lib/libhpdf.so -L/usr/local/lib -lz -lm -lpthread
+LibLibHaru_Win = C:/msys64/usr/local/lib/libhpdf.so -lz -lm -lpthread -IC:/msys64/usr/include -IC:/msys64/usr/local/include
 
 LibIM_Lin = $(shell pkg-config --libs MagickWand) -llzma -ljpeg -lpng -ltiff
 FlagIM_Lin = $(shell pkg-config --cflags MagickWand)
